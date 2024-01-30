@@ -2,6 +2,7 @@ import 'package:colorsoul/constants/routes.dart';
 import 'package:colorsoul/values/myColor.dart';
 import 'package:colorsoul/values/myStyle.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 
 class SignInPage extends StatefulWidget {
   const SignInPage({super.key});
@@ -108,6 +109,10 @@ class _SignInPageState extends State<SignInPage> {
                               ),
                             ),
                           ),
+                          inputFormatters: [
+                            FilteringTextInputFormatter.digitsOnly,
+                            LengthLimitingTextInputFormatter(10),
+                          ],
                           keyboardType: TextInputType.phone,
                         ),
                       ),
@@ -146,21 +151,21 @@ class _SignInPageState extends State<SignInPage> {
                           ? Icons.visibility_off_sharp
                           : Icons.visibility_sharp),
                     ),
-                    contentPadding: EdgeInsets.symmetric(
+                    contentPadding: const EdgeInsets.symmetric(
                       horizontal: 20,
                       vertical: 20,
                     ),
-                    enabledBorder: OutlineInputBorder(
+                    enabledBorder: const OutlineInputBorder(
                       borderSide: BorderSide(
                         color: MyColor.grey,
                       ),
                     ),
-                    focusedBorder: OutlineInputBorder(
+                    focusedBorder: const OutlineInputBorder(
                       borderSide: BorderSide(
                         color: MyColor.grey,
                       ),
                     ),
-                    border: OutlineInputBorder(
+                    border: const OutlineInputBorder(
                       borderSide: BorderSide(
                         color: MyColor.grey,
                       ),
@@ -174,12 +179,17 @@ class _SignInPageState extends State<SignInPage> {
                 height: 25,
               ),
               Center(
-                child: Text(
-                  'Forgot password?',
-                  textAlign: TextAlign.center,
-                  style: MyStyle.tx14b.copyWith(
-                    fontWeight: FontWeight.w700,
-                    fontFamily: 'Poppins-SemiBold',
+                child: TextButton(
+                  onPressed: () {
+                    Navigator.pushNamed(context, forgotPassRoute);
+                  },
+                  child: Text(
+                    'Forgot password?',
+                    textAlign: TextAlign.center,
+                    style: MyStyle.tx14b.copyWith(
+                      fontWeight: FontWeight.w700,
+                      fontFamily: 'Poppins-SemiBold',
+                    ),
                   ),
                 ),
               ),
