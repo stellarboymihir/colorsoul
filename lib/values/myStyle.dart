@@ -32,6 +32,12 @@ class MyStyle {
     fontFamily: 'Poppins-Regular',
     color: MyColor.black,
   );
+  static const tx14w = TextStyle(
+    fontSize: 14,
+    fontWeight: FontWeight.w300,
+    fontFamily: 'Poppins-Regular',
+    color: MyColor.white,
+  );
   static const tx13b = TextStyle(
     fontSize: 13,
     fontWeight: FontWeight.w400,
