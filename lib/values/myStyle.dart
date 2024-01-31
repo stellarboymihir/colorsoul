@@ -14,6 +14,12 @@ class MyStyle {
     fontFamily: 'Poppins-Bold',
     color: MyColor.black,
   );
+  static const tx24b = TextStyle(
+    fontSize: 24,
+    fontWeight: FontWeight.w700,
+    fontFamily: 'Poppins-Bold',
+    color: MyColor.black,
+  );
   static const tx20b = TextStyle(
     fontSize: 20,
     fontWeight: FontWeight.w600,
@@ -26,6 +32,14 @@ class MyStyle {
     fontFamily: 'Poppins-Bold',
     color: MyColor.white,
   );
+
+  static const tx16b = TextStyle(
+    fontSize: 16,
+    fontWeight: FontWeight.w700,
+    fontFamily: 'Poppins-SemiBold',
+    color: MyColor.black,
+  );
+
   static const tx14b = TextStyle(
     fontSize: 14,
     fontWeight: FontWeight.w300,

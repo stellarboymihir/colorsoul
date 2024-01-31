@@ -14,7 +14,11 @@ const successPageRoute = '/successPage/';
 //   **  Dashboard  **
 const dashboardRoute = '/dashboard/';
 
+//  **  Home **
 const homeRoute = '/home/';
+const notificationRoute = '/notification/';
+const attendanceRoute = '/attendance/';
+
 const servicePageRoute = '/servicePage/';
 const distributorRoute = '/distributor/';
 const reimbursementRoute = '/reimbursement/';

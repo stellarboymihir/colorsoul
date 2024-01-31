@@ -38,6 +38,8 @@ dependencies:
   pin_input_text_field: ^4.5.1
 #  syncfusion_flutter_gauges: ^24.1.47
   syncfusion_flutter_charts:
+  image_picker:
+  dropdown_button2: ^2.3.9
 
 dev_dependencies:
   flutter_test:
