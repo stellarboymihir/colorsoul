@@ -147,6 +147,12 @@ class _TaskDetailState extends State<TaskDetail> {
                 ),
               ),
             ),
+            Text(
+              'Attachment',
+              style: MyStyle.tx12b.copyWith(
+                fontWeight: FontWeight.w400,
+              ),
+            ),
           ],
         ),
       ),
