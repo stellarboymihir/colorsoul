@@ -82,7 +82,7 @@ class _OTPVerifyState extends State<OTPVerify> {
             height: 60,
           ),
           const Text(
-            'Didn’t receive the coed?',
+            'Didn’t receive the code?',
             style: MyStyle.tx14b,
           ),
           SizedBox(

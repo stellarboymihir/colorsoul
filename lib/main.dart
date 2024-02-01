@@ -7,6 +7,11 @@ import 'package:colorsoul/authentication/register/welcome.dart';
 import 'package:colorsoul/constants/routes.dart';
 import 'package:colorsoul/dashboard/dashboard.dart';
 import 'package:colorsoul/dashboard/home/attendance.dart';
+import 'package:colorsoul/dashboard/home/floating/createRoute.dart';
+import 'package:colorsoul/dashboard/home/floating/newRetailer/newFloatingDistributor.dart';
+import 'package:colorsoul/dashboard/home/floating/newRetailer/newFloatingRetailer.dart';
+import 'package:colorsoul/dashboard/home/floating/newRetailer/newRetailer.dart';
+import 'package:colorsoul/dashboard/home/floating/reimbursementPage.dart';
 import 'package:colorsoul/dashboard/home/notification.dart';
 import 'package:colorsoul/dashboard/home/task/taskDetail.dart';
 import 'package:colorsoul/dashboard/home/task/taskPage.dart';
@@ -73,6 +78,14 @@ class MyApp extends StatelessWidget {
         notificationRoute: (context) => const NotificationPage(),
         attendanceRoute: (context) => const Attendance(),
 
+        //  **  Floating  **
+        reimbursementPageRoute: (context) => const ReimbursementPage(),
+        createRoute: (context) => const CreateRoute(),
+
+        //  **  New Retailer  **
+        newRetailerRoute: (context) => const NewRetailer(),
+        newFloatingDistributorRoute: (context) => const FloatingDistributor(),
+        newFloatingRetailerRoute: (context) => const FloatingRetailer(),
         //  ** Task **
         taskPageRoute: (context) => const TaskPage(),
         taskDetailRoute: (context) => const TaskDetail(),

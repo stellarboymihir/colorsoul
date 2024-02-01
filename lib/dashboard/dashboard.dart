@@ -1,9 +1,12 @@
+import 'package:colorsoul/constants/routes.dart';
 import 'package:colorsoul/dashboard/reimbursement/reimbursement.dart';
 import 'package:colorsoul/dashboard/service/service.dart';
 import 'package:colorsoul/values/myColor.dart';
+import 'package:colorsoul/values/myStyle.dart';
 import 'package:flutter/material.dart';
 
 import 'distributor/distributor.dart';
+import 'package:flutter_speed_dial/flutter_speed_dial.dart';
 import 'home/home.dart';
 
 class Dashboard extends StatefulWidget {
@@ -28,8 +31,73 @@ class _DashboardState extends State<Dashboard> {
   Widget build(BuildContext context) {
     return Scaffold(
       floatingActionButtonLocation: FloatingActionButtonLocation.endDocked,
-      floatingActionButton: FloatingActionButton(
-        onPressed: () {},
+      floatingActionButton: SpeedDial(
+        spaceBetweenChildren: 5,
+        spacing: 4,
+        childMargin: const EdgeInsets.all(10),
+        overlayColor: MyColor.black,
+        children: [
+          SpeedDialChild(
+            onTap: () {
+              Navigator.pushNamed(context, reimbursementPageRoute);
+            },
+            backgroundColor: MyColor.white,
+            shape: BeveledRectangleBorder(
+              borderRadius: BorderRadius.circular(0),
+            ),
+            child: Image.asset(
+              'assets/icons/pad.png',
+              height: 24,
+              width: 24,
+            ),
+            labelWidget: Text(
+              'Reimbursement  ',
+              style: MyStyle.tx14w.copyWith(
+                fontWeight: FontWeight.w700,
+              ),
+            ),
+          ),
+          SpeedDialChild(
+            onTap: () {
+              Navigator.pushNamed(context, createRoute);
+            },
+            shape: BeveledRectangleBorder(
+              borderRadius: BorderRadius.circular(0),
+            ),
+            // backgroundColor: MyColor.white,
+            child: Image.asset(
+              'assets/icons/location.png',
+              height: 24,
+              width: 24,
+            ),
+            labelWidget: Text(
+              'Create Route  ',
+              style: MyStyle.tx14w.copyWith(
+                fontWeight: FontWeight.w700,
+              ),
+            ),
+          ),
+          SpeedDialChild(
+            onTap: () {
+              Navigator.pushNamed(context, newRetailerRoute);
+            },
+            shape: BeveledRectangleBorder(
+              borderRadius: BorderRadius.circular(0),
+            ),
+            backgroundColor: MyColor.white,
+            child: Image.asset(
+              'assets/icons/distributor.png',
+              height: 24,
+              width: 24,
+            ),
+            labelWidget: Text(
+              'Add new distributor/Retailer  ',
+              style: MyStyle.tx14w.copyWith(
+                fontWeight: FontWeight.w700,
+              ),
+            ),
+          ),
+        ],
         backgroundColor: MyColor.black,
         shape: BeveledRectangleBorder(
           borderRadius: BorderRadius.circular(0),

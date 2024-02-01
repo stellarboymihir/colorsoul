@@ -14,10 +14,19 @@ const successPageRoute = '/successPage/';
 //   **  Dashboard  **
 const dashboardRoute = '/dashboard/';
 
-//  **  Home **
+//  **  Home  **
 const homeRoute = '/home/';
 const notificationRoute = '/notification/';
 const attendanceRoute = '/attendance/';
+
+//  **  Floating  **
+const reimbursementPageRoute = '/reimbursementPage/';
+const createRoute = '/createRoute/';
+
+// ** New Retailer
+const newRetailerRoute = '/NewRetailer/';
+const newFloatingDistributorRoute = '/FloatingDistributor/';
+const newFloatingRetailerRoute = '/FloatingRetailer/';
 
 //  ** Task **
 const taskPageRoute = '/taskPage/';
