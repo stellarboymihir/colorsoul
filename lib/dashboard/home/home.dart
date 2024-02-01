@@ -543,11 +543,16 @@ class _HomeState extends State<Home> {
                         fontFamily: 'Poppins-SemiBold',
                       ),
                     ),
-                    Text(
-                      'View all',
-                      style: MyStyle.tx14b.copyWith(
-                        fontWeight: FontWeight.w400,
-                        color: MyColor.blue,
+                    TextButton(
+                      onPressed: () {
+                        Navigator.pushNamed(context, taskPageRoute);
+                      },
+                      child: Text(
+                        'View all',
+                        style: MyStyle.tx14b.copyWith(
+                          fontWeight: FontWeight.w400,
+                          color: MyColor.blue,
+                        ),
                       ),
                     ),
                   ],
@@ -555,7 +560,7 @@ class _HomeState extends State<Home> {
               ),
 
               SizedBox(
-                height: 74,
+                height: 80,
                 child: ListView.builder(
                     scrollDirection: Axis.horizontal,
                     itemCount: 2,

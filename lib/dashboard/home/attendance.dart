@@ -1,7 +1,6 @@
 import 'dart:core';
 
 import 'package:colorsoul/values/myColor.dart';
-import 'package:dropdown_button2/dropdown_button2.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:image_picker/image_picker.dart';
@@ -19,10 +18,13 @@ class Attendance extends StatefulWidget {
 class _AttendanceState extends State<Attendance> {
   String? selectedList;
   File? image;
-  final List<Map<String, dynamic>> placeList = [
-    {'text': 'HQ', 'isSelected': false},
-    {'text': 'EX', 'isSelected': false},
-  ];
+  List<bool> isChecked = [false, false];
+  List<bool> isSelected = [false, false];
+
+  bool isSubmitEnabled() {
+    //  Return true if an image is selected
+    return image != null;
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -55,8 +57,8 @@ class _AttendanceState extends State<Attendance> {
             child: Container(
               height: 180,
               width: MediaQuery.of(context).size.width,
-              margin: EdgeInsets.all(12),
-              padding: EdgeInsets.all(40),
+              margin: const EdgeInsets.all(12),
+              padding: const EdgeInsets.all(40),
               decoration: BoxDecoration(
                 border: Border.all(
                   color: MyColor.grey,
@@ -76,113 +78,188 @@ class _AttendanceState extends State<Attendance> {
                     ),
             ),
           ),
+
+          //  Select Place
           Container(
-            height: 55,
+            // height: 55,
             width: MediaQuery.of(context).size.width,
-            margin: EdgeInsets.all(12),
+            margin: const EdgeInsets.all(12),
             decoration: BoxDecoration(
               border: Border.all(
                 color: MyColor.grey,
               ),
             ),
-            child: DropdownButtonFormField2<Map<String, dynamic>>(
-              style: MyStyle.tx14b.copyWith(
-                fontWeight: FontWeight.w400,
+            child: Theme(
+              data: Theme.of(context).copyWith(
+                dividerColor: Colors.transparent,
               ),
-              decoration: InputDecoration(
-                border: OutlineInputBorder(
-                  borderRadius: BorderRadius.circular(1),
-                  borderSide: const BorderSide(
-                    color: MyColor.black,
-                  ),
+              child: ExpansionTile(
+                title: const Text(
+                  'Select Place',
+                  style: MyStyle.tx14b,
                 ),
-                contentPadding: const EdgeInsets.symmetric(horizontal: 12.0),
-                hintText: 'Select Place',
-                hintStyle: MyStyle.tx14b.copyWith(
-                  fontWeight: FontWeight.w400,
+                trailing: const Icon(
+                  // _customTileExpanded
+                  //     ? Icons.arrow_drop_down_circle
+                  //     : Icons.arrow_drop_down,
+                  Icons.arrow_drop_down_sharp,
+                  color: MyColor.black,
                 ),
-              ),
-              value: selectedList != null
-                  ? placeList.firstWhere((item) => item['text'] == selectedList)
-                  : null,
-              isExpanded: true,
-              onChanged: (Map<String, dynamic>? value) {
-                print(value);
-                if (value != null) {
-                  setState(() {
-                    selectedList = null;
-                    selectedList = value['text'];
-                  });
-                }
-              },
-// dropdownColor: MyColor.black.withOpacity(0.25),
-              items: placeList
-                  .map<DropdownMenuItem<Map<String, dynamic>>>((placeItem) {
-                print(placeItem);
-                return DropdownMenuItem<Map<String, dynamic>>(
-                  value: placeItem,
-                  child: Row(
-                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                    children: [
-                      Text(
-                        placeItem['text'],
-                        style: MyStyle.tx12b.copyWith(
-                          color: MyColor.black,
+                shape: Border.all(color: MyColor.grey),
+                children: <Widget>[
+                  ListTile(
+                    title: Row(
+                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                      children: [
+                        Text(
+                          'HQ',
+                          style: MyStyle.tx14b.copyWith(
+                            fontFamily: 'Roboto-Med',
+                            fontWeight: FontWeight.w400,
+                          ),
                         ),
-                      ),
-                      Checkbox(
-                          value: placeItem['isSelected'],
-                          onChanged: (bool? newValue) {
-                            setState(() {
-                              placeItem['isSelected'] = newValue ?? false;
-                            });
-                          }),
-                    ],
+                        Checkbox(
+                            activeColor: MyColor.black,
+                            value: isChecked[0],
+                            onChanged: (bool? val) {
+                              setState(() {
+                                isChecked[0] = val!;
+                              });
+                            })
+                      ],
+                    ),
                   ),
-                );
-              }).toList(),
+                  ListTile(
+                    title: Row(
+                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                      children: [
+                        Text(
+                          'EX',
+                          style: MyStyle.tx14b.copyWith(
+                            fontFamily: 'Roboto-Med',
+                            fontWeight: FontWeight.w400,
+                          ),
+                        ),
+                        Checkbox(
+                            activeColor: MyColor.black,
+                            value: isChecked[1],
+                            onChanged: (bool? val) {
+                              setState(() {
+                                isChecked[1] = val!;
+                              });
+                            })
+                      ],
+                    ),
+                  ),
+                ],
+                onExpansionChanged: (bool expanded) {
+                  setState(() {});
+                },
+              ),
             ),
           ),
-//           DropdownButtonFormField2<String>(
-//             style: MyStyle.tx14b.copyWith(
-//               fontWeight: FontWeight.w400,
-//             ),
-//             decoration: InputDecoration(
-//               border: OutlineInputBorder(
-//                 borderRadius: BorderRadius.circular(1),
-//                 borderSide: const BorderSide(
-//                   color: MyColor.black,
-//                 ),
-//               ),
-//               contentPadding: const EdgeInsets.symmetric(horizontal: 12.0),
-//               hintText: 'Select Place',
-//               hintStyle: MyStyle.tx14b.copyWith(
-//                 fontWeight: FontWeight.w400,
-//               ),
-//             ),
-//             value: selectedList,
-//             isExpanded: true,
-//             onChanged: (String? value) {
-//               print(value);
-//               setState(() {
-//                 selectedList = null;
-//                 selectedList = value!;
-//               });
-//             },
-// // dropdownColor: MyColor.black.withOpacity(0.25),
-//             items: placeList.map<DropdownMenuItem<String>>((list) {
-//               print(list);
-//               return DropdownMenuItem<String>(
-//                 value: list,
-//                 child: Text(
-//                   list,
-//                   style: MyStyle.tx12b.copyWith(
-//                     color: MyColor.black,
-//                   ),
-//                 ),
-//               );
-//             }).toList(),
-//           ),
+
+          // Travel By
+          Container(
+            // height: 55,
+            width: MediaQuery.of(context).size.width,
+            margin: const EdgeInsets.all(12),
+            decoration: BoxDecoration(
+              border: Border.all(
+                color: MyColor.grey,
+              ),
+            ),
+            child: Theme(
+              data: Theme.of(context).copyWith(
+                dividerColor: Colors.transparent,
+              ),
+              child: ExpansionTile(
+                title: const Text(
+                  'Travel by',
+                  style: MyStyle.tx14b,
+                ),
+                trailing: const Icon(
+                  // _customTileExpanded
+                  //     ? Icons.arrow_drop_down_circle
+                  //     : Icons.arrow_drop_down,
+                  Icons.arrow_drop_down_sharp,
+                  color: MyColor.black,
+                ),
+                shape: Border.all(color: MyColor.grey),
+                children: <Widget>[
+                  ListTile(
+                    title: Row(
+                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                      children: [
+                        Text(
+                          'Personal Vehicle',
+                          style: MyStyle.tx14b.copyWith(
+                            fontFamily: 'Roboto-Med',
+                            fontWeight: FontWeight.w400,
+                          ),
+                        ),
+                        Checkbox(
+                            activeColor: MyColor.black,
+                            value: isSelected[0],
+                            onChanged: (bool? val) {
+                              setState(() {
+                                isSelected[0] = val!;
+                              });
+                            })
+                      ],
+                    ),
+                  ),
+                  ListTile(
+                    title: Row(
+                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                      children: [
+                        Text(
+                          'Public Transport',
+                          style: MyStyle.tx14b.copyWith(
+                            fontFamily: 'Roboto-Med',
+                            fontWeight: FontWeight.w400,
+                          ),
+                        ),
+                        Checkbox(
+                            activeColor: MyColor.black,
+                            value: isSelected[1],
+                            onChanged: (bool? val) {
+                              setState(() {
+                                isSelected[1] = val!;
+                              });
+                            })
+                      ],
+                    ),
+                  ),
+                ],
+                onExpansionChanged: (bool expanded) {
+                  setState(() {});
+                },
+              ),
+            ),
+          ),
+
+          Spacer(),
+          //   Submit Button
+          InkWell(
+            onTap: () {
+              Navigator.pop(context);
+            },
+            child: Container(
+              height: 65,
+              width: MediaQuery.of(context).size.width,
+              margin: EdgeInsets.symmetric(horizontal: 12, vertical: 10),
+              color: isSubmitEnabled() ? MyColor.black : MyColor.grey,
+              child: Center(
+                child: Text(
+                  'SUBMIT',
+                  style: MyStyle.tx20b.copyWith(
+                    color: isSubmitEnabled() ? MyColor.white : MyColor.black,
+                  ),
+                ),
+              ),
+            ),
+          )
         ],
       ),
     );

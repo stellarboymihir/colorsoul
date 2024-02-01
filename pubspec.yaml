@@ -152,6 +152,54 @@ flutter:
       fonts:
         - asset: assets/fonts/Poppins/Poppins-ThinItalic.ttf
 
+    - family: Roboto-Black
+      fonts:
+        - asset: assets/fonts/Roboto/Roboto-Black.ttf
+
+    - family: Roboto-BlackItalic
+      fonts:
+        - asset: assets/fonts/Roboto/Roboto-BlackItalic.ttf
+
+    - family: Roboto-Bold
+      fonts:
+        - asset: assets/fonts/Roboto/Roboto-Bold.ttf
+
+    - family: Roboto-BoldItalic
+      fonts:
+        - asset: assets/fonts/Roboto/Roboto-BoldItalic.ttf
+
+    - family: Roboto-Italic
+      fonts:
+        - asset: assets/fonts/Roboto/Roboto-Italic.ttf
+
+    - family: Roboto-Light
+      fonts:
+        - asset: assets/fonts/Roboto/Roboto-Light.ttf
+
+    - family: Roboto-LightItalic
+      fonts:
+        - asset: assets/fonts/Roboto/Roboto-LightItalic.ttf
+
+    - family: Roboto-Medium
+      fonts:
+        - asset: assets/fonts/Roboto/Roboto-Medium.ttf
+
+    - family: Roboto-MediumItalic
+      fonts:
+        - asset: assets/fonts/Roboto/Roboto-MediumItalic.ttf
+
+    - family: Roboto-Regular
+      fonts:
+        - asset: assets/fonts/Roboto/Roboto-Regular.ttf
+
+    - family: Roboto-Thin
+      fonts:
+        - asset: assets/fonts/Roboto/Roboto-Thin.ttf
+
+    - family: Roboto-ThinItalic
+      fonts:
+        - asset: assets/fonts/Roboto/Roboto-ThinItalic.ttf
+
 
   #   - family: Trajan Pro
   #     fonts:

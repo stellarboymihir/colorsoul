@@ -8,6 +8,8 @@ import 'package:colorsoul/constants/routes.dart';
 import 'package:colorsoul/dashboard/dashboard.dart';
 import 'package:colorsoul/dashboard/home/attendance.dart';
 import 'package:colorsoul/dashboard/home/notification.dart';
+import 'package:colorsoul/dashboard/home/task/taskDetail.dart';
+import 'package:colorsoul/dashboard/home/task/taskPage.dart';
 import 'package:colorsoul/values/myColor.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
@@ -70,6 +72,10 @@ class MyApp extends StatelessWidget {
         homeRoute: (context) => const Home(),
         notificationRoute: (context) => const NotificationPage(),
         attendanceRoute: (context) => const Attendance(),
+
+        //  ** Task **
+        taskPageRoute: (context) => const TaskPage(),
+        taskDetailRoute: (context) => const TaskDetail(),
 
         servicePageRoute: (context) => const ServicePage(),
         distributorRoute: (context) => const Distributor(),

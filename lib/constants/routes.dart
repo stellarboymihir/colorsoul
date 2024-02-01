@@ -19,6 +19,10 @@ const homeRoute = '/home/';
 const notificationRoute = '/notification/';
 const attendanceRoute = '/attendance/';
 
+//  ** Task **
+const taskPageRoute = '/taskPage/';
+const taskDetailRoute = '/taskDetail/';
+
 const servicePageRoute = '/servicePage/';
 const distributorRoute = '/distributor/';
 const reimbursementRoute = '/reimbursement/';
