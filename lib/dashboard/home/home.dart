@@ -15,77 +15,144 @@ class _HomeState extends State<Home> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      appBar: AppBar(
+        backgroundColor: MyColor.white,
+        scrolledUnderElevation: 0,
+        automaticallyImplyLeading: false,
+        title: Row(
+          children: [
+            Image.asset(
+              'assets/images/samar.png',
+              width: 40,
+              height: 40,
+            ),
+            SizedBox(width: 10),
+            const Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                Text(
+                  'Hi Samar',
+                  textAlign: TextAlign.start,
+                  style: MyStyle.tx20b,
+                ),
+                Text(
+                  'Dec 18, 2021',
+                  textAlign: TextAlign.start,
+                  style: MyStyle.tx12b,
+                ),
+              ],
+            ),
+            const Spacer(),
+            InkWell(
+              onTap: () {
+                Navigator.pushNamed(context, attendanceRoute);
+              },
+              child: Container(
+                height: 40,
+                color: MyColor.grey,
+                padding:
+                    const EdgeInsets.symmetric(horizontal: 20, vertical: 10),
+                child: Center(
+                  child: Text(
+                    'START',
+                    style: MyStyle.tx14b.copyWith(
+                      fontWeight: FontWeight.w700,
+                      fontFamily: 'Poppins-ExtraBold',
+                    ),
+                  ),
+                ),
+              ),
+            ),
+            InkWell(
+              onTap: () {
+                Navigator.pushNamed(context, notificationRoute);
+              },
+              child: Container(
+                height: 40,
+                color: MyColor.grey,
+                margin: const EdgeInsets.all(8.0),
+                padding: const EdgeInsets.all(10),
+                child: Image.asset(
+                  'assets/icons/bell.png',
+                  height: 20,
+                  width: 20,
+                ),
+              ),
+            ),
+          ],
+        ),
+      ),
       body: SafeArea(
         child: SingleChildScrollView(
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
               // Top Bar
-              Row(
-                children: [
-                  Padding(
-                    padding: const EdgeInsets.symmetric(
-                        horizontal: 12.0, vertical: 10),
-                    child: Image.asset(
-                      'assets/images/samar.png',
-                      width: 40,
-                      height: 40,
-                    ),
-                  ),
-                  const Column(
-                    crossAxisAlignment: CrossAxisAlignment.start,
-                    children: [
-                      Text(
-                        'Hi Samar',
-                        textAlign: TextAlign.start,
-                        style: MyStyle.tx20b,
-                      ),
-                      Text(
-                        'Dec 18, 2021',
-                        textAlign: TextAlign.start,
-                        style: MyStyle.tx12b,
-                      ),
-                    ],
-                  ),
-                  const Spacer(),
-                  InkWell(
-                    onTap: () {
-                      Navigator.pushNamed(context, attendanceRoute);
-                    },
-                    child: Container(
-                      height: 40,
-                      color: MyColor.grey,
-                      padding: const EdgeInsets.symmetric(
-                          horizontal: 20, vertical: 10),
-                      child: Center(
-                        child: Text(
-                          'START',
-                          style: MyStyle.tx14b.copyWith(
-                            fontWeight: FontWeight.w700,
-                            fontFamily: 'Poppins-ExtraBold',
-                          ),
-                        ),
-                      ),
-                    ),
-                  ),
-                  InkWell(
-                    onTap: () {
-                      Navigator.pushNamed(context, notificationRoute);
-                    },
-                    child: Container(
-                      height: 40,
-                      color: MyColor.grey,
-                      margin: const EdgeInsets.all(8.0),
-                      padding: const EdgeInsets.all(10),
-                      child: Image.asset(
-                        'assets/icons/bell.png',
-                        height: 20,
-                        width: 20,
-                      ),
-                    ),
-                  ),
-                ],
-              ),
+              // Row(
+              //   children: [
+              //     Padding(
+              //       padding: const EdgeInsets.symmetric(
+              //           horizontal: 12.0, vertical: 10),
+              //       child: Image.asset(
+              //         'assets/images/samar.png',
+              //         width: 40,
+              //         height: 40,
+              //       ),
+              //     ),
+              //     const Column(
+              //       crossAxisAlignment: CrossAxisAlignment.start,
+              //       children: [
+              //         Text(
+              //           'Hi Samar',
+              //           textAlign: TextAlign.start,
+              //           style: MyStyle.tx20b,
+              //         ),
+              //         Text(
+              //           'Dec 18, 2021',
+              //           textAlign: TextAlign.start,
+              //           style: MyStyle.tx12b,
+              //         ),
+              //       ],
+              //     ),
+              //     const Spacer(),
+              //     InkWell(
+              //       onTap: () {
+              //         Navigator.pushNamed(context, attendanceRoute);
+              //       },
+              //       child: Container(
+              //         height: 40,
+              //         color: MyColor.grey,
+              //         padding: const EdgeInsets.symmetric(
+              //             horizontal: 20, vertical: 10),
+              //         child: Center(
+              //           child: Text(
+              //             'START',
+              //             style: MyStyle.tx14b.copyWith(
+              //               fontWeight: FontWeight.w700,
+              //               fontFamily: 'Poppins-ExtraBold',
+              //             ),
+              //           ),
+              //         ),
+              //       ),
+              //     ),
+              //     InkWell(
+              //       onTap: () {
+              //         Navigator.pushNamed(context, notificationRoute);
+              //       },
+              //       child: Container(
+              //         height: 40,
+              //         color: MyColor.grey,
+              //         margin: const EdgeInsets.all(8.0),
+              //         padding: const EdgeInsets.all(10),
+              //         child: Image.asset(
+              //           'assets/icons/bell.png',
+              //           height: 20,
+              //           width: 20,
+              //         ),
+              //       ),
+              //     ),
+              //   ],
+              // ),
 
               //  Middle layer
               Container(

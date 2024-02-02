@@ -21,19 +21,27 @@ class _ForgotOtpPassState extends State<ForgotOtpPass> {
         child: SizedBox(
           height: MediaQuery.of(context).size.height,
           child: Column(
+            crossAxisAlignment: CrossAxisAlignment.center,
             children: [
-              const SizedBox(
-                height: 100,
+              SizedBox(
+                height: MediaQuery.of(context).size.height * 0.12,
               ),
-              Padding(
-                padding: const EdgeInsets.symmetric(horizontal: 70.0),
-                child: Image.asset(
-                  'assets/icons/colorsol.png',
-                  fit: BoxFit.fill,
-                ),
+              Image.asset(
+                'assets/icons/colorsol.png',
+                // fit: BoxFit.fill,
+                height: 46,
+                width: 223,
               ),
               const SizedBox(
-                height: 90,
+                height: 50,
+              ),
+              Image.asset(
+                'assets/icons/forgotPass.png',
+                width: 178,
+                height: 159,
+              ),
+              const SizedBox(
+                height: 20,
               ),
               const Text(
                 'Forgot Password?',
@@ -43,8 +51,8 @@ class _ForgotOtpPassState extends State<ForgotOtpPass> {
                 'Enter 6 digit verification code ',
                 style: MyStyle.tx14b,
               ),
-              SizedBox(
-                height: 60,
+              const SizedBox(
+                height: 40,
               ),
               Container(
                 height: 50,
@@ -86,15 +94,15 @@ class _ForgotOtpPassState extends State<ForgotOtpPass> {
                   keyboardType: TextInputType.number,
                 ),
               ),
-              SizedBox(
-                height: 60,
+              const SizedBox(
+                height: 40,
               ),
               const Text(
                 'Didn’t receive the code?',
                 style: MyStyle.tx14b,
               ),
-              SizedBox(
-                height: 15,
+              const SizedBox(
+                height: 10,
               ),
               Container(
                 height: 31,
@@ -109,7 +117,7 @@ class _ForgotOtpPassState extends State<ForgotOtpPass> {
                   ),
                 ),
               ),
-              Spacer(),
+              const Spacer(),
               InkWell(
                 onTap: () {
                   // Navigator.pushNamed(
@@ -121,12 +129,12 @@ class _ForgotOtpPassState extends State<ForgotOtpPass> {
                     Navigator.pushNamed(context, resetPassRoute);
                   },
                   child: Container(
-                    height: 50,
+                    height: 65,
                     width: MediaQuery.of(context).size.width,
                     color: MyColor.black,
                     margin: const EdgeInsets.symmetric(horizontal: 20),
-                    child: Center(
-                      child: const Text(
+                    child: const Center(
+                      child: Text(
                         'Continue',
                         style: MyStyle.tx20W,
                       ),
@@ -134,6 +142,9 @@ class _ForgotOtpPassState extends State<ForgotOtpPass> {
                   ),
                 ),
               ),
+              const SizedBox(
+                height: 30,
+              )
             ],
           ),
         ),

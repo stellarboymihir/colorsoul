@@ -15,20 +15,21 @@ class _StarterState extends State<Starter> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: SafeArea(
+      body: Padding(
+        padding: const EdgeInsets.symmetric(horizontal: 20.0, vertical: 0),
         child: Column(
+          crossAxisAlignment: CrossAxisAlignment.center,
           children: [
-            Padding(
-              padding: const EdgeInsets.symmetric(horizontal: 70.0),
-              child: Image.asset('assets/icons/logo.png'),
+            Image.asset(
+              'assets/icons/logo.png',
+              height: 220,
+              width: 196,
             ),
-            Center(
-              child: Padding(
-                padding: const EdgeInsets.symmetric(horizontal: 20.0),
-                child: Image.asset(
-                  'assets/icons/bro.png',
-                  fit: BoxFit.cover,
-                ),
+            Padding(
+              padding: const EdgeInsets.symmetric(horizontal: 20.0),
+              child: Image.asset(
+                'assets/icons/bro.png',
+                fit: BoxFit.cover,
               ),
             ),
             const SizedBox(
@@ -39,7 +40,7 @@ class _StarterState extends State<Starter> {
               style: MyStyle.tx20b,
             ),
             const Padding(
-              padding: EdgeInsets.symmetric(horizontal: 30.0),
+              padding: EdgeInsets.symmetric(horizontal: 20.0, vertical: 5),
               child: Text(
                 'You can use all our services. '
                 'you can manage your sales and transactions to be successful',
@@ -47,9 +48,7 @@ class _StarterState extends State<Starter> {
                 style: MyStyle.tx12b,
               ),
             ),
-            const SizedBox(
-              height: 45,
-            ),
+            Spacer(),
             InkWell(
               onTap: () {
                 Navigator.pushReplacementNamed(context, signInPageRoute);
@@ -58,7 +57,6 @@ class _StarterState extends State<Starter> {
                 height: 60,
                 width: MediaQuery.of(context).size.width,
                 color: MyColor.black,
-                margin: const EdgeInsets.symmetric(horizontal: 20),
                 child: Center(
                   child: Text(
                     'SIGN IN',
@@ -68,7 +66,10 @@ class _StarterState extends State<Starter> {
                   ),
                 ),
               ),
-            )
+            ),
+            SizedBox(
+              height: 30,
+            ),
           ],
         ),
       ),

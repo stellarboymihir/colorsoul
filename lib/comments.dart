@@ -379,3 +379,211 @@
 //     ),
 //   ],
 // ),
+// Row(
+//   mainAxisAlignment: MainAxisAlignment.center,
+//   children: [
+//     Container(
+//       height: 65,
+//       width: 65,
+//       decoration: BoxDecoration(
+//         border: Border.all(
+//           color: MyColor.grey,
+//         ),
+//       ),
+//       child: Center(
+//         child: TextFormField(
+//           controller: otpController1,
+//           decoration: const InputDecoration(
+//             contentPadding: EdgeInsets.symmetric(
+//               horizontal: 20,
+//               vertical: 20,
+//             ),
+//             enabledBorder: OutlineInputBorder(
+//               borderSide: BorderSide(
+//                 color: MyColor.grey,
+//               ),
+//             ),
+//             focusedBorder: OutlineInputBorder(
+//               borderSide: BorderSide(
+//                 color: MyColor.grey,
+//               ),
+//             ),
+//             border: OutlineInputBorder(
+//               borderSide: BorderSide(
+//                 color: MyColor.grey,
+//               ),
+//             ),
+//           ),
+//           inputFormatters: [
+//             FilteringTextInputFormatter.digitsOnly,
+//             LengthLimitingTextInputFormatter(1),
+//           ],
+//           keyboardType: TextInputType.phone,
+//         ),
+//       ),
+//     ),
+//     const SizedBox(
+//       width: 10,
+//     ),
+//     Container(
+//       height: 65,
+//       width: 65,
+//       decoration: BoxDecoration(
+//         border: Border.all(
+//           color: MyColor.grey,
+//         ),
+//       ),
+//       child: Center(
+//         child: TextFormField(
+//           controller: otpController2,
+//           decoration: const InputDecoration(
+//             contentPadding: EdgeInsets.symmetric(
+//               horizontal: 20,
+//               vertical: 20,
+//             ),
+//             enabledBorder: OutlineInputBorder(
+//               borderSide: BorderSide(
+//                 color: MyColor.grey,
+//               ),
+//             ),
+//             focusedBorder: OutlineInputBorder(
+//               borderSide: BorderSide(
+//                 color: MyColor.grey,
+//               ),
+//             ),
+//             border: OutlineInputBorder(
+//               borderSide: BorderSide(
+//                 color: MyColor.grey,
+//               ),
+//             ),
+//           ),
+//           inputFormatters: [
+//             FilteringTextInputFormatter.digitsOnly,
+//             LengthLimitingTextInputFormatter(1),
+//           ],
+//           keyboardType: TextInputType.phone,
+//         ),
+//       ),
+//     ),
+//     const SizedBox(
+//       width: 10,
+//     ),
+//     Container(
+//       height: 65,
+//       width: 65,
+//       decoration: BoxDecoration(
+//         border: Border.all(
+//           color: MyColor.grey,
+//         ),
+//       ),
+//       child: Center(
+//         child: TextFormField(
+//           controller: otpController3,
+//           decoration: const InputDecoration(
+//             contentPadding: EdgeInsets.symmetric(
+//               horizontal: 20,
+//               vertical: 20,
+//             ),
+//             enabledBorder: OutlineInputBorder(
+//               borderSide: BorderSide(
+//                 color: MyColor.grey,
+//               ),
+//             ),
+//             focusedBorder: OutlineInputBorder(
+//               borderSide: BorderSide(
+//                 color: MyColor.grey,
+//               ),
+//             ),
+//             border: OutlineInputBorder(
+//               borderSide: BorderSide(
+//                 color: MyColor.grey,
+//               ),
+//             ),
+//           ),
+//           inputFormatters: [
+//             FilteringTextInputFormatter.digitsOnly,
+//             LengthLimitingTextInputFormatter(1),
+//           ],
+//           keyboardType: TextInputType.phone,
+//         ),
+//       ),
+//     ),
+//     const SizedBox(
+//       width: 10,
+//     ),
+//     Container(
+//       height: 65,
+//       width: 65,
+//       decoration: BoxDecoration(
+//         border: Border.all(
+//           color: MyColor.grey,
+//         ),
+//       ),
+//       child: Center(
+//         child: TextFormField(
+//           controller: otpController4,
+//           decoration: const InputDecoration(
+//             contentPadding: EdgeInsets.symmetric(
+//               horizontal: 20,
+//               vertical: 20,
+//             ),
+//             enabledBorder: OutlineInputBorder(
+//               borderSide: BorderSide(
+//                 color: MyColor.grey,
+//               ),
+//             ),
+//             focusedBorder: OutlineInputBorder(
+//               borderSide: BorderSide(
+//                 color: MyColor.grey,
+//               ),
+//             ),
+//             border: OutlineInputBorder(
+//               borderSide: BorderSide(
+//                 color: MyColor.grey,
+//               ),
+//             ),
+//           ),
+//           inputFormatters: [
+//             FilteringTextInputFormatter.digitsOnly,
+//             LengthLimitingTextInputFormatter(1),
+//           ],
+//           keyboardType: TextInputType.phone,
+//         ),
+//       ),
+//     ),
+//   ],
+// ),
+
+// onSubmit: (pin) {
+//   // Handle the submitted PIN
+//   if (pin.length == 1) {
+//     ScaffoldMessenger.of(context).showSnackBar(
+//       SnackBar(
+//         content: Text('Pin: $pin'),
+//       ),
+//     );
+//   } else {
+//     ScaffoldMessenger.of(context).showSnackBar(
+//       const SnackBar(
+//         content: Text('Invalid Pin'),
+//       ),
+//     );
+//   }
+// },
+
+// onSubmit: (pin) {
+//   // Handle the submitted PIN
+//   if (pin.length == 1) {
+//     ScaffoldMessenger.of(context).showSnackBar(
+//       SnackBar(
+//         content: Text('Pin: $pin'),
+//       ),
+//     );
+//   } else {
+//     ScaffoldMessenger.of(context).showSnackBar(
+//       const SnackBar(
+//         content: Text('Invalid Pin'),
+//       ),
+//     );
+//   }
+// },

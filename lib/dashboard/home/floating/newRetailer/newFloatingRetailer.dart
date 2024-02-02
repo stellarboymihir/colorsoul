@@ -619,7 +619,6 @@ class _FloatingRetailerState extends State<FloatingRetailer> {
                               areaSelected = value!;
                             });
                           },
-                          // dropdownColor: MyColor.black.withOpacity(0.25),
                           items:
                               _areaList.map<DropdownMenuItem<String>>((list) {
                             print(list);

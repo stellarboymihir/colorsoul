@@ -24,6 +24,7 @@ import 'authentication/register/pin.dart';
 import 'authentication/register/splash_screen.dart';
 import 'authentication/starter/starter.dart';
 import 'dashboard/distributor/distributor.dart';
+import 'dashboard/home/floating/createTask.dart';
 import 'dashboard/home/home.dart';
 import 'dashboard/reimbursement/reimbursement.dart';
 import 'dashboard/service/service.dart';
@@ -81,6 +82,7 @@ class MyApp extends StatelessWidget {
         //  **  Floating  **
         reimbursementPageRoute: (context) => const ReimbursementPage(),
         createRoute: (context) => const CreateRoute(),
+        createTaskRoute: (context) => const CreateTask(),
 
         //  **  New Retailer  **
         newRetailerRoute: (context) => const NewRetailer(),

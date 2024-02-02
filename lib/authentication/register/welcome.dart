@@ -19,14 +19,17 @@ class _WelcomeState extends State<Welcome> {
   Widget build(BuildContext context) {
     return Scaffold(
       body: SingleChildScrollView(
+        physics: NeverScrollableScrollPhysics(),
         child: SizedBox(
           height: MediaQuery.of(context).size.height,
           child: Column(
+            crossAxisAlignment: CrossAxisAlignment.center,
             children: [
               Center(
-                child: Padding(
-                  padding: const EdgeInsets.symmetric(horizontal: 70.0),
-                  child: Image.asset('assets/icons/logo.png'),
+                child: Image.asset(
+                  'assets/icons/logo.png',
+                  height: 220,
+                  width: 196,
                 ),
               ),
               const SizedBox(
@@ -51,7 +54,8 @@ class _WelcomeState extends State<Welcome> {
               ),
               Container(
                 height: 65,
-                margin: const EdgeInsets.symmetric(horizontal: 20),
+                // width: 250,
+                margin: const EdgeInsets.symmetric(horizontal: 50),
                 child: PinInputTextFormField(
                   pinLength:
                       4, // Set pinLength to 1 to allow only one digit per container
@@ -67,199 +71,8 @@ class _WelcomeState extends State<Welcome> {
                   ),
                   keyboardType: TextInputType.number,
                   textInputAction: TextInputAction.done,
-                  onSubmit: (pin) {
-                    // Handle the submitted PIN
-                    if (pin.length == 1) {
-                      ScaffoldMessenger.of(context).showSnackBar(
-                        SnackBar(
-                          content: Text('Pin: $pin'),
-                        ),
-                      );
-                    } else {
-                      ScaffoldMessenger.of(context).showSnackBar(
-                        const SnackBar(
-                          content: Text('Invalid Pin'),
-                        ),
-                      );
-                    }
-                  },
                 ),
               ),
-
-              // Row(
-              //   mainAxisAlignment: MainAxisAlignment.center,
-              //   children: [
-              //     Container(
-              //       height: 65,
-              //       width: 65,
-              //       decoration: BoxDecoration(
-              //         border: Border.all(
-              //           color: MyColor.grey,
-              //         ),
-              //       ),
-              //       child: Center(
-              //         child: TextFormField(
-              //           controller: otpController1,
-              //           decoration: const InputDecoration(
-              //             contentPadding: EdgeInsets.symmetric(
-              //               horizontal: 20,
-              //               vertical: 20,
-              //             ),
-              //             enabledBorder: OutlineInputBorder(
-              //               borderSide: BorderSide(
-              //                 color: MyColor.grey,
-              //               ),
-              //             ),
-              //             focusedBorder: OutlineInputBorder(
-              //               borderSide: BorderSide(
-              //                 color: MyColor.grey,
-              //               ),
-              //             ),
-              //             border: OutlineInputBorder(
-              //               borderSide: BorderSide(
-              //                 color: MyColor.grey,
-              //               ),
-              //             ),
-              //           ),
-              //           inputFormatters: [
-              //             FilteringTextInputFormatter.digitsOnly,
-              //             LengthLimitingTextInputFormatter(1),
-              //           ],
-              //           keyboardType: TextInputType.phone,
-              //         ),
-              //       ),
-              //     ),
-              //     const SizedBox(
-              //       width: 10,
-              //     ),
-              //     Container(
-              //       height: 65,
-              //       width: 65,
-              //       decoration: BoxDecoration(
-              //         border: Border.all(
-              //           color: MyColor.grey,
-              //         ),
-              //       ),
-              //       child: Center(
-              //         child: TextFormField(
-              //           controller: otpController2,
-              //           decoration: const InputDecoration(
-              //             contentPadding: EdgeInsets.symmetric(
-              //               horizontal: 20,
-              //               vertical: 20,
-              //             ),
-              //             enabledBorder: OutlineInputBorder(
-              //               borderSide: BorderSide(
-              //                 color: MyColor.grey,
-              //               ),
-              //             ),
-              //             focusedBorder: OutlineInputBorder(
-              //               borderSide: BorderSide(
-              //                 color: MyColor.grey,
-              //               ),
-              //             ),
-              //             border: OutlineInputBorder(
-              //               borderSide: BorderSide(
-              //                 color: MyColor.grey,
-              //               ),
-              //             ),
-              //           ),
-              //           inputFormatters: [
-              //             FilteringTextInputFormatter.digitsOnly,
-              //             LengthLimitingTextInputFormatter(1),
-              //           ],
-              //           keyboardType: TextInputType.phone,
-              //         ),
-              //       ),
-              //     ),
-              //     const SizedBox(
-              //       width: 10,
-              //     ),
-              //     Container(
-              //       height: 65,
-              //       width: 65,
-              //       decoration: BoxDecoration(
-              //         border: Border.all(
-              //           color: MyColor.grey,
-              //         ),
-              //       ),
-              //       child: Center(
-              //         child: TextFormField(
-              //           controller: otpController3,
-              //           decoration: const InputDecoration(
-              //             contentPadding: EdgeInsets.symmetric(
-              //               horizontal: 20,
-              //               vertical: 20,
-              //             ),
-              //             enabledBorder: OutlineInputBorder(
-              //               borderSide: BorderSide(
-              //                 color: MyColor.grey,
-              //               ),
-              //             ),
-              //             focusedBorder: OutlineInputBorder(
-              //               borderSide: BorderSide(
-              //                 color: MyColor.grey,
-              //               ),
-              //             ),
-              //             border: OutlineInputBorder(
-              //               borderSide: BorderSide(
-              //                 color: MyColor.grey,
-              //               ),
-              //             ),
-              //           ),
-              //           inputFormatters: [
-              //             FilteringTextInputFormatter.digitsOnly,
-              //             LengthLimitingTextInputFormatter(1),
-              //           ],
-              //           keyboardType: TextInputType.phone,
-              //         ),
-              //       ),
-              //     ),
-              //     const SizedBox(
-              //       width: 10,
-              //     ),
-              //     Container(
-              //       height: 65,
-              //       width: 65,
-              //       decoration: BoxDecoration(
-              //         border: Border.all(
-              //           color: MyColor.grey,
-              //         ),
-              //       ),
-              //       child: Center(
-              //         child: TextFormField(
-              //           controller: otpController4,
-              //           decoration: const InputDecoration(
-              //             contentPadding: EdgeInsets.symmetric(
-              //               horizontal: 20,
-              //               vertical: 20,
-              //             ),
-              //             enabledBorder: OutlineInputBorder(
-              //               borderSide: BorderSide(
-              //                 color: MyColor.grey,
-              //               ),
-              //             ),
-              //             focusedBorder: OutlineInputBorder(
-              //               borderSide: BorderSide(
-              //                 color: MyColor.grey,
-              //               ),
-              //             ),
-              //             border: OutlineInputBorder(
-              //               borderSide: BorderSide(
-              //                 color: MyColor.grey,
-              //               ),
-              //             ),
-              //           ),
-              //           inputFormatters: [
-              //             FilteringTextInputFormatter.digitsOnly,
-              //             LengthLimitingTextInputFormatter(1),
-              //           ],
-              //           keyboardType: TextInputType.phone,
-              //         ),
-              //       ),
-              //     ),
-              //   ],
-              // ),
               const SizedBox(
                 height: 20,
               ),
@@ -283,7 +96,7 @@ class _WelcomeState extends State<Welcome> {
                 'Unlock/Forgot Login PIN?',
                 style: MyStyle.tx14b.copyWith(
                   fontWeight: FontWeight.w700,
-                  fontFamily: 'Poppins-Bold',
+                  fontFamily: 'Poppins-ExtraBold',
                 ),
               ),
               const Spacer(),
@@ -294,7 +107,7 @@ class _WelcomeState extends State<Welcome> {
                 child: Container(
                   height: 50,
                   width: MediaQuery.of(context).size.width,
-                  margin: const EdgeInsets.symmetric(horizontal: 20),
+                  margin: const EdgeInsets.symmetric(horizontal: 30),
                   color: MyColor.black,
                   child: const Center(
                     child: Text(
@@ -303,7 +116,10 @@ class _WelcomeState extends State<Welcome> {
                     ),
                   ),
                 ),
-              )
+              ),
+              SizedBox(
+                height: 30,
+              ),
             ],
           ),
         ),

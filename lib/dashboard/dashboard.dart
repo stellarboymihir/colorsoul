@@ -97,6 +97,26 @@ class _DashboardState extends State<Dashboard> {
               ),
             ),
           ),
+          SpeedDialChild(
+            onTap: () {
+              Navigator.pushNamed(context, createTaskRoute);
+            },
+            shape: BeveledRectangleBorder(
+              borderRadius: BorderRadius.circular(0),
+            ),
+            backgroundColor: MyColor.white,
+            child: Image.asset(
+              'assets/icons/pad.png',
+              height: 24,
+              width: 24,
+            ),
+            labelWidget: Text(
+              'Create Task  ',
+              style: MyStyle.tx14w.copyWith(
+                fontWeight: FontWeight.w700,
+              ),
+            ),
+          ),
         ],
         backgroundColor: MyColor.black,
         shape: BeveledRectangleBorder(

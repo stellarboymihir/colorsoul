@@ -5,31 +5,31 @@ class MyStyle {
   static const tx40b = TextStyle(
     fontSize: 40,
     fontWeight: FontWeight.w700,
-    fontFamily: 'Poppins-ExtraBold',
+    fontFamily: 'Poppins-Bold',
     color: MyColor.black,
   );
   static const tx32b = TextStyle(
     fontSize: 30,
     fontWeight: FontWeight.w700,
-    fontFamily: 'Poppins-Bold',
+    fontFamily: 'Poppins-SemiBold',
     color: MyColor.black,
   );
   static const tx24b = TextStyle(
     fontSize: 24,
     fontWeight: FontWeight.w700,
-    fontFamily: 'Poppins-Bold',
+    fontFamily: 'Poppins-SemiBold',
     color: MyColor.black,
   );
   static const tx20b = TextStyle(
     fontSize: 20,
     fontWeight: FontWeight.w600,
-    fontFamily: 'Poppins-Bold',
+    fontFamily: 'Poppins-SemiBold',
     color: MyColor.black,
   );
   static const tx20W = TextStyle(
     fontSize: 20,
     fontWeight: FontWeight.w600,
-    fontFamily: 'Poppins-Bold',
+    fontFamily: 'Poppins-SemiBold',
     color: MyColor.white,
   );
 
@@ -61,7 +61,7 @@ class MyStyle {
   static const tx12b = TextStyle(
     fontSize: 12,
     fontWeight: FontWeight.w300,
-    fontFamily: 'Poppins-Regular',
+    fontFamily: 'Poppins-Medium',
     color: MyColor.black,
   );
   static const tx12w = TextStyle(

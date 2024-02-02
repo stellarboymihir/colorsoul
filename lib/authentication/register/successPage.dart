@@ -18,38 +18,37 @@ class _SuccessPageState extends State<SuccessPage> {
         child: SizedBox(
           height: MediaQuery.of(context).size.height,
           child: Column(
+            crossAxisAlignment: CrossAxisAlignment.center,
             children: [
-              const SizedBox(
-                height: 100,
+              SizedBox(
+                height: MediaQuery.of(context).size.width * 0.25,
               ),
-              Padding(
-                padding: const EdgeInsets.symmetric(horizontal: 70.0),
-                child: Image.asset(
-                  'assets/icons/colorsol.png',
-                  fit: BoxFit.fill,
-                ),
+              Image.asset(
+                'assets/icons/colorsol.png',
+                height: 46,
+                width: 223,
               ),
               const SizedBox(
-                height: 80,
+                height: 70,
               ),
               Image.asset(
                 'assets/icons/success.png',
                 height: 114,
                 width: 114,
               ),
+              SizedBox(
+                height: 5,
+              ),
               const Text(
                 'Success!',
                 style: MyStyle.tx40b,
               ),
-              // SizedBox(
-              //   height: 5,
-              // ),
               const Row(
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: [
                   Expanded(
                     child: Padding(
-                      padding: EdgeInsets.symmetric(horizontal: 20.0),
+                      padding: EdgeInsets.symmetric(horizontal: 40.0),
                       child: Text(
                         'Congratulations! '
                         'Your password has been changed successfully.',
@@ -66,9 +65,9 @@ class _SuccessPageState extends State<SuccessPage> {
                   Navigator.pushNamed(context, signInPageRoute);
                 },
                 child: Container(
-                  height: 50,
+                  height: 65,
                   width: MediaQuery.of(context).size.width,
-                  margin: const EdgeInsets.symmetric(horizontal: 20),
+                  margin: const EdgeInsets.symmetric(horizontal: 30),
                   color: MyColor.black,
                   child: const Center(
                     child: Text(
@@ -77,7 +76,10 @@ class _SuccessPageState extends State<SuccessPage> {
                     ),
                   ),
                 ),
-              )
+              ),
+              SizedBox(
+                height: 30,
+              ),
             ],
           ),
         ),

@@ -21,21 +21,21 @@ class _ResetPassState extends State<ResetPass> {
         child: SizedBox(
           height: MediaQuery.of(context).size.height,
           child: Column(
+            crossAxisAlignment: CrossAxisAlignment.center,
             children: [
               const SizedBox(
                 height: 100,
               ),
-              Padding(
-                padding: const EdgeInsets.symmetric(horizontal: 70.0),
-                child: Image.asset(
-                  'assets/icons/colorsol.png',
-                  fit: BoxFit.fill,
-                ),
+              Image.asset(
+                'assets/icons/colorsol.png',
+                height: 46,
+                width: 223,
               ),
               const SizedBox(
                 height: 40,
               ),
-              const Center(
+              Padding(
+                padding: const EdgeInsets.symmetric(horizontal: 30.0),
                 child: Text(
                   'Reset Your New Password',
                   textAlign: TextAlign.center,
@@ -63,7 +63,7 @@ class _ResetPassState extends State<ResetPass> {
               Container(
                 height: 50,
                 width: MediaQuery.of(context).size.width,
-                margin: const EdgeInsets.symmetric(horizontal: 20),
+                margin: const EdgeInsets.symmetric(horizontal: 30),
                 child: TextFormField(
                   controller: newPassController,
                   decoration: const InputDecoration(
@@ -103,9 +103,8 @@ class _ResetPassState extends State<ResetPass> {
                 ),
               ),
               const SizedBox(
-                height: 40,
+                height: 30,
               ),
-
               // Confirm PassWord
               const Row(
                 mainAxisAlignment: MainAxisAlignment.start,
@@ -125,7 +124,7 @@ class _ResetPassState extends State<ResetPass> {
               Container(
                 height: 50,
                 width: MediaQuery.of(context).size.width,
-                margin: const EdgeInsets.symmetric(horizontal: 20),
+                margin: const EdgeInsets.symmetric(horizontal: 30),
                 child: TextFormField(
                   controller: confirmPassController,
                   decoration: const InputDecoration(
@@ -168,7 +167,7 @@ class _ResetPassState extends State<ResetPass> {
                 height: 10,
               ),
               const Padding(
-                padding: EdgeInsets.symmetric(horizontal: 20.0),
+                padding: EdgeInsets.symmetric(horizontal: 30.0),
                 child: Text(
                   'Minimum of 8 or more characters '
                   'with a mix of letters, numbers, and symbols.',
@@ -183,7 +182,7 @@ class _ResetPassState extends State<ResetPass> {
                 child: Container(
                   height: 50,
                   width: MediaQuery.of(context).size.width,
-                  margin: const EdgeInsets.symmetric(horizontal: 20),
+                  margin: const EdgeInsets.symmetric(horizontal: 30),
                   color: MyColor.black,
                   child: const Center(
                     child: Text(
@@ -192,6 +191,9 @@ class _ResetPassState extends State<ResetPass> {
                     ),
                   ),
                 ),
+              ),
+              SizedBox(
+                height: 30,
               ),
             ],
           ),

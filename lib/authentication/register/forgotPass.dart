@@ -21,26 +21,23 @@ class _ForgotPassState extends State<ForgotPass> {
         child: SizedBox(
           height: MediaQuery.of(context).size.height,
           child: Column(
+            crossAxisAlignment: CrossAxisAlignment.center,
             children: [
-              const SizedBox(
-                height: 100,
+              SizedBox(
+                height: MediaQuery.of(context).size.height * 0.15,
               ),
-              Center(
-                child: Image.asset(
-                  'assets/icons/colorsol.png',
-                  height: 46,
-                  width: 223,
-                ),
+              Image.asset(
+                'assets/icons/colorsol.png',
+                height: 46,
+                width: 223,
               ),
               const SizedBox(
                 height: 50,
               ),
-              Center(
-                child: Image.asset(
-                  'assets/icons/forgotPass.png',
-                  width: 178,
-                  height: 159,
-                ),
+              Image.asset(
+                'assets/icons/forgotPass.png',
+                width: 178,
+                height: 159,
               ),
               const SizedBox(
                 height: 20,
@@ -55,6 +52,7 @@ class _ForgotPassState extends State<ForgotPass> {
                   child: Text(
                     'Enter your mobile phone number '
                     'associated with your Colorsoul account.',
+                    textAlign: TextAlign.center,
                     style: MyStyle.tx14b,
                   ),
                 ),
@@ -65,7 +63,7 @@ class _ForgotPassState extends State<ForgotPass> {
               Container(
                 height: 50,
                 width: MediaQuery.of(context).size.width,
-                margin: const EdgeInsets.symmetric(horizontal: 20),
+                margin: const EdgeInsets.symmetric(horizontal: 30),
                 child: Row(
                   children: [
                     Container(
@@ -85,9 +83,9 @@ class _ForgotPassState extends State<ForgotPass> {
                       ),
                     ),
                     Expanded(
-                      child: Container(
+                      child: SizedBox(
                         height: 65,
-                        margin: const EdgeInsets.only(right: 20),
+                        // margin: const EdgeInsets.only(right: 30),
                         child: TextFormField(
                           controller: forgotPassController,
                           decoration: const InputDecoration(
@@ -129,7 +127,7 @@ class _ForgotPassState extends State<ForgotPass> {
                 },
                 child: Container(
                   height: 65,
-                  margin: EdgeInsets.symmetric(horizontal: 20),
+                  margin: EdgeInsets.symmetric(horizontal: 30),
                   width: MediaQuery.of(context).size.width,
                   color: MyColor.black,
                   child: const Center(
@@ -139,6 +137,9 @@ class _ForgotPassState extends State<ForgotPass> {
                     ),
                   ),
                 ),
+              ),
+              SizedBox(
+                height: 30,
               ),
             ],
           ),

@@ -22,6 +22,7 @@ const attendanceRoute = '/attendance/';
 //  **  Floating  **
 const reimbursementPageRoute = '/reimbursementPage/';
 const createRoute = '/createRoute/';
+const createTaskRoute = '/createTask/';
 
 // ** New Retailer
 const newRetailerRoute = '/NewRetailer/';

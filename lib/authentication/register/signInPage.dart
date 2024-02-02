@@ -21,49 +21,58 @@ class _SignInPageState extends State<SignInPage> {
   Widget build(BuildContext context) {
     return Scaffold(
       body: SingleChildScrollView(
+        physics: const NeverScrollableScrollPhysics(),
         child: SafeArea(
           child: Column(
-            crossAxisAlignment: CrossAxisAlignment.start,
+            crossAxisAlignment: CrossAxisAlignment.center,
             children: [
               SizedBox(
-                height: MediaQuery.of(context).size.height * 0.2,
+                height: MediaQuery.of(context).size.height * 0.1,
               ),
-              Padding(
-                padding: const EdgeInsets.symmetric(horizontal: 70.0),
-                child: Image.asset(
-                  'assets/icons/colorsol.png',
-                  height: 46,
-                ),
+              Image.asset(
+                'assets/icons/colorsol.png',
+                height: 46,
+                width: 223,
+                fit: BoxFit.fill,
               ),
               SizedBox(
-                height: MediaQuery.of(context).size.height * 0.15,
+                height: MediaQuery.of(context).size.height * 0.145,
               ),
-              const Padding(
-                padding: EdgeInsets.only(left: 20.0),
-                child: Text(
-                  'Sign In',
-                  style: MyStyle.tx32b,
-                ),
+              const Row(
+                children: [
+                  Padding(
+                    padding: EdgeInsets.only(left: 30.0),
+                    child: Text(
+                      'Sign In',
+                      textAlign: TextAlign.start,
+                      style: MyStyle.tx32b,
+                    ),
+                  ),
+                ],
               ),
               const SizedBox(
                 height: 20,
               ),
-              const Padding(
-                padding: EdgeInsets.only(
-                  left: 20.0,
-                ),
-                child: Text(
-                  'Mobile No.',
-                  style: MyStyle.tx14b,
-                ),
+              const Row(
+                children: [
+                  Padding(
+                    padding: EdgeInsets.only(
+                      left: 30.0,
+                    ),
+                    child: Text(
+                      'Mobile No.',
+                      style: MyStyle.tx14b,
+                    ),
+                  ),
+                ],
               ),
               const SizedBox(
                 height: 10,
               ),
               Container(
-                height: 65,
+                height: 50,
                 width: MediaQuery.of(context).size.width,
-                margin: const EdgeInsets.symmetric(horizontal: 20),
+                margin: const EdgeInsets.symmetric(horizontal: 30),
                 child: Row(
                   children: [
                     Container(
@@ -83,9 +92,9 @@ class _SignInPageState extends State<SignInPage> {
                       ),
                     ),
                     Expanded(
-                      child: Container(
+                      child: SizedBox(
                         height: 65,
-                        margin: const EdgeInsets.only(right: 20),
+                        // margin: const EdgeInsets.only(right: 30),
                         child: TextFormField(
                           controller: mobController,
                           decoration: const InputDecoration(
@@ -123,12 +132,16 @@ class _SignInPageState extends State<SignInPage> {
               const SizedBox(
                 height: 20,
               ),
-              const Padding(
-                padding: EdgeInsets.only(left: 20.0),
-                child: Text(
-                  'Password',
-                  style: MyStyle.tx14b,
-                ),
+              const Row(
+                children: [
+                  Padding(
+                    padding: EdgeInsets.only(left: 30.0),
+                    child: Text(
+                      'Password',
+                      style: MyStyle.tx14b,
+                    ),
+                  ),
+                ],
               ),
               const SizedBox(
                 height: 10,
@@ -136,7 +149,7 @@ class _SignInPageState extends State<SignInPage> {
               Container(
                 height: 65,
                 width: MediaQuery.of(context).size.width,
-                margin: const EdgeInsets.symmetric(horizontal: 20),
+                margin: const EdgeInsets.symmetric(horizontal: 30),
                 child: TextFormField(
                   controller: passController,
                   decoration: InputDecoration(
@@ -176,7 +189,7 @@ class _SignInPageState extends State<SignInPage> {
                 ),
               ),
               const SizedBox(
-                height: 25,
+                height: 15,
               ),
               Center(
                 child: TextButton(
@@ -194,16 +207,16 @@ class _SignInPageState extends State<SignInPage> {
                 ),
               ),
               const SizedBox(
-                height: 25,
+                height: 15,
               ),
               InkWell(
                 onTap: () {
                   Navigator.pushNamed(context, otpVerifyRoute);
                 },
                 child: Container(
-                  height: 50,
+                  height: 65,
                   width: MediaQuery.of(context).size.width,
-                  margin: const EdgeInsets.symmetric(horizontal: 20),
+                  margin: const EdgeInsets.symmetric(horizontal: 30),
                   color: MyColor.grey,
                   child: Center(
                     child: Text(
@@ -222,9 +235,9 @@ class _SignInPageState extends State<SignInPage> {
                   Navigator.pushNamed(context, welcomeRoute);
                 },
                 child: Container(
-                  height: 50,
+                  height: 65,
                   width: MediaQuery.of(context).size.width,
-                  margin: const EdgeInsets.symmetric(horizontal: 20),
+                  margin: const EdgeInsets.symmetric(horizontal: 30),
                   color: MyColor.black,
                   child: Center(
                     child: Text(
@@ -234,6 +247,9 @@ class _SignInPageState extends State<SignInPage> {
                     ),
                   ),
                 ),
+              ),
+              const SizedBox(
+                height: 30,
               ),
             ],
           ),

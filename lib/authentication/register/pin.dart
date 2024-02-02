@@ -18,10 +18,12 @@ class _PinState extends State<Pin> {
         child: SizedBox(
           height: MediaQuery.of(context).size.height,
           child: Column(
+            crossAxisAlignment: CrossAxisAlignment.center,
             children: [
-              Padding(
-                padding: const EdgeInsets.symmetric(horizontal: 70.0),
-                child: Image.asset('assets/icons/logo.png'),
+              Image.asset(
+                'assets/icons/logo.png',
+                height: 220,
+                width: 196,
               ),
               const SizedBox(
                 height: 40,
@@ -52,7 +54,7 @@ class _PinState extends State<Pin> {
               ),
               Container(
                 height: 65,
-                margin: const EdgeInsets.symmetric(horizontal: 20),
+                margin: const EdgeInsets.symmetric(horizontal: 50),
                 child: PinInputTextFormField(
                   pinLength:
                       4, // Set pinLength to 1 to allow only one digit per container
@@ -68,22 +70,6 @@ class _PinState extends State<Pin> {
                   ),
                   keyboardType: TextInputType.number,
                   textInputAction: TextInputAction.done,
-                  onSubmit: (pin) {
-                    // Handle the submitted PIN
-                    if (pin.length == 1) {
-                      ScaffoldMessenger.of(context).showSnackBar(
-                        SnackBar(
-                          content: Text('Pin: $pin'),
-                        ),
-                      );
-                    } else {
-                      ScaffoldMessenger.of(context).showSnackBar(
-                        const SnackBar(
-                          content: Text('Invalid Pin'),
-                        ),
-                      );
-                    }
-                  },
                 ),
               ),
               const SizedBox(
@@ -107,7 +93,7 @@ class _PinState extends State<Pin> {
               ),
               Container(
                 height: 65,
-                margin: const EdgeInsets.symmetric(horizontal: 20),
+                margin: const EdgeInsets.symmetric(horizontal: 50),
                 child: PinInputTextFormField(
                   pinLength:
                       4, // Set pinLength to 1 to allow only one digit per container
@@ -123,22 +109,6 @@ class _PinState extends State<Pin> {
                   ),
                   keyboardType: TextInputType.number,
                   textInputAction: TextInputAction.done,
-                  onSubmit: (pin) {
-                    // Handle the submitted PIN
-                    if (pin.length == 1) {
-                      ScaffoldMessenger.of(context).showSnackBar(
-                        SnackBar(
-                          content: Text('Pin: $pin'),
-                        ),
-                      );
-                    } else {
-                      ScaffoldMessenger.of(context).showSnackBar(
-                        const SnackBar(
-                          content: Text('Invalid Pin'),
-                        ),
-                      );
-                    }
-                  },
                 ),
               ),
               const Spacer(),
@@ -149,7 +119,7 @@ class _PinState extends State<Pin> {
                 child: Container(
                   height: 50,
                   width: MediaQuery.of(context).size.width,
-                  margin: const EdgeInsets.all(20.0),
+                  margin: const EdgeInsets.all(30.0),
                   color: MyColor.black,
                   child: const Center(
                     child: Text(
@@ -158,6 +128,9 @@ class _PinState extends State<Pin> {
                     ),
                   ),
                 ),
+              ),
+              SizedBox(
+                height: 10,
               ),
             ],
           ),
