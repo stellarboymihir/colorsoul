@@ -26,7 +26,7 @@ class _HomeState extends State<Home> {
               width: 40,
               height: 40,
             ),
-            SizedBox(width: 10),
+            const SizedBox(width: 10),
             const Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
@@ -155,32 +155,61 @@ class _HomeState extends State<Home> {
               // ),
 
               //  Middle layer
-              Container(
-                height: 208,
-                width: MediaQuery.of(context).size.width,
-                margin: const EdgeInsets.symmetric(horizontal: 12),
-                child: Column(
-                  children: [
-                    Row(
-                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
+              Padding(
+                padding: const EdgeInsets.all(12.0),
+                child: Container(
+                  decoration: BoxDecoration(
+                    boxShadow: [
+                      BoxShadow(
+                        color: MyColor.grey.withOpacity(
+                            0.7), // Change this to adjust the shadow color
+                        blurRadius: 5, // Change this to adjust the blur
+                        spreadRadius: 0.01, // Change this to adjust the spread
+                        offset:
+                            Offset(0.0, 10), // Change this to adjust the offset
+                      ),
+                    ],
+                  ),
+                  child: Card(
+                    color: MyColor.white,
+                    elevation: 0.1,
+                    shadowColor: MyColor.grey,
+                    shape: RoundedRectangleBorder(
+                      borderRadius: BorderRadius.circular(1),
+                      side: const BorderSide(
+                        color: MyColor.grey,
+                      ),
+                    ),
+                    child: Column(
                       children: [
-                        const Text(
-                          'January Target',
-                          style: MyStyle.tx14b,
-                        ),
-                        Text(
-                          'View all',
-                          style: MyStyle.tx14b.copyWith(
-                            color: MyColor.blue,
+                        Padding(
+                          padding: const EdgeInsets.all(8.0),
+                          child: Row(
+                            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                            children: [
+                              const Text(
+                                'January Target',
+                                style: MyStyle.tx14b,
+                              ),
+                              Text(
+                                'View all',
+                                style: MyStyle.tx14b.copyWith(
+                                  color: MyColor.blue,
+                                ),
+                              )
+                            ],
                           ),
-                        )
+                        ),
+                        Image.asset(
+                          'assets/images/graph.png',
+                        ),
                       ],
                     ),
-                    Image.asset(
-                      'assets/images/graph.png',
-                    ),
-                  ],
+                  ),
                 ),
+              ),
+              const SizedBox(
+                height: 10,
               ),
 
               Container(
@@ -274,7 +303,7 @@ class _HomeState extends State<Home> {
                                   width: 50,
                                   child: Divider(
                                     thickness: 1,
-                                    color: MyColor.red,
+                                    color: MyColor.green,
                                   ),
                                 ),
                                 Text(
@@ -330,6 +359,7 @@ class _HomeState extends State<Home> {
                               children: [
                                 Text(
                                   'Total Reimbursement',
+                                  textAlign: TextAlign.end,
                                   style: MyStyle.tx12b.copyWith(
                                     fontWeight: FontWeight.w400,
                                     fontSize: 12,
@@ -411,7 +441,7 @@ class _HomeState extends State<Home> {
                                   width: 50,
                                   child: Divider(
                                     thickness: 1,
-                                    color: MyColor.red,
+                                    color: MyColor.yellow,
                                   ),
                                 ),
                                 Text(
@@ -477,7 +507,7 @@ class _HomeState extends State<Home> {
                                   width: 50,
                                   child: Divider(
                                     thickness: 1,
-                                    color: MyColor.red,
+                                    color: MyColor.blue,
                                   ),
                                 ),
                                 Text(
@@ -651,14 +681,14 @@ class _HomeState extends State<Home> {
                               height: 56,
                               width: 56,
                               color: MyColor.grey,
-                              padding: EdgeInsets.all(6),
+                              padding: const EdgeInsets.all(6),
                               child: Image.asset(
                                 'assets/icons/pad.png',
                                 height: 32,
                                 width: 32,
                               ),
                             ),
-                            SizedBox(
+                            const SizedBox(
                               width: 10,
                             ),
                             Column(

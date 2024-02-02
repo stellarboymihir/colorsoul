@@ -97,7 +97,7 @@ class _FloatingDistributorState extends State<FloatingDistributor> {
                     ),
             ),
           ),
-          SizedBox(
+          const SizedBox(
             height: 5,
           ),
 
@@ -334,58 +334,58 @@ class _FloatingDistributorState extends State<FloatingDistributor> {
                       fontFamily: 'Roboto-Medium',
                     ),
                   ),
-                  SizedBox(
+                  const SizedBox(
                     height: 10,
                   ),
-                  SizedBox(
+                  Container(
                     height: 55,
                     width: 160,
-                    child: Theme(
-                      data: Theme.of(context).copyWith(
-                        canvasColor: MyColor.black.withOpacity(0.25),
+                    decoration: BoxDecoration(
+                      border: Border.all(
+                        color: MyColor.grey,
                       ),
-                      child: DropdownButtonHideUnderline(
-                        child: DropdownButtonFormField2<String>(
-                          style: MyStyle.tx12b,
-                          decoration: InputDecoration(
-                            border: OutlineInputBorder(
-                              borderRadius: BorderRadius.circular(1),
-                              borderSide: const BorderSide(
-                                color: MyColor.grey,
-                              ),
-                            ),
-                            contentPadding: const EdgeInsets.only(left: 4.0),
+                    ),
+                    child: DropdownButtonHideUnderline(
+                      child: DropdownButtonFormField2<String>(
+                        isExpanded: true,
+                        style: MyStyle.tx12b,
+                        decoration: const InputDecoration(
+                          border: OutlineInputBorder(
+                            borderSide: BorderSide.none,
                           ),
-                          value: selectedList,
-                          isExpanded: true,
-                          onChanged: (String? value) {
-                            print(value);
-                            setState(() {
-                              selectedList = null;
-                              selectedList = value!;
-                            });
-                          },
-                          // dropdownColor: MyColor.black.withOpacity(0.25),
-                          items:
-                              _stateList.map<DropdownMenuItem<String>>((list) {
-                            print(list);
-                            return DropdownMenuItem<String>(
-                              value: list,
-                              child: Text(
-                                list,
-                                style: MyStyle.tx12b.copyWith(
-                                  color: MyColor.black,
-                                ),
-                              ),
-                            );
-                          }).toList(),
+                          contentPadding: EdgeInsets.only(left: 4.0),
+                        ),
+                        items: _stateList
+                            .map((String item) => DropdownMenuItem<String>(
+                                  value: item,
+                                  child: Text(
+                                    item,
+                                    style: const TextStyle(
+                                      fontSize: 14,
+                                    ),
+                                  ),
+                                ))
+                            .toList(),
+                        value: selectedList,
+                        onChanged: (String? value) {
+                          setState(() {
+                            selectedList = value;
+                          });
+                        },
+                        buttonStyleData: const ButtonStyleData(
+                          padding: EdgeInsets.symmetric(horizontal: 16),
+                          height: 40,
+                          width: 140,
+                        ),
+                        menuItemStyleData: const MenuItemStyleData(
+                          height: 40,
                         ),
                       ),
                     ),
                   ),
                 ],
               ),
-              SizedBox(
+              const SizedBox(
                 width: 10,
               ),
 
@@ -400,61 +400,50 @@ class _FloatingDistributorState extends State<FloatingDistributor> {
                       fontFamily: 'Roboto-Medium',
                     ),
                   ),
-                  SizedBox(
+                  const SizedBox(
                     height: 10,
                   ),
-                  SizedBox(
+                  Container(
                     height: 55,
                     width: 160,
-                    child: Theme(
-                      data: Theme.of(context).copyWith(
-                          // canvasColor: MyColor.black.withOpacity(0.25),
+                    decoration: BoxDecoration(
+                        border: Border.all(
+                      color: MyColor.grey,
+                    )),
+                    child: DropdownButtonHideUnderline(
+                      child: DropdownButtonFormField2<String>(
+                        isExpanded: true,
+                        style: MyStyle.tx12b,
+                        decoration: const InputDecoration(
+                          border: OutlineInputBorder(
+                            borderSide: BorderSide.none,
                           ),
-                      child: DropdownButtonHideUnderline(
-                        child: DropdownButtonFormField2<String>(
-                          isExpanded: true,
-                          // hint: Text(
-                          //   'Select Item',
-                          //   style: TextStyle(
-                          //     fontSize: 14,
-                          //     color: Theme.of(context).hintColor,
-                          //   ),
-                          // ),
-                          style: MyStyle.tx12b,
-                          decoration: InputDecoration(
-                            border: OutlineInputBorder(
-                              borderRadius: BorderRadius.circular(1),
-                              borderSide: const BorderSide(
-                                color: MyColor.grey,
-                              ),
-                            ),
-                            contentPadding: const EdgeInsets.only(left: 4.0),
-                          ),
-                          items: _cityList
-                              .map((String item) => DropdownMenuItem<String>(
-                                    value: item,
-                                    child: Text(
-                                      item,
-                                      style: const TextStyle(
-                                        fontSize: 14,
-                                      ),
+                          contentPadding: EdgeInsets.only(left: 4.0),
+                        ),
+                        items: _cityList
+                            .map((String item) => DropdownMenuItem<String>(
+                                  value: item,
+                                  child: Text(
+                                    item,
+                                    style: const TextStyle(
+                                      fontSize: 14,
                                     ),
-                                  ))
-                              .toList(),
-                          value: citySelected,
-                          onChanged: (String? value) {
-                            setState(() {
-                              citySelected = value;
-                            });
-                          },
-                          buttonStyleData: const ButtonStyleData(
-                            padding: EdgeInsets.symmetric(horizontal: 16),
-                            height: 40,
-                            width: 140,
-                          ),
-                          menuItemStyleData: const MenuItemStyleData(
-                            height: 40,
-                          ),
+                                  ),
+                                ))
+                            .toList(),
+                        value: citySelected,
+                        onChanged: (String? value) {
+                          setState(() {
+                            citySelected = value;
+                          });
+                        },
+                        buttonStyleData: const ButtonStyleData(
+                          padding: EdgeInsets.symmetric(horizontal: 16),
+                          height: 40,
+                          width: 140,
+                        ),
+                        menuItemStyleData: const MenuItemStyleData(
+                          height: 40,
                         ),
                       ),
                     ),
@@ -463,7 +452,9 @@ class _FloatingDistributorState extends State<FloatingDistributor> {
               ),
             ],
           ),
-
+          const SizedBox(
+            height: 10,
+          ),
           Row(
             children: [
               // Region
@@ -477,58 +468,55 @@ class _FloatingDistributorState extends State<FloatingDistributor> {
                       fontFamily: 'Roboto-Medium',
                     ),
                   ),
-                  SizedBox(
+                  const SizedBox(
                     height: 10,
                   ),
-                  SizedBox(
+                  Container(
                     height: 55,
                     width: 160,
-                    child: Theme(
-                      data: Theme.of(context).copyWith(
-                          // canvasColor: MyColor.black.withOpacity(0.25),
+                    decoration: BoxDecoration(
+                      border: Border.all(
+                        color: MyColor.grey,
+                      ),
+                    ),
+                    child: DropdownButtonHideUnderline(
+                      child: DropdownButtonFormField2<String>(
+                        style: MyStyle.tx12b,
+                        decoration: const InputDecoration(
+                          border: OutlineInputBorder(
+                            borderSide: BorderSide.none,
                           ),
-                      child: DropdownButtonHideUnderline(
-                        child: DropdownButtonFormField2<String>(
-                          style: MyStyle.tx12b,
-                          decoration: InputDecoration(
-                            border: OutlineInputBorder(
-                              borderRadius: BorderRadius.circular(1),
-                              borderSide: const BorderSide(
-                                color: MyColor.grey,
+                          contentPadding: EdgeInsets.only(left: 4.0),
+                        ),
+                        value: regionSelected,
+                        isExpanded: true,
+                        onChanged: (String? value) {
+                          print(value);
+                          setState(() {
+                            regionSelected = null;
+                            regionSelected = value!;
+                          });
+                        },
+                        // dropdownColor: MyColor.black.withOpacity(0.25),
+                        items:
+                            _regionList.map<DropdownMenuItem<String>>((list) {
+                          print(list);
+                          return DropdownMenuItem<String>(
+                            value: list,
+                            child: Text(
+                              list,
+                              style: MyStyle.tx12b.copyWith(
+                                color: MyColor.black,
                               ),
                             ),
-                            contentPadding: const EdgeInsets.only(left: 4.0),
-                          ),
-                          value: regionSelected,
-                          isExpanded: true,
-                          onChanged: (String? value) {
-                            print(value);
-                            setState(() {
-                              regionSelected = null;
-                              regionSelected = value!;
-                            });
-                          },
-                          // dropdownColor: MyColor.black.withOpacity(0.25),
-                          items:
-                              _regionList.map<DropdownMenuItem<String>>((list) {
-                            print(list);
-                            return DropdownMenuItem<String>(
-                              value: list,
-                              child: Text(
-                                list,
-                                style: MyStyle.tx12b.copyWith(
-                                  color: MyColor.black,
-                                ),
-                              ),
-                            );
-                          }).toList(),
-                        ),
+                          );
+                        }).toList(),
                       ),
                     ),
                   ),
                 ],
               ),
-              SizedBox(
+              const SizedBox(
                 width: 10,
               ),
 
@@ -543,52 +531,47 @@ class _FloatingDistributorState extends State<FloatingDistributor> {
                       fontFamily: 'Roboto-Medium',
                     ),
                   ),
-                  SizedBox(
+                  const SizedBox(
                     height: 10,
                   ),
-                  SizedBox(
+                  Container(
                     height: 55,
                     width: 160,
-                    child: Theme(
-                      data: Theme.of(context).copyWith(
-                          // canvasColor: MyColor.black.withOpacity(0.25),
+                    decoration: BoxDecoration(
+                        border: Border.all(
+                      color: MyColor.grey,
+                    )),
+                    child: DropdownButtonHideUnderline(
+                      child: DropdownButtonFormField2<String>(
+                        style: MyStyle.tx12b,
+                        decoration: const InputDecoration(
+                          border: OutlineInputBorder(
+                            borderSide: BorderSide.none,
                           ),
-                      child: DropdownButtonHideUnderline(
-                        child: DropdownButtonFormField2<String>(
-                          style: MyStyle.tx12b,
-                          decoration: InputDecoration(
-                            border: OutlineInputBorder(
-                              borderRadius: BorderRadius.circular(1),
-                              borderSide: const BorderSide(
-                                color: MyColor.grey,
+                          contentPadding: EdgeInsets.only(left: 4.0),
+                        ),
+                        value: areaSelected,
+                        isExpanded: true,
+                        onChanged: (String? value) {
+                          print(value);
+                          setState(() {
+                            areaSelected = null;
+                            areaSelected = value!;
+                          });
+                        },
+                        // dropdownColor: MyColor.black.withOpacity(0.25),
+                        items: _areaList.map<DropdownMenuItem<String>>((list) {
+                          print(list);
+                          return DropdownMenuItem<String>(
+                            value: list,
+                            child: Text(
+                              list,
+                              style: MyStyle.tx12b.copyWith(
+                                color: MyColor.black,
                               ),
                             ),
-                            contentPadding: const EdgeInsets.only(left: 4.0),
-                          ),
-                          value: areaSelected,
-                          isExpanded: true,
-                          onChanged: (String? value) {
-                            print(value);
-                            setState(() {
-                              areaSelected = null;
-                              areaSelected = value!;
-                            });
-                          },
-                          // dropdownColor: MyColor.black.withOpacity(0.25),
-                          items:
-                              _areaList.map<DropdownMenuItem<String>>((list) {
-                            print(list);
-                            return DropdownMenuItem<String>(
-                              value: list,
-                              child: Text(
-                                list,
-                                style: MyStyle.tx12b.copyWith(
-                                  color: MyColor.black,
-                                ),
-                              ),
-                            );
-                          }).toList(),
-                        ),
+                          );
+                        }).toList(),
                       ),
                     ),
                   ),
@@ -596,7 +579,7 @@ class _FloatingDistributorState extends State<FloatingDistributor> {
               ),
             ],
           ),
-          SizedBox(
+          const SizedBox(
             height: 10,
           ),
 
@@ -645,7 +628,7 @@ class _FloatingDistributorState extends State<FloatingDistributor> {
             ),
           ),
 
-          SizedBox(
+          const SizedBox(
             height: 5,
           ),
           //   Person Name
@@ -692,7 +675,7 @@ class _FloatingDistributorState extends State<FloatingDistributor> {
               keyboardType: TextInputType.name,
             ),
           ),
-          SizedBox(
+          const SizedBox(
             height: 5,
           ),
           //     Mobile
@@ -746,7 +729,7 @@ class _FloatingDistributorState extends State<FloatingDistributor> {
               height: 65,
               width: MediaQuery.of(context).size.width,
               color: MyColor.black,
-              child: Center(
+              child: const Center(
                 child: Text(
                   'Submit',
                   style: MyStyle.tx20W,
