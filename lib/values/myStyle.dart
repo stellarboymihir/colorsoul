@@ -33,6 +33,13 @@ class MyStyle {
     color: MyColor.white,
   );
 
+  static const tx18b = TextStyle(
+    fontSize: 18,
+    fontWeight: FontWeight.w700,
+    fontFamily: 'Poppins-SemiBold',
+    color: MyColor.black,
+  );
+
   static const tx16b = TextStyle(
     fontSize: 16,
     fontWeight: FontWeight.w700,

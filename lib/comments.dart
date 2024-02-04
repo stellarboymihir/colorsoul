@@ -587,3 +587,24 @@
 //     );
 //   }
 // },
+// Container(
+// child: Column(
+// crossAxisAlignment: CrossAxisAlignment.start,
+// children: [
+// Text(
+// '${list[index]["title"]}',
+// style: MyStyle.tx14b.copyWith(
+// fontWeight: FontWeight.w700,
+// fontFamily: 'NotoSansKR-SemiBold',
+// ),
+// ),
+// Text(
+// '${list[index]["Time"]}',
+// style: MyStyle.tx14b.copyWith(
+// fontWeight: FontWeight.w500,
+// fontFamily: 'NotoSansKR-Medium',
+// ),
+// ),
+// ],
+// ),
+// );

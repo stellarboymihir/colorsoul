@@ -194,7 +194,7 @@ class _AttendanceState extends State<Attendance> {
                         Text(
                           'Personal Vehicle',
                           style: MyStyle.tx14b.copyWith(
-                            fontFamily: 'Roboto-Med',
+                            fontFamily: 'Roboto-Medium',
                             fontWeight: FontWeight.w400,
                           ),
                         ),

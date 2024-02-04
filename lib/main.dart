@@ -1,3 +1,5 @@
+import 'dart:async';
+
 import 'package:colorsoul/authentication/register/forgotOTPPass.dart';
 import 'package:colorsoul/authentication/register/otpVerify.dart';
 import 'package:colorsoul/authentication/register/resetPass.dart';
@@ -7,7 +9,8 @@ import 'package:colorsoul/authentication/register/welcome.dart';
 import 'package:colorsoul/constants/routes.dart';
 import 'package:colorsoul/dashboard/dashboard.dart';
 import 'package:colorsoul/dashboard/home/attendance.dart';
-import 'package:colorsoul/dashboard/home/floating/createRoute.dart';
+import 'package:colorsoul/dashboard/home/floating/newRetailer/createRoute/createRoute.dart';
+import 'package:colorsoul/dashboard/home/floating/newRetailer/createRoute/createRouteFloating.dart';
 import 'package:colorsoul/dashboard/home/floating/newRetailer/newFloatingDistributor.dart';
 import 'package:colorsoul/dashboard/home/floating/newRetailer/newFloatingRetailer.dart';
 import 'package:colorsoul/dashboard/home/floating/newRetailer/newRetailer.dart';
@@ -15,6 +18,8 @@ import 'package:colorsoul/dashboard/home/floating/reimbursementPage.dart';
 import 'package:colorsoul/dashboard/home/notification.dart';
 import 'package:colorsoul/dashboard/home/task/taskDetail.dart';
 import 'package:colorsoul/dashboard/home/task/taskPage.dart';
+import 'package:colorsoul/dashboard/service/completed/completed.dart';
+import 'package:colorsoul/dashboard/service/working/working.dart';
 import 'package:colorsoul/values/myColor.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
@@ -81,7 +86,11 @@ class MyApp extends StatelessWidget {
 
         //  **  Floating  **
         reimbursementPageRoute: (context) => const ReimbursementPage(),
+
+        //  **  Create Route  **
         createRoute: (context) => const CreateRoute(),
+        createRouteFloating: (context) => const CreateRouteFloating(),
+
         createTaskRoute: (context) => const CreateTask(),
 
         //  **  New Retailer  **
@@ -92,7 +101,10 @@ class MyApp extends StatelessWidget {
         taskPageRoute: (context) => const TaskPage(),
         taskDetailRoute: (context) => const TaskDetail(),
 
+        //   **  Service **
         servicePageRoute: (context) => const ServicePage(),
+        workingRoute: (context) => const Working(),
+        completedRoute: (context) => const Completed(),
         distributorRoute: (context) => const Distributor(),
         reimbursementRoute: (context) => const Reimbursement(),
       },

@@ -1,8 +1,9 @@
+import 'package:colorsoul/constants/routes.dart';
 import 'package:dropdown_button2/dropdown_button2.dart';
 import 'package:flutter/material.dart';
 
-import '../../../values/myColor.dart';
-import '../../../values/myStyle.dart';
+import '../../../../../values/myColor.dart';
+import '../../../../../values/myStyle.dart';
 
 class CreateRoute extends StatefulWidget {
   const CreateRoute({super.key});
@@ -73,7 +74,7 @@ class _CreateRouteState extends State<CreateRoute> {
       body: SizedBox(
         height: MediaQuery.of(context).size.height,
         child: Padding(
-          padding: const EdgeInsets.all(12.0),
+          padding: const EdgeInsets.all(20.0),
           child: Column(
             children: [
               //  State
@@ -266,7 +267,7 @@ class _CreateRouteState extends State<CreateRoute> {
               Spacer(),
               InkWell(
                 onTap: () {
-                  Navigator.pop(context);
+                  Navigator.pushNamed(context, createRouteFloating);
                 },
                 child: Container(
                   height: 65,
