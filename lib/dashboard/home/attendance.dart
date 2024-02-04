@@ -248,7 +248,7 @@ class _AttendanceState extends State<Attendance> {
             child: Container(
               height: 65,
               width: MediaQuery.of(context).size.width,
-              margin: EdgeInsets.symmetric(horizontal: 12, vertical: 10),
+              margin: const EdgeInsets.symmetric(horizontal: 12, vertical: 10),
               color: isSubmitEnabled() ? MyColor.black : MyColor.grey,
               child: Center(
                 child: Text(

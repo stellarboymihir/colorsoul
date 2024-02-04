@@ -1,3 +1,4 @@
+import 'package:colorsoul/constants/routes.dart';
 import 'package:colorsoul/dashboard/service/working/working.dart';
 import 'package:flutter/material.dart';
 
@@ -13,7 +14,8 @@ class ServicePage extends StatefulWidget {
 }
 
 class _ServicePageState extends State<ServicePage> {
-  var onPressed = 'distributor';
+  var onPressed = 'working';
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -29,15 +31,20 @@ class _ServicePageState extends State<ServicePage> {
           ),
         ),
         actions: [
-          Container(
-            height: 40,
-            width: 40,
-            color: MyColor.grey,
-            padding: EdgeInsets.all(10),
-            child: Image.asset(
-              'assets/icons/pencil.png',
-              height: 25,
-              width: 25,
+          InkWell(
+            onTap: () {
+              Navigator.pushNamed(context, editRoute);
+            },
+            child: Container(
+              height: 40,
+              width: 40,
+              color: MyColor.grey,
+              padding: const EdgeInsets.all(10),
+              child: Image.asset(
+                'assets/icons/pencil.png',
+                height: 25,
+                width: 25,
+              ),
             ),
           ),
           SizedBox(
@@ -59,8 +66,8 @@ class _ServicePageState extends State<ServicePage> {
                           0.7), // Change this to adjust the shadow color
                       blurRadius: 5, // Change this to adjust the blur
                       spreadRadius: 0.01, // Change this to adjust the spread
-                      offset:
-                          Offset(0.0, 10), // Change this to adjust the offset
+                      offset: const Offset(
+                          0.0, 10), // Change this to adjust the offset
                     ),
                   ],
                 ),
@@ -93,7 +100,7 @@ class _ServicePageState extends State<ServicePage> {
                   child: InkWell(
                     onTap: () {
                       setState(() {
-                        onPressed = 'Working';
+                        onPressed = 'working';
                       });
                       const Working();
                     },
@@ -102,15 +109,15 @@ class _ServicePageState extends State<ServicePage> {
                       width: MediaQuery.of(context).size.width,
                       // margin: EdgeInsets.all(12),
                       color:
-                          onPressed == 'Working' ? MyColor.black : MyColor.grey,
+                          onPressed == 'working' ? MyColor.black : MyColor.grey,
                       child: Center(
                         child: Text(
                           'Working',
-                          style: onPressed == 'Working'
-                              ? MyStyle.tx12w.copyWith(
+                          style: onPressed == 'working'
+                              ? MyStyle.tx16w.copyWith(
                                   fontWeight: FontWeight.w700,
                                 )
-                              : MyStyle.tx12b.copyWith(
+                              : MyStyle.tx16b.copyWith(
                                   fontWeight: FontWeight.w700,
                                 ),
                         ),
@@ -125,7 +132,7 @@ class _ServicePageState extends State<ServicePage> {
                   child: InkWell(
                     onTap: () {
                       setState(() {
-                        onPressed = 'Completed';
+                        onPressed = 'completed';
                       });
                       const Completed();
                     },
@@ -133,17 +140,17 @@ class _ServicePageState extends State<ServicePage> {
                       height: 55,
                       width: MediaQuery.of(context).size.width,
                       // margin: EdgeInsets.all(12),
-                      color: onPressed == 'Completed'
+                      color: onPressed == 'completed'
                           ? MyColor.black
                           : MyColor.grey,
                       child: Center(
                         child: Text(
                           'Completed',
-                          style: onPressed == 'Completed'
-                              ? MyStyle.tx12w.copyWith(
+                          style: onPressed == 'completed'
+                              ? MyStyle.tx16w.copyWith(
                                   fontWeight: FontWeight.w700,
                                 )
-                              : MyStyle.tx12b.copyWith(
+                              : MyStyle.tx16b.copyWith(
                                   fontWeight: FontWeight.w700,
                                 ),
                         ),
@@ -156,10 +163,10 @@ class _ServicePageState extends State<ServicePage> {
                 ),
               ],
             ),
-            onPressed == 'distributor'
+            onPressed == 'working'
                 ? const Expanded(child: Working())
                 : const SizedBox(),
-            onPressed == 'retailer'
+            onPressed == 'completed'
                 ? const Expanded(child: Completed())
                 : const SizedBox(),
           ],

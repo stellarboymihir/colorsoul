@@ -46,6 +46,12 @@ class MyStyle {
     fontFamily: 'Poppins-SemiBold',
     color: MyColor.black,
   );
+  static const tx16w = TextStyle(
+    fontSize: 16,
+    fontWeight: FontWeight.w700,
+    fontFamily: 'Poppins-SemiBold',
+    color: MyColor.white,
+  );
 
   static const tx14b = TextStyle(
     fontSize: 14,
@@ -76,5 +82,12 @@ class MyStyle {
     fontWeight: FontWeight.w300,
     fontFamily: 'Poppins-Regular',
     color: MyColor.white,
+  );
+
+  static const tx10b = TextStyle(
+    fontSize: 10,
+    fontWeight: FontWeight.w300,
+    fontFamily: 'Poppins-Regular',
+    color: MyColor.black,
   );
 }

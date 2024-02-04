@@ -19,6 +19,8 @@ import 'package:colorsoul/dashboard/home/notification.dart';
 import 'package:colorsoul/dashboard/home/task/taskDetail.dart';
 import 'package:colorsoul/dashboard/home/task/taskPage.dart';
 import 'package:colorsoul/dashboard/service/completed/completed.dart';
+import 'package:colorsoul/dashboard/service/working/shoppers/getStock.dart';
+import 'package:colorsoul/dashboard/service/working/shoppers/shoppers.dart';
 import 'package:colorsoul/dashboard/service/working/working.dart';
 import 'package:colorsoul/values/myColor.dart';
 import 'package:flutter/material.dart';
@@ -33,6 +35,10 @@ import 'dashboard/home/floating/createTask.dart';
 import 'dashboard/home/home.dart';
 import 'dashboard/reimbursement/reimbursement.dart';
 import 'dashboard/service/service.dart';
+import 'dashboard/service/working/shoppers/checkOut.dart';
+import 'dashboard/service/working/editRoute.dart';
+import 'dashboard/service/working/shoppers/imageRoute.dart';
+import 'dashboard/service/working/skip.dart';
 
 void main() {
   WidgetsFlutterBinding.ensureInitialized();
@@ -103,7 +109,17 @@ class MyApp extends StatelessWidget {
 
         //   **  Service **
         servicePageRoute: (context) => const ServicePage(),
+
         workingRoute: (context) => const Working(),
+        editRoute: (context) => const EditRoute(),
+
+        //   ** Shoppers  **
+        shoppersRoute: (context) => const Shoppers(),
+        checkOutRoute: (context) => const CheckOut(),
+        imageRoute: (context) => const ImageRoute(),
+        getStockRoute: (context) => const GetStock(),
+        skipRoute: (context) => const Skip(),
+
         completedRoute: (context) => const Completed(),
         distributorRoute: (context) => const Distributor(),
         reimbursementRoute: (context) => const Reimbursement(),

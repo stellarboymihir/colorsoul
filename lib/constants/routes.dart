@@ -38,7 +38,19 @@ const taskDetailRoute = '/taskDetail/';
 
 //  ** Service **
 const servicePageRoute = '/servicePage/';
+
+//  **  Working  **
 const workingRoute = '/workingRoute/';
+const editRoute = '/editRoute/';
+
+//  ** Shoppers **
+const shoppersRoute = '/shoppers/';
+const checkOutRoute = '/checkOut/';
+const imageRoute = '/imageRoute/';
+const skipRoute = '/skipRoute/';
+const getStockRoute = '/getStock/';
+
+//  ** Completed  **
 const completedRoute = '/completed/';
 const distributorRoute = '/distributor/';
 const reimbursementRoute = '/reimbursement/';
