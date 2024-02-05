@@ -20,7 +20,7 @@ class _DashboardState extends State<Dashboard> {
   int currIndex = 0;
 
   List<Widget> pages = [
-    Home(),
+    const Home(),
     const ServicePage(),
     const Distributor(),
     const Reimbursement(),

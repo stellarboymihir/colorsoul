@@ -42,169 +42,100 @@ class _HomeState extends State<Home> {
                 ),
               ],
             ),
-            const Spacer(),
-            InkWell(
-              onTap: () {
-                Navigator.pushNamed(context, attendanceRoute);
-              },
-              child: Container(
-                height: 40,
-                color: MyColor.grey,
-                padding:
-                    const EdgeInsets.symmetric(horizontal: 20, vertical: 10),
-                child: Center(
-                  child: Text(
-                    'START',
-                    style: MyStyle.tx14b.copyWith(
-                      fontWeight: FontWeight.w700,
-                      fontFamily: 'Poppins-ExtraBold',
-                    ),
+          ],
+        ),
+        actions: [
+          InkWell(
+            onTap: () {
+              Navigator.pushNamed(context, attendanceRoute);
+            },
+            child: Container(
+              height: 40,
+              color: MyColor.grey,
+              padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 10),
+              child: Center(
+                child: Text(
+                  'START',
+                  style: MyStyle.tx14b.copyWith(
+                    fontWeight: FontWeight.w700,
+                    fontFamily: 'Poppins-ExtraBold',
                   ),
                 ),
               ),
             ),
-            InkWell(
-              onTap: () {
-                Navigator.pushNamed(context, notificationRoute);
-              },
-              child: Container(
-                height: 40,
-                color: MyColor.grey,
-                margin: const EdgeInsets.all(8.0),
-                padding: const EdgeInsets.all(10),
-                child: Image.asset(
-                  'assets/icons/bell.png',
-                  height: 20,
-                  width: 20,
-                ),
+          ),
+          InkWell(
+            onTap: () {
+              Navigator.pushNamed(context, notificationRoute);
+            },
+            child: Container(
+              height: 40,
+              color: MyColor.grey,
+              margin: const EdgeInsets.only(right: 17, left: 10),
+              padding: const EdgeInsets.all(10),
+              child: Image.asset(
+                'assets/icons/bell.png',
+                height: 20,
+                width: 20,
               ),
             ),
-          ],
-        ),
+          ),
+        ],
       ),
       body: SafeArea(
         child: SingleChildScrollView(
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
-              // Top Bar
-              // Row(
-              //   children: [
-              //     Padding(
-              //       padding: const EdgeInsets.symmetric(
-              //           horizontal: 12.0, vertical: 10),
-              //       child: Image.asset(
-              //         'assets/images/samar.png',
-              //         width: 40,
-              //         height: 40,
-              //       ),
-              //     ),
-              //     const Column(
-              //       crossAxisAlignment: CrossAxisAlignment.start,
-              //       children: [
-              //         Text(
-              //           'Hi Samar',
-              //           textAlign: TextAlign.start,
-              //           style: MyStyle.tx20b,
-              //         ),
-              //         Text(
-              //           'Dec 18, 2021',
-              //           textAlign: TextAlign.start,
-              //           style: MyStyle.tx12b,
-              //         ),
-              //       ],
-              //     ),
-              //     const Spacer(),
-              //     InkWell(
-              //       onTap: () {
-              //         Navigator.pushNamed(context, attendanceRoute);
-              //       },
-              //       child: Container(
-              //         height: 40,
-              //         color: MyColor.grey,
-              //         padding: const EdgeInsets.symmetric(
-              //             horizontal: 20, vertical: 10),
-              //         child: Center(
-              //           child: Text(
-              //             'START',
-              //             style: MyStyle.tx14b.copyWith(
-              //               fontWeight: FontWeight.w700,
-              //               fontFamily: 'Poppins-ExtraBold',
-              //             ),
-              //           ),
-              //         ),
-              //       ),
-              //     ),
-              //     InkWell(
-              //       onTap: () {
-              //         Navigator.pushNamed(context, notificationRoute);
-              //       },
-              //       child: Container(
-              //         height: 40,
-              //         color: MyColor.grey,
-              //         margin: const EdgeInsets.all(8.0),
-              //         padding: const EdgeInsets.all(10),
-              //         child: Image.asset(
-              //           'assets/icons/bell.png',
-              //           height: 20,
-              //           width: 20,
-              //         ),
-              //       ),
-              //     ),
-              //   ],
-              // ),
-
               //  Middle layer
-              Padding(
-                padding: const EdgeInsets.all(12.0),
-                child: Container(
-                  decoration: BoxDecoration(
-                    boxShadow: [
-                      BoxShadow(
-                        color: MyColor.grey.withOpacity(
-                            0.7), // Change this to adjust the shadow color
-                        blurRadius: 5, // Change this to adjust the blur
-                        spreadRadius: 0.01, // Change this to adjust the spread
-                        offset:
-                            Offset(0.0, 10), // Change this to adjust the offset
+              Container(
+                margin: const EdgeInsets.all(12.0),
+                decoration: BoxDecoration(
+                  boxShadow: [
+                    BoxShadow(
+                      color: MyColor.black.withOpacity(
+                          0.1), // Change this to adjust the shadow color
+                      blurRadius: 5, // Change this to adjust the blur
+                      spreadRadius: 0.01, // Change this to adjust the spread
+                      offset: const Offset(
+                          0, 3), // Change this to adjust the offset
+                    ),
+                  ],
+                ),
+                child: Card(
+                  color: MyColor.white,
+                  elevation: 0.1,
+                  shadowColor: MyColor.grey,
+                  shape: RoundedRectangleBorder(
+                    borderRadius: BorderRadius.circular(1),
+                    side: const BorderSide(
+                      color: MyColor.grey,
+                    ),
+                  ),
+                  child: Column(
+                    children: [
+                      Padding(
+                        padding: const EdgeInsets.all(8.0),
+                        child: Row(
+                          mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                          children: [
+                            const Text(
+                              'January Target',
+                              style: MyStyle.tx14b,
+                            ),
+                            Text(
+                              'View all',
+                              style: MyStyle.tx14b.copyWith(
+                                color: MyColor.blue,
+                              ),
+                            )
+                          ],
+                        ),
+                      ),
+                      Image.asset(
+                        'assets/images/graph.png',
                       ),
                     ],
-                  ),
-                  child: Card(
-                    color: MyColor.white,
-                    elevation: 0.1,
-                    shadowColor: MyColor.grey,
-                    shape: RoundedRectangleBorder(
-                      borderRadius: BorderRadius.circular(1),
-                      side: const BorderSide(
-                        color: MyColor.grey,
-                      ),
-                    ),
-                    child: Column(
-                      children: [
-                        Padding(
-                          padding: const EdgeInsets.all(8.0),
-                          child: Row(
-                            mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                            children: [
-                              const Text(
-                                'January Target',
-                                style: MyStyle.tx14b,
-                              ),
-                              Text(
-                                'View all',
-                                style: MyStyle.tx14b.copyWith(
-                                  color: MyColor.blue,
-                                ),
-                              )
-                            ],
-                          ),
-                        ),
-                        Image.asset(
-                          'assets/images/graph.png',
-                        ),
-                      ],
-                    ),
                   ),
                 ),
               ),
@@ -216,7 +147,7 @@ class _HomeState extends State<Home> {
                 height: 57,
                 width: MediaQuery.of(context).size.width,
                 margin: const EdgeInsets.symmetric(horizontal: 12),
-                padding: const EdgeInsets.symmetric(horizontal: 12),
+                padding: const EdgeInsets.only(left: 12),
                 color: MyColor.black,
                 child: Row(
                   children: [
@@ -224,12 +155,13 @@ class _HomeState extends State<Home> {
                       'assets/icons/like.png',
                       height: 28,
                       width: 28,
+                      fit: BoxFit.fill,
                     ),
                     const SizedBox(
                       width: 8,
                     ),
                     Text(
-                      '65% OF YOUR WORKING IS LOOK GOOD',
+                      ' 65% OF YOUR WORKING IS LOOK GOOD',
                       style: MyStyle.tx14w.copyWith(
                         fontWeight: FontWeight.w700,
                         fontFamily: 'Poppins-Medium',
@@ -257,7 +189,7 @@ class _HomeState extends State<Home> {
                 children: [
                   Expanded(
                     child: Container(
-                      height: 90,
+                      // height: 90,
                       width: MediaQuery.of(context).size.width,
                       margin: const EdgeInsets.only(
                           left: 8, right: 4, top: 0, bottom: 8),
@@ -295,6 +227,7 @@ class _HomeState extends State<Home> {
                                 Text(
                                   'Total Task',
                                   style: MyStyle.tx12b.copyWith(
+                                    fontSize: 11,
                                     fontWeight: FontWeight.w400,
                                     fontFamily: 'Poppins-Medium',
                                   ),
@@ -309,6 +242,7 @@ class _HomeState extends State<Home> {
                                 Text(
                                   '120',
                                   style: MyStyle.tx20b.copyWith(
+                                    fontSize: 16,
                                     fontWeight: FontWeight.w400,
                                     fontFamily: 'Poppins-Regular',
                                   ),
@@ -322,10 +256,10 @@ class _HomeState extends State<Home> {
                   ),
                   Expanded(
                     child: Container(
-                      height: 90,
+                      // height: 90,
                       width: MediaQuery.of(context).size.width,
                       margin: const EdgeInsets.only(
-                          left: 4, right: 8, top: 0, bottom: 8),
+                          left: 4, right: 12, top: 0, bottom: 8),
                       padding: const EdgeInsets.only(
                           left: 10, right: 10, top: 8, bottom: 0),
                       decoration: BoxDecoration(
@@ -362,7 +296,7 @@ class _HomeState extends State<Home> {
                                   textAlign: TextAlign.end,
                                   style: MyStyle.tx12b.copyWith(
                                     fontWeight: FontWeight.w400,
-                                    fontSize: 12,
+                                    fontSize: 11,
                                     fontFamily: 'Poppins-Medium',
                                   ),
                                 ),
@@ -376,6 +310,7 @@ class _HomeState extends State<Home> {
                                 Text(
                                   '120',
                                   style: MyStyle.tx20b.copyWith(
+                                    fontSize: 16,
                                     fontWeight: FontWeight.w400,
                                     fontFamily: 'Poppins-Regular',
                                   ),
@@ -395,7 +330,7 @@ class _HomeState extends State<Home> {
                 children: [
                   Expanded(
                     child: Container(
-                      height: 90,
+                      // height: 90,
                       width: MediaQuery.of(context).size.width,
                       margin: const EdgeInsets.only(
                           left: 8, right: 4, top: 0, bottom: 8),
@@ -433,6 +368,7 @@ class _HomeState extends State<Home> {
                                 Text(
                                   'Total Roots',
                                   style: MyStyle.tx12b.copyWith(
+                                    fontSize: 11,
                                     fontWeight: FontWeight.w400,
                                     fontFamily: 'Poppins-Medium',
                                   ),
@@ -447,6 +383,7 @@ class _HomeState extends State<Home> {
                                 Text(
                                   '489',
                                   style: MyStyle.tx20b.copyWith(
+                                    fontSize: 16,
                                     fontWeight: FontWeight.w400,
                                     fontFamily: 'Poppins-Regular',
                                   ),
@@ -460,10 +397,10 @@ class _HomeState extends State<Home> {
                   ),
                   Expanded(
                     child: Container(
-                      height: 90,
+                      // height: 90,
                       width: MediaQuery.of(context).size.width,
                       margin: const EdgeInsets.only(
-                          left: 4, right: 8, top: 0, bottom: 8),
+                          left: 4, right: 12, top: 0, bottom: 8),
                       padding: const EdgeInsets.only(
                           left: 10, right: 10, top: 8, bottom: 0),
                       decoration: BoxDecoration(
@@ -499,7 +436,7 @@ class _HomeState extends State<Home> {
                                   'Total Order',
                                   style: MyStyle.tx12b.copyWith(
                                     fontWeight: FontWeight.w400,
-                                    fontSize: 12,
+                                    fontSize: 11,
                                     fontFamily: 'Poppins-Medium',
                                   ),
                                 ),
@@ -513,6 +450,7 @@ class _HomeState extends State<Home> {
                                 Text(
                                   '489',
                                   style: MyStyle.tx20b.copyWith(
+                                    fontSize: 16,
                                     fontWeight: FontWeight.w400,
                                     fontFamily: 'Poppins-Regular',
                                   ),
@@ -527,109 +465,122 @@ class _HomeState extends State<Home> {
                 ],
               ),
 
+              //
+              const SizedBox(
+                height: 10,
+              ),
               //   Reimbursement
               Container(
-                height: 160,
-                width: MediaQuery.of(context).size.width,
+                // width: MediaQuery.of(context).size.width,
                 color: MyColor.grey,
-                child: Padding(
-                  padding:
-                      const EdgeInsets.symmetric(horizontal: 12.0, vertical: 8),
-                  child: Row(
-                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                    children: [
-                      Column(
-                        crossAxisAlignment: CrossAxisAlignment.start,
-                        mainAxisAlignment: MainAxisAlignment.spaceAround,
-                        children: [
-                          Text(
-                            'Reimbursement',
-                            textAlign: TextAlign.start,
-                            style: MyStyle.tx14b.copyWith(
-                              fontWeight: FontWeight.w700,
-                              fontFamily: 'Poppins-Medium',
+                padding: const EdgeInsets.all(12),
+                child: Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    //  Reimbursement
+                    Column(
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      children: [
+                        Text(
+                          'Reimbursement',
+                          textAlign: TextAlign.start,
+                          style: MyStyle.tx14b.copyWith(
+                            fontWeight: FontWeight.w700,
+                            fontFamily: 'Poppins-Medium',
+                          ),
+                        ),
+                        SizedBox(
+                          height: 10,
+                        ),
+                        Row(
+                          children: [
+                            Container(
+                              height: 8,
+                              width: 8,
+                              padding: EdgeInsets.all(12),
+                              decoration: const BoxDecoration(
+                                shape: BoxShape.circle,
+                                color: MyColor.green,
+                              ),
                             ),
-                          ),
-                          Row(
-                            children: [
-                              Container(
-                                height: 8,
-                                width: 8,
-                                decoration: const BoxDecoration(
-                                  shape: BoxShape.circle,
-                                  color: MyColor.green,
+                            const SizedBox(
+                              width: 8,
+                            ),
+                            Column(
+                              crossAxisAlignment: CrossAxisAlignment.start,
+                              children: [
+                                Text(
+                                  'Total Approve',
+                                  style: MyStyle.tx12b.copyWith(
+                                    fontWeight: FontWeight.w400,
+                                  ),
                                 ),
-                              ),
-                              const SizedBox(
-                                width: 8,
-                              ),
-                              Column(
-                                crossAxisAlignment: CrossAxisAlignment.start,
-                                children: [
-                                  Text(
-                                    'Total Approve',
-                                    style: MyStyle.tx12b.copyWith(
-                                      fontWeight: FontWeight.w400,
-                                    ),
+                                Text(
+                                  '₹3,500',
+                                  style: MyStyle.tx14b.copyWith(
+                                    fontWeight: FontWeight.w700,
+                                    fontFamily: 'Poppins-SemiBold',
                                   ),
-                                  Text(
-                                    '₹3,500',
-                                    style: MyStyle.tx14b.copyWith(
-                                      fontWeight: FontWeight.w700,
-                                    ),
-                                  ),
-                                ],
-                              ),
-                            ],
-                          ),
-                          Row(
-                            children: [
-                              Container(
-                                height: 8,
-                                width: 8,
-                                decoration: const BoxDecoration(
-                                  shape: BoxShape.circle,
-                                  color: MyColor.yellow,
                                 ),
+                              ],
+                            ),
+                          ],
+                        ),
+                        SizedBox(
+                          height: 10,
+                        ),
+                        Row(
+                          children: [
+                            Container(
+                              height: 8,
+                              width: 8,
+                              padding: EdgeInsets.all(12),
+                              decoration: const BoxDecoration(
+                                shape: BoxShape.circle,
+                                color: MyColor.yellow,
                               ),
-                              const SizedBox(
-                                width: 8,
-                              ),
-                              Column(
-                                crossAxisAlignment: CrossAxisAlignment.start,
-                                children: [
-                                  Text(
-                                    'Total Reimbursement',
-                                    style: MyStyle.tx12b.copyWith(
-                                      fontWeight: FontWeight.w400,
-                                    ),
+                            ),
+                            const SizedBox(
+                              width: 8,
+                            ),
+                            Column(
+                              crossAxisAlignment: CrossAxisAlignment.start,
+                              children: [
+                                Text(
+                                  'Total Reimbursement',
+                                  style: MyStyle.tx12b.copyWith(
+                                    fontWeight: FontWeight.w400,
                                   ),
-                                  Text(
-                                    '₹5,000',
-                                    style: MyStyle.tx14b.copyWith(
-                                      fontWeight: FontWeight.w700,
-                                    ),
+                                ),
+                                Text(
+                                  '₹5,000',
+                                  style: MyStyle.tx14b.copyWith(
+                                    fontWeight: FontWeight.w700,
+                                    fontFamily: 'Poppins-SemiBold',
                                   ),
-                                ],
-                              ),
-                            ],
-                          ),
-                        ],
-                      ),
-                      Image.asset(
-                        'assets/images/circle.png',
-                        height: 127,
-                        width: 127,
-                      ),
-                    ],
-                  ),
+                                ),
+                              ],
+                            ),
+                          ],
+                        ),
+                      ],
+                    ),
+
+                    // Image
+                    Image.asset(
+                      'assets/images/circle.png',
+                      height: 127,
+                      width: 127,
+                    ),
+                  ],
                 ),
               ),
 
               //   Upcoming Task
               Padding(
                 padding:
-                    const EdgeInsets.symmetric(horizontal: 10.0, vertical: 10),
+                    const EdgeInsets.symmetric(horizontal: 12.0, vertical: 0),
                 child: Row(
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   children: [
@@ -637,7 +588,7 @@ class _HomeState extends State<Home> {
                       'Upcoming Task',
                       style: MyStyle.tx14b.copyWith(
                         fontWeight: FontWeight.w700,
-                        fontFamily: 'Poppins-SemiBold',
+                        fontFamily: 'Poppins-Bold',
                       ),
                     ),
                     TextButton(
@@ -672,7 +623,7 @@ class _HomeState extends State<Home> {
                             width: 2,
                           ),
                         ),
-                        padding: const EdgeInsets.all(8.0),
+                        padding: const EdgeInsets.all(6.0),
                         margin: const EdgeInsets.symmetric(
                             horizontal: 8, vertical: 6),
                         child: Row(
@@ -684,8 +635,9 @@ class _HomeState extends State<Home> {
                               padding: const EdgeInsets.all(6),
                               child: Image.asset(
                                 'assets/icons/pad.png',
-                                height: 32,
-                                width: 32,
+                                height: 24,
+                                width: 24,
+                                fit: BoxFit.fill,
                               ),
                             ),
                             const SizedBox(

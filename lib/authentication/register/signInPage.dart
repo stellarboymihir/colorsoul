@@ -21,6 +21,8 @@ class _SignInPageState extends State<SignInPage> {
 
   @override
   Widget build(BuildContext context) {
+    var height = MediaQuery.of(context).size.height;
+    var width = MediaQuery.of(context).size.width;
     return Scaffold(
       body: SingleChildScrollView(
         physics: const NeverScrollableScrollPhysics(),
@@ -32,7 +34,7 @@ class _SignInPageState extends State<SignInPage> {
             ),
             Image.asset(
               'assets/icons/colorsol.png',
-              height: 44,
+              height: 40,
               width: 200,
               fit: BoxFit.fill,
             ),
@@ -60,7 +62,7 @@ class _SignInPageState extends State<SignInPage> {
             Row(
               children: [
                 Padding(
-                  padding: EdgeInsets.only(
+                  padding: const EdgeInsets.only(
                     left: 30.0,
                   ),
                   child: Text(
@@ -87,11 +89,13 @@ class _SignInPageState extends State<SignInPage> {
                     width: 50,
                     height: 50,
                     alignment: Alignment.center,
-                    decoration: BoxDecoration(
-                        border: Border(
-                            right: BorderSide(
-                      color: MyColor.grey,
-                    ))),
+                    decoration: const BoxDecoration(
+                      border: Border(
+                        right: BorderSide(
+                          color: MyColor.grey,
+                        ),
+                      ),
+                    ),
                     child: Text(
                       '+91',
                       textAlign: TextAlign.center,
@@ -101,21 +105,21 @@ class _SignInPageState extends State<SignInPage> {
                       ),
                     ),
                   ),
-                  contentPadding: EdgeInsets.symmetric(
-                    horizontal: 20,
+                  contentPadding: const EdgeInsets.symmetric(
+                    horizontal: 30,
                     // vertical: 20,
                   ),
-                  enabledBorder: OutlineInputBorder(
+                  enabledBorder: const OutlineInputBorder(
                     borderSide: BorderSide(
                       color: MyColor.grey,
                     ),
                   ),
-                  focusedBorder: OutlineInputBorder(
+                  focusedBorder: const OutlineInputBorder(
                     borderSide: BorderSide(
                       color: MyColor.grey,
                     ),
                   ),
-                  border: OutlineInputBorder(
+                  border: const OutlineInputBorder(
                     borderSide: BorderSide(
                       color: MyColor.grey,
                     ),
@@ -131,20 +135,22 @@ class _SignInPageState extends State<SignInPage> {
             const SizedBox(
               height: 20,
             ),
-            const Row(
+            Row(
               children: [
                 Padding(
-                  padding: EdgeInsets.only(left: 30.0),
+                  padding: const EdgeInsets.only(left: 30.0),
                   child: Text(
                     'Password',
-                    style: MyStyle.tx14b,
+                    style: MyStyle.tx14b.copyWith(
+                      fontSize: 13,
+                    ),
                   ),
                 ),
               ],
             ),
-            // const SizedBox(
-            //   height: 10,
-            // ),
+            const SizedBox(
+              height: 2,
+            ),
             Container(
               height: 50,
               width: MediaQuery.of(context).size.width,
@@ -250,7 +256,7 @@ class _SignInPageState extends State<SignInPage> {
               ),
             ),
             const SizedBox(
-              height: 80,
+              height: 120,
             ),
             InkWell(
               onTap: () {
@@ -259,7 +265,7 @@ class _SignInPageState extends State<SignInPage> {
               child: Container(
                 height: 50,
                 width: MediaQuery.of(context).size.width,
-                margin: const EdgeInsets.symmetric(horizontal: 30),
+                margin: const EdgeInsets.symmetric(horizontal: 15),
                 color: MyColor.grey,
                 child: Center(
                   child: Text(
@@ -270,31 +276,25 @@ class _SignInPageState extends State<SignInPage> {
                 ),
               ),
             ),
-            const SizedBox(
-              height: 20,
-            ),
-            InkWell(
-              onTap: () {
-                Navigator.pushNamed(context, welcomeRoute);
-              },
-              child: Container(
-                height: 50,
-                width: MediaQuery.of(context).size.width,
-                margin: const EdgeInsets.symmetric(horizontal: 30),
-                color: MyColor.black,
-                child: Center(
-                  child: Text(
-                    'SIGN IN',
-                    style: MyStyle.tx20W
-                        .copyWith(fontFamily: 'Poppins-SemiBold', fontSize: 15),
-                  ),
-                ),
-              ),
-            ),
-            const SizedBox(
-              height: 30,
-            ),
           ],
+        ),
+      ),
+      bottomNavigationBar: InkWell(
+        onTap: () {
+          Navigator.pushNamed(context, welcomeRoute);
+        },
+        child: Container(
+          height: 50,
+          width: width,
+          margin: const EdgeInsets.fromLTRB(15, 0, 15, 20),
+          color: MyColor.black,
+          child: Center(
+            child: Text(
+              'SIGN IN',
+              style: MyStyle.tx20W
+                  .copyWith(fontFamily: 'Poppins-SemiBold', fontSize: 15),
+            ),
+          ),
         ),
       ),
     );

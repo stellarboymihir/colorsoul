@@ -17,35 +17,37 @@ class _WelcomeState extends State<Welcome> {
   TextEditingController otpController = TextEditingController();
   @override
   Widget build(BuildContext context) {
+    var height = MediaQuery.of(context).size.height;
+    var width = MediaQuery.of(context).size.width;
     return Scaffold(
-      body: SingleChildScrollView(
-        physics: NeverScrollableScrollPhysics(),
-        child: SizedBox(
-          height: MediaQuery.of(context).size.height,
+      body: SizedBox(
+        height: height,
+        child: SingleChildScrollView(
+          physics: const NeverScrollableScrollPhysics(),
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.center,
             children: [
-              Center(
-                child: Image.asset(
-                  'assets/icons/logo.png',
-                  height: 220,
-                  width: 196,
-                ),
+              const SizedBox(
+                height: 70,
+              ),
+              Image.asset(
+                'assets/icons/logo.png',
+                height: 160,
+                width: 196,
+                fit: BoxFit.contain,
               ),
               const SizedBox(
-                height: 20,
+                height: 30,
               ),
-              const Text(
+              Text(
                 'Welcome',
-                style: MyStyle.tx40b,
-              ),
-              const SizedBox(
-                height: 10,
+                style: MyStyle.tx40b.copyWith(fontSize: 32),
               ),
               Text(
                 'Samar Shah',
                 style: MyStyle.tx20b.copyWith(
                   fontWeight: FontWeight.w300,
+                  fontSize: 18,
                   fontFamily: 'Poppins-Regular',
                 ),
               ),
@@ -53,9 +55,9 @@ class _WelcomeState extends State<Welcome> {
                 height: 20,
               ),
               Container(
-                height: 65,
-                // width: 250,
-                margin: const EdgeInsets.symmetric(horizontal: 50),
+                margin: const EdgeInsets.symmetric(
+                  horizontal: 50,
+                ),
                 child: PinInputTextFormField(
                   pinLength:
                       4, // Set pinLength to 1 to allow only one digit per container
@@ -74,14 +76,14 @@ class _WelcomeState extends State<Welcome> {
                 ),
               ),
               const SizedBox(
-                height: 20,
+                height: 15,
               ),
               const Text(
                 'Enter 4 digit Login PIN or Use Fingerprint',
                 style: MyStyle.tx12b,
               ),
               const SizedBox(
-                height: 20,
+                height: 30,
               ),
               Image.asset(
                 'assets/icons/fingerprint.png',
@@ -99,28 +101,24 @@ class _WelcomeState extends State<Welcome> {
                   fontFamily: 'Poppins-ExtraBold',
                 ),
               ),
-              const Spacer(),
-              InkWell(
-                onTap: () {
-                  Navigator.pushNamed(context, dashboardRoute);
-                },
-                child: Container(
-                  height: 50,
-                  width: MediaQuery.of(context).size.width,
-                  margin: const EdgeInsets.symmetric(horizontal: 30),
-                  color: MyColor.black,
-                  child: const Center(
-                    child: Text(
-                      'CONTINUE',
-                      style: MyStyle.tx20W,
-                    ),
-                  ),
-                ),
-              ),
-              SizedBox(
-                height: 30,
-              ),
             ],
+          ),
+        ),
+      ),
+      bottomNavigationBar: InkWell(
+        onTap: () {
+          Navigator.pushNamed(context, dashboardRoute);
+        },
+        child: Container(
+          height: 50,
+          width: MediaQuery.of(context).size.width,
+          margin: const EdgeInsets.fromLTRB(15, 0, 15, 20),
+          color: MyColor.black,
+          child: const Center(
+            child: Text(
+              'CONTINUE',
+              style: MyStyle.tx20W,
+            ),
           ),
         ),
       ),

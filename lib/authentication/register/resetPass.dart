@@ -16,30 +16,35 @@ class _ResetPassState extends State<ResetPass> {
   TextEditingController confirmPassController = TextEditingController();
   @override
   Widget build(BuildContext context) {
+    var height = MediaQuery.of(context).size.height;
+    var width = MediaQuery.of(context).size.width;
     return Scaffold(
       body: SingleChildScrollView(
-        child: SizedBox(
-          height: MediaQuery.of(context).size.height,
+        child: Padding(
+          padding: const EdgeInsets.all(20.0),
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.center,
             children: [
-              const SizedBox(
-                height: 100,
+              SizedBox(
+                height: height * 0.1,
               ),
               Image.asset(
                 'assets/icons/colorsol.png',
-                height: 46,
-                width: 223,
+                fit: BoxFit.fill,
+                height: 40,
+                width: 200,
               ),
               const SizedBox(
                 height: 40,
               ),
-              Padding(
-                padding: const EdgeInsets.symmetric(horizontal: 30.0),
-                child: Text(
-                  'Reset Your New Password',
-                  textAlign: TextAlign.center,
-                  style: MyStyle.tx32b,
+              Text(
+                'Reset Your New \nPassword',
+                textAlign: TextAlign.center,
+                style: MyStyle.tx32b.copyWith(
+                  fontSize: 24,
+                  height: 1.2,
+                  fontWeight: FontWeight.w800,
+                  fontFamily: 'Poppins-Bold',
                 ),
               ),
               const SizedBox(
@@ -48,36 +53,22 @@ class _ResetPassState extends State<ResetPass> {
               const Row(
                 mainAxisAlignment: MainAxisAlignment.start,
                 children: [
-                  Padding(
-                    padding: EdgeInsets.symmetric(horizontal: 30.0),
-                    child: Text(
-                      'New Password',
-                      style: MyStyle.tx12b,
-                    ),
+                  Text(
+                    'New Password',
+                    style: MyStyle.tx12b,
                   ),
                 ],
               ),
               const SizedBox(
-                height: 15,
+                height: 10,
               ),
               Container(
                 height: 50,
                 width: MediaQuery.of(context).size.width,
-                margin: const EdgeInsets.symmetric(horizontal: 30),
                 child: TextFormField(
                   controller: newPassController,
                   decoration: const InputDecoration(
                     isDense: true,
-                    // suffixIcon: IconButton(
-                    //   onPressed: () {
-                    //     setState(() {
-                    //       _isObscure = !_isObscure;
-                    //     });
-                    //   },
-                    //   icon: Icon(_isObscure
-                    //       ? Icons.visibility_off_sharp
-                    //       : Icons.visibility_sharp),
-                    // ),
                     contentPadding: EdgeInsets.symmetric(
                       horizontal: 20,
                       vertical: 20,
@@ -109,36 +100,22 @@ class _ResetPassState extends State<ResetPass> {
               const Row(
                 mainAxisAlignment: MainAxisAlignment.start,
                 children: [
-                  Padding(
-                    padding: EdgeInsets.symmetric(horizontal: 30.0),
-                    child: Text(
-                      'Confirm Password',
-                      style: MyStyle.tx12b,
-                    ),
+                  Text(
+                    'Confirm Password',
+                    style: MyStyle.tx12b,
                   ),
                 ],
               ),
               const SizedBox(
-                height: 15,
+                height: 10,
               ),
               Container(
                 height: 50,
                 width: MediaQuery.of(context).size.width,
-                margin: const EdgeInsets.symmetric(horizontal: 30),
                 child: TextFormField(
                   controller: confirmPassController,
                   decoration: const InputDecoration(
                     isDense: true,
-                    // suffixIcon: IconButton(
-                    //   onPressed: () {
-                    //     setState(() {
-                    //       _isObscure = !_isObscure;
-                    //     });
-                    //   },
-                    //   icon: Icon(_isObscure
-                    //       ? Icons.visibility_off_sharp
-                    //       : Icons.visibility_sharp),
-                    // ),
                     contentPadding: EdgeInsets.symmetric(
                       horizontal: 20,
                       vertical: 20,
@@ -166,36 +143,30 @@ class _ResetPassState extends State<ResetPass> {
               const SizedBox(
                 height: 10,
               ),
-              const Padding(
-                padding: EdgeInsets.symmetric(horizontal: 30.0),
-                child: Text(
-                  'Minimum of 8 or more characters '
-                  'with a mix of letters, numbers, and symbols.',
-                  style: MyStyle.tx14b,
-                ),
-              ),
-              const Spacer(),
-              InkWell(
-                onTap: () {
-                  Navigator.pushNamed(context, successPageRoute);
-                },
-                child: Container(
-                  height: 50,
-                  width: MediaQuery.of(context).size.width,
-                  margin: const EdgeInsets.symmetric(horizontal: 30),
-                  color: MyColor.black,
-                  child: const Center(
-                    child: Text(
-                      'Submit',
-                      style: MyStyle.tx20W,
-                    ),
-                  ),
-                ),
-              ),
-              SizedBox(
-                height: 30,
+              const Text(
+                'Minimum of 8 or more characters '
+                'with a mix of letters, numbers, and symbols.',
+                style: MyStyle.tx14b,
               ),
             ],
+          ),
+        ),
+      ),
+      bottomNavigationBar: InkWell(
+        onTap: () {
+          Navigator.pushNamed(context, successPageRoute);
+        },
+        child: Container(
+          height: 50,
+          width: MediaQuery.of(context).size.width,
+          margin: const EdgeInsets.fromLTRB(20, 0, 20, 20),
+          color: MyColor.black,
+          child: Center(
+            child: Text(
+              'Submit',
+              style: MyStyle.tx20W
+                  .copyWith(fontFamily: 'Poppins-SemiBold', fontSize: 15),
+            ),
           ),
         ),
       ),

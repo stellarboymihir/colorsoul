@@ -14,21 +14,26 @@ class ForgotPass extends StatefulWidget {
 
 class _ForgotPassState extends State<ForgotPass> {
   TextEditingController forgotPassController = TextEditingController();
+
   @override
   Widget build(BuildContext context) {
+    print("d");
+    var height = MediaQuery.of(context).size.height;
+    var width = MediaQuery.of(context).size.width;
+
     return Scaffold(
-      body: SingleChildScrollView(
-        child: SizedBox(
-          height: MediaQuery.of(context).size.height,
+      body: SizedBox(
+        height: height,
+        child: SingleChildScrollView(
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.center,
             children: [
               SizedBox(
-                height: MediaQuery.of(context).size.height * 0.15,
+                height: height * 0.110,
               ),
               Image.asset(
                 'assets/icons/colorsol.png',
-                height: 44,
+                height: 40,
                 width: 200,
                 fit: BoxFit.fill,
               ),
@@ -41,13 +46,18 @@ class _ForgotPassState extends State<ForgotPass> {
                 height: 159,
               ),
               const SizedBox(
-                height: 30,
+                height: 50,
               ),
               Text(
                 'Forgot Password?',
                 style: MyStyle.tx32b.copyWith(
-                  fontSize: 20,
+                  fontSize: 26,
+                  fontWeight: FontWeight.w800,
+                  fontFamily: 'Poppins-Bold',
                 ),
+              ),
+              const SizedBox(
+                height: 4,
               ),
               Padding(
                 padding: const EdgeInsets.symmetric(horizontal: 30.0),
@@ -63,11 +73,11 @@ class _ForgotPassState extends State<ForgotPass> {
                 ),
               ),
               const SizedBox(
-                height: 25,
+                height: 32,
               ),
               Container(
                 height: 50,
-                width: MediaQuery.of(context).size.width,
+                width: width,
                 margin: const EdgeInsets.symmetric(horizontal: 30),
                 child: TextFormField(
                   controller: forgotPassController,
@@ -117,30 +127,25 @@ class _ForgotPassState extends State<ForgotPass> {
                   keyboardType: TextInputType.phone,
                 ),
               ),
-              const SizedBox(
-                height: 30,
-              ),
-              InkWell(
-                onTap: () {
-                  Navigator.pushNamed(context, forgotOtpPassRoute);
-                },
-                child: Container(
-                  height: 50,
-                  margin: const EdgeInsets.symmetric(horizontal: 30),
-                  width: MediaQuery.of(context).size.width,
-                  color: MyColor.black,
-                  child: Center(
-                    child: Text(
-                      'Continue',
-                      style: MyStyle.tx20W.copyWith(fontSize: 15),
-                    ),
-                  ),
-                ),
-              ),
-              const SizedBox(
-                height: 30,
-              ),
             ],
+          ),
+        ),
+      ),
+      bottomNavigationBar: InkWell(
+        onTap: () {
+          Navigator.pushNamed(context, forgotOtpPassRoute);
+        },
+        child: Container(
+          height: 50,
+          margin: const EdgeInsets.fromLTRB(20, 0, 20, 20),
+          width: width,
+          color: MyColor.black,
+          child: Center(
+            child: Text(
+              'Continue',
+              style: MyStyle.tx20W
+                  .copyWith(fontFamily: 'Poppins-SemiBold', fontSize: 15),
+            ),
           ),
         ),
       ),
