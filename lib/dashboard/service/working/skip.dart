@@ -128,7 +128,7 @@ class _SkipState extends State<Skip> {
                                   Text(
                                     'Closed',
                                     style: MyStyle.tx14b.copyWith(
-                                      fontFamily: 'Roboto-SemiBold',
+                                      fontFamily: 'Roboto-Medium',
                                       fontWeight: FontWeight.w400,
                                     ),
                                   ),
@@ -148,7 +148,7 @@ class _SkipState extends State<Skip> {
                                   Text(
                                     'Not Available',
                                     style: MyStyle.tx14b.copyWith(
-                                      fontFamily: 'Roboto-SemiBold',
+                                      fontFamily: 'Roboto-Medium',
                                       fontWeight: FontWeight.w400,
                                     ),
                                   ),
@@ -164,7 +164,7 @@ class _SkipState extends State<Skip> {
                               Text(
                                 'Other',
                                 style: MyStyle.tx14b.copyWith(
-                                  fontFamily: 'Roboto-SemiBold',
+                                  fontFamily: 'Roboto-Medium',
                                   fontWeight: FontWeight.w400,
                                 ),
                               ),

@@ -23,7 +23,7 @@ class MyStyle {
   static const tx20b = TextStyle(
     fontSize: 20,
     fontWeight: FontWeight.w600,
-    fontFamily: 'Poppins-SemiBold',
+    fontFamily: 'Poppins-Medium',
     color: MyColor.black,
   );
   static const tx20W = TextStyle(

@@ -210,7 +210,7 @@ class _ShoppersState extends State<Shoppers> {
                                     '18, Dec 2021',
                                     style: MyStyle.tx12b.copyWith(
                                       fontWeight: FontWeight.w700,
-                                      fontFamily: 'Roboto-SemiBold',
+                                      fontFamily: 'Roboto-Medium',
                                     ),
                                   ),
                                   const SizedBox(

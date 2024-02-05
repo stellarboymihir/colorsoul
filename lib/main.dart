@@ -60,6 +60,7 @@ class MyApp extends StatelessWidget {
       theme: ThemeData(
         useMaterial3: true,
         splashColor: Colors.transparent,
+        shadowColor: Colors.transparent,
         hoverColor: Colors.transparent,
         highlightColor: Colors.transparent,
         splashFactory: NoSplash.splashFactory,

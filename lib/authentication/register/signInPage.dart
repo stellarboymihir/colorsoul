@@ -15,6 +15,8 @@ class _SignInPageState extends State<SignInPage> {
   TextEditingController mobController = TextEditingController();
   TextEditingController passController = TextEditingController();
 
+  bool isCheck = false;
+
   bool _isObscure = false;
 
   @override
@@ -22,237 +24,277 @@ class _SignInPageState extends State<SignInPage> {
     return Scaffold(
       body: SingleChildScrollView(
         physics: const NeverScrollableScrollPhysics(),
-        child: SafeArea(
-          child: Column(
-            crossAxisAlignment: CrossAxisAlignment.center,
-            children: [
-              SizedBox(
-                height: MediaQuery.of(context).size.height * 0.1,
-              ),
-              Image.asset(
-                'assets/icons/colorsol.png',
-                height: 46,
-                width: 223,
-                fit: BoxFit.fill,
-              ),
-              SizedBox(
-                height: MediaQuery.of(context).size.height * 0.145,
-              ),
-              const Row(
-                children: [
-                  Padding(
-                    padding: EdgeInsets.only(left: 30.0),
-                    child: Text(
-                      'Sign In',
-                      textAlign: TextAlign.start,
-                      style: MyStyle.tx32b,
+        child: Column(
+          crossAxisAlignment: CrossAxisAlignment.center,
+          children: [
+            SizedBox(
+              height: MediaQuery.of(context).size.height * 0.12,
+            ),
+            Image.asset(
+              'assets/icons/colorsol.png',
+              height: 44,
+              width: 200,
+              fit: BoxFit.fill,
+            ),
+            SizedBox(
+              height: MediaQuery.of(context).size.height * 0.12,
+            ),
+            Row(
+              children: [
+                Padding(
+                  padding: const EdgeInsets.only(left: 30.0),
+                  child: Text(
+                    'Sign In',
+                    textAlign: TextAlign.start,
+                    style: MyStyle.tx32b.copyWith(
+                      fontFamily: 'Poppins-SemiBold',
+                      fontSize: 23,
                     ),
                   ),
-                ],
-              ),
-              const SizedBox(
-                height: 20,
-              ),
-              const Row(
-                children: [
-                  Padding(
-                    padding: EdgeInsets.only(
-                      left: 30.0,
-                    ),
-                    child: Text(
-                      'Mobile No.',
-                      style: MyStyle.tx14b,
+                ),
+              ],
+            ),
+            const SizedBox(
+              height: 15,
+            ),
+            Row(
+              children: [
+                Padding(
+                  padding: EdgeInsets.only(
+                    left: 30.0,
+                  ),
+                  child: Text(
+                    'Mobile No.',
+                    style: MyStyle.tx14b.copyWith(
+                      fontSize: 13,
                     ),
                   ),
+                ),
+              ],
+            ),
+            const SizedBox(
+              height: 2,
+            ),
+            Container(
+              height: 50,
+              width: MediaQuery.of(context).size.width,
+              margin: const EdgeInsets.symmetric(horizontal: 30),
+              child: TextFormField(
+                controller: mobController,
+                style: MyStyle.tx14b,
+                decoration: InputDecoration(
+                  prefixIcon: Container(
+                    width: 50,
+                    height: 50,
+                    alignment: Alignment.center,
+                    decoration: BoxDecoration(
+                        border: Border(
+                            right: BorderSide(
+                      color: MyColor.grey,
+                    ))),
+                    child: Text(
+                      '+91',
+                      textAlign: TextAlign.center,
+                      style: MyStyle.tx20b.copyWith(
+                        fontSize: 14,
+                        fontFamily: 'Poppins-SemiBold',
+                      ),
+                    ),
+                  ),
+                  contentPadding: EdgeInsets.symmetric(
+                    horizontal: 20,
+                    // vertical: 20,
+                  ),
+                  enabledBorder: OutlineInputBorder(
+                    borderSide: BorderSide(
+                      color: MyColor.grey,
+                    ),
+                  ),
+                  focusedBorder: OutlineInputBorder(
+                    borderSide: BorderSide(
+                      color: MyColor.grey,
+                    ),
+                  ),
+                  border: OutlineInputBorder(
+                    borderSide: BorderSide(
+                      color: MyColor.grey,
+                    ),
+                  ),
+                ),
+                inputFormatters: [
+                  FilteringTextInputFormatter.digitsOnly,
+                  LengthLimitingTextInputFormatter(10),
                 ],
+                keyboardType: TextInputType.phone,
               ),
-              const SizedBox(
-                height: 10,
+            ),
+            const SizedBox(
+              height: 20,
+            ),
+            const Row(
+              children: [
+                Padding(
+                  padding: EdgeInsets.only(left: 30.0),
+                  child: Text(
+                    'Password',
+                    style: MyStyle.tx14b,
+                  ),
+                ),
+              ],
+            ),
+            // const SizedBox(
+            //   height: 10,
+            // ),
+            Container(
+              height: 50,
+              width: MediaQuery.of(context).size.width,
+              margin: const EdgeInsets.symmetric(horizontal: 30),
+              child: TextFormField(
+                controller: passController,
+                style: MyStyle.tx14b,
+                decoration: InputDecoration(
+                  isDense: true,
+                  suffixIcon: IconButton(
+                    onPressed: () {
+                      setState(() {
+                        _isObscure = !_isObscure;
+                      });
+                    },
+                    icon: Icon(_isObscure
+                        ? Icons.visibility_off_sharp
+                        : Icons.visibility_sharp),
+                  ),
+                  contentPadding: const EdgeInsets.symmetric(
+                    horizontal: 20,
+                    // vertical: 20,
+                  ),
+                  enabledBorder: const OutlineInputBorder(
+                    borderSide: BorderSide(
+                      color: MyColor.grey,
+                    ),
+                  ),
+                  focusedBorder: const OutlineInputBorder(
+                    borderSide: BorderSide(
+                      color: MyColor.grey,
+                    ),
+                  ),
+                  border: const OutlineInputBorder(
+                    borderSide: BorderSide(
+                      color: MyColor.grey,
+                    ),
+                  ),
+                ),
+                obscureText: _isObscure,
+                keyboardType: TextInputType.visiblePassword,
               ),
-              Container(
-                height: 50,
-                width: MediaQuery.of(context).size.width,
-                margin: const EdgeInsets.symmetric(horizontal: 30),
+            ),
+            const SizedBox(
+              height: 15,
+            ),
+            Center(
+              child: TextButton(
+                style: ButtonStyle(
+                  overlayColor: MaterialStateProperty.all(Colors.transparent),
+                ),
+                onPressed: () {
+                  // Navigator.pushNamed(context, forgotPassRoute);
+                  setState(() {
+                    isCheck = !isCheck;
+                  });
+                },
                 child: Row(
+                  mainAxisAlignment: MainAxisAlignment.center,
                   children: [
-                    Container(
-                      height: 65,
-                      width: 80,
-                      decoration: BoxDecoration(
-                        border: Border.all(
-                          width: 1,
-                          color: MyColor.grey,
-                        ),
-                      ),
-                      child: const Center(
-                        child: Text(
-                          '+91',
-                          style: MyStyle.tx20b,
-                        ),
-                      ),
-                    ),
-                    Expanded(
-                      child: SizedBox(
-                        height: 65,
-                        // margin: const EdgeInsets.only(right: 30),
-                        child: TextFormField(
-                          controller: mobController,
-                          decoration: const InputDecoration(
-                            contentPadding: EdgeInsets.symmetric(
-                              horizontal: 20,
-                              vertical: 20,
-                            ),
-                            enabledBorder: OutlineInputBorder(
-                              borderSide: BorderSide(
-                                color: MyColor.grey,
-                              ),
-                            ),
-                            focusedBorder: OutlineInputBorder(
-                              borderSide: BorderSide(
-                                color: MyColor.grey,
-                              ),
-                            ),
-                            border: OutlineInputBorder(
-                              borderSide: BorderSide(
-                                color: MyColor.grey,
-                              ),
-                            ),
+                    isCheck
+                        ? const Icon(
+                            Icons.check_box,
+                            color: MyColor.black,
+                          )
+                        : const Icon(
+                            Icons.check_box_outline_blank,
+                            color: MyColor.black,
                           ),
-                          inputFormatters: [
-                            FilteringTextInputFormatter.digitsOnly,
-                            LengthLimitingTextInputFormatter(10),
-                          ],
-                          keyboardType: TextInputType.phone,
-                        ),
+                    const SizedBox(
+                      width: 20,
+                    ),
+                    Text(
+                      'Enables biometric access to Login',
+                      textAlign: TextAlign.center,
+                      style: MyStyle.tx14b.copyWith(
+                        fontSize: 13,
+                        fontWeight: FontWeight.w700,
+                        fontFamily: 'Poppins-SemiBold',
                       ),
                     ),
                   ],
                 ),
               ),
-              const SizedBox(
-                height: 20,
-              ),
-              const Row(
-                children: [
-                  Padding(
-                    padding: EdgeInsets.only(left: 30.0),
-                    child: Text(
-                      'Password',
-                      style: MyStyle.tx14b,
-                    ),
+            ),
+            Center(
+              child: TextButton(
+                style: ButtonStyle(
+                  overlayColor: MaterialStateProperty.all(Colors.transparent),
+                ),
+                onPressed: () {
+                  Navigator.pushNamed(context, forgotPassRoute);
+                },
+                child: Text(
+                  'Forgot password?',
+                  textAlign: TextAlign.center,
+                  style: MyStyle.tx14b.copyWith(
+                    fontSize: 13,
+                    fontWeight: FontWeight.w700,
+                    fontFamily: 'Poppins-SemiBold',
                   ),
-                ],
+                ),
               ),
-              const SizedBox(
-                height: 10,
-              ),
-              Container(
-                height: 65,
+            ),
+            const SizedBox(
+              height: 80,
+            ),
+            InkWell(
+              onTap: () {
+                Navigator.pushNamed(context, otpVerifyRoute);
+              },
+              child: Container(
+                height: 50,
                 width: MediaQuery.of(context).size.width,
                 margin: const EdgeInsets.symmetric(horizontal: 30),
-                child: TextFormField(
-                  controller: passController,
-                  decoration: InputDecoration(
-                    isDense: true,
-                    suffixIcon: IconButton(
-                      onPressed: () {
-                        setState(() {
-                          _isObscure = !_isObscure;
-                        });
-                      },
-                      icon: Icon(_isObscure
-                          ? Icons.visibility_off_sharp
-                          : Icons.visibility_sharp),
-                    ),
-                    contentPadding: const EdgeInsets.symmetric(
-                      horizontal: 20,
-                      vertical: 20,
-                    ),
-                    enabledBorder: const OutlineInputBorder(
-                      borderSide: BorderSide(
-                        color: MyColor.grey,
-                      ),
-                    ),
-                    focusedBorder: const OutlineInputBorder(
-                      borderSide: BorderSide(
-                        color: MyColor.grey,
-                      ),
-                    ),
-                    border: const OutlineInputBorder(
-                      borderSide: BorderSide(
-                        color: MyColor.grey,
-                      ),
-                    ),
-                  ),
-                  obscureText: _isObscure,
-                  keyboardType: TextInputType.visiblePassword,
-                ),
-              ),
-              const SizedBox(
-                height: 15,
-              ),
-              Center(
-                child: TextButton(
-                  onPressed: () {
-                    Navigator.pushNamed(context, forgotPassRoute);
-                  },
+                color: MyColor.grey,
+                child: Center(
                   child: Text(
-                    'Forgot password?',
-                    textAlign: TextAlign.center,
-                    style: MyStyle.tx14b.copyWith(
-                      fontWeight: FontWeight.w700,
-                      fontFamily: 'Poppins-SemiBold',
-                    ),
+                    'GET OTP',
+                    style: MyStyle.tx20b
+                        .copyWith(fontFamily: 'Poppins-SemiBold', fontSize: 15),
                   ),
                 ),
               ),
-              const SizedBox(
-                height: 15,
-              ),
-              InkWell(
-                onTap: () {
-                  Navigator.pushNamed(context, otpVerifyRoute);
-                },
-                child: Container(
-                  height: 65,
-                  width: MediaQuery.of(context).size.width,
-                  margin: const EdgeInsets.symmetric(horizontal: 30),
-                  color: MyColor.grey,
-                  child: Center(
-                    child: Text(
-                      'GET OTP',
-                      style: MyStyle.tx20b
-                          .copyWith(fontFamily: 'Poppins-SemiBold'),
-                    ),
+            ),
+            const SizedBox(
+              height: 20,
+            ),
+            InkWell(
+              onTap: () {
+                Navigator.pushNamed(context, welcomeRoute);
+              },
+              child: Container(
+                height: 50,
+                width: MediaQuery.of(context).size.width,
+                margin: const EdgeInsets.symmetric(horizontal: 30),
+                color: MyColor.black,
+                child: Center(
+                  child: Text(
+                    'SIGN IN',
+                    style: MyStyle.tx20W
+                        .copyWith(fontFamily: 'Poppins-SemiBold', fontSize: 15),
                   ),
                 ),
               ),
-              const SizedBox(
-                height: 20,
-              ),
-              InkWell(
-                onTap: () {
-                  Navigator.pushNamed(context, welcomeRoute);
-                },
-                child: Container(
-                  height: 65,
-                  width: MediaQuery.of(context).size.width,
-                  margin: const EdgeInsets.symmetric(horizontal: 30),
-                  color: MyColor.black,
-                  child: Center(
-                    child: Text(
-                      'SIGN IN',
-                      style: MyStyle.tx20W
-                          .copyWith(fontFamily: 'Poppins-SemiBold'),
-                    ),
-                  ),
-                ),
-              ),
-              const SizedBox(
-                height: 30,
-              ),
-            ],
-          ),
+            ),
+            const SizedBox(
+              height: 30,
+            ),
+          ],
         ),
       ),
     );

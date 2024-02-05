@@ -28,32 +28,37 @@ class _ForgotPassState extends State<ForgotPass> {
               ),
               Image.asset(
                 'assets/icons/colorsol.png',
-                height: 46,
-                width: 223,
+                height: 44,
+                width: 200,
+                fit: BoxFit.fill,
               ),
               const SizedBox(
                 height: 50,
               ),
               Image.asset(
                 'assets/icons/forgotPass.png',
-                width: 178,
+                width: 190,
                 height: 159,
               ),
               const SizedBox(
-                height: 20,
+                height: 30,
               ),
-              const Text(
+              Text(
                 'Forgot Password?',
-                style: MyStyle.tx32b,
+                style: MyStyle.tx32b.copyWith(
+                  fontSize: 20,
+                ),
               ),
-              const Padding(
-                padding: EdgeInsets.symmetric(horizontal: 30.0),
+              Padding(
+                padding: const EdgeInsets.symmetric(horizontal: 30.0),
                 child: Center(
                   child: Text(
                     'Enter your mobile phone number '
                     'associated with your Colorsoul account.',
                     textAlign: TextAlign.center,
-                    style: MyStyle.tx14b,
+                    style: MyStyle.tx14b.copyWith(
+                      fontSize: 12,
+                    ),
                   ),
                 ),
               ),
@@ -64,81 +69,75 @@ class _ForgotPassState extends State<ForgotPass> {
                 height: 50,
                 width: MediaQuery.of(context).size.width,
                 margin: const EdgeInsets.symmetric(horizontal: 30),
-                child: Row(
-                  children: [
-                    Container(
-                      height: 65,
-                      width: 80,
-                      decoration: BoxDecoration(
-                        border: Border.all(
-                          width: 1,
-                          color: MyColor.grey,
-                        ),
-                      ),
-                      child: const Center(
-                        child: Text(
-                          '+91',
-                          style: MyStyle.tx20b,
-                        ),
-                      ),
-                    ),
-                    Expanded(
-                      child: SizedBox(
-                        height: 65,
-                        // margin: const EdgeInsets.only(right: 30),
-                        child: TextFormField(
-                          controller: forgotPassController,
-                          decoration: const InputDecoration(
-                            contentPadding: EdgeInsets.symmetric(
-                              horizontal: 20,
-                              vertical: 20,
-                            ),
-                            enabledBorder: OutlineInputBorder(
-                              borderSide: BorderSide(
-                                color: MyColor.grey,
-                              ),
-                            ),
-                            focusedBorder: OutlineInputBorder(
-                              borderSide: BorderSide(
-                                color: MyColor.grey,
-                              ),
-                            ),
-                            border: OutlineInputBorder(
-                              borderSide: BorderSide(
-                                color: MyColor.grey,
-                              ),
-                            ),
+                child: TextFormField(
+                  controller: forgotPassController,
+                  style: MyStyle.tx14b,
+                  decoration: InputDecoration(
+                    prefixIcon: Container(
+                      width: 50,
+                      height: 50,
+                      alignment: Alignment.center,
+                      decoration: const BoxDecoration(
+                        border: Border(
+                          right: BorderSide(
+                            color: MyColor.grey,
                           ),
-                          inputFormatters: [
-                            FilteringTextInputFormatter.digitsOnly,
-                            LengthLimitingTextInputFormatter(10),
-                          ],
-                          keyboardType: TextInputType.phone,
+                        ),
+                      ),
+                      child: Text(
+                        '+91',
+                        textAlign: TextAlign.center,
+                        style: MyStyle.tx20b.copyWith(
+                          fontSize: 14,
+                          fontFamily: 'Poppins-SemiBold',
                         ),
                       ),
                     ),
+                    contentPadding: const EdgeInsets.only(left: 40),
+                    enabledBorder: const OutlineInputBorder(
+                      borderSide: BorderSide(
+                        color: MyColor.grey,
+                      ),
+                    ),
+                    focusedBorder: const OutlineInputBorder(
+                      borderSide: BorderSide(
+                        color: MyColor.grey,
+                      ),
+                    ),
+                    border: const OutlineInputBorder(
+                      borderSide: BorderSide(
+                        color: MyColor.grey,
+                      ),
+                    ),
+                  ),
+                  inputFormatters: [
+                    FilteringTextInputFormatter.digitsOnly,
+                    LengthLimitingTextInputFormatter(10),
                   ],
+                  keyboardType: TextInputType.phone,
                 ),
               ),
-              const Spacer(),
+              const SizedBox(
+                height: 30,
+              ),
               InkWell(
                 onTap: () {
                   Navigator.pushNamed(context, forgotOtpPassRoute);
                 },
                 child: Container(
-                  height: 65,
-                  margin: EdgeInsets.symmetric(horizontal: 30),
+                  height: 50,
+                  margin: const EdgeInsets.symmetric(horizontal: 30),
                   width: MediaQuery.of(context).size.width,
                   color: MyColor.black,
-                  child: const Center(
+                  child: Center(
                     child: Text(
                       'Continue',
-                      style: MyStyle.tx20W,
+                      style: MyStyle.tx20W.copyWith(fontSize: 15),
                     ),
                   ),
                 ),
               ),
-              SizedBox(
+              const SizedBox(
                 height: 30,
               ),
             ],

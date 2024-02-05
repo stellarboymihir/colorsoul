@@ -15,62 +15,77 @@ class _StarterState extends State<Starter> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: Padding(
-        padding: const EdgeInsets.symmetric(horizontal: 20.0, vertical: 0),
-        child: Column(
-          crossAxisAlignment: CrossAxisAlignment.center,
-          children: [
-            Image.asset(
-              'assets/icons/logo.png',
-              height: 220,
-              width: 196,
-            ),
-            Padding(
-              padding: const EdgeInsets.symmetric(horizontal: 20.0),
-              child: Image.asset(
-                'assets/icons/bro.png',
-                fit: BoxFit.cover,
-              ),
-            ),
-            const SizedBox(
-              height: 40,
-            ),
-            const Text(
-              'Let’s started',
-              style: MyStyle.tx20b,
-            ),
-            const Padding(
-              padding: EdgeInsets.symmetric(horizontal: 20.0, vertical: 5),
-              child: Text(
-                'You can use all our services. '
-                'you can manage your sales and transactions to be successful',
-                textAlign: TextAlign.center,
-                style: MyStyle.tx12b,
-              ),
-            ),
-            Spacer(),
-            InkWell(
-              onTap: () {
-                Navigator.pushReplacementNamed(context, signInPageRoute);
-              },
-              child: Container(
-                height: 60,
-                width: MediaQuery.of(context).size.width,
-                color: MyColor.black,
-                child: Center(
+      body: SingleChildScrollView(
+        physics: NeverScrollableScrollPhysics(),
+        child: SizedBox(
+          height: MediaQuery.of(context).size.height,
+          child: Padding(
+            padding: const EdgeInsets.symmetric(horizontal: 20.0, vertical: 0),
+            child: Column(
+              crossAxisAlignment: CrossAxisAlignment.center,
+              children: [
+                SizedBox(
+                  height: 60,
+                ),
+                Image.asset(
+                  'assets/icons/logo.png',
+                  height: 160,
+                  width: 196,
+                  fit: BoxFit.contain,
+                ),
+                Padding(
+                  padding: const EdgeInsets.symmetric(horizontal: 20.0),
+                  child: Image.asset(
+                    'assets/icons/bro.png',
+                    fit: BoxFit.cover,
+                  ),
+                ),
+                const SizedBox(
+                  height: 40,
+                ),
+                Text(
+                  'Let’s started',
+                  style: MyStyle.tx20b.copyWith(
+                    fontFamily: 'Poppins-SemiBold',
+                  ),
+                ),
+                Padding(
+                  padding: EdgeInsets.symmetric(horizontal: 20.0, vertical: 5),
                   child: Text(
-                    'SIGN IN',
-                    style: MyStyle.tx20W.copyWith(
-                      fontFamily: 'Poppins-SemiBold',
+                    'You can use all our services. '
+                    'you can manage your sales and transactions to be successful',
+                    textAlign: TextAlign.center,
+                    style: MyStyle.tx12b.copyWith(
+                      fontFamily: 'Poppins-Regular',
                     ),
                   ),
                 ),
-              ),
+                Spacer(),
+                InkWell(
+                  onTap: () {
+                    Navigator.pushReplacementNamed(context, signInPageRoute);
+                  },
+                  child: Container(
+                    height: 50,
+                    width: MediaQuery.of(context).size.width,
+                    color: MyColor.black,
+                    child: Center(
+                      child: Text(
+                        'SIGN IN',
+                        style: MyStyle.tx20W.copyWith(
+                          fontSize: 15,
+                          fontFamily: 'Poppins-SemiBold',
+                        ),
+                      ),
+                    ),
+                  ),
+                ),
+                SizedBox(
+                  height: 30,
+                ),
+              ],
             ),
-            SizedBox(
-              height: 30,
-            ),
-          ],
+          ),
         ),
       ),
     );
