@@ -27,22 +27,23 @@ class _NewRetailerState extends State<NewRetailer> {
         leading: Container(
           height: 40,
           width: 40,
-          padding: const EdgeInsets.all(0),
-          margin: const EdgeInsets.all(12),
+          margin: const EdgeInsets.fromLTRB(15, 10, 0, 10),
           color: MyColor.grey,
           child: const Center(
-              child: Icon(
-            Icons.arrow_back_ios_new,
-            size: 16,
-          )),
+            child: Icon(
+              Icons.arrow_back_ios_new,
+              size: 16,
+            ),
+          ),
         ),
+        leadingWidth: 50,
         title: const Text(
           'Add new distributor/Retailer',
           style: MyStyle.tx16b,
         ),
       ),
       body: Padding(
-        padding: const EdgeInsets.all(12.0),
+        padding: const EdgeInsets.symmetric(horizontal: 15.0, vertical: 10),
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
@@ -50,6 +51,7 @@ class _NewRetailerState extends State<NewRetailer> {
               'Select type',
               style: MyStyle.tx14b.copyWith(
                 fontWeight: FontWeight.w400,
+                fontFamily: 'Poppins-Medium',
               ),
             ),
             SizedBox(
@@ -66,7 +68,7 @@ class _NewRetailerState extends State<NewRetailer> {
                       const FloatingDistributor();
                     },
                     child: Container(
-                      height: 55,
+                      height: 50,
                       width: MediaQuery.of(context).size.width,
                       // margin: EdgeInsets.all(12),
                       color: onPressed == 'distributor'
@@ -76,10 +78,14 @@ class _NewRetailerState extends State<NewRetailer> {
                         child: Text(
                           'Distributor',
                           style: onPressed == 'distributor'
-                              ? MyStyle.tx12w.copyWith(
+                              ? MyStyle.tx14w.copyWith(
+                                  fontSize: 12,
+                                  fontFamily: 'Poppins-SemiBold',
                                   fontWeight: FontWeight.w700,
                                 )
-                              : MyStyle.tx12b.copyWith(
+                              : MyStyle.tx14b.copyWith(
+                                  fontSize: 12,
+                                  fontFamily: 'Poppins-SemiBold',
                                   fontWeight: FontWeight.w700,
                                 ),
                         ),
@@ -99,7 +105,7 @@ class _NewRetailerState extends State<NewRetailer> {
                       const FloatingRetailer();
                     },
                     child: Container(
-                      height: 55,
+                      height: 50,
                       width: MediaQuery.of(context).size.width,
                       // margin: EdgeInsets.all(12),
                       color: onPressed == 'retailer'
@@ -109,10 +115,14 @@ class _NewRetailerState extends State<NewRetailer> {
                         child: Text(
                           'Retailer',
                           style: onPressed == 'retailer'
-                              ? MyStyle.tx12w.copyWith(
+                              ? MyStyle.tx14w.copyWith(
+                                  fontSize: 14,
+                                  fontFamily: 'Poppins-SemiBold',
                                   fontWeight: FontWeight.w700,
                                 )
-                              : MyStyle.tx12b.copyWith(
+                              : MyStyle.tx14b.copyWith(
+                                  fontSize: 14,
+                                  fontFamily: 'Poppins-SemiBold',
                                   fontWeight: FontWeight.w700,
                                 ),
                         ),

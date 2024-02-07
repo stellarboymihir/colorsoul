@@ -69,36 +69,39 @@ class _FloatingDistributorState extends State<FloatingDistributor> {
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
-          Container(
-            height: 180,
-            width: MediaQuery.of(context).size.width,
-            margin: const EdgeInsets.symmetric(vertical: 12),
-            padding: const EdgeInsets.all(40),
-            decoration: BoxDecoration(
-              border: Border.all(
-                color: MyColor.grey,
+          SizedBox(
+            height: 15,
+          ),
+          InkWell(
+            onTap: () async {
+              await _pickerCam();
+            },
+            child: Container(
+              height: 180,
+              width: MediaQuery.of(context).size.width,
+              decoration: BoxDecoration(
+                border: Border.all(
+                  color: MyColor.grey,
+                ),
               ),
-            ),
-            child: InkWell(
-              onTap: () async {
-                await _pickerCam();
-              },
               child: image != null
                   ? Image.file(
                       image!,
                       height: 54,
                       width: 54,
-                      fit: BoxFit.cover,
+                      fit: BoxFit.fill,
                     )
-                  : Image.asset(
-                      'assets/icons/camera.png',
-                      height: 54,
-                      width: 54,
+                  : Center(
+                      child: Image.asset(
+                        'assets/icons/camera.png',
+                        height: 70,
+                        width: 70,
+                      ),
                     ),
             ),
           ),
           const SizedBox(
-            height: 5,
+            height: 15,
           ),
 
           //  Distributor Business Name
@@ -109,10 +112,11 @@ class _FloatingDistributorState extends State<FloatingDistributor> {
               fontFamily: 'Roboto-Medium',
             ),
           ),
+          const SizedBox(
+            height: 8,
+          ),
           Container(
-            // height: 55,
             width: MediaQuery.of(context).size.width,
-            margin: const EdgeInsets.symmetric(vertical: 12),
             decoration: BoxDecoration(
               border: Border.all(
                 color: MyColor.grey,
@@ -120,65 +124,72 @@ class _FloatingDistributorState extends State<FloatingDistributor> {
             ),
             child: Theme(
               data: Theme.of(context).copyWith(
-                dividerColor: Colors.transparent,
+                listTileTheme: ListTileTheme.of(context).copyWith(
+                  dense: true,
+                  minVerticalPadding: 0,
+                ),
               ),
               child: ExpansionTile(
                 title: const Text(
                   '',
                   style: MyStyle.tx14b,
                 ),
+                tilePadding: const EdgeInsets.symmetric(
+                  horizontal: 12,
+                ),
+                childrenPadding: const EdgeInsets.only(
+                  left: 14,
+                ),
                 trailing: const Icon(
-                  // _customTileExpanded
-                  //     ? Icons.arrow_drop_down_circle
-                  //     : Icons.arrow_drop_down,
                   Icons.arrow_drop_down_sharp,
+                  size: 20,
                   color: MyColor.black,
                 ),
-                shape: Border.all(color: MyColor.grey),
+                shape: Border.all(color: Colors.transparent),
                 children: <Widget>[
-                  ListTile(
-                    title: Row(
-                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                      children: [
-                        // Text(
-                        //     // // 'Personal Vehicle',
-                        //     // style: MyStyle.tx14b.copyWith(
-                        //     //   fontFamily: 'Roboto-Med',
-                        //     //   fontWeight: FontWeight.w400,
-                        //     // ),
-                        //     ),
-                        Checkbox(
-                            activeColor: MyColor.black,
-                            value: _isSelected[0],
-                            onChanged: (bool? val) {
-                              setState(() {
-                                _isSelected[0] = val!;
-                              });
-                            })
-                      ],
-                    ),
+                  Row(
+                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                    children: [
+                      Text(
+                        'Business Name 1',
+                        style: MyStyle.tx14b.copyWith(
+                          fontFamily: 'Roboto-Regular',
+                          fontWeight: FontWeight.w400,
+                        ),
+                      ),
+                      Checkbox(
+                          materialTapTargetSize:
+                              MaterialTapTargetSize.shrinkWrap,
+                          activeColor: MyColor.black,
+                          value: _isSelected[0],
+                          onChanged: (bool? val) {
+                            setState(() {
+                              _isSelected[0] = val!;
+                            });
+                          })
+                    ],
                   ),
-                  ListTile(
-                    title: Row(
-                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                      children: [
-                        // Text(
-                        //     // // 'Public Transport',
-                        //     // style: MyStyle.tx14b.copyWith(
-                        //     //   fontFamily: 'Roboto-Med',
-                        //     //   fontWeight: FontWeight.w400,
-                        //     // ),
-                        //     ),
-                        Checkbox(
-                            activeColor: MyColor.black,
-                            value: _isSelected[1],
-                            onChanged: (bool? val) {
-                              setState(() {
-                                _isSelected[1] = val!;
-                              });
-                            })
-                      ],
-                    ),
+                  Row(
+                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                    children: [
+                      Text(
+                        'Business Name 2',
+                        style: MyStyle.tx14b.copyWith(
+                          fontFamily: 'Roboto-Regular',
+                          fontWeight: FontWeight.w400,
+                        ),
+                      ),
+                      Checkbox(
+                          materialTapTargetSize:
+                              MaterialTapTargetSize.shrinkWrap,
+                          activeColor: MyColor.black,
+                          value: _isSelected[1],
+                          onChanged: (bool? val) {
+                            setState(() {
+                              _isSelected[1] = val!;
+                            });
+                          })
+                    ],
                   ),
                 ],
                 onExpansionChanged: (bool expanded) {
@@ -187,7 +198,9 @@ class _FloatingDistributorState extends State<FloatingDistributor> {
               ),
             ),
           ),
-
+          const SizedBox(
+            height: 15,
+          ),
           //  Business Type
           Text(
             'Business Type',
@@ -196,10 +209,11 @@ class _FloatingDistributorState extends State<FloatingDistributor> {
               fontFamily: 'Roboto-Medium',
             ),
           ),
+          const SizedBox(
+            height: 8,
+          ),
           Container(
-            // height: 55,
             width: MediaQuery.of(context).size.width,
-            margin: const EdgeInsets.symmetric(vertical: 12),
             decoration: BoxDecoration(
               border: Border.all(
                 color: MyColor.grey,
@@ -207,65 +221,72 @@ class _FloatingDistributorState extends State<FloatingDistributor> {
             ),
             child: Theme(
               data: Theme.of(context).copyWith(
-                dividerColor: Colors.transparent,
+                listTileTheme: ListTileTheme.of(context).copyWith(
+                  dense: true,
+                  minVerticalPadding: 0,
+                ),
               ),
               child: ExpansionTile(
                 title: const Text(
                   '',
                   style: MyStyle.tx14b,
                 ),
+                tilePadding: const EdgeInsets.symmetric(
+                  horizontal: 12,
+                ),
+                childrenPadding: const EdgeInsets.only(
+                  left: 14,
+                ),
                 trailing: const Icon(
-                  // _customTileExpanded
-                  //     ? Icons.arrow_drop_down_circle
-                  //     : Icons.arrow_drop_down,
                   Icons.arrow_drop_down_sharp,
+                  size: 20,
                   color: MyColor.black,
                 ),
-                shape: Border.all(color: MyColor.grey),
+                shape: Border.all(color: Colors.transparent),
                 children: <Widget>[
-                  ListTile(
-                    title: Row(
-                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                      children: [
-                        // Text(
-                        //     // // 'Personal Vehicle',
-                        //     // style: MyStyle.tx14b.copyWith(
-                        //     //   fontFamily: 'Roboto-Med',
-                        //     //   fontWeight: FontWeight.w400,
-                        //     // ),
-                        //     ),
-                        Checkbox(
-                            activeColor: MyColor.black,
-                            value: _isSelected[0],
-                            onChanged: (bool? val) {
-                              setState(() {
-                                _isSelected[0] = val!;
-                              });
-                            })
-                      ],
-                    ),
+                  Row(
+                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                    children: [
+                      Text(
+                        'Business Type 1',
+                        style: MyStyle.tx14b.copyWith(
+                          fontFamily: 'Roboto-Regular',
+                          fontWeight: FontWeight.w400,
+                        ),
+                      ),
+                      Checkbox(
+                          materialTapTargetSize:
+                              MaterialTapTargetSize.shrinkWrap,
+                          activeColor: MyColor.black,
+                          value: _isSelected[0],
+                          onChanged: (bool? val) {
+                            setState(() {
+                              _isSelected[0] = val!;
+                            });
+                          })
+                    ],
                   ),
-                  ListTile(
-                    title: Row(
-                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                      children: [
-                        // Text(
-                        //     // // 'Public Transport',
-                        //     // style: MyStyle.tx14b.copyWith(
-                        //     //   fontFamily: 'Roboto-Med',
-                        //     //   fontWeight: FontWeight.w400,
-                        //     // ),
-                        //     ),
-                        Checkbox(
-                            activeColor: MyColor.black,
-                            value: _isSelected[1],
-                            onChanged: (bool? val) {
-                              setState(() {
-                                _isSelected[1] = val!;
-                              });
-                            })
-                      ],
-                    ),
+                  Row(
+                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                    children: [
+                      Text(
+                        'Business Type 2',
+                        style: MyStyle.tx14b.copyWith(
+                          fontFamily: 'Roboto-Regular',
+                          fontWeight: FontWeight.w400,
+                        ),
+                      ),
+                      Checkbox(
+                          materialTapTargetSize:
+                              MaterialTapTargetSize.shrinkWrap,
+                          activeColor: MyColor.black,
+                          value: _isSelected[1],
+                          onChanged: (bool? val) {
+                            setState(() {
+                              _isSelected[1] = val!;
+                            });
+                          })
+                    ],
                   ),
                 ],
                 onExpansionChanged: (bool expanded) {
@@ -273,6 +294,9 @@ class _FloatingDistributorState extends State<FloatingDistributor> {
                 },
               ),
             ),
+          ),
+          SizedBox(
+            height: 15,
           ),
 
           //   Address
@@ -283,22 +307,19 @@ class _FloatingDistributorState extends State<FloatingDistributor> {
               fontFamily: 'Roboto-Medium',
             ),
           ),
-          Container(
+          SizedBox(
+            height: 8,
+          ),
+          SizedBox(
             height: 50,
             width: MediaQuery.of(context).size.width,
-            decoration: BoxDecoration(
-              border: Border.all(
-                color: MyColor.grey,
-              ),
-            ),
-            margin: const EdgeInsets.symmetric(vertical: 12),
             child: TextFormField(
               controller: addressController,
+              style: MyStyle.tx14b,
               decoration: const InputDecoration(
-                isDense: true,
+                // isDense: true,
                 contentPadding: EdgeInsets.symmetric(
-                  horizontal: 20,
-                  vertical: 20,
+                  horizontal: 30,
                 ),
                 enabledBorder: OutlineInputBorder(
                   borderSide: BorderSide(
@@ -319,7 +340,9 @@ class _FloatingDistributorState extends State<FloatingDistributor> {
               keyboardType: TextInputType.streetAddress,
             ),
           ),
-
+          SizedBox(
+            height: 15,
+          ),
           //    Dropdown
           Row(
             children: [
@@ -453,7 +476,7 @@ class _FloatingDistributorState extends State<FloatingDistributor> {
             ],
           ),
           const SizedBox(
-            height: 10,
+            height: 15,
           ),
           Row(
             children: [
@@ -469,7 +492,7 @@ class _FloatingDistributorState extends State<FloatingDistributor> {
                     ),
                   ),
                   const SizedBox(
-                    height: 10,
+                    height: 8,
                   ),
                   Container(
                     height: 55,
@@ -517,7 +540,7 @@ class _FloatingDistributorState extends State<FloatingDistributor> {
                 ],
               ),
               const SizedBox(
-                width: 10,
+                width: 8,
               ),
 
               //  Area
@@ -532,7 +555,7 @@ class _FloatingDistributorState extends State<FloatingDistributor> {
                     ),
                   ),
                   const SizedBox(
-                    height: 10,
+                    height: 8,
                   ),
                   Container(
                     height: 55,
@@ -580,7 +603,7 @@ class _FloatingDistributorState extends State<FloatingDistributor> {
             ],
           ),
           const SizedBox(
-            height: 10,
+            height: 15,
           ),
 
           //  Pin Code
@@ -591,22 +614,17 @@ class _FloatingDistributorState extends State<FloatingDistributor> {
               fontFamily: 'Roboto-Medium',
             ),
           ),
+          SizedBox(
+            height: 8,
+          ),
           Container(
             height: 50,
             width: MediaQuery.of(context).size.width,
-            decoration: BoxDecoration(
-              border: Border.all(
-                color: MyColor.grey,
-              ),
-            ),
-            margin: const EdgeInsets.symmetric(vertical: 12),
             child: TextFormField(
               controller: pinController,
               decoration: const InputDecoration(
-                isDense: true,
                 contentPadding: EdgeInsets.symmetric(
-                  horizontal: 20,
-                  vertical: 20,
+                  horizontal: 30,
                 ),
                 enabledBorder: OutlineInputBorder(
                   borderSide: BorderSide(
@@ -628,10 +646,10 @@ class _FloatingDistributorState extends State<FloatingDistributor> {
             ),
           ),
 
-          const SizedBox(
-            height: 5,
-          ),
           //   Person Name
+          const SizedBox(
+            height: 15,
+          ),
           Text(
             'Person Name ',
             style: MyStyle.tx14b.copyWith(
@@ -639,22 +657,17 @@ class _FloatingDistributorState extends State<FloatingDistributor> {
               fontFamily: 'Roboto-Medium',
             ),
           ),
-          Container(
+          const SizedBox(
+            height: 8,
+          ),
+          SizedBox(
             height: 50,
             width: MediaQuery.of(context).size.width,
-            decoration: BoxDecoration(
-              border: Border.all(
-                color: MyColor.grey,
-              ),
-            ),
-            margin: const EdgeInsets.symmetric(vertical: 12),
             child: TextFormField(
               controller: nameController,
               decoration: const InputDecoration(
-                isDense: true,
                 contentPadding: EdgeInsets.symmetric(
-                  horizontal: 20,
-                  vertical: 20,
+                  horizontal: 30,
                 ),
                 enabledBorder: OutlineInputBorder(
                   borderSide: BorderSide(
@@ -676,7 +689,7 @@ class _FloatingDistributorState extends State<FloatingDistributor> {
             ),
           ),
           const SizedBox(
-            height: 5,
+            height: 15,
           ),
           //     Mobile
           Text(
@@ -686,15 +699,12 @@ class _FloatingDistributorState extends State<FloatingDistributor> {
               fontFamily: 'Roboto-Medium',
             ),
           ),
-          Container(
+          const SizedBox(
+            height: 8,
+          ),
+          SizedBox(
             height: 50,
             width: MediaQuery.of(context).size.width,
-            decoration: BoxDecoration(
-              border: Border.all(
-                color: MyColor.grey,
-              ),
-            ),
-            margin: const EdgeInsets.symmetric(vertical: 12),
             child: TextFormField(
               controller: mobileController,
               decoration: const InputDecoration(
@@ -722,17 +732,21 @@ class _FloatingDistributorState extends State<FloatingDistributor> {
               keyboardType: TextInputType.phone,
             ),
           ),
-
+          const SizedBox(
+            height: 15,
+          ),
           InkWell(
             onTap: () {},
             child: Container(
-              height: 65,
+              height: 50,
+              margin: const EdgeInsets.fromLTRB(0, 0, 0, 20),
               width: MediaQuery.of(context).size.width,
               color: MyColor.black,
-              child: const Center(
+              child: Center(
                 child: Text(
                   'Submit',
-                  style: MyStyle.tx20W,
+                  style: MyStyle.tx20W
+                      .copyWith(fontFamily: 'Poppins-SemiBold', fontSize: 15),
                 ),
               ),
             ),

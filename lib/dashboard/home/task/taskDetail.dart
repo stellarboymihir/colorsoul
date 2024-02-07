@@ -15,12 +15,10 @@ class _TaskDetailState extends State<TaskDetail> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
+        scrolledUnderElevation: 0,
         backgroundColor: MyColor.white,
         leading: Container(
-          height: 40,
-          width: 40,
-          padding: const EdgeInsets.all(0),
-          margin: const EdgeInsets.all(12),
+          margin: const EdgeInsets.fromLTRB(15, 10, 0, 10),
           color: MyColor.grey,
           child: const Center(
               child: Icon(
@@ -28,6 +26,7 @@ class _TaskDetailState extends State<TaskDetail> {
             size: 16,
           )),
         ),
+        leadingWidth: 50,
         title: const Text(
           'TASK DETAILS',
           style: MyStyle.tx16b,
@@ -35,25 +34,45 @@ class _TaskDetailState extends State<TaskDetail> {
       ),
       body: SingleChildScrollView(
         child: Padding(
-          padding: const EdgeInsets.all(12.0),
+          padding: const EdgeInsets.symmetric(horizontal: 20.0),
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
+              SizedBox(
+                height: 5,
+              ),
               Text(
                 'Last week Update',
                 style: MyStyle.tx20b.copyWith(
+                  fontSize: 19,
                   fontWeight: FontWeight.w700,
+                  fontFamily: 'Poppins-SemiBold',
                 ),
               ),
+              const SizedBox(
+                height: 8,
+              ),
               Container(
-                height: 121,
-                margin: const EdgeInsets.symmetric(vertical: 12),
-                padding: const EdgeInsets.all(12),
+                // height: 121,
+                width: MediaQuery.of(context).size.width,
+                padding:
+                    const EdgeInsets.symmetric(horizontal: 12.0, vertical: 14),
+                margin: const EdgeInsets.only(bottom: 18),
                 decoration: BoxDecoration(
-                  border: Border.all(
-                    color: MyColor.grey,
-                    width: 4,
+                  color: MyColor.white,
+                  border: const Border(
+                    left: BorderSide(color: MyColor.grey),
+                    right: BorderSide(color: MyColor.grey),
+                    top: BorderSide(color: MyColor.grey),
                   ),
+                  boxShadow: [
+                    BoxShadow(
+                      color: MyColor.black.withOpacity(0.1),
+                      blurRadius: 4,
+                      spreadRadius: 0.01,
+                      offset: const Offset(1, 4),
+                    ),
+                  ],
                 ),
                 child: Text(
                   'Lorem ipsum dolor sit amet consectetur. '
@@ -66,30 +85,33 @@ class _TaskDetailState extends State<TaskDetail> {
                 ),
               ),
               Container(
-                height: 57,
+                height: 40,
                 width: MediaQuery.of(context).size.width,
-                margin: const EdgeInsets.symmetric(vertical: 12),
-                padding: const EdgeInsets.symmetric(horizontal: 12),
+                padding: const EdgeInsets.only(left: 12),
                 color: MyColor.black,
                 child: Row(
                   children: [
                     Image.asset(
                       'assets/icons/like.png',
-                      height: 28,
-                      width: 28,
+                      height: 20,
+                      width: 20,
                     ),
                     const SizedBox(
-                      width: 20,
+                      width: 8,
                     ),
                     Text(
                       ' Your task is Completed.',
                       style: MyStyle.tx14w.copyWith(
+                        fontSize: 12,
                         fontWeight: FontWeight.w700,
-                        fontFamily: 'Poppins-Regular',
+                        fontFamily: 'Poppins-Medium',
                       ),
                     ),
                   ],
                 ),
+              ),
+              const SizedBox(
+                height: 25,
               ),
               Text(
                 'Date',
@@ -98,12 +120,13 @@ class _TaskDetailState extends State<TaskDetail> {
                   fontFamily: 'Poppins-Medium',
                 ),
               ),
+              Text('18, Dec 2021',
+                  style: MyStyle.tx20b.copyWith(
+                    fontSize: 19,
+                    fontFamily: 'Poppins-Bold',
+                  )),
               const SizedBox(
-                height: 8,
-              ),
-              const Text('18, Dec 2021', style: MyStyle.tx20b),
-              const SizedBox(
-                height: 20,
+                height: 13,
               ),
               Text(
                 'Assigned by:',
@@ -112,14 +135,14 @@ class _TaskDetailState extends State<TaskDetail> {
                 ),
               ),
               const SizedBox(
-                height: 5,
+                height: 3,
               ),
               Text(
                 'ASM (Area Sales Manager)',
                 style: MyStyle.tx14b.copyWith(
+                  fontSize: 13,
                   fontWeight: FontWeight.w700,
                   fontFamily: 'Poppins-Bold',
-                  fontSize: 16,
                 ),
               ),
               const SizedBox(
@@ -129,13 +152,14 @@ class _TaskDetailState extends State<TaskDetail> {
                 'Note:',
                 style: MyStyle.tx12b.copyWith(
                   fontWeight: FontWeight.w400,
+                  fontSize: 11.5,
                 ),
               ),
+              SizedBox(
+                height: 5,
+              ),
               Container(
-                height: 87,
-                margin: const EdgeInsets.symmetric(vertical: 12),
-                padding:
-                    const EdgeInsets.symmetric(horizontal: 12, vertical: 12),
+                padding: const EdgeInsets.all(12),
                 decoration: const BoxDecoration(
                   color: MyColor.grey,
                 ),
@@ -149,47 +173,52 @@ class _TaskDetailState extends State<TaskDetail> {
                   ),
                 ),
               ),
+              SizedBox(
+                height: 15,
+              ),
               Text(
                 'Attachment',
                 style: MyStyle.tx12b.copyWith(
+                  fontSize: 11.5,
                   fontWeight: FontWeight.w400,
                 ),
               ),
+              SizedBox(
+                height: 5,
+              ),
               Container(
-                height: 132,
-                width: 144,
+                height: 110,
+                width: 110,
                 color: MyColor.grey,
-                margin: const EdgeInsets.symmetric(vertical: 12),
-                padding:
-                    const EdgeInsets.symmetric(horizontal: 12, vertical: 12),
+                // padding:
+                //     const EdgeInsets.symmetric(horizontal: 12, vertical: 12),
                 child: Center(
                   child: Image.asset(
                     'assets/icons/pdf.png',
-                    height: 54,
-                    width: 54,
+                    height: 36,
+                    width: 36,
                   ),
                 ),
               ),
-              const SizedBox(
-                height: 40,
-              ),
-              InkWell(
-                onTap: () {
-                  Navigator.pop(context);
-                },
-                child: Container(
-                  height: 65,
-                  width: MediaQuery.of(context).size.width,
-                  color: MyColor.black,
-                  child: const Center(
-                    child: Text(
-                      'Done',
-                      style: MyStyle.tx20W,
-                    ),
-                  ),
-                ),
-              )
             ],
+          ),
+        ),
+      ),
+      bottomNavigationBar: InkWell(
+        onTap: () {
+          Navigator.pop(context);
+        },
+        child: Container(
+          height: 50,
+          margin: const EdgeInsets.fromLTRB(20, 0, 20, 20),
+          width: MediaQuery.of(context).size.width,
+          color: MyColor.black,
+          child: Center(
+            child: Text(
+              'Done',
+              style: MyStyle.tx20W
+                  .copyWith(fontFamily: 'Poppins-SemiBold', fontSize: 15),
+            ),
           ),
         ),
       ),

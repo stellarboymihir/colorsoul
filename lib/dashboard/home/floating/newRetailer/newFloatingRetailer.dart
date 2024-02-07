@@ -70,39 +70,42 @@ class _FloatingRetailerState extends State<FloatingRetailer> {
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
-          Container(
-            height: 180,
-            width: MediaQuery.of(context).size.width,
-            margin: const EdgeInsets.symmetric(vertical: 12),
-            padding: const EdgeInsets.all(40),
-            decoration: BoxDecoration(
-              border: Border.all(
-                color: MyColor.grey,
+          SizedBox(
+            height: 15,
+          ),
+          InkWell(
+            onTap: () async {
+              await _pickerCam();
+            },
+            child: Container(
+              height: 180,
+              width: MediaQuery.of(context).size.width,
+              decoration: BoxDecoration(
+                border: Border.all(
+                  color: MyColor.grey,
+                ),
               ),
-            ),
-            child: InkWell(
-              onTap: () async {
-                await _pickerCam();
-              },
               child: image != null
                   ? Image.file(
                       image!,
                       height: 54,
                       width: 54,
-                      fit: BoxFit.cover,
+                      fit: BoxFit.fill,
                     )
-                  : Image.asset(
-                      'assets/icons/camera.png',
-                      height: 54,
-                      width: 54,
+                  : Center(
+                      child: Image.asset(
+                        'assets/icons/camera.png',
+                        height: 70,
+                        width: 70,
+                      ),
                     ),
             ),
           ),
           const SizedBox(
-            height: 5,
+            height: 15,
           ),
 
-          //  Distributor Business Name
+          //  Business Name
           Text(
             'Business Name',
             style: MyStyle.tx14b.copyWith(
@@ -110,10 +113,11 @@ class _FloatingRetailerState extends State<FloatingRetailer> {
               fontFamily: 'Roboto-Medium',
             ),
           ),
+          const SizedBox(
+            height: 8,
+          ),
           Container(
-            // height: 55,
             width: MediaQuery.of(context).size.width,
-            margin: const EdgeInsets.symmetric(vertical: 12),
             decoration: BoxDecoration(
               border: Border.all(
                 color: MyColor.grey,
@@ -121,65 +125,72 @@ class _FloatingRetailerState extends State<FloatingRetailer> {
             ),
             child: Theme(
               data: Theme.of(context).copyWith(
-                dividerColor: Colors.transparent,
+                listTileTheme: ListTileTheme.of(context).copyWith(
+                  dense: true,
+                  minVerticalPadding: 0,
+                ),
               ),
               child: ExpansionTile(
                 title: const Text(
                   '',
                   style: MyStyle.tx14b,
                 ),
+                tilePadding: const EdgeInsets.symmetric(
+                  horizontal: 12,
+                ),
+                childrenPadding: const EdgeInsets.only(
+                  left: 14,
+                ),
                 trailing: const Icon(
-                  // _customTileExpanded
-                  //     ? Icons.arrow_drop_down_circle
-                  //     : Icons.arrow_drop_down,
                   Icons.arrow_drop_down_sharp,
+                  size: 20,
                   color: MyColor.black,
                 ),
-                shape: Border.all(color: MyColor.grey),
+                shape: Border.all(color: Colors.transparent),
                 children: <Widget>[
-                  ListTile(
-                    title: Row(
-                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                      children: [
-                        // Text(
-                        //     // // 'Personal Vehicle',
-                        //     // style: MyStyle.tx14b.copyWith(
-                        //     //   fontFamily: 'Roboto-Med',
-                        //     //   fontWeight: FontWeight.w400,
-                        //     // ),
-                        //     ),
-                        Checkbox(
-                            activeColor: MyColor.black,
-                            value: _isSelected[0],
-                            onChanged: (bool? val) {
-                              setState(() {
-                                _isSelected[0] = val!;
-                              });
-                            })
-                      ],
-                    ),
+                  Row(
+                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                    children: [
+                      Text(
+                        'Business Name 1',
+                        style: MyStyle.tx14b.copyWith(
+                          fontFamily: 'Roboto-Regular',
+                          fontWeight: FontWeight.w400,
+                        ),
+                      ),
+                      Checkbox(
+                          materialTapTargetSize:
+                              MaterialTapTargetSize.shrinkWrap,
+                          activeColor: MyColor.black,
+                          value: _isSelected[0],
+                          onChanged: (bool? val) {
+                            setState(() {
+                              _isSelected[0] = val!;
+                            });
+                          })
+                    ],
                   ),
-                  ListTile(
-                    title: Row(
-                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                      children: [
-                        // Text(
-                        //     // // 'Public Transport',
-                        //     // style: MyStyle.tx14b.copyWith(
-                        //     //   fontFamily: 'Roboto-Med',
-                        //     //   fontWeight: FontWeight.w400,
-                        //     // ),
-                        //     ),
-                        Checkbox(
-                            activeColor: MyColor.black,
-                            value: _isSelected[1],
-                            onChanged: (bool? val) {
-                              setState(() {
-                                _isSelected[1] = val!;
-                              });
-                            })
-                      ],
-                    ),
+                  Row(
+                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                    children: [
+                      Text(
+                        'Business Name 2',
+                        style: MyStyle.tx14b.copyWith(
+                          fontFamily: 'Roboto-Regular',
+                          fontWeight: FontWeight.w400,
+                        ),
+                      ),
+                      Checkbox(
+                          materialTapTargetSize:
+                              MaterialTapTargetSize.shrinkWrap,
+                          activeColor: MyColor.black,
+                          value: _isSelected[1],
+                          onChanged: (bool? val) {
+                            setState(() {
+                              _isSelected[1] = val!;
+                            });
+                          })
+                    ],
                   ),
                 ],
                 onExpansionChanged: (bool expanded) {
@@ -188,7 +199,9 @@ class _FloatingRetailerState extends State<FloatingRetailer> {
               ),
             ),
           ),
-
+          const SizedBox(
+            height: 15,
+          ),
           //  Business Type
           Text(
             'Business Type',
@@ -197,10 +210,11 @@ class _FloatingRetailerState extends State<FloatingRetailer> {
               fontFamily: 'Roboto-Medium',
             ),
           ),
+          const SizedBox(
+            height: 8,
+          ),
           Container(
-            // height: 55,
             width: MediaQuery.of(context).size.width,
-            margin: const EdgeInsets.symmetric(vertical: 12),
             decoration: BoxDecoration(
               border: Border.all(
                 color: MyColor.grey,
@@ -208,65 +222,72 @@ class _FloatingRetailerState extends State<FloatingRetailer> {
             ),
             child: Theme(
               data: Theme.of(context).copyWith(
-                dividerColor: Colors.transparent,
+                listTileTheme: ListTileTheme.of(context).copyWith(
+                  dense: true,
+                  minVerticalPadding: 0,
+                ),
               ),
               child: ExpansionTile(
                 title: const Text(
                   '',
                   style: MyStyle.tx14b,
                 ),
+                tilePadding: const EdgeInsets.symmetric(
+                  horizontal: 12,
+                ),
+                childrenPadding: const EdgeInsets.only(
+                  left: 14,
+                ),
                 trailing: const Icon(
-                  // _customTileExpanded
-                  //     ? Icons.arrow_drop_down_circle
-                  //     : Icons.arrow_drop_down,
                   Icons.arrow_drop_down_sharp,
+                  size: 20,
                   color: MyColor.black,
                 ),
-                shape: Border.all(color: MyColor.grey),
+                shape: Border.all(color: Colors.transparent),
                 children: <Widget>[
-                  ListTile(
-                    title: Row(
-                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                      children: [
-                        // Text(
-                        //     // // 'Personal Vehicle',
-                        //     // style: MyStyle.tx14b.copyWith(
-                        //     //   fontFamily: 'Roboto-Med',
-                        //     //   fontWeight: FontWeight.w400,
-                        //     // ),
-                        //     ),
-                        Checkbox(
-                            activeColor: MyColor.black,
-                            value: _isSelected[0],
-                            onChanged: (bool? val) {
-                              setState(() {
-                                _isSelected[0] = val!;
-                              });
-                            })
-                      ],
-                    ),
+                  Row(
+                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                    children: [
+                      Text(
+                        'Business Type 1',
+                        style: MyStyle.tx14b.copyWith(
+                          fontFamily: 'Roboto-Regular',
+                          fontWeight: FontWeight.w400,
+                        ),
+                      ),
+                      Checkbox(
+                          materialTapTargetSize:
+                              MaterialTapTargetSize.shrinkWrap,
+                          activeColor: MyColor.black,
+                          value: _isSelected[0],
+                          onChanged: (bool? val) {
+                            setState(() {
+                              _isSelected[0] = val!;
+                            });
+                          })
+                    ],
                   ),
-                  ListTile(
-                    title: Row(
-                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                      children: [
-                        // Text(
-                        //     // // 'Public Transport',
-                        //     // style: MyStyle.tx14b.copyWith(
-                        //     //   fontFamily: 'Roboto-Med',
-                        //     //   fontWeight: FontWeight.w400,
-                        //     // ),
-                        //     ),
-                        Checkbox(
-                            activeColor: MyColor.black,
-                            value: _isSelected[1],
-                            onChanged: (bool? val) {
-                              setState(() {
-                                _isSelected[1] = val!;
-                              });
-                            })
-                      ],
-                    ),
+                  Row(
+                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                    children: [
+                      Text(
+                        'Business Type 2',
+                        style: MyStyle.tx14b.copyWith(
+                          fontFamily: 'Roboto-Regular',
+                          fontWeight: FontWeight.w400,
+                        ),
+                      ),
+                      Checkbox(
+                          materialTapTargetSize:
+                              MaterialTapTargetSize.shrinkWrap,
+                          activeColor: MyColor.black,
+                          value: _isSelected[1],
+                          onChanged: (bool? val) {
+                            setState(() {
+                              _isSelected[1] = val!;
+                            });
+                          })
+                    ],
                   ),
                 ],
                 onExpansionChanged: (bool expanded) {
@@ -275,7 +296,9 @@ class _FloatingRetailerState extends State<FloatingRetailer> {
               ),
             ),
           ),
-
+          SizedBox(
+            height: 15,
+          ),
           Text(
             'Distributor Name',
             style: MyStyle.tx14b.copyWith(
@@ -283,43 +306,95 @@ class _FloatingRetailerState extends State<FloatingRetailer> {
               fontFamily: 'Roboto-Medium',
             ),
           ),
+          const SizedBox(
+            height: 8,
+          ),
           Container(
-            height: 50,
             width: MediaQuery.of(context).size.width,
             decoration: BoxDecoration(
               border: Border.all(
                 color: MyColor.grey,
               ),
             ),
-            margin: const EdgeInsets.symmetric(vertical: 12),
-            child: TextFormField(
-              controller: distributorNameController,
-              decoration: const InputDecoration(
-                isDense: true,
-                contentPadding: EdgeInsets.symmetric(
-                  horizontal: 20,
-                  vertical: 20,
-                ),
-                enabledBorder: OutlineInputBorder(
-                  borderSide: BorderSide(
-                    color: MyColor.grey,
-                  ),
-                ),
-                focusedBorder: OutlineInputBorder(
-                  borderSide: BorderSide(
-                    color: MyColor.grey,
-                  ),
-                ),
-                border: OutlineInputBorder(
-                  borderSide: BorderSide(
-                    color: MyColor.grey,
-                  ),
+            child: Theme(
+              data: Theme.of(context).copyWith(
+                listTileTheme: ListTileTheme.of(context).copyWith(
+                  dense: true,
+                  minVerticalPadding: 0,
                 ),
               ),
-              keyboardType: TextInputType.name,
+              child: ExpansionTile(
+                title: const Text(
+                  '',
+                  style: MyStyle.tx14b,
+                ),
+                tilePadding: const EdgeInsets.symmetric(
+                  horizontal: 12,
+                ),
+                childrenPadding: const EdgeInsets.only(
+                  left: 14,
+                ),
+                trailing: const Icon(
+                  Icons.arrow_drop_down_sharp,
+                  size: 20,
+                  color: MyColor.black,
+                ),
+                shape: Border.all(color: Colors.transparent),
+                children: <Widget>[
+                  Row(
+                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                    children: [
+                      Text(
+                        'Business Name 1',
+                        style: MyStyle.tx14b.copyWith(
+                          fontFamily: 'Roboto-Regular',
+                          fontWeight: FontWeight.w400,
+                        ),
+                      ),
+                      Checkbox(
+                          materialTapTargetSize:
+                              MaterialTapTargetSize.shrinkWrap,
+                          activeColor: MyColor.black,
+                          value: _isSelected[0],
+                          onChanged: (bool? val) {
+                            setState(() {
+                              _isSelected[0] = val!;
+                            });
+                          })
+                    ],
+                  ),
+                  Row(
+                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                    children: [
+                      Text(
+                        'Business Name 2',
+                        style: MyStyle.tx14b.copyWith(
+                          fontFamily: 'Roboto-Regular',
+                          fontWeight: FontWeight.w400,
+                        ),
+                      ),
+                      Checkbox(
+                          materialTapTargetSize:
+                              MaterialTapTargetSize.shrinkWrap,
+                          activeColor: MyColor.black,
+                          value: _isSelected[1],
+                          onChanged: (bool? val) {
+                            setState(() {
+                              _isSelected[1] = val!;
+                            });
+                          })
+                    ],
+                  ),
+                ],
+                onExpansionChanged: (bool expanded) {
+                  setState(() {});
+                },
+              ),
             ),
           ),
-
+          SizedBox(
+            height: 15,
+          ),
           //   Address
           Text(
             'Address',
@@ -328,22 +403,19 @@ class _FloatingRetailerState extends State<FloatingRetailer> {
               fontFamily: 'Roboto-Medium',
             ),
           ),
-          Container(
+          SizedBox(
+            height: 8,
+          ),
+          SizedBox(
             height: 50,
             width: MediaQuery.of(context).size.width,
-            decoration: BoxDecoration(
-              border: Border.all(
-                color: MyColor.grey,
-              ),
-            ),
-            margin: const EdgeInsets.symmetric(vertical: 12),
             child: TextFormField(
               controller: addressController,
+              style: MyStyle.tx14b,
               decoration: const InputDecoration(
-                isDense: true,
+                // isDense: true,
                 contentPadding: EdgeInsets.symmetric(
-                  horizontal: 20,
-                  vertical: 20,
+                  horizontal: 30,
                 ),
                 enabledBorder: OutlineInputBorder(
                   borderSide: BorderSide(
@@ -364,7 +436,9 @@ class _FloatingRetailerState extends State<FloatingRetailer> {
               keyboardType: TextInputType.streetAddress,
             ),
           ),
-
+          SizedBox(
+            height: 15,
+          ),
           //    Dropdown
           Row(
             children: [
@@ -386,11 +460,13 @@ class _FloatingRetailerState extends State<FloatingRetailer> {
                     height: 55,
                     width: 160,
                     decoration: BoxDecoration(
-                        border: Border.all(
-                      color: MyColor.grey,
-                    )),
+                      border: Border.all(
+                        color: MyColor.grey,
+                      ),
+                    ),
                     child: DropdownButtonHideUnderline(
                       child: DropdownButtonFormField2<String>(
+                        isExpanded: true,
                         style: MyStyle.tx12b,
                         decoration: const InputDecoration(
                           border: OutlineInputBorder(
@@ -398,28 +474,31 @@ class _FloatingRetailerState extends State<FloatingRetailer> {
                           ),
                           contentPadding: EdgeInsets.only(left: 4.0),
                         ),
+                        items: _stateList
+                            .map((String item) => DropdownMenuItem<String>(
+                                  value: item,
+                                  child: Text(
+                                    item,
+                                    style: const TextStyle(
+                                      fontSize: 14,
+                                    ),
+                                  ),
+                                ))
+                            .toList(),
                         value: selectedList,
-                        isExpanded: true,
                         onChanged: (String? value) {
-                          print(value);
                           setState(() {
-                            selectedList = null;
-                            selectedList = value!;
+                            selectedList = value;
                           });
                         },
-                        // dropdownColor: MyColor.black.withOpacity(0.25),
-                        items: _stateList.map<DropdownMenuItem<String>>((list) {
-                          print(list);
-                          return DropdownMenuItem<String>(
-                            value: list,
-                            child: Text(
-                              list,
-                              style: MyStyle.tx12b.copyWith(
-                                color: MyColor.black,
-                              ),
-                            ),
-                          );
-                        }).toList(),
+                        buttonStyleData: const ButtonStyleData(
+                          padding: EdgeInsets.symmetric(horizontal: 16),
+                          height: 40,
+                          width: 140,
+                        ),
+                        menuItemStyleData: const MenuItemStyleData(
+                          height: 40,
+                        ),
                       ),
                     ),
                   ),
@@ -493,7 +572,7 @@ class _FloatingRetailerState extends State<FloatingRetailer> {
             ],
           ),
           const SizedBox(
-            height: 10,
+            height: 15,
           ),
           Row(
             children: [
@@ -509,15 +588,16 @@ class _FloatingRetailerState extends State<FloatingRetailer> {
                     ),
                   ),
                   const SizedBox(
-                    height: 10,
+                    height: 8,
                   ),
                   Container(
                     height: 55,
-                    width: 162,
+                    width: 160,
                     decoration: BoxDecoration(
-                        border: Border.all(
-                      color: MyColor.grey,
-                    )),
+                      border: Border.all(
+                        color: MyColor.grey,
+                      ),
+                    ),
                     child: DropdownButtonHideUnderline(
                       child: DropdownButtonFormField2<String>(
                         style: MyStyle.tx12b,
@@ -556,7 +636,7 @@ class _FloatingRetailerState extends State<FloatingRetailer> {
                 ],
               ),
               const SizedBox(
-                width: 10,
+                width: 8,
               ),
 
               //  Area
@@ -571,11 +651,11 @@ class _FloatingRetailerState extends State<FloatingRetailer> {
                     ),
                   ),
                   const SizedBox(
-                    height: 10,
+                    height: 8,
                   ),
                   Container(
                     height: 55,
-                    width: 162,
+                    width: 160,
                     decoration: BoxDecoration(
                         border: Border.all(
                       color: MyColor.grey,
@@ -598,6 +678,7 @@ class _FloatingRetailerState extends State<FloatingRetailer> {
                             areaSelected = value!;
                           });
                         },
+                        // dropdownColor: MyColor.black.withOpacity(0.25),
                         items: _areaList.map<DropdownMenuItem<String>>((list) {
                           print(list);
                           return DropdownMenuItem<String>(
@@ -618,7 +699,7 @@ class _FloatingRetailerState extends State<FloatingRetailer> {
             ],
           ),
           const SizedBox(
-            height: 10,
+            height: 15,
           ),
 
           //  Pin Code
@@ -629,22 +710,17 @@ class _FloatingRetailerState extends State<FloatingRetailer> {
               fontFamily: 'Roboto-Medium',
             ),
           ),
+          SizedBox(
+            height: 8,
+          ),
           Container(
             height: 50,
             width: MediaQuery.of(context).size.width,
-            decoration: BoxDecoration(
-              border: Border.all(
-                color: MyColor.grey,
-              ),
-            ),
-            margin: const EdgeInsets.symmetric(vertical: 12),
             child: TextFormField(
               controller: pinController,
               decoration: const InputDecoration(
-                isDense: true,
                 contentPadding: EdgeInsets.symmetric(
-                  horizontal: 20,
-                  vertical: 20,
+                  horizontal: 30,
                 ),
                 enabledBorder: OutlineInputBorder(
                   borderSide: BorderSide(
@@ -666,10 +742,10 @@ class _FloatingRetailerState extends State<FloatingRetailer> {
             ),
           ),
 
-          const SizedBox(
-            height: 5,
-          ),
           //   Person Name
+          const SizedBox(
+            height: 15,
+          ),
           Text(
             'Person Name ',
             style: MyStyle.tx14b.copyWith(
@@ -677,22 +753,17 @@ class _FloatingRetailerState extends State<FloatingRetailer> {
               fontFamily: 'Roboto-Medium',
             ),
           ),
-          Container(
+          const SizedBox(
+            height: 8,
+          ),
+          SizedBox(
             height: 50,
             width: MediaQuery.of(context).size.width,
-            decoration: BoxDecoration(
-              border: Border.all(
-                color: MyColor.grey,
-              ),
-            ),
-            margin: const EdgeInsets.symmetric(vertical: 12),
             child: TextFormField(
               controller: nameController,
               decoration: const InputDecoration(
-                isDense: true,
                 contentPadding: EdgeInsets.symmetric(
-                  horizontal: 20,
-                  vertical: 20,
+                  horizontal: 30,
                 ),
                 enabledBorder: OutlineInputBorder(
                   borderSide: BorderSide(
@@ -714,7 +785,7 @@ class _FloatingRetailerState extends State<FloatingRetailer> {
             ),
           ),
           const SizedBox(
-            height: 5,
+            height: 15,
           ),
           //     Mobile
           Text(
@@ -724,15 +795,12 @@ class _FloatingRetailerState extends State<FloatingRetailer> {
               fontFamily: 'Roboto-Medium',
             ),
           ),
-          Container(
+          const SizedBox(
+            height: 8,
+          ),
+          SizedBox(
             height: 50,
             width: MediaQuery.of(context).size.width,
-            decoration: BoxDecoration(
-              border: Border.all(
-                color: MyColor.grey,
-              ),
-            ),
-            margin: const EdgeInsets.symmetric(vertical: 12),
             child: TextFormField(
               controller: mobileController,
               decoration: const InputDecoration(
@@ -760,17 +828,21 @@ class _FloatingRetailerState extends State<FloatingRetailer> {
               keyboardType: TextInputType.phone,
             ),
           ),
-
+          const SizedBox(
+            height: 15,
+          ),
           InkWell(
             onTap: () {},
             child: Container(
-              height: 65,
+              height: 50,
+              margin: const EdgeInsets.fromLTRB(0, 0, 0, 20),
               width: MediaQuery.of(context).size.width,
               color: MyColor.black,
-              child: const Center(
+              child: Center(
                 child: Text(
                   'Submit',
-                  style: MyStyle.tx20W,
+                  style: MyStyle.tx20W
+                      .copyWith(fontFamily: 'Poppins-SemiBold', fontSize: 15),
                 ),
               ),
             ),

@@ -32,27 +32,29 @@ class _DashboardState extends State<Dashboard> {
     return Scaffold(
       floatingActionButtonLocation: FloatingActionButtonLocation.endDocked,
       floatingActionButton: SpeedDial(
-        spaceBetweenChildren: 5,
-        spacing: 4,
-        childMargin: const EdgeInsets.all(10),
+        buttonSize: const Size(46, 46),
+        childrenButtonSize: Size(40, 50),
+        // childMargin: EdgeInsets.only(left: 10),
+        spaceBetweenChildren: 10,
+        spacing: 10,
         overlayColor: MyColor.black,
         children: [
           SpeedDialChild(
             onTap: () {
               Navigator.pushNamed(context, reimbursementPageRoute);
             },
-            backgroundColor: MyColor.white,
-            shape: BeveledRectangleBorder(
-              borderRadius: BorderRadius.circular(0),
+            shape: const BeveledRectangleBorder(
+              borderRadius: BorderRadius.zero,
             ),
             child: Image.asset(
-              'assets/icons/pad.png',
-              height: 24,
-              width: 24,
+              'assets/icons/reim.png',
+              height: 20,
+              width: 20,
             ),
             labelWidget: Text(
               'Reimbursement  ',
               style: MyStyle.tx14w.copyWith(
+                fontSize: 12,
                 fontWeight: FontWeight.w700,
               ),
             ),
@@ -67,12 +69,13 @@ class _DashboardState extends State<Dashboard> {
             // backgroundColor: MyColor.white,
             child: Image.asset(
               'assets/icons/location.png',
-              height: 24,
-              width: 24,
+              height: 20,
+              width: 20,
             ),
             labelWidget: Text(
               'Create Route  ',
               style: MyStyle.tx14w.copyWith(
+                fontSize: 12,
                 fontWeight: FontWeight.w700,
               ),
             ),
@@ -87,12 +90,13 @@ class _DashboardState extends State<Dashboard> {
             backgroundColor: MyColor.white,
             child: Image.asset(
               'assets/icons/distributor.png',
-              height: 24,
-              width: 24,
+              height: 20,
+              width: 20,
             ),
             labelWidget: Text(
               'Add new distributor/Retailer  ',
               style: MyStyle.tx14w.copyWith(
+                fontSize: 12,
                 fontWeight: FontWeight.w700,
               ),
             ),
@@ -107,12 +111,13 @@ class _DashboardState extends State<Dashboard> {
             backgroundColor: MyColor.white,
             child: Image.asset(
               'assets/icons/pad.png',
-              height: 24,
-              width: 24,
+              height: 20,
+              width: 20,
             ),
             labelWidget: Text(
               'Create Task  ',
               style: MyStyle.tx14w.copyWith(
+                fontSize: 12,
                 fontWeight: FontWeight.w700,
               ),
             ),
@@ -128,83 +133,10 @@ class _DashboardState extends State<Dashboard> {
         ),
         child: const Icon(
           Icons.add,
+          size: 24,
           color: MyColor.white,
         ),
       ),
-      // bottomNavigationBar: BottomNavigationBar(
-      //   onTap: (value) {
-      //     setState(() {
-      //       currIndex = value;
-      //     });
-      //   },
-      //   // backgroundColor: MyColor.black,
-      //   type: BottomNavigationBarType.fixed,
-      //   backgroundColor: MyColor.black,
-      //   selectedItemColor: MyColor.black,
-      //   unselectedItemColor: MyColor.white,
-      //   currentIndex: currIndex,
-      //   items: [
-      //     // Home
-      //     BottomNavigationBarItem(
-      //       label: 'Home',
-      //       icon: Image.asset(
-      //         'assets/icons/home.png',
-      //         height: 25,
-      //         width: 23,
-      //       ),
-      //       activeIcon: Image.asset(
-      //         'assets/icons/homeo.png',
-      //         height: 25,
-      //         width: 23,
-      //       ),
-      //     ),
-      //
-      //     // Service
-      //     BottomNavigationBarItem(
-      //       label: 'Service',
-      //       icon: Image.asset(
-      //         'assets/icons/serviceo.png',
-      //         height: 25,
-      //         width: 23,
-      //       ),
-      //       activeIcon: Image.asset(
-      //         'assets/icons/service.png',
-      //         height: 25,
-      //         width: 23,
-      //       ),
-      //     ),
-      //
-      //     // Distributor
-      //     // BottomNavigationBarItem(
-      //     //   label: 'Service',
-      //     //   icon: Image.asset(
-      //     //     'assets/icons/distributor.png',
-      //     //     height: 25,
-      //     //     width: 23,
-      //     //   ),
-      //     //   activeIcon: Image.asset(
-      //     //     'assets/icons/distributoro.png',
-      //     //     height: 25,
-      //     //     width: 23,
-      //     //   ),
-      //     // ),
-      //     //
-      //     // // Reimbursement
-      //     // BottomNavigationBarItem(
-      //     //   label: 'reimbursement',
-      //     //   icon: Image.asset(
-      //     //     'assets/icons/service.png',
-      //     //     height: 25,
-      //     //     width: 23,
-      //     //   ),
-      //     //   activeIcon: Image.asset(
-      //     //     'assets/icons/reimbursemento.png',
-      //     //     height: 25,
-      //     //     width: 23,
-      //     //   ),
-      //     // ),
-      //   ],
-      // ),
       bottomNavigationBar: Row(
         children: [
           InkWell(

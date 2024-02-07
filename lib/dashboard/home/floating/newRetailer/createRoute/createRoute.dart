@@ -54,49 +54,45 @@ class _CreateRouteState extends State<CreateRoute> {
             Navigator.pop(context);
           },
           child: Container(
-            height: 40,
-            width: 40,
-            margin: const EdgeInsets.symmetric(horizontal: 12),
-            child: Image.asset(
-              'assets/icons/back.png',
-              height: 40,
-              width: 40,
+            margin: const EdgeInsets.fromLTRB(15, 10, 0, 10),
+            color: MyColor.grey,
+            child: const Center(
+              child: Icon(
+                Icons.arrow_back_ios_new,
+                size: 16,
+              ),
             ),
           ),
         ),
+        leadingWidth: 50,
         title: Text(
           'Create Route',
-          style: MyStyle.tx16b.copyWith(
-            fontFamily: 'Poppins-Bold',
-          ),
+          style: MyStyle.tx16b,
         ),
       ),
       body: SizedBox(
         height: MediaQuery.of(context).size.height,
         child: Padding(
-          padding: const EdgeInsets.all(20.0),
+          padding: const EdgeInsets.all(15.0),
           child: Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
             children: [
-              //  State
-              Row(
-                children: [
-                  Padding(
-                    padding: const EdgeInsets.only(bottom: 4.0),
-                    child: Text(
-                      'State',
-                      style: MyStyle.tx14b.copyWith(
-                        fontWeight: FontWeight.w400,
-                        fontFamily: 'Roboto-Medium',
-                      ),
-                    ),
-                  ),
-                ],
-              ),
               SizedBox(
                 height: 10,
               ),
+              //  State
+              Text(
+                'State',
+                style: MyStyle.tx14b.copyWith(
+                  fontWeight: FontWeight.w400,
+                  fontFamily: 'Roboto-Medium',
+                ),
+              ),
+              SizedBox(
+                height: 5,
+              ),
               Container(
-                height: 55,
+                height: 50,
                 width: MediaQuery.of(context).size.width,
                 decoration: BoxDecoration(
                   border: Border.all(
@@ -110,7 +106,7 @@ class _CreateRouteState extends State<CreateRoute> {
                       border: OutlineInputBorder(
                         borderSide: BorderSide.none,
                       ),
-                      contentPadding: EdgeInsets.only(left: 4.0),
+                      contentPadding: EdgeInsets.zero,
                     ),
                     value: selectedList,
                     isExpanded: true,
@@ -121,7 +117,6 @@ class _CreateRouteState extends State<CreateRoute> {
                         selectedList = value!;
                       });
                     },
-                    // dropdownColor: MyColor.black.withOpacity(0.25),
                     items: _stateList.map<DropdownMenuItem<String>>((list) {
                       print(list);
                       return DropdownMenuItem<String>(
@@ -138,28 +133,21 @@ class _CreateRouteState extends State<CreateRoute> {
                 ),
               ),
               SizedBox(
-                height: 20,
+                height: 15,
               ),
               //  Regional
-              Row(
-                children: [
-                  Padding(
-                    padding: const EdgeInsets.only(bottom: 4.0),
-                    child: Text(
-                      'Regional',
-                      style: MyStyle.tx14b.copyWith(
-                        fontWeight: FontWeight.w400,
-                        fontFamily: 'Roboto-Medium',
-                      ),
-                    ),
-                  ),
-                ],
+              Text(
+                'Regional',
+                style: MyStyle.tx14b.copyWith(
+                  fontWeight: FontWeight.w400,
+                  fontFamily: 'Roboto-Medium',
+                ),
               ),
               SizedBox(
-                height: 10,
+                height: 8,
               ),
               Container(
-                height: 55,
+                height: 50,
                 width: MediaQuery.of(context).size.width,
                 decoration: BoxDecoration(
                   border: Border.all(
@@ -173,7 +161,7 @@ class _CreateRouteState extends State<CreateRoute> {
                       border: OutlineInputBorder(
                         borderSide: BorderSide.none,
                       ),
-                      contentPadding: EdgeInsets.only(left: 4.0),
+                      contentPadding: EdgeInsets.zero,
                     ),
                     value: regionSelected,
                     isExpanded: true,
@@ -201,29 +189,22 @@ class _CreateRouteState extends State<CreateRoute> {
                 ),
               ),
               SizedBox(
-                height: 20,
+                height: 15,
               ),
 
               //  Area
-              Row(
-                children: [
-                  Padding(
-                    padding: const EdgeInsets.only(bottom: 4.0),
-                    child: Text(
-                      'Area',
-                      style: MyStyle.tx14b.copyWith(
-                        fontWeight: FontWeight.w400,
-                        fontFamily: 'Roboto-Medium',
-                      ),
-                    ),
-                  ),
-                ],
+              Text(
+                'Area',
+                style: MyStyle.tx14b.copyWith(
+                  fontWeight: FontWeight.w400,
+                  fontFamily: 'Roboto-Medium',
+                ),
               ),
               SizedBox(
-                height: 10,
+                height: 8,
               ),
               Container(
-                height: 55,
+                height: 50,
                 width: MediaQuery.of(context).size.width,
                 decoration: BoxDecoration(
                   border: Border.all(
@@ -237,7 +218,7 @@ class _CreateRouteState extends State<CreateRoute> {
                       border: OutlineInputBorder(
                         borderSide: BorderSide.none,
                       ),
-                      contentPadding: EdgeInsets.only(left: 4.0),
+                      contentPadding: EdgeInsets.zero,
                     ),
                     value: areaSelected,
                     isExpanded: true,
@@ -264,27 +245,25 @@ class _CreateRouteState extends State<CreateRoute> {
                   ),
                 ),
               ),
-              Spacer(),
-              InkWell(
-                onTap: () {
-                  Navigator.pushNamed(context, createRouteFloating);
-                },
-                child: Container(
-                  height: 65,
-                  width: MediaQuery.of(context).size.width,
-                  color: MyColor.black,
-                  child: const Center(
-                    child: Text(
-                      'Create list',
-                      style: MyStyle.tx20W,
-                    ),
-                  ),
-                ),
-              ),
-              SizedBox(
-                height: 20,
-              ),
             ],
+          ),
+        ),
+      ),
+      bottomNavigationBar: InkWell(
+        onTap: () {
+          Navigator.pushNamed(context, createRouteFloating);
+        },
+        child: Container(
+          height: 50,
+          width: MediaQuery.of(context).size.width,
+          margin: const EdgeInsets.fromLTRB(15, 0, 15, 20),
+          color: MyColor.black,
+          child: Center(
+            child: Text(
+              'Create list',
+              style: MyStyle.tx20W
+                  .copyWith(fontFamily: 'Poppins-SemiBold', fontSize: 15),
+            ),
           ),
         ),
       ),

@@ -62,8 +62,6 @@ class _AttendanceState extends State<Attendance> {
                 child: Container(
                   height: 180,
                   width: MediaQuery.of(context).size.width,
-                  // margin: const EdgeInsets.all(12),
-                  // padding: const EdgeInsets.all(40),
                   decoration: BoxDecoration(
                     border: Border.all(
                       color: MyColor.grey,

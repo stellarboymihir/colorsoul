@@ -608,3 +608,78 @@
 // ],
 // ),
 // );
+
+// bottomNavigationBar: BottomNavigationBar(
+//   onTap: (value) {
+//     setState(() {
+//       currIndex = value;
+//     });
+//   },
+//   // backgroundColor: MyColor.black,
+//   type: BottomNavigationBarType.fixed,
+//   backgroundColor: MyColor.black,
+//   selectedItemColor: MyColor.black,
+//   unselectedItemColor: MyColor.white,
+//   currentIndex: currIndex,
+//   items: [
+//     // Home
+//     BottomNavigationBarItem(
+//       label: 'Home',
+//       icon: Image.asset(
+//         'assets/icons/home.png',
+//         height: 25,
+//         width: 23,
+//       ),
+//       activeIcon: Image.asset(
+//         'assets/icons/homeo.png',
+//         height: 25,
+//         width: 23,
+//       ),
+//     ),
+//
+//     // Service
+//     BottomNavigationBarItem(
+//       label: 'Service',
+//       icon: Image.asset(
+//         'assets/icons/serviceo.png',
+//         height: 25,
+//         width: 23,
+//       ),
+//       activeIcon: Image.asset(
+//         'assets/icons/service.png',
+//         height: 25,
+//         width: 23,
+//       ),
+//     ),
+//
+//     // Distributor
+//     // BottomNavigationBarItem(
+//     //   label: 'Service',
+//     //   icon: Image.asset(
+//     //     'assets/icons/distributor.png',
+//     //     height: 25,
+//     //     width: 23,
+//     //   ),
+//     //   activeIcon: Image.asset(
+//     //     'assets/icons/distributoro.png',
+//     //     height: 25,
+//     //     width: 23,
+//     //   ),
+//     // ),
+//     //
+//     // // Reimbursement
+//     // BottomNavigationBarItem(
+//     //   label: 'reimbursement',
+//     //   icon: Image.asset(
+//     //     'assets/icons/service.png',
+//     //     height: 25,
+//     //     width: 23,
+//     //   ),
+//     //   activeIcon: Image.asset(
+//     //     'assets/icons/reimbursemento.png',
+//     //     height: 25,
+//     //     width: 23,
+//     //   ),
+//     // ),
+//   ],
+// ),

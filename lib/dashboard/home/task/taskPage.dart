@@ -325,12 +325,6 @@ class _TaskPageState extends State<TaskPage> {
                             spreadRadius: 0.01,
                             offset: const Offset(1, 4),
                           ),
-                          // BoxShadow(
-                          //   color: MyColor.black.withOpacity(0.1),
-                          //   blurRadius: 1,
-                          //   spreadRadius: 0.01,
-                          //   offset: const Offset(-1, -1),
-                          // ),
                         ],
                       ),
                       child: Row(
