@@ -28,12 +28,13 @@ class _AttendanceState extends State<Attendance> {
 
   @override
   Widget build(BuildContext context) {
+    var height = MediaQuery.of(context).size.height;
     return Scaffold(
       appBar: AppBar(
         backgroundColor: MyColor.white,
         leading: Container(
-          height: 40,
-          width: 40,
+          height: 36,
+          width: 36,
           padding: const EdgeInsets.all(0),
           margin: const EdgeInsets.all(12),
           color: MyColor.grey,
@@ -48,77 +49,89 @@ class _AttendanceState extends State<Attendance> {
           style: MyStyle.tx16b,
         ),
       ),
-      body: Column(
-        children: [
-          InkWell(
-            onTap: () async {
-              await _pickerCam();
-            },
-            child: Container(
-              height: 180,
-              width: MediaQuery.of(context).size.width,
-              margin: const EdgeInsets.all(12),
-              padding: const EdgeInsets.all(40),
-              decoration: BoxDecoration(
-                border: Border.all(
-                  color: MyColor.grey,
-                ),
-              ),
-              child: image != null
-                  ? Image.file(
-                      image!,
-                      height: 54,
-                      width: 54,
-                      fit: BoxFit.cover,
-                    )
-                  : Image.asset(
-                      'assets/icons/camera.png',
-                      height: 54,
-                      width: 54,
+      body: SizedBox(
+        height: height,
+        child: Padding(
+          padding: const EdgeInsets.symmetric(horizontal: 12.0),
+          child: Column(
+            children: [
+              InkWell(
+                onTap: () async {
+                  await _pickerCam();
+                },
+                child: Container(
+                  height: 180,
+                  width: MediaQuery.of(context).size.width,
+                  // margin: const EdgeInsets.all(12),
+                  // padding: const EdgeInsets.all(40),
+                  decoration: BoxDecoration(
+                    border: Border.all(
+                      color: MyColor.grey,
                     ),
-            ),
-          ),
+                  ),
+                  child: image != null
+                      ? Image.file(
+                          image!,
+                          height: 54,
+                          width: 54,
+                          fit: BoxFit.fill,
+                        )
+                      : Center(
+                          child: Image.asset(
+                            'assets/icons/camera.png',
+                            height: 70,
+                            width: 70,
+                            // fit: BoxFit.cov,
+                          ),
+                        ),
+                ),
+              ),
+              const SizedBox(
+                height: 10,
+              ),
 
-          //  Select Place
-          Container(
-            // height: 55,
-            width: MediaQuery.of(context).size.width,
-            margin: const EdgeInsets.all(12),
-            decoration: BoxDecoration(
-              border: Border.all(
-                color: MyColor.grey,
-              ),
-            ),
-            child: Theme(
-              data: Theme.of(context).copyWith(
-                dividerColor: Colors.transparent,
-              ),
-              child: ExpansionTile(
-                title: const Text(
-                  'Select Place',
-                  style: MyStyle.tx14b,
+              //  Select Place
+              Container(
+                width: MediaQuery.of(context).size.width,
+                decoration: BoxDecoration(
+                  border: Border.all(
+                    color: MyColor.grey,
+                  ),
                 ),
-                trailing: const Icon(
-                  // _customTileExpanded
-                  //     ? Icons.arrow_drop_down_circle
-                  //     : Icons.arrow_drop_down,
-                  Icons.arrow_drop_down_sharp,
-                  color: MyColor.black,
-                ),
-                shape: Border.all(color: MyColor.grey),
-                children: <Widget>[
-                  ListTile(
-                    title: Row(
+                child: ExpansionTile(
+                  tilePadding: const EdgeInsets.symmetric(
+                    horizontal: 12,
+                  ),
+                  childrenPadding: const EdgeInsets.only(
+                    left: 14,
+                  ),
+                  title: Text(
+                    'Select Place',
+                    style: MyStyle.tx14b.copyWith(
+                      fontWeight: FontWeight.w400,
+                      fontFamily: 'Poppins-Medium',
+                    ),
+                  ),
+                  trailing: const Icon(
+                    Icons.arrow_drop_down_sharp,
+                    size: 20,
+                    color: MyColor.black,
+                  ),
+                  shape: Border.all(color: Colors.transparent),
+                  children: <Widget>[
+                    Row(
                       mainAxisAlignment: MainAxisAlignment.spaceBetween,
                       children: [
                         Text(
                           'HQ',
                           style: MyStyle.tx14b.copyWith(
-                            fontFamily: 'Roboto-Med',
+                            fontFamily: 'Roboto-Regular',
                             fontWeight: FontWeight.w400,
                           ),
                         ),
                         Checkbox(
+                            materialTapTargetSize:
+                                MaterialTapTargetSize.shrinkWrap,
                             activeColor: MyColor.black,
                             value: isChecked[0],
                             onChanged: (bool? val) {
@@ -128,19 +141,19 @@ class _AttendanceState extends State<Attendance> {
                             })
                       ],
                     ),
-                  ),
-                  ListTile(
-                    title: Row(
+                    Row(
                       mainAxisAlignment: MainAxisAlignment.spaceBetween,
                       children: [
                         Text(
                           'EX',
                           style: MyStyle.tx14b.copyWith(
-                            fontFamily: 'Roboto-Med',
+                            fontFamily: 'Roboto-Regular',
                             fontWeight: FontWeight.w400,
                           ),
                         ),
                         Checkbox(
+                            materialTapTargetSize:
+                                MaterialTapTargetSize.shrinkWrap,
                             activeColor: MyColor.black,
                             value: isChecked[1],
                             onChanged: (bool? val) {
@@ -150,55 +163,58 @@ class _AttendanceState extends State<Attendance> {
                             })
                       ],
                     ),
-                  ),
-                ],
-                onExpansionChanged: (bool expanded) {
-                  setState(() {});
-                },
+                  ],
+                  onExpansionChanged: (bool expanded) {
+                    setState(() {});
+                  },
+                ),
               ),
-            ),
-          ),
+              const SizedBox(
+                height: 10,
+              ),
 
-          // Travel By
-          Container(
-            // height: 55,
-            width: MediaQuery.of(context).size.width,
-            margin: const EdgeInsets.all(12),
-            decoration: BoxDecoration(
-              border: Border.all(
-                color: MyColor.grey,
-              ),
-            ),
-            child: Theme(
-              data: Theme.of(context).copyWith(
-                dividerColor: Colors.transparent,
-              ),
-              child: ExpansionTile(
-                title: const Text(
-                  'Travel by',
-                  style: MyStyle.tx14b,
+              // Travel By
+              Container(
+                width: MediaQuery.of(context).size.width,
+                decoration: BoxDecoration(
+                  border: Border.all(
+                    color: MyColor.grey,
+                  ),
                 ),
-                trailing: const Icon(
-                  // _customTileExpanded
-                  //     ? Icons.arrow_drop_down_circle
-                  //     : Icons.arrow_drop_down,
-                  Icons.arrow_drop_down_sharp,
-                  color: MyColor.black,
-                ),
-                shape: Border.all(color: MyColor.grey),
-                children: <Widget>[
-                  ListTile(
-                    title: Row(
+                child: ExpansionTile(
+                  tilePadding: const EdgeInsets.symmetric(
+                    horizontal: 12,
+                  ),
+                  childrenPadding: const EdgeInsets.only(
+                    left: 14,
+                  ),
+                  title: Text(
+                    'Travel by',
+                    style: MyStyle.tx14b.copyWith(
+                      fontWeight: FontWeight.w400,
+                      fontFamily: 'Poppins-Medium',
+                    ),
+                  ),
+                  trailing: const Icon(
+                    Icons.arrow_drop_down_sharp,
+                    size: 20,
+                    color: MyColor.black,
+                  ),
+                  shape: Border.all(color: Colors.transparent),
+                  children: <Widget>[
+                    Row(
                       mainAxisAlignment: MainAxisAlignment.spaceBetween,
                       children: [
                         Text(
                           'Personal Vehicle',
                           style: MyStyle.tx14b.copyWith(
-                            fontFamily: 'Roboto-Medium',
+                            fontFamily: 'Roboto-Regular',
                             fontWeight: FontWeight.w400,
                           ),
                         ),
                         Checkbox(
+                            materialTapTargetSize:
+                                MaterialTapTargetSize.shrinkWrap,
                             activeColor: MyColor.black,
                             value: isSelected[0],
                             onChanged: (bool? val) {
@@ -208,19 +224,19 @@ class _AttendanceState extends State<Attendance> {
                             })
                       ],
                     ),
-                  ),
-                  ListTile(
-                    title: Row(
+                    Row(
                       mainAxisAlignment: MainAxisAlignment.spaceBetween,
                       children: [
                         Text(
                           'Public Transport',
                           style: MyStyle.tx14b.copyWith(
-                            fontFamily: 'Roboto-Med',
+                            fontFamily: 'Roboto-Regular',
                             fontWeight: FontWeight.w400,
                           ),
                         ),
                         Checkbox(
+                            materialTapTargetSize:
+                                MaterialTapTargetSize.shrinkWrap,
                             activeColor: MyColor.black,
                             value: isSelected[1],
                             onChanged: (bool? val) {
@@ -230,37 +246,34 @@ class _AttendanceState extends State<Attendance> {
                             })
                       ],
                     ),
-                  ),
-                ],
-                onExpansionChanged: (bool expanded) {
-                  setState(() {});
-                },
+                  ],
+                  onExpansionChanged: (bool expanded) {
+                    setState(() {});
+                  },
+                ),
+              ),
+            ],
+          ),
+        ),
+      ),
+      bottomNavigationBar: InkWell(
+        onTap: () {
+          Navigator.pop(context);
+        },
+        child: Container(
+          height: 50,
+          width: MediaQuery.of(context).size.width,
+          margin: const EdgeInsets.fromLTRB(20, 0, 20, 20),
+          color: isSubmitEnabled() ? MyColor.black : MyColor.grey,
+          child: Center(
+            child: Text(
+              'SUBMIT',
+              style: MyStyle.tx20b.copyWith(
+                color: isSubmitEnabled() ? MyColor.white : MyColor.black,
               ),
             ),
           ),
-
-          Spacer(),
-          //   Submit Button
-          InkWell(
-            onTap: () {
-              Navigator.pop(context);
-            },
-            child: Container(
-              height: 65,
-              width: MediaQuery.of(context).size.width,
-              margin: const EdgeInsets.symmetric(horizontal: 12, vertical: 10),
-              color: isSubmitEnabled() ? MyColor.black : MyColor.grey,
-              child: Center(
-                child: Text(
-                  'SUBMIT',
-                  style: MyStyle.tx20b.copyWith(
-                    color: isSubmitEnabled() ? MyColor.white : MyColor.black,
-                  ),
-                ),
-              ),
-            ),
-          )
-        ],
+        ),
       ),
     );
   }

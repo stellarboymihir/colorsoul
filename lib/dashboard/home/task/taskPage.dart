@@ -12,6 +12,7 @@ class TaskPage extends StatefulWidget {
 }
 
 class _TaskPageState extends State<TaskPage> {
+  TextEditingController searchController = TextEditingController();
   bool onClick1 = false;
   bool onClick2 = false;
   bool onClick3 = false;
@@ -35,18 +36,24 @@ class _TaskPageState extends State<TaskPage> {
       "Text": 'Active',
       "Color": MyColor.blue,
     },
+    {
+      "Text": 'Active',
+      "Color": MyColor.blue,
+    },
+    {
+      "Text": 'Active',
+      "Color": MyColor.blue,
+    },
   ];
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
+        scrolledUnderElevation: 0,
         backgroundColor: MyColor.white,
         leading: Container(
-          height: 40,
-          width: 40,
-          padding: const EdgeInsets.all(0),
-          margin: const EdgeInsets.all(12),
+          margin: const EdgeInsets.fromLTRB(15, 10, 0, 10),
           color: MyColor.grey,
           child: const Center(
               child: Icon(
@@ -54,232 +61,300 @@ class _TaskPageState extends State<TaskPage> {
             size: 16,
           )),
         ),
+        leadingWidth: 50,
         title: const Text(
           'TASKS',
           style: MyStyle.tx16b,
         ),
       ),
-      body: Column(
-        children: [
-          Container(
-            height: 104,
-            width: MediaQuery.of(context).size.width,
-            margin: EdgeInsets.all(12),
-            padding: EdgeInsets.all(12),
-            decoration: BoxDecoration(
-              border: Border.all(
-                color: MyColor.grey,
-              ),
+      body: Padding(
+        padding: const EdgeInsets.symmetric(horizontal: 15.0),
+        child: Column(
+          crossAxisAlignment: CrossAxisAlignment.start,
+          children: [
+            const SizedBox(
+              height: 10,
             ),
-            child: Row(
-              mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-              children: [
-                Column(
-                  // crossAxisAlignment: CrossAxisAlignment.center,
-                  mainAxisAlignment: MainAxisAlignment.center,
-                  children: [
-                    Text(
-                      'Today Tasks',
-                      style: MyStyle.tx12b.copyWith(
-                        fontWeight: FontWeight.w400,
-                      ),
-                    ),
-                    Text(
-                      '06/10 ',
-                      style: MyStyle.tx20b.copyWith(
-                        fontWeight: FontWeight.w700,
-                      ),
-                    ),
-                  ],
-                ),
-                VerticalDivider(
-                  thickness: 0,
-                  width: 2,
-                ),
-                Column(
-                  crossAxisAlignment: CrossAxisAlignment.center,
-                  mainAxisAlignment: MainAxisAlignment.center,
-                  children: [
-                    Text(
-                      'Total Time',
-                      style: MyStyle.tx12b.copyWith(
-                        fontWeight: FontWeight.w400,
-                      ),
-                    ),
-                    Text(
-                      '1 Month',
-                      style: MyStyle.tx20b.copyWith(
-                        fontWeight: FontWeight.w700,
-                      ),
-                    ),
-                  ],
-                ),
-              ],
-            ),
-          ),
-          Row(
-            children: [
-              Expanded(
-                child: InkWell(
-                  onTap: () {
-                    setState(() {
-                      onClick = 'task';
-                    });
-                  },
-                  child: Container(
-                    height: 33,
-                    width: MediaQuery.of(context).size.width,
-                    margin: EdgeInsets.all(12),
-                    color: onClick == 'task' ? MyColor.black : MyColor.grey,
-                    child: Center(
-                      child: Text(
-                        'All Task',
-                        style: onClick == 'task'
-                            ? MyStyle.tx12w.copyWith(
-                                fontWeight: FontWeight.w700,
-                              )
-                            : MyStyle.tx12b.copyWith(
-                                fontWeight: FontWeight.w700,
-                              ),
-                      ),
-                    ),
+            Container(
+              height: 85,
+              width: MediaQuery.of(context).size.width,
+              // margin: EdgeInsets.all(12),
+              decoration: BoxDecoration(
+                color: MyColor.white,
+                boxShadow: [
+                  BoxShadow(
+                    color: MyColor.black.withOpacity(0.1),
+                    blurRadius: 5,
+                    spreadRadius: 0.01,
+                    offset: const Offset(1, 5),
                   ),
-                ),
+                  BoxShadow(
+                    color: MyColor.black.withOpacity(0.1),
+                    blurRadius: 1,
+                    spreadRadius: 0.01,
+                    offset: const Offset(-1, -1),
+                  ),
+                ],
               ),
-              Expanded(
-                child: InkWell(
-                  onTap: () {
-                    setState(() {
-                      onClick = 'complete';
-                    });
-                  },
-                  child: Container(
-                    height: 33,
-                    width: MediaQuery.of(context).size.width,
-                    margin: EdgeInsets.all(12),
-                    color: onClick == 'complete' ? MyColor.black : MyColor.grey,
-                    child: Center(
-                      child: Text(
-                        'Completed',
-                        style: onClick == 'complete'
-                            ? MyStyle.tx12w.copyWith(
-                                fontWeight: FontWeight.w700,
-                              )
-                            : MyStyle.tx12b.copyWith(
-                                fontWeight: FontWeight.w700,
-                              ),
-                      ),
-                    ),
-                  ),
-                ),
-              ),
-              Expanded(
-                child: InkWell(
-                  onTap: () {
-                    setState(() {
-                      onClick = 'cancel';
-                    });
-                  },
-                  child: Container(
-                    height: 33,
-                    width: MediaQuery.of(context).size.width,
-                    margin: EdgeInsets.all(12),
-                    color: onClick == 'cancel' ? MyColor.black : MyColor.grey,
-                    child: Center(
-                      child: Text(
-                        'Cancel',
-                        style: onClick == 'cancel'
-                            ? MyStyle.tx12w.copyWith(
-                                fontWeight: FontWeight.w700,
-                              )
-                            : MyStyle.tx12b.copyWith(
-                                fontWeight: FontWeight.w700,
-                              ),
-                      ),
-                    ),
-                  ),
-                ),
-              ),
-            ],
-          ),
-          Container(
-            height: 55,
-            width: MediaQuery.of(context).size.width,
-            padding: EdgeInsets.all(12),
-            margin: EdgeInsets.symmetric(horizontal: 12),
-            decoration: BoxDecoration(border: Border.all(color: MyColor.grey)),
-            child: Row(
-              mainAxisAlignment: MainAxisAlignment.spaceBetween,
-              children: [
-                Text(
-                  'Search',
-                  style: MyStyle.tx14b.copyWith(
-                    fontWeight: FontWeight.w400,
-                  ),
-                ),
-                Icon(Icons.search_outlined)
-              ],
-            ),
-          ),
-          Row(
-            children: [
-              Padding(
-                padding: const EdgeInsets.all(12.0),
-                child: Text(
-                  'January 2023',
-                  textAlign: TextAlign.start,
-                  style: MyStyle.tx14b.copyWith(
-                    fontWeight: FontWeight.w700,
-                  ),
-                ),
-              ),
-            ],
-          ),
-
-          //   ListView Builder
-          Expanded(
-            child: ListView.builder(
-              scrollDirection: Axis.vertical,
-              itemCount: statusList.length,
-              shrinkWrap: false,
-              physics: AlwaysScrollableScrollPhysics(),
-              itemBuilder: (context, index) {
-                return InkWell(
-                  onTap: () {
-                    Navigator.pushNamed(context, taskDetailRoute);
-                  },
-                  child: Container(
-                    height: 100,
-                    width: MediaQuery.of(context).size.width,
-                    decoration: BoxDecoration(
-                      border: Border.all(
-                        width: 4,
-                        color: MyColor.grey,
-                      ),
-                    ),
-                    margin: const EdgeInsets.symmetric(
-                        horizontal: 12, vertical: 10),
-                    child: Row(
-                      crossAxisAlignment: CrossAxisAlignment.start,
-                      children: [
-                        Container(
-                          height: 76,
-                          width: 76,
-                          padding: EdgeInsets.all(20),
-                          margin: EdgeInsets.all(10),
-                          color: MyColor.grey,
-                          child: Image.asset(
-                            'assets/icons/pad.png',
-                            height: 32,
-                            width: 32,
-                          ),
+              child: Row(
+                mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                children: [
+                  Column(
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    children: [
+                      Text(
+                        'Today Tasks',
+                        style: MyStyle.tx12b.copyWith(
+                          fontSize: 11,
+                          fontWeight: FontWeight.w400,
                         ),
-                        Padding(
-                          padding: const EdgeInsets.all(12.0),
-                          child: Column(
+                      ),
+                      const SizedBox(
+                        height: 4,
+                      ),
+                      Text(
+                        '06/10 ',
+                        style: MyStyle.tx20b.copyWith(
+                          fontSize: 19,
+                          fontWeight: FontWeight.w700,
+                        ),
+                      ),
+                    ],
+                  ),
+                  const VerticalDivider(
+                    thickness: 0,
+                    width: 2,
+                  ),
+                  Column(
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    children: [
+                      Text(
+                        'Total Time',
+                        style: MyStyle.tx12b.copyWith(
+                          fontSize: 11,
+                          fontWeight: FontWeight.w400,
+                        ),
+                      ),
+                      const SizedBox(
+                        height: 4,
+                      ),
+                      Text(
+                        '1 Month',
+                        style: MyStyle.tx20b.copyWith(
+                          fontSize: 19,
+                          fontWeight: FontWeight.w700,
+                        ),
+                      ),
+                    ],
+                  ),
+                ],
+              ),
+            ),
+            const SizedBox(
+              height: 20,
+            ),
+            Row(
+              children: [
+                Expanded(
+                  child: InkWell(
+                    onTap: () {
+                      setState(() {
+                        onClick = 'task';
+                      });
+                    },
+                    child: Container(
+                      height: 33,
+                      width: MediaQuery.of(context).size.width,
+                      margin: const EdgeInsets.only(right: 12),
+                      color: onClick == 'task' ? MyColor.black : MyColor.grey,
+                      child: Center(
+                        child: Text(
+                          'All Task',
+                          style: onClick == 'task'
+                              ? MyStyle.tx12w.copyWith(
+                                  fontSize: 12,
+                                  fontWeight: FontWeight.w700,
+                                )
+                              : MyStyle.tx12b.copyWith(
+                                  fontSize: 12,
+                                  fontWeight: FontWeight.w700,
+                                ),
+                        ),
+                      ),
+                    ),
+                  ),
+                ),
+                Expanded(
+                  child: InkWell(
+                    onTap: () {
+                      setState(() {
+                        onClick = 'complete';
+                      });
+                    },
+                    child: Container(
+                      height: 33,
+                      width: MediaQuery.of(context).size.width,
+                      // margin: EdgeInsets.only(right: 6, left: 6),
+                      color:
+                          onClick == 'complete' ? MyColor.black : MyColor.grey,
+                      child: Center(
+                        child: Text(
+                          'Completed',
+                          style: onClick == 'complete'
+                              ? MyStyle.tx12w.copyWith(
+                                  fontWeight: FontWeight.w700,
+                                )
+                              : MyStyle.tx12b.copyWith(
+                                  fontWeight: FontWeight.w700,
+                                ),
+                        ),
+                      ),
+                    ),
+                  ),
+                ),
+                Expanded(
+                  child: InkWell(
+                    onTap: () {
+                      setState(() {
+                        onClick = 'cancel';
+                      });
+                    },
+                    child: Container(
+                      height: 33,
+                      width: MediaQuery.of(context).size.width,
+                      margin: const EdgeInsets.only(left: 12),
+                      color: onClick == 'cancel' ? MyColor.black : MyColor.grey,
+                      child: Center(
+                        child: Text(
+                          'Cancel',
+                          style: onClick == 'cancel'
+                              ? MyStyle.tx12w.copyWith(
+                                  fontWeight: FontWeight.w700,
+                                )
+                              : MyStyle.tx12b.copyWith(
+                                  fontWeight: FontWeight.w700,
+                                ),
+                        ),
+                      ),
+                    ),
+                  ),
+                ),
+              ],
+            ),
+            const SizedBox(
+              height: 15,
+            ),
+            SizedBox(
+              height: 50,
+              width: MediaQuery.of(context).size.width,
+              child: TextFormField(
+                controller: searchController,
+                decoration: const InputDecoration(
+                  hintText: 'Search',
+                  hintStyle: MyStyle.tx14b,
+                  isDense: true,
+                  // contentPadding: EdgeInsets.symmetric(
+                  //   horizontal: 20,
+                  //   vertical: 20,
+                  // ),
+                  enabledBorder: OutlineInputBorder(
+                    borderSide: BorderSide(
+                      color: MyColor.grey,
+                    ),
+                  ),
+                  suffixIcon: Icon(
+                    Icons.search_outlined,
+                    size: 19,
+                  ),
+                  focusedBorder: OutlineInputBorder(
+                    borderSide: BorderSide(
+                      color: MyColor.grey,
+                    ),
+                  ),
+                  border: OutlineInputBorder(
+                    borderSide: BorderSide(
+                      color: MyColor.grey,
+                    ),
+                  ),
+                ),
+                keyboardType: TextInputType.text,
+              ),
+            ),
+            const SizedBox(
+              height: 20,
+            ),
+            Text(
+              'January 2023',
+              textAlign: TextAlign.start,
+              style: MyStyle.tx14b.copyWith(
+                fontSize: 16,
+                fontWeight: FontWeight.w700,
+                fontFamily: 'Roboto-Bold',
+              ),
+            ),
+            const SizedBox(
+              height: 10,
+            ),
+
+            //   ListView Builder
+            Expanded(
+              child: ListView.builder(
+                scrollDirection: Axis.vertical,
+                itemCount: statusList.length,
+                shrinkWrap: false,
+                physics: const AlwaysScrollableScrollPhysics(),
+                itemBuilder: (context, index) {
+                  return InkWell(
+                    onTap: () {
+                      Navigator.pushNamed(context, taskDetailRoute);
+                    },
+                    child: Container(
+                      width: MediaQuery.of(context).size.width,
+                      margin: const EdgeInsets.only(bottom: 18),
+                      decoration: BoxDecoration(
+                        color: MyColor.white,
+                        border: const Border(
+                          left: BorderSide(color: MyColor.grey),
+                          right: BorderSide(color: MyColor.grey),
+                          top: BorderSide(color: MyColor.grey),
+                        ),
+                        boxShadow: [
+                          BoxShadow(
+                            color: MyColor.black.withOpacity(0.1),
+                            blurRadius: 4,
+                            spreadRadius: 0.01,
+                            offset: const Offset(1, 4),
+                          ),
+                          // BoxShadow(
+                          //   color: MyColor.black.withOpacity(0.1),
+                          //   blurRadius: 1,
+                          //   spreadRadius: 0.01,
+                          //   offset: const Offset(-1, -1),
+                          // ),
+                        ],
+                      ),
+                      child: Row(
+                        crossAxisAlignment: CrossAxisAlignment.start,
+                        children: [
+                          Container(
+                            height: 65,
+                            width: 65,
+                            padding: const EdgeInsets.all(20),
+                            margin: const EdgeInsets.all(10),
+                            color: MyColor.grey,
+                            child: Image.asset(
+                              'assets/icons/pad.png',
+                              height: 28,
+                              width: 28,
+                            ),
+                          ),
+                          Column(
                             crossAxisAlignment: CrossAxisAlignment.start,
-                            mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                            // mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                             children: [
+                              const SizedBox(
+                                height: 12,
+                              ),
                               Text(
                                 'Workshop',
                                 style: MyStyle.tx16b.copyWith(
@@ -289,21 +364,28 @@ class _TaskPageState extends State<TaskPage> {
                               Text(
                                 '3:00 PM - 5:00 PM',
                                 style: MyStyle.tx14b.copyWith(
+                                  fontSize: 13,
                                   fontWeight: FontWeight.w400,
                                   fontFamily: 'Poppins-Medium',
                                 ),
+                              ),
+                              const SizedBox(
+                                height: 7,
                               ),
                               Row(
                                 children: [
                                   Text(
                                     'Status: ',
-                                    style: MyStyle.tx14b.copyWith(
+                                    style: MyStyle.tx12b.copyWith(
+                                      fontSize: 10,
                                       fontWeight: FontWeight.w400,
                                     ),
                                   ),
                                   Text(
                                     '${statusList[index]["Text"]}',
-                                    style: MyStyle.tx14b.copyWith(
+                                    style: MyStyle.tx12b.copyWith(
+                                      fontSize: 10,
+                                      fontFamily: 'Poppins-Regular',
                                       fontWeight: FontWeight.w400,
                                       color: statusList[index]["Color"],
                                     ),
@@ -312,15 +394,15 @@ class _TaskPageState extends State<TaskPage> {
                               ),
                             ],
                           ),
-                        ),
-                      ],
+                        ],
+                      ),
                     ),
-                  ),
-                );
-              },
+                  );
+                },
+              ),
             ),
-          ),
-        ],
+          ],
+        ),
       ),
     );
   }

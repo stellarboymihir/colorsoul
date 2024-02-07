@@ -16,22 +16,27 @@ class _NotificationPageState extends State<NotificationPage> {
     {
       "title": 'You miss Adam s. call',
       "Time": '1 minute ago',
+      "isTapped": false,
     },
     {
       "title": 'Next Meeting Adam s.',
       "Time": '18 minute ago',
+      "isTapped": false,
     },
     {
       "title": 'New lead Adam s.',
       "Time": '18, Dec 2021',
+      "isTapped": false,
     },
     {
       "title": 'Next order Status',
       "Time": '18, Dec 2021',
+      "isTapped": false,
     },
     {
       "title": 'Profile Update',
       "Time": '18, Dec 2021',
+      "isTapped": false,
     },
   ];
 
@@ -41,8 +46,8 @@ class _NotificationPageState extends State<NotificationPage> {
       appBar: AppBar(
         backgroundColor: MyColor.white,
         leading: Container(
-          height: 40,
-          width: 40,
+          height: 36,
+          width: 36,
           padding: const EdgeInsets.all(0),
           margin: const EdgeInsets.all(12),
           color: MyColor.grey,
@@ -52,9 +57,11 @@ class _NotificationPageState extends State<NotificationPage> {
             size: 16,
           )),
         ),
-        title: const Text(
+        title: Text(
           'Notification',
-          style: MyStyle.tx24b,
+          style: MyStyle.tx24b.copyWith(
+            fontSize: 20,
+          ),
         ),
       ),
       body: ListView.builder(
@@ -62,34 +69,56 @@ class _NotificationPageState extends State<NotificationPage> {
         itemCount: list.length,
         shrinkWrap: true,
         itemBuilder: (context, index) {
-          return Container(
-            // height: 100,
-            width: MediaQuery.of(context).size.width,
-            margin: const EdgeInsets.symmetric(horizontal: 20, vertical: 10),
-            child: Column(
-              crossAxisAlignment: CrossAxisAlignment.start,
-              children: [
-                Text(
-                  '${list[index]["title"]}',
-                  style: MyStyle.tx14b.copyWith(
-                    fontWeight: FontWeight.w700,
-                    fontFamily: 'NotoSansKR-SemiBold',
-                  ),
+          return InkWell(
+            onTap: () {
+              setState(() {
+                list[index]["isTapped"] = !list[index]["isTapped"];
+              });
+            },
+            child: Container(
+              color: list[index]["isTapped"] ? MyColor.grey : MyColor.white,
+              // height: 100,
+              width: MediaQuery.of(context).size.width,
+              padding: EdgeInsets.symmetric(vertical: 10),
+              margin: const EdgeInsets.symmetric(vertical: 10),
+              child: Padding(
+                padding: const EdgeInsets.only(left: 30.0, right: 12),
+                child: Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                  children: [
+                    Column(
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      children: [
+                        Text(
+                          '${list[index]["title"]}',
+                          style: MyStyle.tx14b.copyWith(
+                            fontWeight: FontWeight.w700,
+                            fontFamily: 'Poppins-Bold',
+                          ),
+                        ),
+                        Text(
+                          'Lorem ipsum dolor sit amet, Consectetur \n adipiscing elit. ',
+                          style: MyStyle.tx12b.copyWith(
+                            fontWeight: FontWeight.w400,
+                          ),
+                        ),
+                        Text(
+                          '${list[index]["Time"]}',
+                          style: MyStyle.tx14b.copyWith(
+                            fontWeight: FontWeight.w500,
+                            fontFamily: 'NotoSansKR-Medium',
+                          ),
+                        ),
+                      ],
+                    ),
+                    Image.asset(
+                      'assets/icons/dots.png',
+                      height: 20,
+                      width: 20,
+                    ),
+                  ],
                 ),
-                Text(
-                  'Lorem ipsum dolor sit amet, consectetur adipiscing elit. ',
-                  style: MyStyle.tx12b.copyWith(
-                    fontWeight: FontWeight.w400,
-                  ),
-                ),
-                Text(
-                  '${list[index]["Time"]}',
-                  style: MyStyle.tx14b.copyWith(
-                    fontWeight: FontWeight.w500,
-                    fontFamily: 'NotoSansKR-Medium',
-                  ),
-                ),
-              ],
+              ),
             ),
           );
         },
