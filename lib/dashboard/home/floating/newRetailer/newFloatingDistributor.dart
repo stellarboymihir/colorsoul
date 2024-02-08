@@ -347,131 +347,149 @@ class _FloatingDistributorState extends State<FloatingDistributor> {
           Row(
             children: [
               // State
-              Column(
-                crossAxisAlignment: CrossAxisAlignment.start,
-                children: [
-                  Text(
-                    'State',
-                    style: MyStyle.tx14b.copyWith(
-                      fontWeight: FontWeight.w400,
-                      fontFamily: 'Roboto-Medium',
-                    ),
-                  ),
-                  const SizedBox(
-                    height: 10,
-                  ),
-                  Container(
-                    height: 55,
-                    width: 160,
-                    decoration: BoxDecoration(
-                      border: Border.all(
-                        color: MyColor.grey,
+              Expanded(
+                child: Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    Text(
+                      'State',
+                      style: MyStyle.tx14b.copyWith(
+                        fontWeight: FontWeight.w400,
+                        fontFamily: 'Roboto-Medium',
                       ),
                     ),
-                    child: DropdownButtonHideUnderline(
-                      child: DropdownButtonFormField2<String>(
-                        isExpanded: true,
-                        style: MyStyle.tx12b,
-                        decoration: const InputDecoration(
-                          border: OutlineInputBorder(
-                            borderSide: BorderSide.none,
+                    const SizedBox(
+                      height: 10,
+                    ),
+                    Container(
+                      height: 50,
+                      // width: 160,
+                      decoration: BoxDecoration(
+                        border: Border.all(
+                          color: MyColor.grey,
+                        ),
+                      ),
+                      child: DropdownButtonHideUnderline(
+                        child: DropdownButtonFormField2<String>(
+                          isExpanded: true,
+                          style: MyStyle.tx12b,
+                          decoration: const InputDecoration(
+                            border: OutlineInputBorder(
+                              borderSide: BorderSide.none,
+                            ),
+                            contentPadding: EdgeInsets.only(left: 4.0),
                           ),
-                          contentPadding: EdgeInsets.only(left: 4.0),
-                        ),
-                        items: _stateList
-                            .map((String item) => DropdownMenuItem<String>(
-                                  value: item,
-                                  child: Text(
-                                    item,
-                                    style: const TextStyle(
-                                      fontSize: 14,
+                          items: _stateList
+                              .map((String item) => DropdownMenuItem<String>(
+                                    value: item,
+                                    child: Text(
+                                      item,
+                                      style: const TextStyle(
+                                        fontSize: 14,
+                                      ),
                                     ),
-                                  ),
-                                ))
-                            .toList(),
-                        value: selectedList,
-                        onChanged: (String? value) {
-                          setState(() {
-                            selectedList = value;
-                          });
-                        },
-                        buttonStyleData: const ButtonStyleData(
-                          padding: EdgeInsets.symmetric(horizontal: 16),
-                          height: 40,
-                          width: 140,
-                        ),
-                        menuItemStyleData: const MenuItemStyleData(
-                          height: 40,
+                                  ))
+                              .toList(),
+                          value: selectedList,
+                          onChanged: (String? value) {
+                            setState(() {
+                              selectedList = value;
+                            });
+                          },
+                          selectedItemBuilder: (context) => _stateList
+                              .map((value) => Text(
+                                    value,
+                                    maxLines: 1,
+                                    overflow: TextOverflow.ellipsis,
+                                  ))
+                              .toList(),
+                          buttonStyleData: const ButtonStyleData(
+                            padding: EdgeInsets.symmetric(horizontal: 16),
+                            height: 40,
+                            width: 140,
+                          ),
+                          menuItemStyleData: const MenuItemStyleData(
+                            height: 40,
+                          ),
                         ),
                       ),
                     ),
-                  ),
-                ],
+                  ],
+                ),
               ),
               const SizedBox(
                 width: 10,
               ),
 
               //  City
-              Column(
-                crossAxisAlignment: CrossAxisAlignment.start,
-                children: [
-                  Text(
-                    'City',
-                    style: MyStyle.tx14b.copyWith(
-                      fontWeight: FontWeight.w400,
-                      fontFamily: 'Roboto-Medium',
+              Expanded(
+                child: Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    Text(
+                      'City',
+                      style: MyStyle.tx14b.copyWith(
+                        fontWeight: FontWeight.w400,
+                        fontFamily: 'Roboto-Medium',
+                      ),
                     ),
-                  ),
-                  const SizedBox(
-                    height: 10,
-                  ),
-                  Container(
-                    height: 55,
-                    width: 160,
-                    decoration: BoxDecoration(
-                        border: Border.all(
-                      color: MyColor.grey,
-                    )),
-                    child: DropdownButtonHideUnderline(
-                      child: DropdownButtonFormField2<String>(
-                        isExpanded: true,
-                        style: MyStyle.tx12b,
-                        decoration: const InputDecoration(
-                          border: OutlineInputBorder(
-                            borderSide: BorderSide.none,
+                    const SizedBox(
+                      height: 10,
+                    ),
+                    Container(
+                      height: 50,
+                      // width: 160,
+                      decoration: BoxDecoration(
+                          border: Border.all(
+                        color: MyColor.grey,
+                      )),
+                      child: DropdownButtonHideUnderline(
+                        child: DropdownButtonFormField2<String>(
+                          isExpanded: true,
+                          style: MyStyle.tx12b,
+                          decoration: const InputDecoration(
+                            border: OutlineInputBorder(
+                              borderSide: BorderSide.none,
+                            ),
+                            contentPadding: EdgeInsets.only(left: 4.0),
                           ),
-                          contentPadding: EdgeInsets.only(left: 4.0),
-                        ),
-                        items: _cityList
-                            .map((String item) => DropdownMenuItem<String>(
-                                  value: item,
-                                  child: Text(
-                                    item,
-                                    style: const TextStyle(
-                                      fontSize: 14,
+                          items: _cityList
+                              .map((String item) => DropdownMenuItem<String>(
+                                    value: item,
+                                    child: Text(
+                                      item,
+                                      style: const TextStyle(
+                                        fontSize: 14,
+                                      ),
                                     ),
-                                  ),
-                                ))
-                            .toList(),
-                        value: citySelected,
-                        onChanged: (String? value) {
-                          setState(() {
-                            citySelected = value;
-                          });
-                        },
-                        buttonStyleData: const ButtonStyleData(
-                          padding: EdgeInsets.symmetric(horizontal: 16),
-                          height: 40,
-                          width: 140,
-                        ),
-                        menuItemStyleData: const MenuItemStyleData(
-                          height: 40,
+                                  ))
+                              .toList(),
+                          value: citySelected,
+                          selectedItemBuilder: (context) => _cityList
+                              .map((value) => Text(
+                                    value,
+                                    maxLines: 1,
+                                    overflow: TextOverflow.ellipsis,
+                                  ))
+                              .toList(),
+                          onChanged: (String? value) {
+                            setState(() {
+                              citySelected = value;
+                            });
+                          },
+                          buttonStyleData: const ButtonStyleData(
+                            padding: EdgeInsets.symmetric(horizontal: 16),
+                            height: 40,
+                            width: 140,
+                          ),
+                          menuItemStyleData: const MenuItemStyleData(
+                            height: 40,
+                          ),
                         ),
                       ),
                     ),
-                  ),
-                ],
+                  ],
+                ),
               ),
             ],
           ),
@@ -481,124 +499,150 @@ class _FloatingDistributorState extends State<FloatingDistributor> {
           Row(
             children: [
               // Region
-              Column(
-                crossAxisAlignment: CrossAxisAlignment.start,
-                children: [
-                  Text(
-                    'Region',
-                    style: MyStyle.tx14b.copyWith(
-                      fontWeight: FontWeight.w400,
-                      fontFamily: 'Roboto-Medium',
-                    ),
-                  ),
-                  const SizedBox(
-                    height: 8,
-                  ),
-                  Container(
-                    height: 55,
-                    width: 160,
-                    decoration: BoxDecoration(
-                      border: Border.all(
-                        color: MyColor.grey,
+              Expanded(
+                child: Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    Text(
+                      'Region',
+                      style: MyStyle.tx14b.copyWith(
+                        fontWeight: FontWeight.w400,
+                        fontFamily: 'Roboto-Medium',
                       ),
                     ),
-                    child: DropdownButtonHideUnderline(
-                      child: DropdownButtonFormField2<String>(
-                        style: MyStyle.tx12b,
-                        decoration: const InputDecoration(
-                          border: OutlineInputBorder(
-                            borderSide: BorderSide.none,
-                          ),
-                          contentPadding: EdgeInsets.only(left: 4.0),
+                    const SizedBox(
+                      height: 8,
+                    ),
+                    Container(
+                      height: 50,
+                      // width: 160,
+                      decoration: BoxDecoration(
+                        border: Border.all(
+                          color: MyColor.grey,
                         ),
-                        value: regionSelected,
-                        isExpanded: true,
-                        onChanged: (String? value) {
-                          print(value);
-                          setState(() {
-                            regionSelected = null;
-                            regionSelected = value!;
-                          });
-                        },
-                        // dropdownColor: MyColor.black.withOpacity(0.25),
-                        items:
-                            _regionList.map<DropdownMenuItem<String>>((list) {
-                          print(list);
-                          return DropdownMenuItem<String>(
-                            value: list,
-                            child: Text(
-                              list,
-                              style: MyStyle.tx12b.copyWith(
-                                color: MyColor.black,
-                              ),
+                      ),
+                      child: DropdownButtonHideUnderline(
+                        child: DropdownButtonFormField2<String>(
+                          isExpanded: true,
+                          style: MyStyle.tx12b,
+                          decoration: const InputDecoration(
+                            border: OutlineInputBorder(
+                              borderSide: BorderSide.none,
                             ),
-                          );
-                        }).toList(),
+                            contentPadding: EdgeInsets.only(left: 4.0),
+                          ),
+                          selectedItemBuilder: (context) => _regionList
+                              .map((value) => Text(
+                                    value,
+                                    maxLines: 1,
+                                    overflow: TextOverflow.ellipsis,
+                                  ))
+                              .toList(),
+                          items: _regionList
+                              .map((String item) => DropdownMenuItem<String>(
+                                    value: item,
+                                    child: Text(
+                                      item,
+                                      style: const TextStyle(
+                                        fontSize: 14,
+                                      ),
+                                    ),
+                                  ))
+                              .toList(),
+                          value: regionSelected,
+                          onChanged: (String? value) {
+                            setState(() {
+                              regionSelected = value;
+                            });
+                          },
+                          buttonStyleData: const ButtonStyleData(
+                            padding: EdgeInsets.symmetric(horizontal: 16),
+                            height: 40,
+                            width: 140,
+                          ),
+                          menuItemStyleData: const MenuItemStyleData(
+                            height: 40,
+                          ),
+                        ),
                       ),
                     ),
-                  ),
-                ],
+                  ],
+                ),
               ),
               const SizedBox(
                 width: 8,
               ),
 
               //  Area
-              Column(
-                crossAxisAlignment: CrossAxisAlignment.start,
-                children: [
-                  Text(
-                    'Area',
-                    style: MyStyle.tx14b.copyWith(
-                      fontWeight: FontWeight.w400,
-                      fontFamily: 'Roboto-Medium',
-                    ),
-                  ),
-                  const SizedBox(
-                    height: 8,
-                  ),
-                  Container(
-                    height: 55,
-                    width: 160,
-                    decoration: BoxDecoration(
-                        border: Border.all(
-                      color: MyColor.grey,
-                    )),
-                    child: DropdownButtonHideUnderline(
-                      child: DropdownButtonFormField2<String>(
-                        style: MyStyle.tx12b,
-                        decoration: const InputDecoration(
-                          border: OutlineInputBorder(
-                            borderSide: BorderSide.none,
-                          ),
-                          contentPadding: EdgeInsets.only(left: 4.0),
-                        ),
-                        value: areaSelected,
-                        isExpanded: true,
-                        onChanged: (String? value) {
-                          print(value);
-                          setState(() {
-                            areaSelected = null;
-                            areaSelected = value!;
-                          });
-                        },
-                        // dropdownColor: MyColor.black.withOpacity(0.25),
-                        items: _areaList.map<DropdownMenuItem<String>>((list) {
-                          print(list);
-                          return DropdownMenuItem<String>(
-                            value: list,
-                            child: Text(
-                              list,
-                              style: MyStyle.tx12b.copyWith(
-                                color: MyColor.black,
-                              ),
-                            ),
-                          );
-                        }).toList(),
+              Expanded(
+                child: Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    Text(
+                      'Area',
+                      style: MyStyle.tx14b.copyWith(
+                        fontWeight: FontWeight.w400,
+                        fontFamily: 'Roboto-Medium',
                       ),
                     ),
-                  ),
-                ],
+                    const SizedBox(
+                      height: 8,
+                    ),
+                    Container(
+                      height: 50,
+                      // width: 160,
+                      decoration: BoxDecoration(
+                        border: Border.all(
+                          color: MyColor.grey,
+                        ),
+                      ),
+                      child: DropdownButtonHideUnderline(
+                        child: DropdownButtonFormField2<String>(
+                          isExpanded: true,
+                          style: MyStyle.tx12b,
+                          decoration: const InputDecoration(
+                            border: OutlineInputBorder(
+                              borderSide: BorderSide.none,
+                            ),
+                            contentPadding: EdgeInsets.only(left: 4.0),
+                          ),
+                          selectedItemBuilder: (context) => _areaList
+                              .map((value) => Text(
+                                    value,
+                                    maxLines: 1,
+                                    overflow: TextOverflow.ellipsis,
+                                  ))
+                              .toList(),
+                          items: _areaList
+                              .map((String item) => DropdownMenuItem<String>(
+                                    value: item,
+                                    child: Text(
+                                      item,
+                                      style: const TextStyle(
+                                        fontSize: 14,
+                                      ),
+                                    ),
+                                  ))
+                              .toList(),
+                          value: areaSelected,
+                          onChanged: (String? value) {
+                            setState(() {
+                              areaSelected = value;
+                            });
+                          },
+                          buttonStyleData: const ButtonStyleData(
+                            padding: EdgeInsets.symmetric(horizontal: 16),
+                            height: 40,
+                            width: 140,
+                          ),
+                          menuItemStyleData: const MenuItemStyleData(
+                            height: 40,
+                          ),
+                        ),
+                      ),
+                    ),
+                  ],
+                ),
               ),
             ],
           ),

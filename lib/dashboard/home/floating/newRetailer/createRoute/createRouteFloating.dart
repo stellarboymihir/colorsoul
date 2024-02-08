@@ -46,21 +46,21 @@ class _CreateRouteFloatingState extends State<CreateRouteFloating> {
             Navigator.pop(context);
           },
           child: Container(
-            height: 40,
-            width: 40,
-            margin: const EdgeInsets.symmetric(horizontal: 12),
-            child: Image.asset(
-              'assets/icons/back.png',
-              height: 40,
-              width: 40,
-            ),
+            height: 36,
+            width: 36,
+            padding: const EdgeInsets.all(0),
+            margin: const EdgeInsets.all(12),
+            color: MyColor.grey,
+            child: const Center(
+                child: Icon(
+              Icons.arrow_back_ios_new,
+              size: 16,
+            )),
           ),
         ),
         title: Text(
           'Create Route',
-          style: MyStyle.tx16b.copyWith(
-            fontFamily: 'Poppins-Bold',
-          ),
+          style: MyStyle.tx16b.copyWith(),
         ),
       ),
       body: Column(
@@ -72,22 +72,27 @@ class _CreateRouteFloatingState extends State<CreateRouteFloating> {
             itemBuilder: (context, index) {
               return StatefulBuilder(builder: (context, setState) {
                 return Container(
-                  height: 70,
+                  // height: 70,
                   width: MediaQuery.of(context).size.width,
-                  padding: const EdgeInsets.all(12.0),
+                  padding: const EdgeInsets.all(10.0),
                   margin: const EdgeInsets.symmetric(
-                      vertical: 8.0, horizontal: 20.0),
+                      vertical: 6.0, horizontal: 12.0),
                   color: MyColor.grey,
                   child: Row(
                     mainAxisAlignment: MainAxisAlignment.spaceBetween,
                     children: [
                       Column(
                         crossAxisAlignment: CrossAxisAlignment.start,
-                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
                         children: [
-                          const Text(
+                          Text(
                             'GK Shoppers Store',
-                            style: MyStyle.tx18b,
+                            style: MyStyle.tx18b.copyWith(
+                              fontSize: 16,
+                              fontFamily: 'Poppins-Bold',
+                            ),
+                          ),
+                          SizedBox(
+                            height: 3,
                           ),
                           Row(
                             children: [
@@ -121,17 +126,17 @@ class _CreateRouteFloatingState extends State<CreateRouteFloating> {
                         child: onClick
                             ? Image.asset(
                                 'assets/icons/checkbox.png',
-                                height: 25,
-                                width: 25,
+                                height: 18,
+                                width: 18,
                               )
                             : Container(
-                                height: 25,
-                                width: 25,
+                                height: 18,
+                                width: 18,
                                 decoration: BoxDecoration(
                                   borderRadius: BorderRadius.circular(2),
                                   border: Border.all(
                                     color: MyColor.black,
-                                    width: 2,
+                                    width: 1,
                                   ),
                                 ),
                               ),
@@ -142,28 +147,25 @@ class _CreateRouteFloatingState extends State<CreateRouteFloating> {
               });
             },
           ),
-          Spacer(),
-          InkWell(
-            onTap: () {
-              Navigator.pop(context);
-            },
-            child: Container(
-              height: 65,
-              margin: const EdgeInsets.symmetric(horizontal: 20, vertical: 10),
-              width: MediaQuery.of(context).size.width,
-              color: MyColor.black,
-              child: const Center(
-                child: Text(
-                  'Submit',
-                  style: MyStyle.tx20W,
-                ),
-              ),
+        ],
+      ),
+      bottomNavigationBar: InkWell(
+        onTap: () {
+          Navigator.pop(context);
+        },
+        child: Container(
+          height: 50,
+          margin: const EdgeInsets.fromLTRB(20, 0, 20, 20),
+          width: MediaQuery.of(context).size.width,
+          color: MyColor.black,
+          child: Center(
+            child: Text(
+              'Submit',
+              style: MyStyle.tx20W
+                  .copyWith(fontFamily: 'Poppins-SemiBold', fontSize: 15),
             ),
           ),
-          const SizedBox(
-            height: 20,
-          ),
-        ],
+        ),
       ),
     );
   }

@@ -61,7 +61,8 @@ class _PinState extends State<Pin> {
               height: 10,
             ),
             Container(
-              margin: const EdgeInsets.symmetric(horizontal: 50),
+              height: 50, width: 250,
+              // margin: const EdgeInsets.symmetric(horizontal: 50),
               child: PinInputTextFormField(
                 pinLength:
                     4, // Set pinLength to 1 to allow only one digit per container
@@ -101,7 +102,8 @@ class _PinState extends State<Pin> {
               height: 10,
             ),
             Container(
-              // height: 50,
+              height: 50,
+              width: 250,
               margin: const EdgeInsets.symmetric(horizontal: 50),
               child: PinInputTextFormField(
                 pinLength: 4,

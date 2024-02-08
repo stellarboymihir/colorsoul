@@ -34,14 +34,16 @@ class _ReimbursementPageState extends State<ReimbursementPage> {
             Navigator.pop(context);
           },
           child: Container(
-            height: 40,
-            width: 40,
-            margin: const EdgeInsets.symmetric(horizontal: 12),
-            child: Image.asset(
-              'assets/icons/back.png',
-              height: 40,
-              width: 40,
-            ),
+            height: 36,
+            width: 36,
+            padding: const EdgeInsets.all(0),
+            margin: const EdgeInsets.all(12),
+            color: MyColor.grey,
+            child: const Center(
+                child: Icon(
+              Icons.arrow_back_ios_new,
+              size: 16,
+            )),
           ),
         ),
         title: Text(
@@ -55,147 +57,145 @@ class _ReimbursementPageState extends State<ReimbursementPage> {
         child: Padding(
           padding: const EdgeInsets.all(12.0),
           child: Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
             children: [
               //   Title
-              Row(
-                children: [
-                  Text(
-                    'Title',
-                    style: MyStyle.tx14b.copyWith(
-                      fontWeight: FontWeight.w400,
-                      fontFamily: 'Roboto-Medium',
-                    ),
-                  ),
-                ],
+              Text(
+                'Title',
+                style: MyStyle.tx14b.copyWith(
+                  fontWeight: FontWeight.w400,
+                  fontFamily: 'Roboto-Medium',
+                ),
               ),
               const SizedBox(
-                height: 10,
+                height: 5,
               ),
               Container(
                 width: MediaQuery.of(context).size.width,
-                // margin: const EdgeInsets.all(12),
                 decoration: BoxDecoration(
                   border: Border.all(
                     color: MyColor.grey,
                   ),
                 ),
-                child: Theme(
-                  data: Theme.of(context).copyWith(
-                    dividerColor: Colors.transparent,
+                child: ExpansionTile(
+                  tilePadding: const EdgeInsets.symmetric(
+                    horizontal: 12,
                   ),
-                  child: ExpansionTile(
-                    trailing: const Icon(
-                      // _customTileExpanded
-                      //     ? Icons.arrow_drop_down_circle
-                      //     : Icons.arrow_drop_down,
-                      Icons.arrow_drop_down_sharp,
-                      color: MyColor.black,
+                  childrenPadding: const EdgeInsets.only(
+                    left: 14,
+                  ),
+                  title: Text(
+                    'Title',
+                    style: MyStyle.tx14b.copyWith(
+                      fontWeight: FontWeight.w400,
+                      fontFamily: 'Poppins-Medium',
                     ),
-                    shape: Border.all(color: MyColor.grey),
-                    onExpansionChanged: (bool expanded) {
-                      setState(() {});
-                    },
-                    title: const Text(''),
-                    children: <Widget>[
-                      ListTile(
-                        title: Row(
-                          mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                          children: [
-                            Text(
-                              'Petrol',
-                              style: MyStyle.tx14b.copyWith(
-                                fontFamily: 'Roboto-Medium',
-                                fontWeight: FontWeight.w400,
-                              ),
-                            ),
-                            Checkbox(
-                                activeColor: MyColor.black,
-                                value: _onClick[0],
-                                onChanged: (bool? val) {
-                                  setState(() {
-                                    _onClick[0] = val!;
-                                  });
-                                })
-                          ],
-                        ),
-                      ),
-                      ListTile(
-                        title: Row(
-                          mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                          children: [
-                            Text(
-                              'Fare',
-                              style: MyStyle.tx14b.copyWith(
-                                fontFamily: 'Roboto-Medium',
-                                fontWeight: FontWeight.w400,
-                              ),
-                            ),
-                            Checkbox(
-                                activeColor: MyColor.black,
-                                value: _onClick[1],
-                                onChanged: (bool? val) {
-                                  setState(() {
-                                    _onClick[1] = val!;
-                                  });
-                                })
-                          ],
-                        ),
-                      ),
-                      ListTile(
-                        title: Row(
-                          mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                          children: [
-                            Text(
-                              'Other',
-                              style: MyStyle.tx14b.copyWith(
-                                fontFamily: 'Roboto-Medium',
-                                fontWeight: FontWeight.w400,
-                              ),
-                            ),
-                            Checkbox(
-                                activeColor: MyColor.black,
-                                value: _onClick[2],
-                                onChanged: (bool? val) {
-                                  setState(() {
-                                    _onClick[2] = val!;
-                                  });
-                                })
-                          ],
-                        ),
-                      ),
-                    ],
                   ),
+                  trailing: const Icon(
+                    Icons.arrow_drop_down_sharp,
+                    size: 28,
+                    color: MyColor.black,
+                  ),
+                  shape: Border.all(color: Colors.transparent),
+                  children: <Widget>[
+                    Row(
+                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                      children: [
+                        Text(
+                          'Petrol',
+                          style: MyStyle.tx14b.copyWith(
+                            fontFamily: 'Roboto-Regular',
+                            fontWeight: FontWeight.w400,
+                          ),
+                        ),
+                        Checkbox(
+                            materialTapTargetSize:
+                                MaterialTapTargetSize.shrinkWrap,
+                            activeColor: MyColor.black,
+                            value: _onClick[0],
+                            onChanged: (bool? val) {
+                              setState(() {
+                                _onClick[0] = val!;
+                              });
+                            })
+                      ],
+                    ),
+                    Row(
+                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                      children: [
+                        Text(
+                          'Fare',
+                          style: MyStyle.tx14b.copyWith(
+                            fontFamily: 'Roboto-Regular',
+                            fontWeight: FontWeight.w400,
+                          ),
+                        ),
+                        Checkbox(
+                            materialTapTargetSize:
+                                MaterialTapTargetSize.shrinkWrap,
+                            activeColor: MyColor.black,
+                            value: _onClick[1],
+                            onChanged: (bool? val) {
+                              setState(() {
+                                _onClick[1] = val!;
+                              });
+                            })
+                      ],
+                    ),
+                    Row(
+                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                      children: [
+                        Text(
+                          'Other',
+                          style: MyStyle.tx14b.copyWith(
+                            fontFamily: 'Roboto-Regular',
+                            fontWeight: FontWeight.w400,
+                          ),
+                        ),
+                        Checkbox(
+                            materialTapTargetSize:
+                                MaterialTapTargetSize.shrinkWrap,
+                            activeColor: MyColor.black,
+                            value: _onClick[2],
+                            onChanged: (bool? val) {
+                              setState(() {
+                                _onClick[2] = val!;
+                              });
+                            })
+                      ],
+                    ),
+                  ],
+                  onExpansionChanged: (bool expanded) {
+                    setState(() {});
+                  },
                 ),
               ),
               const SizedBox(
-                height: 20,
+                height: 15,
               ),
 
               //  Note
-              Row(
-                children: [
-                  Text(
-                    'Note',
-                    style: MyStyle.tx14b.copyWith(
-                      fontWeight: FontWeight.w400,
-                      fontFamily: 'Roboto-Medium',
-                    ),
-                  ),
-                ],
+              Text(
+                'Note',
+                style: MyStyle.tx14b.copyWith(
+                  fontWeight: FontWeight.w400,
+                  fontFamily: 'Roboto-Medium',
+                ),
               ),
               const SizedBox(
-                height: 10,
+                height: 5,
               ),
-              Container(
-                height: 55,
+
+              SizedBox(
+                height: 50,
                 width: MediaQuery.of(context).size.width,
                 child: TextFormField(
                   controller: noteController,
+                  style: MyStyle.tx14b,
                   decoration: const InputDecoration(
-                    isDense: true,
-                    contentPadding: EdgeInsets.symmetric(
-                      horizontal: 20,
-                      vertical: 20,
+                    // isDense: true,
+                    contentPadding: EdgeInsets.only(
+                      left: 12,
                     ),
                     enabledBorder: OutlineInputBorder(
                       borderSide: BorderSide(
@@ -217,7 +217,7 @@ class _ReimbursementPageState extends State<ReimbursementPage> {
                 ),
               ),
               const SizedBox(
-                height: 20,
+                height: 15,
               ),
 
               //  Date
@@ -233,28 +233,28 @@ class _ReimbursementPageState extends State<ReimbursementPage> {
                 ],
               ),
               const SizedBox(
-                height: 10,
+                height: 5,
               ),
-              Container(
-                height: 55,
+              SizedBox(
+                height: 50,
                 width: MediaQuery.of(context).size.width,
-                margin: const EdgeInsets.symmetric(vertical: 2),
                 child: TextFormField(
                   controller: dateController,
+                  style: MyStyle.tx14b,
                   decoration: InputDecoration(
-                    suffixIcon: Container(
-                      height: 24,
-                      width: 24,
-                      margin: const EdgeInsets.all(10),
+                    suffixIcon: Padding(
+                      padding: const EdgeInsets.all(10.0),
                       child: Image.asset(
                         'assets/icons/calendar.png',
+                        height: 5,
+                        width: 5,
                         fit: BoxFit.fill,
                       ),
                     ),
                     isDense: true,
                     contentPadding: const EdgeInsets.symmetric(
-                      horizontal: 20,
-                      vertical: 20,
+                      horizontal: 12,
+                      // vertical: 20,
                     ),
                     enabledBorder: const OutlineInputBorder(
                       borderSide: BorderSide(
@@ -276,7 +276,7 @@ class _ReimbursementPageState extends State<ReimbursementPage> {
                 ),
               ),
               const SizedBox(
-                height: 20,
+                height: 15,
               ),
 
               //  Amount
@@ -292,18 +292,17 @@ class _ReimbursementPageState extends State<ReimbursementPage> {
                 ],
               ),
               const SizedBox(
-                height: 10,
+                height: 5,
               ),
-              Container(
-                height: 55,
+              SizedBox(
+                height: 50,
                 width: MediaQuery.of(context).size.width,
                 child: TextFormField(
                   controller: amountController,
                   decoration: const InputDecoration(
-                    isDense: true,
+                    // isDense: true,
                     contentPadding: EdgeInsets.symmetric(
-                      horizontal: 20,
-                      vertical: 20,
+                      horizontal: 12,
                     ),
                     enabledBorder: OutlineInputBorder(
                       borderSide: BorderSide(
@@ -325,7 +324,7 @@ class _ReimbursementPageState extends State<ReimbursementPage> {
                 ),
               ),
               const SizedBox(
-                height: 20,
+                height: 15,
               ),
 
               //  Description
@@ -341,18 +340,18 @@ class _ReimbursementPageState extends State<ReimbursementPage> {
                 ],
               ),
               const SizedBox(
-                height: 10,
+                height: 5,
               ),
-              Container(
-                height: 74,
+              SizedBox(
+                height: 64,
                 width: MediaQuery.of(context).size.width,
                 child: TextFormField(
                   controller: descriptionController,
                   decoration: const InputDecoration(
-                    isDense: true,
+                    // isDense: true,
                     contentPadding: EdgeInsets.symmetric(
-                      horizontal: 20,
-                      vertical: 20,
+                      horizontal: 12,
+                      vertical: 2,
                     ),
                     enabledBorder: OutlineInputBorder(
                       borderSide: BorderSide(
@@ -374,77 +373,68 @@ class _ReimbursementPageState extends State<ReimbursementPage> {
                   keyboardType: TextInputType.text,
                 ),
               ),
-              const SizedBox(
-                height: 20,
-              ),
+              // const SizedBox(
+              //   height: 15,
+              // ),
 
               //  Upload Image
-              Row(
-                children: [
-                  Text(
-                    'Upload Image',
-                    style: MyStyle.tx14b.copyWith(
-                      fontWeight: FontWeight.w400,
-                      fontFamily: 'Roboto-Medium',
+              Text(
+                'Upload Image',
+                style: MyStyle.tx14b.copyWith(
+                  fontWeight: FontWeight.w400,
+                  fontFamily: 'Roboto-Medium',
+                ),
+              ),
+              const SizedBox(
+                height: 5,
+              ),
+              InkWell(
+                onTap: () async {
+                  await _pickerImg();
+                },
+                child: Container(
+                  height: 145,
+                  width: MediaQuery.of(context).size.width,
+                  decoration: BoxDecoration(
+                    border: Border.all(
+                      color: MyColor.grey,
                     ),
                   ),
-                ],
-              ),
-              const SizedBox(
-                height: 10,
-              ),
-              Container(
-                height: 145,
-                width: MediaQuery.of(context).size.width,
-                padding: const EdgeInsets.all(40),
-                decoration: BoxDecoration(
-                  border: Border.all(
-                    color: MyColor.grey,
-                  ),
-                ),
-                child: Material(
-                  color: Colors.transparent,
-                  child: InkWell(
-                    onTap: () async {
-                      await _pickerImg();
-                    },
-                    child: image != null
-                        ? Image.file(
-                            image!,
-                            height: 54,
-                            width: 54,
-                            fit: BoxFit.cover,
-                          )
-                        : Padding(
-                            padding: const EdgeInsets.all(20.0),
-                            child: Image.asset(
-                              'assets/icons/img.png',
-                              height: 54,
-                              width: 54,
-                            ),
+                  child: image != null
+                      ? Image.file(
+                          image!,
+                          height: 54,
+                          width: 54,
+                          fit: BoxFit.fill,
+                        )
+                      : Center(
+                          child: Image.asset(
+                            'assets/icons/img.png',
+                            height: 50,
+                            width: 50,
                           ),
-                  ),
+                        ),
                 ),
-              ),
-              const SizedBox(
-                height: 20,
-              ),
-
-              Container(
-                height: 65,
-                width: MediaQuery.of(context).size.width,
-                color: MyColor.black,
-                child: const Center(
-                    child: Text(
-                  'Create List',
-                  style: MyStyle.tx20W,
-                )),
-              ),
-              SizedBox(
-                height: 20,
               ),
             ],
           ),
+        ),
+      ),
+      bottomNavigationBar: InkWell(
+        onTap: () {
+          Navigator.pop(context);
+        },
+        child: Container(
+          height: 50,
+          width: MediaQuery.of(context).size.width,
+          margin: const EdgeInsets.fromLTRB(12, 0, 12, 20),
+          color: MyColor.black,
+          child: Center(
+              child: Text(
+            'Create List',
+            style: MyStyle.tx20W
+                .copyWith(fontFamily: 'Poppins-SemiBold', fontSize: 15),
+          )),
         ),
       ),
     );
@@ -457,7 +447,6 @@ class _ReimbursementPageState extends State<ReimbursementPage> {
       final imageTemp = File(image.path);
       setState(() {
         this.image = imageTemp;
-        Navigator.pop(context);
       });
     } on PlatformException catch (e) {
       if (kDebugMode) {

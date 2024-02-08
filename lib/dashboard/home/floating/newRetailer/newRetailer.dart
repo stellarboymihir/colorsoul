@@ -24,15 +24,20 @@ class _NewRetailerState extends State<NewRetailer> {
       appBar: AppBar(
         scrolledUnderElevation: 0,
         backgroundColor: MyColor.white,
-        leading: Container(
-          height: 40,
-          width: 40,
-          margin: const EdgeInsets.fromLTRB(15, 10, 0, 10),
-          color: MyColor.grey,
-          child: const Center(
-            child: Icon(
-              Icons.arrow_back_ios_new,
-              size: 16,
+        leading: InkWell(
+          onTap: () {
+            Navigator.pop(context);
+          },
+          child: Container(
+            height: 40,
+            width: 40,
+            margin: const EdgeInsets.fromLTRB(15, 10, 0, 10),
+            color: MyColor.grey,
+            child: const Center(
+              child: Icon(
+                Icons.arrow_back_ios_new,
+                size: 16,
+              ),
             ),
           ),
         ),

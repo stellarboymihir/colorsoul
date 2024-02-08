@@ -45,17 +45,22 @@ class _NotificationPageState extends State<NotificationPage> {
     return Scaffold(
       appBar: AppBar(
         backgroundColor: MyColor.white,
-        leading: Container(
-          height: 36,
-          width: 36,
-          padding: const EdgeInsets.all(0),
-          margin: const EdgeInsets.all(12),
-          color: MyColor.grey,
-          child: const Center(
-              child: Icon(
-            Icons.arrow_back_ios_new,
-            size: 16,
-          )),
+        leading: InkWell(
+          onTap: () {
+            Navigator.pop(context);
+          },
+          child: Container(
+            height: 36,
+            width: 36,
+            padding: const EdgeInsets.all(0),
+            margin: const EdgeInsets.all(12),
+            color: MyColor.grey,
+            child: const Center(
+                child: Icon(
+              Icons.arrow_back_ios_new,
+              size: 16,
+            )),
+          ),
         ),
         title: Text(
           'Notification',
@@ -80,7 +85,7 @@ class _NotificationPageState extends State<NotificationPage> {
               // height: 100,
               width: MediaQuery.of(context).size.width,
               padding: EdgeInsets.symmetric(vertical: 10),
-              margin: const EdgeInsets.symmetric(vertical: 10),
+              // margin: const EdgeInsets.symmetric(vertical: 10),
               child: Padding(
                 padding: const EdgeInsets.only(left: 30.0, right: 12),
                 child: Row(

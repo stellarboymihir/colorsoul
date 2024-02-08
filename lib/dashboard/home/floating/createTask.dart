@@ -1,4 +1,10 @@
+// import 'dart:html';
+import 'dart:io';
+
+import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
+import 'package:image_picker/image_picker.dart';
 
 import '../../../values/myColor.dart';
 import '../../../values/myStyle.dart';
@@ -11,6 +17,7 @@ class CreateTask extends StatefulWidget {
 }
 
 class _CreateTaskState extends State<CreateTask> {
+  File? image;
   TextEditingController titleController = TextEditingController();
   TextEditingController noteController = TextEditingController();
   TextEditingController dateController = TextEditingController();
@@ -27,14 +34,16 @@ class _CreateTaskState extends State<CreateTask> {
             Navigator.pop(context);
           },
           child: Container(
-            height: 40,
-            width: 40,
-            margin: const EdgeInsets.symmetric(horizontal: 12),
-            child: Image.asset(
-              'assets/icons/back.png',
-              height: 40,
-              width: 40,
-            ),
+            height: 36,
+            width: 36,
+            padding: const EdgeInsets.all(0),
+            margin: const EdgeInsets.all(12),
+            color: MyColor.grey,
+            child: const Center(
+                child: Icon(
+              Icons.arrow_back_ios_new,
+              size: 16,
+            )),
           ),
         ),
         title: const Text(
@@ -47,38 +56,27 @@ class _CreateTaskState extends State<CreateTask> {
         child: Padding(
           padding: const EdgeInsets.all(12.0),
           child: Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
             children: [
               //   Title
-              Row(
-                children: [
-                  Padding(
-                    padding: const EdgeInsets.only(bottom: 4.0),
-                    child: Text(
-                      'Title',
-                      style: MyStyle.tx14b.copyWith(
-                        fontWeight: FontWeight.w400,
-                        fontFamily: 'Roboto-Medium',
-                      ),
-                    ),
-                  ),
-                ],
-              ),
-              Container(
-                height: 55,
-                width: MediaQuery.of(context).size.width,
-                decoration: BoxDecoration(
-                  border: Border.all(
-                    color: MyColor.grey,
-                  ),
+              Text(
+                'Title',
+                style: MyStyle.tx14b.copyWith(
+                  fontWeight: FontWeight.w400,
+                  fontFamily: 'Roboto-Medium',
                 ),
-                margin: const EdgeInsets.symmetric(vertical: 2),
+              ),
+              const SizedBox(
+                height: 3,
+              ),
+              SizedBox(
+                height: 50,
+                width: MediaQuery.of(context).size.width,
                 child: TextFormField(
                   controller: titleController,
                   decoration: const InputDecoration(
-                    isDense: true,
                     contentPadding: EdgeInsets.symmetric(
-                      horizontal: 20,
-                      vertical: 20,
+                      horizontal: 12,
                     ),
                     enabledBorder: OutlineInputBorder(
                       borderSide: BorderSide(
@@ -99,38 +97,28 @@ class _CreateTaskState extends State<CreateTask> {
                   keyboardType: TextInputType.name,
                 ),
               ),
-
-              //   Note
-              Row(
-                children: [
-                  Padding(
-                    padding: const EdgeInsets.symmetric(vertical: 4.0),
-                    child: Text(
-                      'Note',
-                      style: MyStyle.tx14b.copyWith(
-                        fontWeight: FontWeight.w400,
-                        fontFamily: 'Roboto-Medium',
-                      ),
-                    ),
-                  ),
-                ],
+              const SizedBox(
+                height: 15,
               ),
-              Container(
-                height: 55,
-                width: MediaQuery.of(context).size.width,
-                decoration: BoxDecoration(
-                  border: Border.all(
-                    color: MyColor.grey,
-                  ),
+              //   Note
+              Text(
+                'Note',
+                style: MyStyle.tx14b.copyWith(
+                  fontWeight: FontWeight.w400,
+                  fontFamily: 'Roboto-Medium',
                 ),
-                margin: const EdgeInsets.symmetric(vertical: 2),
+              ),
+              const SizedBox(
+                height: 5,
+              ),
+              SizedBox(
+                height: 50,
+                width: MediaQuery.of(context).size.width,
                 child: TextFormField(
                   controller: noteController,
                   decoration: const InputDecoration(
-                    isDense: true,
                     contentPadding: EdgeInsets.symmetric(
-                      horizontal: 20,
-                      vertical: 20,
+                      horizontal: 12,
                     ),
                     enabledBorder: OutlineInputBorder(
                       borderSide: BorderSide(
@@ -151,47 +139,39 @@ class _CreateTaskState extends State<CreateTask> {
                   keyboardType: TextInputType.text,
                 ),
               ),
-
-              //  Date
-              Row(
-                children: [
-                  Padding(
-                    padding: const EdgeInsets.symmetric(vertical: 4.0),
-                    child: Text(
-                      'Date',
-                      style: MyStyle.tx14b.copyWith(
-                        fontWeight: FontWeight.w400,
-                        fontFamily: 'Roboto-Medium',
-                      ),
-                    ),
-                  ),
-                ],
+              const SizedBox(
+                height: 15,
               ),
-              Container(
-                height: 55,
-                width: MediaQuery.of(context).size.width,
-                decoration: BoxDecoration(
-                  border: Border.all(
-                    color: MyColor.grey,
-                  ),
+              //  Date
+              Text(
+                'Date',
+                style: MyStyle.tx14b.copyWith(
+                  fontWeight: FontWeight.w400,
+                  fontFamily: 'Roboto-Medium',
                 ),
-                margin: const EdgeInsets.symmetric(vertical: 2),
+              ),
+              const SizedBox(
+                height: 5,
+              ),
+              SizedBox(
+                height: 50,
+                width: MediaQuery.of(context).size.width,
                 child: TextFormField(
                   controller: dateController,
                   decoration: InputDecoration(
-                    suffixIcon: Container(
-                      height: 24,
-                      width: 24,
-                      margin: const EdgeInsets.all(10),
+                    suffixIcon: Padding(
+                      padding: const EdgeInsets.all(12.0),
                       child: Image.asset(
                         'assets/icons/calendar.png',
+                        height: 5,
+                        width: 5,
                         fit: BoxFit.fill,
                       ),
                     ),
-                    isDense: true,
+                    // isDense: true,
                     contentPadding: const EdgeInsets.symmetric(
-                      horizontal: 20,
-                      vertical: 20,
+                      horizontal: 12,
+                      // vertical: 20,
                     ),
                     enabledBorder: const OutlineInputBorder(
                       borderSide: BorderSide(
@@ -212,47 +192,42 @@ class _CreateTaskState extends State<CreateTask> {
                   keyboardType: TextInputType.datetime,
                 ),
               ),
-
-              //  Attachment
-              Row(
-                children: [
-                  Padding(
-                    padding: const EdgeInsets.symmetric(vertical: 4.0),
-                    child: Text(
-                      'Attachment',
-                      style: MyStyle.tx14b.copyWith(
-                        fontWeight: FontWeight.w400,
-                        fontFamily: 'Roboto-Medium',
-                      ),
-                    ),
-                  ),
-                ],
+              const SizedBox(
+                height: 15,
               ),
-              Container(
-                height: 55,
+              //  Attachment
+              Text(
+                'Attachment',
+                style: MyStyle.tx14b.copyWith(
+                  fontWeight: FontWeight.w400,
+                  fontFamily: 'Roboto-Medium',
+                ),
+              ),
+              const SizedBox(
+                height: 5,
+              ),
+              SizedBox(
+                height: 50,
                 width: MediaQuery.of(context).size.width,
-                // decoration: BoxDecoration(
-                //   border: Border.all(
-                //     color: MyColor.grey,
-                //   ),
-                // ),
-                margin: const EdgeInsets.symmetric(vertical: 0),
                 child: TextFormField(
                   controller: attachController,
                   decoration: InputDecoration(
-                    suffixIcon: Container(
-                      height: 24,
-                      width: 24,
-                      margin: const EdgeInsets.all(10),
-                      child: Image.asset(
-                        'assets/icons/paper.png',
-                        fit: BoxFit.fill,
+                    suffixIcon: InkWell(
+                      onTap: () {},
+                      child: Padding(
+                        padding: const EdgeInsets.all(12.0),
+                        child: Image.asset(
+                          'assets/icons/paper.png',
+                          height: 15,
+                          width: 15,
+                          fit: BoxFit.fill,
+                        ),
                       ),
                     ),
-                    isDense: true,
+                    // isDense: true,
                     contentPadding: const EdgeInsets.symmetric(
-                      horizontal: 20,
-                      vertical: 20,
+                      horizontal: 12,
+                      // vertical: 20,
                     ),
                     enabledBorder: const OutlineInputBorder(
                       borderSide: BorderSide(
@@ -273,39 +248,30 @@ class _CreateTaskState extends State<CreateTask> {
                   keyboardType: TextInputType.text,
                 ),
               ),
-
-              // Description
-              Row(
-                children: [
-                  Padding(
-                    padding: const EdgeInsets.symmetric(vertical: 4.0),
-                    child: Text(
-                      'Description',
-                      style: MyStyle.tx14b.copyWith(
-                        fontWeight: FontWeight.w400,
-                        fontFamily: 'Roboto-Medium',
-                      ),
-                    ),
-                  ),
-                ],
+              const SizedBox(
+                height: 15,
               ),
-              Container(
-                height: 101,
-                width: MediaQuery.of(context).size.width,
-                decoration: BoxDecoration(
-                  border: Border.all(
-                    color: MyColor.grey,
-                  ),
+              // Description
+              Text(
+                'Description',
+                style: MyStyle.tx14b.copyWith(
+                  fontWeight: FontWeight.w400,
+                  fontFamily: 'Roboto-Medium',
                 ),
-                margin: const EdgeInsets.symmetric(vertical: 2),
+              ),
+              const SizedBox(
+                height: 5,
+              ),
+              SizedBox(
+                height: 80,
+                width: MediaQuery.of(context).size.width,
                 child: TextFormField(
                   controller: descriptionController,
                   decoration: const InputDecoration(
-                    isDense: true,
-                    // contentPadding: EdgeInsets.symmetric(
-                    //   horizontal: 20,
-                    //   vertical: ,
-                    // ),
+                    // isDense: true,
+                    contentPadding: EdgeInsets.symmetric(
+                      horizontal: 12,
+                    ),
                     enabledBorder: OutlineInputBorder(
                       borderSide: BorderSide(
                         color: MyColor.grey,
@@ -328,39 +294,40 @@ class _CreateTaskState extends State<CreateTask> {
               ),
 
               //   Add Team Member
-              Row(
-                children: [
-                  Padding(
-                    padding: const EdgeInsets.symmetric(vertical: 4.0),
-                    child: Text(
-                      'Add Team Member',
-                      style: MyStyle.tx14b.copyWith(
-                        fontWeight: FontWeight.w400,
-                        fontFamily: 'Roboto-Medium',
-                      ),
-                    ),
-                  ),
-                ],
+              Text(
+                'Add Team Member',
+                style: MyStyle.tx14b.copyWith(
+                  fontWeight: FontWeight.w400,
+                  fontFamily: 'Roboto-Medium',
+                ),
+              ),
+              SizedBox(
+                height: 3,
               ),
               Row(
                 children: [
-                  Container(
-                    height: 55,
-                    width: 60,
-                    decoration: BoxDecoration(
-                      borderRadius: BorderRadius.circular(0),
-                      border: Border.all(
-                        color: MyColor.grey,
+                  InkWell(
+                    onTap: () async {
+                      await _pickerImg();
+                    },
+                    child: Container(
+                      height: 55,
+                      width: 55,
+                      decoration: BoxDecoration(
+                        borderRadius: BorderRadius.circular(0),
+                        border: Border.all(
+                          color: MyColor.grey,
+                        ),
                       ),
-                    ),
-                    child: const Icon(
-                      Icons.add,
-                      size: 32,
-                      color: MyColor.black,
+                      child: const Icon(
+                        Icons.add,
+                        size: 26,
+                        color: MyColor.black,
+                      ),
                     ),
                   ),
                   const SizedBox(
-                    width: 15,
+                    width: 10,
                   ),
                   Container(
                     height: 55,
@@ -409,29 +376,43 @@ class _CreateTaskState extends State<CreateTask> {
                   ),
                 ],
               ),
-              const SizedBox(
-                height: 50,
-              ),
-              InkWell(
-                onTap: () {
-                  Navigator.pop(context);
-                },
-                child: Container(
-                  height: 65,
-                  width: MediaQuery.of(context).size.width,
-                  color: MyColor.black,
-                  child: const Center(
-                    child: Text(
-                      'Create task',
-                      style: MyStyle.tx20W,
-                    ),
-                  ),
-                ),
-              ),
             ],
           ),
         ),
       ),
+      bottomNavigationBar: InkWell(
+        onTap: () {
+          Navigator.pop(context);
+        },
+        child: Container(
+          height: 50,
+          width: MediaQuery.of(context).size.width,
+          margin: const EdgeInsets.fromLTRB(20, 0, 20, 20),
+          color: MyColor.black,
+          child: Center(
+            child: Text(
+              'Create task',
+              style: MyStyle.tx20W
+                  .copyWith(fontFamily: 'Poppins-SemiBold', fontSize: 16),
+            ),
+          ),
+        ),
+      ),
     );
+  }
+
+  Future<void> _pickerImg() async {
+    try {
+      final image = await ImagePicker().pickImage(source: ImageSource.gallery);
+      if (image == null) return;
+      final imageTemp = File(image.path);
+      setState(() {
+        this.image = imageTemp;
+      });
+    } on PlatformException catch (e) {
+      if (kDebugMode) {
+        print('Failed to pick Image: $e');
+      }
+    }
   }
 }

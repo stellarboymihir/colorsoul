@@ -17,14 +17,19 @@ class _TaskDetailState extends State<TaskDetail> {
       appBar: AppBar(
         scrolledUnderElevation: 0,
         backgroundColor: MyColor.white,
-        leading: Container(
-          margin: const EdgeInsets.fromLTRB(15, 10, 0, 10),
-          color: MyColor.grey,
-          child: const Center(
-              child: Icon(
-            Icons.arrow_back_ios_new,
-            size: 16,
-          )),
+        leading: InkWell(
+          onTap: () {
+            Navigator.pop(context);
+          },
+          child: Container(
+            margin: const EdgeInsets.fromLTRB(15, 10, 0, 10),
+            color: MyColor.grey,
+            child: const Center(
+                child: Icon(
+              Icons.arrow_back_ios_new,
+              size: 16,
+            )),
+          ),
         ),
         leadingWidth: 50,
         title: const Text(

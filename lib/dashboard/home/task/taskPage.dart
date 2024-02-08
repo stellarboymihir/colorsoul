@@ -52,14 +52,19 @@ class _TaskPageState extends State<TaskPage> {
       appBar: AppBar(
         scrolledUnderElevation: 0,
         backgroundColor: MyColor.white,
-        leading: Container(
-          margin: const EdgeInsets.fromLTRB(15, 10, 0, 10),
-          color: MyColor.grey,
-          child: const Center(
-              child: Icon(
-            Icons.arrow_back_ios_new,
-            size: 16,
-          )),
+        leading: InkWell(
+          onTap: () {
+            Navigator.pop(context);
+          },
+          child: Container(
+            margin: const EdgeInsets.fromLTRB(15, 10, 0, 10),
+            color: MyColor.grey,
+            child: const Center(
+                child: Icon(
+              Icons.arrow_back_ios_new,
+              size: 16,
+            )),
+          ),
         ),
         leadingWidth: 50,
         title: const Text(
@@ -327,68 +332,72 @@ class _TaskPageState extends State<TaskPage> {
                           ),
                         ],
                       ),
-                      child: Row(
-                        crossAxisAlignment: CrossAxisAlignment.start,
-                        children: [
-                          Container(
-                            height: 65,
-                            width: 65,
-                            padding: const EdgeInsets.all(20),
-                            margin: const EdgeInsets.all(10),
-                            color: MyColor.grey,
-                            child: Image.asset(
-                              'assets/icons/pad.png',
-                              height: 28,
-                              width: 28,
+                      child: Padding(
+                        padding: const EdgeInsets.all(8.0),
+                        child: Row(
+                          children: [
+                            Container(
+                              height: 60,
+                              width: 60,
+                              color: MyColor.grey,
+                              child: Center(
+                                child: Image.asset(
+                                  'assets/icons/pad.png',
+                                  height: 24,
+                                  width: 24,
+                                ),
+                              ),
                             ),
-                          ),
-                          Column(
-                            crossAxisAlignment: CrossAxisAlignment.start,
-                            // mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                            children: [
-                              const SizedBox(
-                                height: 12,
-                              ),
-                              Text(
-                                'Workshop',
-                                style: MyStyle.tx16b.copyWith(
-                                  fontFamily: 'NotoSansKR-Bold',
-                                ),
-                              ),
-                              Text(
-                                '3:00 PM - 5:00 PM',
-                                style: MyStyle.tx14b.copyWith(
-                                  fontSize: 13,
-                                  fontWeight: FontWeight.w400,
-                                  fontFamily: 'Poppins-Medium',
-                                ),
-                              ),
-                              const SizedBox(
-                                height: 7,
-                              ),
-                              Row(
-                                children: [
-                                  Text(
-                                    'Status: ',
-                                    style: MyStyle.tx12b.copyWith(
-                                      fontSize: 10,
-                                      fontWeight: FontWeight.w400,
-                                    ),
+                            SizedBox(
+                              width: 5,
+                            ),
+                            Column(
+                              crossAxisAlignment: CrossAxisAlignment.start,
+                              children: [
+                                // const SizedBox(
+                                //   height: 12,
+                                // ),
+                                Text(
+                                  'Workshop',
+                                  style: MyStyle.tx16b.copyWith(
+                                    fontFamily: 'NotoSansKR-Bold',
                                   ),
-                                  Text(
-                                    '${statusList[index]["Text"]}',
-                                    style: MyStyle.tx12b.copyWith(
-                                      fontSize: 10,
-                                      fontFamily: 'Poppins-Regular',
-                                      fontWeight: FontWeight.w400,
-                                      color: statusList[index]["Color"],
-                                    ),
+                                ),
+                                Text(
+                                  '3:00 PM - 5:00 PM',
+                                  style: MyStyle.tx14b.copyWith(
+                                    fontSize: 13,
+                                    fontWeight: FontWeight.w400,
+                                    fontFamily: 'Poppins-Medium',
                                   ),
-                                ],
-                              ),
-                            ],
-                          ),
-                        ],
+                                ),
+                                const SizedBox(
+                                  height: 5,
+                                ),
+                                Row(
+                                  children: [
+                                    Text(
+                                      'Status: ',
+                                      style: MyStyle.tx12b.copyWith(
+                                        fontSize: 10,
+                                        fontWeight: FontWeight.w400,
+                                      ),
+                                    ),
+                                    Text(
+                                      '${statusList[index]["Text"]}',
+                                      style: MyStyle.tx12b.copyWith(
+                                        fontSize: 10,
+                                        fontFamily: 'Poppins-Regular',
+                                        fontWeight: FontWeight.w400,
+                                        color: statusList[index]["Color"],
+                                      ),
+                                    ),
+                                  ],
+                                ),
+                              ],
+                            ),
+                          ],
+                        ),
                       ),
                     ),
                   );

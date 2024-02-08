@@ -32,17 +32,22 @@ class _AttendanceState extends State<Attendance> {
     return Scaffold(
       appBar: AppBar(
         backgroundColor: MyColor.white,
-        leading: Container(
-          height: 36,
-          width: 36,
-          padding: const EdgeInsets.all(0),
-          margin: const EdgeInsets.all(12),
-          color: MyColor.grey,
-          child: const Center(
-              child: Icon(
-            Icons.arrow_back_ios_new,
-            size: 16,
-          )),
+        leading: InkWell(
+          onTap: () {
+            Navigator.pop(context);
+          },
+          child: Container(
+            height: 36,
+            width: 36,
+            padding: const EdgeInsets.all(0),
+            margin: const EdgeInsets.all(12),
+            color: MyColor.grey,
+            child: const Center(
+                child: Icon(
+              Icons.arrow_back_ios_new,
+              size: 16,
+            )),
+          ),
         ),
         title: const Text(
           'Attendance',
@@ -79,7 +84,6 @@ class _AttendanceState extends State<Attendance> {
                             'assets/icons/camera.png',
                             height: 70,
                             width: 70,
-                            // fit: BoxFit.cov,
                           ),
                         ),
                 ),

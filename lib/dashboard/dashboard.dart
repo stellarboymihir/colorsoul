@@ -126,16 +126,15 @@ class _DashboardState extends State<Dashboard> {
         backgroundColor: MyColor.black,
         shape: BeveledRectangleBorder(
           borderRadius: BorderRadius.circular(0),
-          side: const BorderSide(
-            color: MyColor.greyo,
-            width: 2,
-          ),
+          // side: const BorderSide(
+          //   color: MyColor.greyo,
+          //   width: 2,
+          // ),
         ),
-        child: const Icon(
-          Icons.add,
-          size: 24,
-          color: MyColor.white,
-        ),
+        // icon: Icons.add,
+        // activeIcon: Icons.add,
+        animatedIcon: AnimatedIcons.add_event,
+        foregroundColor: MyColor.white,
       ),
       bottomNavigationBar: Row(
         children: [

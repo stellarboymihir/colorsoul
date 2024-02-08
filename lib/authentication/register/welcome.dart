@@ -25,16 +25,17 @@ class _WelcomeState extends State<Welcome> {
         child: SingleChildScrollView(
           physics: const NeverScrollableScrollPhysics(),
           child: Column(
-            crossAxisAlignment: CrossAxisAlignment.center,
             children: [
               const SizedBox(
                 height: 70,
               ),
-              Image.asset(
-                'assets/icons/logo.png',
-                height: 160,
-                width: 196,
-                fit: BoxFit.contain,
+              Center(
+                child: Image.asset(
+                  'assets/icons/logo.png',
+                  height: 160,
+                  width: 196,
+                  fit: BoxFit.contain,
+                ),
               ),
               const SizedBox(
                 height: 30,
@@ -55,9 +56,8 @@ class _WelcomeState extends State<Welcome> {
                 height: 20,
               ),
               Container(
-                margin: const EdgeInsets.symmetric(
-                  horizontal: 50,
-                ),
+                height: 50,
+                width: 250,
                 child: PinInputTextFormField(
                   pinLength:
                       4, // Set pinLength to 1 to allow only one digit per container
