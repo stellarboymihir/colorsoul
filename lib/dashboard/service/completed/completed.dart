@@ -25,20 +25,22 @@ class _CompletedState extends State<Completed> {
   @override
   Widget build(BuildContext context) {
     return Column(
+      crossAxisAlignment: CrossAxisAlignment.start,
       children: [
+        SizedBox(
+          height: 20,
+        ),
         Padding(
-          padding: const EdgeInsets.symmetric(horizontal: 12.0, vertical: 12),
-          child: Row(
-            children: [
-              Text(
-                'Today',
-                style: MyStyle.tx13b.copyWith(
-                  fontWeight: FontWeight.w400,
-                  fontFamily: 'Roboto-Medium',
-                  color: MyColor.darkBlack,
-                ),
-              ),
-            ],
+          padding: const EdgeInsets.symmetric(
+            horizontal: 15.0,
+          ),
+          child: Text(
+            'Today',
+            style: MyStyle.tx13b.copyWith(
+              fontWeight: FontWeight.w400,
+              fontFamily: 'Roboto-Medium',
+              color: MyColor.darkBlack,
+            ),
           ),
         ),
         ListView.builder(
@@ -47,101 +49,84 @@ class _CompletedState extends State<Completed> {
           shrinkWrap: true,
           itemBuilder: (context, index) {
             return Container(
-              height: 80,
-              width: MediaQuery.of(context).size.width,
+              padding: const EdgeInsets.only(
+                  left: 14, top: 12, right: 5, bottom: 12),
+              margin: const EdgeInsets.fromLTRB(15, 5, 15, 12),
               decoration: BoxDecoration(
+                color: MyColor.white,
                 boxShadow: [
                   BoxShadow(
-                    color: MyColor.grey.withOpacity(
-                        0.7), // Change this to adjust the shadow color
-                    blurRadius: 5, // Change this to adjust the blur
-                    spreadRadius: 0.01, // Change this to adjust the spread
-                    offset: const Offset(
-                        0.0, 10), // Change this to adjust the offset
+                    color: MyColor.black.withOpacity(0.1),
+                    blurRadius: 8,
+                    spreadRadius: 0.01,
+                    offset: const Offset(1.0, 5),
                   ),
                 ],
               ),
-              // padding: const EdgeInsets.all(12.0),
-              // margin: const EdgeInsets.symmetric(vertical: 8.0, horizontal: 20.0),
-              child: Card(
-                color: MyColor.white,
-                elevation: 0.1,
-                shadowColor: MyColor.grey,
-                margin: EdgeInsets.symmetric(vertical: 5),
-                shape: RoundedRectangleBorder(
-                  borderRadius: BorderRadius.circular(1),
-                  side: const BorderSide(
-                    color: MyColor.grey,
-                  ),
-                ),
-                child: Row(
-                  mainAxisAlignment: MainAxisAlignment.start,
-                  children: [
-                    SizedBox(
-                      width: 10,
-                    ),
-                    Column(
-                      crossAxisAlignment: CrossAxisAlignment.start,
-                      mainAxisAlignment: MainAxisAlignment.center,
-                      children: [
-                        Text(
-                          'GK Shoppers',
-                          style: MyStyle.tx14b.copyWith(
-                            fontWeight: FontWeight.w700,
-                            fontFamily: 'Poppins-Medium',
+              child: Row(
+                mainAxisAlignment: MainAxisAlignment.start,
+                children: [
+                  Column(
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    children: [
+                      Text(
+                        'GK Shoppers',
+                        style: MyStyle.tx14b.copyWith(
+                          fontSize: 13,
+                          fontWeight: FontWeight.w700,
+                          fontFamily: 'Poppins-Medium',
+                        ),
+                      ),
+                      Row(
+                        children: [
+                          Image.asset(
+                            'assets/icons/map.png',
+                            height: 11,
+                            width: 11,
+                            fit: BoxFit.fill,
                           ),
-                        ),
-                        Row(
-                          children: [
-                            Image.asset(
-                              'assets/icons/map.png',
-                              height: 12,
-                              width: 12,
-                            ),
-                            const SizedBox(
-                              width: 4,
-                            ),
-                            const Text(
-                              'Central mall, Surat',
-                              style: MyStyle.tx10b,
-                            ),
-                          ],
-                        ),
-                      ],
-                    ),
-                    Spacer(),
-                    InkWell(
-                      onTap: () {
-                        // Navigator.pushNamed(context, skipRoute);
-                      },
-                      child: Container(
-                        height: 38,
-                        width: 102,
-                        color: workingList[index]["Color"],
-                        child: Center(
-                          child: Text(
-                            '${workingList[index]["title"]}',
-                            style: MyStyle.tx12w.copyWith(
-                              fontWeight: FontWeight.w700,
-                            ),
+                          const SizedBox(
+                            width: 4,
+                          ),
+                          Text(
+                            'Central mall, Surat',
+                            style: MyStyle.tx10b.copyWith(fontSize: 9),
+                          ),
+                        ],
+                      ),
+                    ],
+                  ),
+                  const Spacer(),
+                  InkWell(
+                    onTap: () {
+                      // Navigator.pushNamed(context, skipRoute);
+                    },
+                    child: Container(
+                      height: 34,
+                      width: 80,
+                      color: workingList[index]["Color"],
+                      child: Center(
+                        child: Text(
+                          '${workingList[index]["title"]}',
+                          style: MyStyle.tx12w.copyWith(
+                            fontSize: 10,
+                            fontWeight: FontWeight.w700,
                           ),
                         ),
                       ),
                     ),
-                    SizedBox(
-                      width: 10,
-                    ),
-                  ],
-                ),
+                  ),
+                  const SizedBox(
+                    width: 10,
+                  ),
+                ],
               ),
             );
           },
         ),
-        SizedBox(
-          height: 10,
-        ),
         Padding(
-          padding: const EdgeInsets.symmetric(horizontal: 12.0, vertical: 12),
+          padding: const EdgeInsets.symmetric(horizontal: 15.0, vertical: 5),
           child: Row(
             children: [
               Text(
@@ -156,92 +141,78 @@ class _CompletedState extends State<Completed> {
           ),
         ),
         Container(
-          height: 80,
-          width: MediaQuery.of(context).size.width,
+          padding:
+              const EdgeInsets.only(left: 14, top: 12, right: 5, bottom: 12),
+          margin: const EdgeInsets.fromLTRB(15, 5, 15, 12),
           decoration: BoxDecoration(
+            color: MyColor.white,
             boxShadow: [
               BoxShadow(
-                color: MyColor.grey
-                    .withOpacity(0.7), // Change this to adjust the shadow color
-                blurRadius: 5, // Change this to adjust the blur
-                spreadRadius: 0.01, // Change this to adjust the spread
-                offset:
-                    const Offset(0.0, 10), // Change this to adjust the offset
+                color: MyColor.black.withOpacity(0.1),
+                blurRadius: 8,
+                spreadRadius: 0.01,
+                offset: const Offset(1.0, 3),
               ),
             ],
           ),
-          // padding: const EdgeInsets.all(12.0),
-          // margin: const EdgeInsets.symmetric(vertical: 8.0, horizontal: 20.0),
-          child: Card(
-            color: MyColor.white,
-            elevation: 0.1,
-            shadowColor: MyColor.grey,
-            // margin: EdgeInsets.symmetric(horizontal: 10),
-            shape: RoundedRectangleBorder(
-              borderRadius: BorderRadius.circular(1),
-              side: const BorderSide(
-                color: MyColor.grey,
-              ),
-            ),
-            child: Row(
-              mainAxisAlignment: MainAxisAlignment.start,
-              children: [
-                SizedBox(
-                  width: 10,
-                ),
-                Column(
-                  crossAxisAlignment: CrossAxisAlignment.start,
-                  mainAxisAlignment: MainAxisAlignment.center,
-                  children: [
-                    Text(
-                      'GK Shoppers',
-                      style: MyStyle.tx14b.copyWith(
-                        fontWeight: FontWeight.w700,
-                        fontFamily: 'Poppins-Medium',
+          child: Row(
+            mainAxisAlignment: MainAxisAlignment.start,
+            children: [
+              Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: [
+                  Text(
+                    'GK Shoppers',
+                    style: MyStyle.tx14b.copyWith(
+                      fontSize: 13,
+                      fontWeight: FontWeight.w700,
+                      fontFamily: 'Poppins-Medium',
+                    ),
+                  ),
+                  Row(
+                    children: [
+                      Image.asset(
+                        'assets/icons/map.png',
+                        height: 11,
+                        width: 11,
+                        fit: BoxFit.fill,
                       ),
-                    ),
-                    Row(
-                      children: [
-                        Image.asset(
-                          'assets/icons/map.png',
-                          height: 12,
-                          width: 12,
-                        ),
-                        const SizedBox(
-                          width: 4,
-                        ),
-                        const Text(
-                          'Central mall, Surat',
-                          style: MyStyle.tx10b,
-                        ),
-                      ],
-                    ),
-                  ],
-                ),
-                Spacer(),
-                InkWell(
-                  onTap: () {
-                    // Navigator.pushNamed(context, skipRoute);
-                  },
-                  child: Container(
-                    height: 38,
-                    width: 102,
-                    color: MyColor.green,
-                    child: Center(
-                      child: Text(
-                        ' Take Order',
-                        style: MyStyle.tx12w.copyWith(
-                          fontWeight: FontWeight.w700,
-                        ),
+                      const SizedBox(
+                        width: 4,
+                      ),
+                      Text(
+                        'Central mall, Surat',
+                        style: MyStyle.tx10b.copyWith(fontSize: 9),
+                      ),
+                    ],
+                  ),
+                ],
+              ),
+              const Spacer(),
+              InkWell(
+                onTap: () {
+                  // Navigator.pushNamed(context, skipRoute);
+                },
+                child: Container(
+                  height: 34,
+                  width: 80,
+                  color: MyColor.green,
+                  child: Center(
+                    child: Text(
+                      'Take Order',
+                      style: MyStyle.tx12w.copyWith(
+                        fontSize: 10,
+                        fontWeight: FontWeight.w700,
                       ),
                     ),
                   ),
                 ),
-                SizedBox(
-                  width: 10,
-                ),
-              ],
-            ),
+              ),
+              const SizedBox(
+                width: 10,
+              ),
+            ],
           ),
         ),
       ],

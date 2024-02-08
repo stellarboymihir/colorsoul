@@ -271,6 +271,7 @@ class _AttendanceState extends State<Attendance> {
             child: Text(
               'SUBMIT',
               style: MyStyle.tx20b.copyWith(
+                fontSize: 16,
                 color: isSubmitEnabled() ? MyColor.white : MyColor.black,
               ),
             ),

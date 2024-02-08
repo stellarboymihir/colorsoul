@@ -37,49 +37,36 @@ class _WorkingState extends State<Working> {
 
   @override
   Widget build(BuildContext context) {
-    return SingleChildScrollView(
-      child: Column(
-        children: [
-          const SizedBox(
-            height: 20,
-          ),
-          ListView.builder(
-            scrollDirection: Axis.vertical,
-            itemCount: workingList.length,
-            shrinkWrap: true,
-            itemBuilder: (context, index) {
-              return InkWell(
-                onTap: () {
-                  Navigator.pushNamed(context, shoppersRoute);
-                },
-                child: Container(
-                  height: 80,
-                  width: MediaQuery.of(context).size.width,
-                  margin: EdgeInsets.symmetric(vertical: 10),
-                  decoration: BoxDecoration(
-                    boxShadow: [
-                      BoxShadow(
-                        color: MyColor.grey.withOpacity(
-                            0.7), // Change this to adjust the shadow color
-                        blurRadius: 5, // Change this to adjust the blur
-                        spreadRadius: 0.01, // Change this to adjust the spread
-                        offset: const Offset(
-                            0.0, 10), // Change this to adjust the offset
-                      ),
-                    ],
-                  ),
-                  // padding: const EdgeInsets.all(12.0),
-                  // margin: const EdgeInsets.symmetric(vertical: 8.0, horizontal: 20.0),
-                  child: Card(
-                    color: MyColor.white,
-                    elevation: 0.1,
-                    shadowColor: MyColor.grey,
-                    margin: EdgeInsets.symmetric(horizontal: 10),
-                    shape: RoundedRectangleBorder(
-                      borderRadius: BorderRadius.circular(1),
-                      side: const BorderSide(
-                        color: MyColor.grey,
-                      ),
+    return Column(
+      children: [
+        const SizedBox(
+          height: 20,
+        ),
+        Expanded(
+          child: SizedBox(
+            child: ListView.builder(
+              scrollDirection: Axis.vertical,
+              itemCount: workingList.length,
+              shrinkWrap: true,
+              itemBuilder: (context, index) {
+                return InkWell(
+                  onTap: () {
+                    Navigator.pushNamed(context, shoppersRoute);
+                  },
+                  child: Container(
+                    padding: EdgeInsets.symmetric(vertical: 12),
+                    margin: const EdgeInsets.only(
+                        left: 15, top: 0, right: 12, bottom: 12),
+                    decoration: BoxDecoration(
+                      color: MyColor.white,
+                      boxShadow: [
+                        BoxShadow(
+                          color: MyColor.black.withOpacity(0.1),
+                          blurRadius: 8,
+                          spreadRadius: 0.01,
+                          offset: const Offset(1.0, 3),
+                        ),
+                      ],
                     ),
                     child: Row(
                       mainAxisAlignment: MainAxisAlignment.spaceBetween,
@@ -117,50 +104,55 @@ class _WorkingState extends State<Working> {
                           ],
                         ),
                         SizedBox(
-                          width: 2,
+                          width: 20,
                         ),
                         Container(
-                          height: 38,
-                          width: 38,
+                          height: 34,
+                          width: 34,
                           color: MyColor.grey,
-                          padding: EdgeInsets.all(8),
-                          child: Image.asset(
-                            'assets/icons/call.png',
-                            height: 20,
-                            width: 20,
+                          child: Padding(
+                            padding: const EdgeInsets.all(8.0),
+                            child: Image.asset(
+                              'assets/icons/call.png',
+                              height: 20,
+                              width: 20,
+                              fit: BoxFit.fill,
+                            ),
                           ),
                         ),
-                        SizedBox(
-                          width: 2,
-                        ),
+                        // SizedBox(
+                        //   width: 2,
+                        // ),
                         Container(
-                          height: 38,
+                          height: 34,
                           width: 79,
                           color: MyColor.grey,
                           child: Center(
                             child: Text(
                               'Check In',
                               style: MyStyle.tx12b.copyWith(
+                                fontSize: 11,
                                 fontWeight: FontWeight.w700,
                               ),
                             ),
                           ),
                         ),
-                        SizedBox(
-                          width: 2,
-                        ),
+                        // SizedBox(
+                        //   width: 2,
+                        // ),
                         InkWell(
                           onTap: () {
                             Navigator.pushNamed(context, skipRoute);
                           },
                           child: Container(
-                            height: 38,
+                            height: 34,
                             width: 52,
                             color: MyColor.grey,
                             child: Center(
                               child: Text(
                                 'Skip',
                                 style: MyStyle.tx12b.copyWith(
+                                  fontSize: 11,
                                   fontWeight: FontWeight.w700,
                                 ),
                               ),
@@ -173,12 +165,12 @@ class _WorkingState extends State<Working> {
                       ],
                     ),
                   ),
-                ),
-              );
-            },
+                );
+              },
+            ),
           ),
-        ],
-      ),
+        ),
+      ],
     );
   }
 }

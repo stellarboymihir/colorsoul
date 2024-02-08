@@ -1,7 +1,5 @@
-// import 'dart:html';
 import 'dart:io';
-
-import 'package:flutter/foundation.dart';
+import 'dart:math';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:image_picker/image_picker.dart';
@@ -17,6 +15,8 @@ class CreateTask extends StatefulWidget {
 }
 
 class _CreateTaskState extends State<CreateTask> {
+  List<XFile> images = [];
+
   File? image;
   TextEditingController titleController = TextEditingController();
   TextEditingController noteController = TextEditingController();
@@ -25,6 +25,7 @@ class _CreateTaskState extends State<CreateTask> {
   TextEditingController descriptionController = TextEditingController();
   @override
   Widget build(BuildContext context) {
+    var height = MediaQuery.of(context).size.height;
     return Scaffold(
       appBar: AppBar(
         scrolledUnderElevation: 0,
@@ -51,332 +52,356 @@ class _CreateTaskState extends State<CreateTask> {
           style: MyStyle.tx16b,
         ),
       ),
-      body: SingleChildScrollView(
-        physics: const NeverScrollableScrollPhysics(),
-        child: Padding(
-          padding: const EdgeInsets.all(12.0),
-          child: Column(
-            crossAxisAlignment: CrossAxisAlignment.start,
-            children: [
-              //   Title
-              Text(
-                'Title',
-                style: MyStyle.tx14b.copyWith(
-                  fontWeight: FontWeight.w400,
-                  fontFamily: 'Roboto-Medium',
-                ),
-              ),
-              const SizedBox(
-                height: 3,
-              ),
-              SizedBox(
-                height: 50,
-                width: MediaQuery.of(context).size.width,
-                child: TextFormField(
-                  controller: titleController,
-                  decoration: const InputDecoration(
-                    contentPadding: EdgeInsets.symmetric(
-                      horizontal: 12,
-                    ),
-                    enabledBorder: OutlineInputBorder(
-                      borderSide: BorderSide(
-                        color: MyColor.grey,
-                      ),
-                    ),
-                    focusedBorder: OutlineInputBorder(
-                      borderSide: BorderSide(
-                        color: MyColor.grey,
-                      ),
-                    ),
-                    border: OutlineInputBorder(
-                      borderSide: BorderSide(
-                        color: MyColor.grey,
-                      ),
-                    ),
+      body: SizedBox(
+        height: height,
+        child: SingleChildScrollView(
+          child: Padding(
+            padding: const EdgeInsets.all(12.0),
+            child: Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                //   Title
+                Text(
+                  'Title',
+                  style: MyStyle.tx14b.copyWith(
+                    fontWeight: FontWeight.w400,
+                    fontFamily: 'Roboto-Medium',
                   ),
-                  keyboardType: TextInputType.name,
                 ),
-              ),
-              const SizedBox(
-                height: 15,
-              ),
-              //   Note
-              Text(
-                'Note',
-                style: MyStyle.tx14b.copyWith(
-                  fontWeight: FontWeight.w400,
-                  fontFamily: 'Roboto-Medium',
+                const SizedBox(
+                  height: 3,
                 ),
-              ),
-              const SizedBox(
-                height: 5,
-              ),
-              SizedBox(
-                height: 50,
-                width: MediaQuery.of(context).size.width,
-                child: TextFormField(
-                  controller: noteController,
-                  decoration: const InputDecoration(
-                    contentPadding: EdgeInsets.symmetric(
-                      horizontal: 12,
-                    ),
-                    enabledBorder: OutlineInputBorder(
-                      borderSide: BorderSide(
-                        color: MyColor.grey,
+                SizedBox(
+                  height: 50,
+                  width: MediaQuery.of(context).size.width,
+                  child: TextFormField(
+                    controller: titleController,
+                    decoration: const InputDecoration(
+                      contentPadding: EdgeInsets.symmetric(
+                        horizontal: 12,
                       ),
-                    ),
-                    focusedBorder: OutlineInputBorder(
-                      borderSide: BorderSide(
-                        color: MyColor.grey,
-                      ),
-                    ),
-                    border: OutlineInputBorder(
-                      borderSide: BorderSide(
-                        color: MyColor.grey,
-                      ),
-                    ),
-                  ),
-                  keyboardType: TextInputType.text,
-                ),
-              ),
-              const SizedBox(
-                height: 15,
-              ),
-              //  Date
-              Text(
-                'Date',
-                style: MyStyle.tx14b.copyWith(
-                  fontWeight: FontWeight.w400,
-                  fontFamily: 'Roboto-Medium',
-                ),
-              ),
-              const SizedBox(
-                height: 5,
-              ),
-              SizedBox(
-                height: 50,
-                width: MediaQuery.of(context).size.width,
-                child: TextFormField(
-                  controller: dateController,
-                  decoration: InputDecoration(
-                    suffixIcon: Padding(
-                      padding: const EdgeInsets.all(12.0),
-                      child: Image.asset(
-                        'assets/icons/calendar.png',
-                        height: 5,
-                        width: 5,
-                        fit: BoxFit.fill,
-                      ),
-                    ),
-                    // isDense: true,
-                    contentPadding: const EdgeInsets.symmetric(
-                      horizontal: 12,
-                      // vertical: 20,
-                    ),
-                    enabledBorder: const OutlineInputBorder(
-                      borderSide: BorderSide(
-                        color: MyColor.grey,
-                      ),
-                    ),
-                    focusedBorder: const OutlineInputBorder(
-                      borderSide: BorderSide(
-                        color: MyColor.grey,
-                      ),
-                    ),
-                    border: const OutlineInputBorder(
-                      borderSide: BorderSide(
-                        color: MyColor.grey,
-                      ),
-                    ),
-                  ),
-                  keyboardType: TextInputType.datetime,
-                ),
-              ),
-              const SizedBox(
-                height: 15,
-              ),
-              //  Attachment
-              Text(
-                'Attachment',
-                style: MyStyle.tx14b.copyWith(
-                  fontWeight: FontWeight.w400,
-                  fontFamily: 'Roboto-Medium',
-                ),
-              ),
-              const SizedBox(
-                height: 5,
-              ),
-              SizedBox(
-                height: 50,
-                width: MediaQuery.of(context).size.width,
-                child: TextFormField(
-                  controller: attachController,
-                  decoration: InputDecoration(
-                    suffixIcon: InkWell(
-                      onTap: () {},
-                      child: Padding(
-                        padding: const EdgeInsets.all(12.0),
-                        child: Image.asset(
-                          'assets/icons/paper.png',
-                          height: 15,
-                          width: 15,
-                          fit: BoxFit.fill,
-                        ),
-                      ),
-                    ),
-                    // isDense: true,
-                    contentPadding: const EdgeInsets.symmetric(
-                      horizontal: 12,
-                      // vertical: 20,
-                    ),
-                    enabledBorder: const OutlineInputBorder(
-                      borderSide: BorderSide(
-                        color: MyColor.grey,
-                      ),
-                    ),
-                    focusedBorder: const OutlineInputBorder(
-                      borderSide: BorderSide(
-                        color: MyColor.grey,
-                      ),
-                    ),
-                    border: const OutlineInputBorder(
-                      borderSide: BorderSide(
-                        color: MyColor.grey,
-                      ),
-                    ),
-                  ),
-                  keyboardType: TextInputType.text,
-                ),
-              ),
-              const SizedBox(
-                height: 15,
-              ),
-              // Description
-              Text(
-                'Description',
-                style: MyStyle.tx14b.copyWith(
-                  fontWeight: FontWeight.w400,
-                  fontFamily: 'Roboto-Medium',
-                ),
-              ),
-              const SizedBox(
-                height: 5,
-              ),
-              SizedBox(
-                height: 80,
-                width: MediaQuery.of(context).size.width,
-                child: TextFormField(
-                  controller: descriptionController,
-                  decoration: const InputDecoration(
-                    // isDense: true,
-                    contentPadding: EdgeInsets.symmetric(
-                      horizontal: 12,
-                    ),
-                    enabledBorder: OutlineInputBorder(
-                      borderSide: BorderSide(
-                        color: MyColor.grey,
-                      ),
-                    ),
-                    focusedBorder: OutlineInputBorder(
-                      borderSide: BorderSide(
-                        color: MyColor.grey,
-                      ),
-                    ),
-                    border: OutlineInputBorder(
-                      borderSide: BorderSide(
-                        color: MyColor.grey,
-                      ),
-                    ),
-                  ),
-                  maxLines: 3,
-                  keyboardType: TextInputType.text,
-                ),
-              ),
-
-              //   Add Team Member
-              Text(
-                'Add Team Member',
-                style: MyStyle.tx14b.copyWith(
-                  fontWeight: FontWeight.w400,
-                  fontFamily: 'Roboto-Medium',
-                ),
-              ),
-              SizedBox(
-                height: 3,
-              ),
-              Row(
-                children: [
-                  InkWell(
-                    onTap: () async {
-                      await _pickerImg();
-                    },
-                    child: Container(
-                      height: 55,
-                      width: 55,
-                      decoration: BoxDecoration(
-                        borderRadius: BorderRadius.circular(0),
-                        border: Border.all(
+                      enabledBorder: OutlineInputBorder(
+                        borderSide: BorderSide(
                           color: MyColor.grey,
                         ),
                       ),
-                      child: const Icon(
-                        Icons.add,
-                        size: 26,
-                        color: MyColor.black,
+                      focusedBorder: OutlineInputBorder(
+                        borderSide: BorderSide(
+                          color: MyColor.grey,
+                        ),
+                      ),
+                      border: OutlineInputBorder(
+                        borderSide: BorderSide(
+                          color: MyColor.grey,
+                        ),
                       ),
                     ),
+                    keyboardType: TextInputType.name,
                   ),
-                  const SizedBox(
-                    width: 10,
+                ),
+                const SizedBox(
+                  height: 15,
+                ),
+                //   Note
+                Text(
+                  'Note',
+                  style: MyStyle.tx14b.copyWith(
+                    fontWeight: FontWeight.w400,
+                    fontFamily: 'Roboto-Medium',
                   ),
-                  Container(
-                    height: 55,
-                    width: 60,
-                    decoration: BoxDecoration(
-                      borderRadius: BorderRadius.circular(0),
-                      border: Border.all(
-                        color: MyColor.grey,
+                ),
+                const SizedBox(
+                  height: 5,
+                ),
+                SizedBox(
+                  height: 50,
+                  width: MediaQuery.of(context).size.width,
+                  child: TextFormField(
+                    controller: noteController,
+                    decoration: const InputDecoration(
+                      contentPadding: EdgeInsets.symmetric(
+                        horizontal: 12,
+                      ),
+                      enabledBorder: OutlineInputBorder(
+                        borderSide: BorderSide(
+                          color: MyColor.grey,
+                        ),
+                      ),
+                      focusedBorder: OutlineInputBorder(
+                        borderSide: BorderSide(
+                          color: MyColor.grey,
+                        ),
+                      ),
+                      border: OutlineInputBorder(
+                        borderSide: BorderSide(
+                          color: MyColor.grey,
+                        ),
                       ),
                     ),
-                    child: Image.asset(
-                      'assets/images/img1.png',
-                    ),
+                    keyboardType: TextInputType.text,
                   ),
-                  const SizedBox(
-                    width: 15,
+                ),
+                const SizedBox(
+                  height: 15,
+                ),
+                //  Date
+                Text(
+                  'Date',
+                  style: MyStyle.tx14b.copyWith(
+                    fontWeight: FontWeight.w400,
+                    fontFamily: 'Roboto-Medium',
                   ),
-                  Container(
-                    height: 55,
-                    width: 60,
-                    decoration: BoxDecoration(
-                      borderRadius: BorderRadius.circular(0),
-                      border: Border.all(
-                        color: MyColor.grey,
+                ),
+                const SizedBox(
+                  height: 5,
+                ),
+                SizedBox(
+                  height: 50,
+                  width: MediaQuery.of(context).size.width,
+                  child: TextFormField(
+                    controller: dateController,
+                    decoration: InputDecoration(
+                      suffixIcon: Padding(
+                        padding: const EdgeInsets.all(12.0),
+                        child: Image.asset(
+                          'assets/icons/calendar.png',
+                          height: 5,
+                          width: 5,
+                          fit: BoxFit.fill,
+                        ),
+                      ),
+                      // isDense: true,
+                      contentPadding: const EdgeInsets.symmetric(
+                        horizontal: 12,
+                        // vertical: 20,
+                      ),
+                      enabledBorder: const OutlineInputBorder(
+                        borderSide: BorderSide(
+                          color: MyColor.grey,
+                        ),
+                      ),
+                      focusedBorder: const OutlineInputBorder(
+                        borderSide: BorderSide(
+                          color: MyColor.grey,
+                        ),
+                      ),
+                      border: const OutlineInputBorder(
+                        borderSide: BorderSide(
+                          color: MyColor.grey,
+                        ),
                       ),
                     ),
-                    child: Image.asset(
-                      'assets/images/img2.png',
-                    ),
+                    keyboardType: TextInputType.datetime,
                   ),
-                  const SizedBox(
-                    width: 15,
+                ),
+                const SizedBox(
+                  height: 15,
+                ),
+                //  Attachment
+                Text(
+                  'Attachment',
+                  style: MyStyle.tx14b.copyWith(
+                    fontWeight: FontWeight.w400,
+                    fontFamily: 'Roboto-Medium',
                   ),
-                  Container(
-                    height: 55,
-                    width: 60,
-                    decoration: BoxDecoration(
-                      borderRadius: BorderRadius.circular(0),
-                      border: Border.all(
-                        color: MyColor.grey,
+                ),
+                const SizedBox(
+                  height: 5,
+                ),
+                SizedBox(
+                  height: 50,
+                  width: MediaQuery.of(context).size.width,
+                  child: TextFormField(
+                    controller: attachController,
+                    decoration: InputDecoration(
+                      suffixIcon: InkWell(
+                        onTap: () {},
+                        child: Padding(
+                          padding: const EdgeInsets.all(12.0),
+                          child: Image.asset(
+                            'assets/icons/paper.png',
+                            height: 15,
+                            width: 15,
+                            fit: BoxFit.fill,
+                          ),
+                        ),
+                      ),
+                      // isDense: true,
+                      contentPadding: const EdgeInsets.symmetric(
+                        horizontal: 12,
+                        // vertical: 20,
+                      ),
+                      enabledBorder: const OutlineInputBorder(
+                        borderSide: BorderSide(
+                          color: MyColor.grey,
+                        ),
+                      ),
+                      focusedBorder: const OutlineInputBorder(
+                        borderSide: BorderSide(
+                          color: MyColor.grey,
+                        ),
+                      ),
+                      border: const OutlineInputBorder(
+                        borderSide: BorderSide(
+                          color: MyColor.grey,
+                        ),
                       ),
                     ),
-                    child: Image.asset(
-                      'assets/images/img3.png',
-                    ),
+                    keyboardType: TextInputType.text,
                   ),
-                ],
-              ),
-            ],
+                ),
+                const SizedBox(
+                  height: 15,
+                ),
+                // Description
+                Text(
+                  'Description',
+                  style: MyStyle.tx14b.copyWith(
+                    fontWeight: FontWeight.w400,
+                    fontFamily: 'Roboto-Medium',
+                  ),
+                ),
+                const SizedBox(
+                  height: 5,
+                ),
+                SizedBox(
+                  height: 80,
+                  width: MediaQuery.of(context).size.width,
+                  child: TextFormField(
+                    controller: descriptionController,
+                    decoration: const InputDecoration(
+                      // isDense: true,
+                      contentPadding: EdgeInsets.symmetric(
+                        horizontal: 12,
+                      ),
+                      enabledBorder: OutlineInputBorder(
+                        borderSide: BorderSide(
+                          color: MyColor.grey,
+                        ),
+                      ),
+                      focusedBorder: OutlineInputBorder(
+                        borderSide: BorderSide(
+                          color: MyColor.grey,
+                        ),
+                      ),
+                      border: OutlineInputBorder(
+                        borderSide: BorderSide(
+                          color: MyColor.grey,
+                        ),
+                      ),
+                    ),
+                    maxLines: 3,
+                    keyboardType: TextInputType.text,
+                  ),
+                ),
+
+                //   Add Team Member
+                Text(
+                  'Add Team Member',
+                  style: MyStyle.tx14b.copyWith(
+                    fontWeight: FontWeight.w400,
+                    fontFamily: 'Roboto-Medium',
+                  ),
+                ),
+                const SizedBox(
+                  height: 3,
+                ),
+                Row(
+                  children: [
+                    InkWell(
+                      onTap: () async {
+                        await _pickerCam();
+                      },
+                      child: Container(
+                        height: 55,
+                        width: 55,
+                        decoration: BoxDecoration(
+                          borderRadius: BorderRadius.circular(0),
+                          border: Border.all(
+                            color: MyColor.grey,
+                          ),
+                        ),
+                        child: const Icon(
+                          Icons.add,
+                          size: 26,
+                          color: MyColor.black,
+                        ),
+                      ),
+                    ),
+                    SizedBox(
+                      width: 10,
+                    ),
+                    Expanded(
+                      child: SizedBox(
+                        height: 55,
+                        child: ListView.builder(
+                            scrollDirection: Axis.horizontal,
+                            itemCount: images.length,
+                            itemBuilder: ((context, index) {
+                              return Padding(
+                                padding: const EdgeInsets.only(right: 8.0),
+                                child: Image.file(
+                                  File(images[index].path),
+                                  height: 55,
+                                  width: 55,
+                                  fit: BoxFit.fill,
+                                ),
+                              );
+                            })),
+                      ),
+                    )
+                    // const SizedBox(
+                    //   width: 10,
+                    // ),
+                    // Container(
+                    //   height: 55,
+                    //   width: 60,
+                    //   decoration: BoxDecoration(
+                    //     borderRadius: BorderRadius.circular(0),
+                    //     border: Border.all(
+                    //       color: MyColor.grey,
+                    //     ),
+                    //   ),
+                    //   child: Image.asset(
+                    //     'assets/images/img1.png',
+                    //   ),
+                    // ),
+                    // const SizedBox(
+                    //   width: 15,
+                    // ),
+                    // Container(
+                    //   height: 55,
+                    //   width: 60,
+                    //   decoration: BoxDecoration(
+                    //     borderRadius: BorderRadius.circular(0),
+                    //     border: Border.all(
+                    //       color: MyColor.grey,
+                    //     ),
+                    //   ),
+                    //   child: Image.asset(
+                    //     'assets/images/img2.png',
+                    //   ),
+                    // ),
+                    // const SizedBox(
+                    //   width: 15,
+                    // ),
+                    // Container(
+                    //   height: 55,
+                    //   width: 60,
+                    //   decoration: BoxDecoration(
+                    //     borderRadius: BorderRadius.circular(0),
+                    //     border: Border.all(
+                    //       color: MyColor.grey,
+                    //     ),
+                    //   ),
+                    //   child: Image.asset(
+                    //     'assets/images/img3.png',
+                    //   ),
+                    // ),
+                  ],
+                ),
+              ],
+            ),
           ),
         ),
       ),
@@ -401,18 +426,16 @@ class _CreateTaskState extends State<CreateTask> {
     );
   }
 
-  Future<void> _pickerImg() async {
+  Future<void> _pickerCam() async {
     try {
-      final image = await ImagePicker().pickImage(source: ImageSource.gallery);
-      if (image == null) return;
-      final imageTemp = File(image.path);
+      final pickedImages = await ImagePicker().pickMultiImage();
+      if (pickedImages == null) return;
       setState(() {
-        this.image = imageTemp;
+        images.addAll(pickedImages);
+        // Navigator.pop(context);
       });
     } on PlatformException catch (e) {
-      if (kDebugMode) {
-        print('Failed to pick Image: $e');
-      }
+      print('Failed to pick Image: $e');
     }
   }
 }

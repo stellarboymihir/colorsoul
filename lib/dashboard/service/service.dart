@@ -23,12 +23,9 @@ class _ServicePageState extends State<ServicePage> {
         scrolledUnderElevation: 0,
         automaticallyImplyLeading: false,
         backgroundColor: MyColor.white,
-        title: Text(
+        title: const Text(
           'Visit Route',
-          style: MyStyle.tx14b.copyWith(
-            fontWeight: FontWeight.w700,
-            fontFamily: 'Poppins-SemiBold',
-          ),
+          style: MyStyle.tx16b,
         ),
         actions: [
           InkWell(
@@ -36,141 +33,133 @@ class _ServicePageState extends State<ServicePage> {
               Navigator.pushNamed(context, editRoute);
             },
             child: Container(
-              height: 40,
-              width: 40,
+              height: 36,
+              width: 36,
               color: MyColor.grey,
-              padding: const EdgeInsets.all(10),
-              child: Image.asset(
-                'assets/icons/pencil.png',
-                height: 25,
-                width: 25,
+              child: Padding(
+                padding: const EdgeInsets.all(8.0),
+                child: Image.asset(
+                  'assets/icons/pencil.png',
+                  height: 25,
+                  width: 25,
+                ),
               ),
             ),
           ),
-          SizedBox(
-            width: 20,
+          const SizedBox(
+            width: 15,
           ),
         ],
       ),
-      body: Padding(
-        padding: const EdgeInsets.all(12.0),
-        child: Column(
-          children: [
-            Padding(
-              padding: const EdgeInsets.all(12.0),
-              child: Container(
-                decoration: BoxDecoration(
-                  boxShadow: [
-                    BoxShadow(
-                      color: MyColor.grey.withOpacity(
-                          0.7), // Change this to adjust the shadow color
-                      blurRadius: 5, // Change this to adjust the blur
-                      spreadRadius: 0.01, // Change this to adjust the spread
-                      offset: const Offset(
-                          0.0, 10), // Change this to adjust the offset
-                    ),
-                  ],
+      body: Column(
+        children: [
+          Container(
+            margin: const EdgeInsets.only(
+                left: 15.0, top: 10, right: 15, bottom: 10),
+            decoration: BoxDecoration(
+              color: MyColor.white,
+              boxShadow: [
+                BoxShadow(
+                  color: MyColor.black.withOpacity(0.1),
+                  blurRadius: 5,
+                  spreadRadius: 0.01,
+                  offset: const Offset(1, 8),
                 ),
-                child: Card(
-                  color: MyColor.white,
-                  elevation: 0.1,
-                  shadowColor: MyColor.grey,
-                  shape: RoundedRectangleBorder(
-                    borderRadius: BorderRadius.circular(1),
-                    side: const BorderSide(
-                      color: MyColor.grey,
-                    ),
-                  ),
-                  child: Column(
-                    children: [
-                      Image.asset(
-                        'assets/images/semi.png',
-                      ),
-                    ],
-                  ),
-                ),
-              ),
+                // BoxShadow(
+                //   color: MyColor.black.withOpacity(0.1),
+                //   blurRadius: 1,
+                //   spreadRadius: 0.01,
+                //   offset: const Offset(-1, -1),
+                // ),
+              ],
             ),
-            SizedBox(
-              height: 20,
-            ),
-            Row(
+            child: Column(
               children: [
-                Expanded(
-                  child: InkWell(
-                    onTap: () {
-                      setState(() {
-                        onPressed = 'working';
-                      });
-                      const Working();
-                    },
-                    child: Container(
-                      height: 55,
-                      width: MediaQuery.of(context).size.width,
-                      // margin: EdgeInsets.all(12),
-                      color:
-                          onPressed == 'working' ? MyColor.black : MyColor.grey,
-                      child: Center(
-                        child: Text(
-                          'Working',
-                          style: onPressed == 'working'
-                              ? MyStyle.tx16w.copyWith(
-                                  fontWeight: FontWeight.w700,
-                                )
-                              : MyStyle.tx16b.copyWith(
-                                  fontWeight: FontWeight.w700,
-                                ),
-                        ),
-                      ),
-                    ),
-                  ),
-                ),
-                SizedBox(
-                  width: 10,
-                ),
-                Expanded(
-                  child: InkWell(
-                    onTap: () {
-                      setState(() {
-                        onPressed = 'completed';
-                      });
-                      const Completed();
-                    },
-                    child: Container(
-                      height: 55,
-                      width: MediaQuery.of(context).size.width,
-                      // margin: EdgeInsets.all(12),
-                      color: onPressed == 'completed'
-                          ? MyColor.black
-                          : MyColor.grey,
-                      child: Center(
-                        child: Text(
-                          'Completed',
-                          style: onPressed == 'completed'
-                              ? MyStyle.tx16w.copyWith(
-                                  fontWeight: FontWeight.w700,
-                                )
-                              : MyStyle.tx16b.copyWith(
-                                  fontWeight: FontWeight.w700,
-                                ),
-                        ),
-                      ),
-                    ),
-                  ),
-                ),
-                SizedBox(
-                  height: 5,
+                Image.asset(
+                  'assets/images/semi.png',
                 ),
               ],
             ),
-            onPressed == 'working'
-                ? const Expanded(child: Working())
-                : const SizedBox(),
-            onPressed == 'completed'
-                ? const Expanded(child: Completed())
-                : const SizedBox(),
-          ],
-        ),
+          ),
+          const SizedBox(
+            height: 8,
+          ),
+          Row(
+            children: [
+              Expanded(
+                child: InkWell(
+                  onTap: () {
+                    setState(() {
+                      onPressed = 'working';
+                    });
+                    const Working();
+                  },
+                  child: Container(
+                    height: 50,
+                    margin: const EdgeInsets.only(left: 15, right: 6),
+                    width: MediaQuery.of(context).size.width,
+                    color:
+                        onPressed == 'working' ? MyColor.black : MyColor.grey,
+                    child: Center(
+                      child: Text(
+                        'Working',
+                        style: onPressed == 'working'
+                            ? MyStyle.tx16w.copyWith(
+                                fontSize: 15,
+                                fontWeight: FontWeight.w700,
+                              )
+                            : MyStyle.tx16b.copyWith(
+                                fontSize: 15,
+                                fontWeight: FontWeight.w700,
+                              ),
+                      ),
+                    ),
+                  ),
+                ),
+              ),
+              const SizedBox(
+                width: 10,
+              ),
+              Expanded(
+                child: InkWell(
+                  onTap: () {
+                    setState(() {
+                      onPressed = 'completed';
+                    });
+                    const Completed();
+                  },
+                  child: Container(
+                    height: 50,
+                    margin: const EdgeInsets.only(right: 15, left: 6),
+                    width: MediaQuery.of(context).size.width,
+                    color:
+                        onPressed == 'completed' ? MyColor.black : MyColor.grey,
+                    child: Center(
+                      child: Text(
+                        'Completed',
+                        style: onPressed == 'completed'
+                            ? MyStyle.tx16w.copyWith(
+                                fontSize: 15,
+                                fontWeight: FontWeight.w700,
+                              )
+                            : MyStyle.tx16b.copyWith(
+                                fontSize: 15,
+                                fontWeight: FontWeight.w700,
+                              ),
+                      ),
+                    ),
+                  ),
+                ),
+              ),
+            ],
+          ),
+          onPressed == 'working'
+              ? const Expanded(child: Working())
+              : const SizedBox(),
+          onPressed == 'completed'
+              ? const Expanded(child: Completed())
+              : const SizedBox(),
+        ],
       ),
     );
   }
