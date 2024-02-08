@@ -15,7 +15,7 @@ class Skip extends StatefulWidget {
 }
 
 class _SkipState extends State<Skip> {
-  List<bool> isClick = [false, false];
+  List<bool> isClick = [false, false, false];
   File? image;
   TextEditingController reasonController = TextEditingController();
 
@@ -24,17 +24,22 @@ class _SkipState extends State<Skip> {
     return Scaffold(
       appBar: AppBar(
         backgroundColor: MyColor.white,
-        leading: Container(
-          height: 40,
-          width: 40,
-          padding: const EdgeInsets.all(0),
-          margin: const EdgeInsets.all(12),
-          color: MyColor.grey,
-          child: const Center(
-              child: Icon(
-            Icons.arrow_back_ios_new,
-            size: 16,
-          )),
+        leading: InkWell(
+          onTap: () {
+            Navigator.pop(context);
+          },
+          child: Container(
+            height: 36,
+            width: 36,
+            padding: const EdgeInsets.all(0),
+            margin: const EdgeInsets.all(12),
+            color: MyColor.grey,
+            child: const Center(
+                child: Icon(
+              Icons.arrow_back_ios_new,
+              size: 16,
+            )),
+          ),
         ),
         title: const Text(
           'Skip',
@@ -42,221 +47,221 @@ class _SkipState extends State<Skip> {
         ),
       ),
       body: SingleChildScrollView(
-        physics: NeverScrollableScrollPhysics(),
-        child: SizedBox(
-          height: MediaQuery.of(context).size.height,
-          child: Padding(
-            padding: const EdgeInsets.all(12.0),
-            child: Column(
-              children: [
-                Container(
-                  height: 180,
-                  width: MediaQuery.of(context).size.width,
-                  margin: const EdgeInsets.symmetric(vertical: 0),
-                  padding: const EdgeInsets.all(40),
-                  decoration: BoxDecoration(
-                    border: Border.all(
-                      color: MyColor.grey,
-                    ),
-                  ),
-                  child: InkWell(
-                    onTap: () async {
-                      await _pickerCam();
-                    },
-                    child: SizedBox(
-                      height: 54,
-                      width: 54,
-                      child: image != null
-                          ? Image.file(
-                              image!,
-                              fit: BoxFit.cover,
-                            )
-                          : Image.asset(
-                              'assets/icons/camera.png',
-                            ),
-                    ),
+        physics: const NeverScrollableScrollPhysics(),
+        child: Padding(
+          padding: const EdgeInsets.all(12.0),
+          child: Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: [
+              Container(
+                height: 180,
+                width: MediaQuery.of(context).size.width,
+                decoration: BoxDecoration(
+                  border: Border.all(
+                    color: MyColor.grey,
                   ),
                 ),
-                SizedBox(
-                  height: 10,
-                ),
-                Row(
-                  children: [
-                    Text(
-                      'Title',
-                      style: MyStyle.tx14b.copyWith(
-                        fontWeight: FontWeight.w400,
-                        fontFamily: 'Roboto-Medium',
-                      ),
-                    ),
-                  ],
-                ),
-                Container(
-                  // height: 55,
-                  width: MediaQuery.of(context).size.width,
-                  margin: const EdgeInsets.symmetric(vertical: 12),
-                  decoration: BoxDecoration(
-                    border: Border.all(
-                      color: MyColor.grey,
-                    ),
-                  ),
-                  child: Theme(
-                    data: Theme.of(context).copyWith(
-                      dividerColor: Colors.transparent,
-                    ),
-                    child: ExpansionTile(
-                      title: const Text(
-                        '',
-                        style: MyStyle.tx14b,
-                      ),
-                      trailing: const Icon(
-                        // _customTileExpanded
-                        //     ? Icons.arrow_drop_down_circle
-                        //     : Icons.arrow_drop_down,
-                        Icons.arrow_drop_down_sharp,
-                        color: MyColor.black,
-                      ),
-                      shape: Border.all(color: MyColor.grey),
-                      children: <Widget>[
-                        ListTile(
-                          title: Column(
-                            children: [
-                              Row(
-                                mainAxisAlignment:
-                                    MainAxisAlignment.spaceBetween,
-                                children: [
-                                  Text(
-                                    'Closed',
-                                    style: MyStyle.tx14b.copyWith(
-                                      fontFamily: 'Roboto-Medium',
-                                      fontWeight: FontWeight.w400,
-                                    ),
-                                  ),
-                                  Checkbox(
-                                      activeColor: MyColor.black,
-                                      value: isClick[0],
-                                      onChanged: (bool? val) {
-                                        setState(() {
-                                          isClick[0] = val!;
-                                        });
-                                      })
-                                ],
-                              ),
-                              Row(
-                                mainAxisAlignment: MainAxisAlignment.start,
-                                children: [
-                                  Text(
-                                    'Not Available',
-                                    style: MyStyle.tx14b.copyWith(
-                                      fontFamily: 'Roboto-Medium',
-                                      fontWeight: FontWeight.w400,
-                                    ),
-                                  ),
-                                ],
-                              ),
-                            ],
-                          ),
-                        ),
-                        ListTile(
-                          title: Row(
-                            mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                            children: [
-                              Text(
-                                'Other',
-                                style: MyStyle.tx14b.copyWith(
-                                  fontFamily: 'Roboto-Medium',
-                                  fontWeight: FontWeight.w400,
-                                ),
-                              ),
-                              Checkbox(
-                                  activeColor: MyColor.black,
-                                  value: isClick[1],
-                                  onChanged: (bool? val) {
-                                    setState(() {
-                                      isClick[1] = val!;
-                                    });
-                                  })
-                            ],
-                          ),
-                        ),
-                      ],
-                      onExpansionChanged: (bool expanded) {
-                        setState(() {});
-                      },
-                    ),
-                  ),
-                ),
-                // const SizedBox(
-                //   height: 10,
-                // ),
-                Row(
-                  children: [
-                    Text(
-                      'Reason ',
-                      style: MyStyle.tx14b.copyWith(
-                        fontWeight: FontWeight.w400,
-                        fontFamily: 'Roboto-Medium',
-                      ),
-                    ),
-                  ],
-                ),
-                SizedBox(
-                  height: 10,
-                ),
-                Container(
-                  height: 149,
-                  width: MediaQuery.of(context).size.width,
-                  child: TextFormField(
-                    controller: reasonController,
-                    decoration: const InputDecoration(
-                      isDense: true,
-                      contentPadding: EdgeInsets.symmetric(
-                        horizontal: 20,
-                        vertical: 20,
-                      ),
-                      enabledBorder: OutlineInputBorder(
-                        borderSide: BorderSide(
-                          color: MyColor.grey,
-                        ),
-                      ),
-                      focusedBorder: OutlineInputBorder(
-                        borderSide: BorderSide(
-                          color: MyColor.grey,
-                        ),
-                      ),
-                      border: OutlineInputBorder(
-                        borderSide: BorderSide(
-                          color: MyColor.grey,
-                        ),
-                      ),
-                    ),
-                    maxLines: 3,
-                    keyboardType: TextInputType.text,
-                  ),
-                ),
-                SizedBox(
-                  height: 120,
-                ),
-                InkWell(
-                  onTap: () {
-                    Navigator.pop(context);
+                child: InkWell(
+                  onTap: () async {
+                    await _pickerCam();
                   },
-                  child: Container(
-                    height: 65,
-                    width: MediaQuery.of(context).size.width,
+                  child: SizedBox(
+                    child: image != null
+                        ? Image.file(
+                            height: 54,
+                            width: 54,
+                            image!,
+                            fit: BoxFit.fill,
+                          )
+                        : Center(
+                            child: Image.asset(
+                              'assets/icons/camera.png',
+                              height: 70,
+                              width: 70,
+                            ),
+                          ),
+                  ),
+                ),
+              ),
+              const SizedBox(
+                height: 15,
+              ),
+              Text(
+                'Title',
+                style: MyStyle.tx14b.copyWith(
+                  fontWeight: FontWeight.w400,
+                  fontFamily: 'Roboto-Medium',
+                ),
+              ),
+              const SizedBox(
+                height: 5,
+              ),
+              Container(
+                width: MediaQuery.of(context).size.width,
+                decoration: BoxDecoration(
+                  border: Border.all(
+                    color: MyColor.grey,
+                  ),
+                ),
+                child: ExpansionTile(
+                  tilePadding: const EdgeInsets.symmetric(
+                    horizontal: 12,
+                  ),
+                  childrenPadding: const EdgeInsets.only(
+                    left: 14,
+                  ),
+                  title: Text(
+                    'Title',
+                    style: MyStyle.tx14b.copyWith(
+                      fontWeight: FontWeight.w400,
+                      fontFamily: 'Poppins-Medium',
+                    ),
+                  ),
+                  trailing: const Icon(
+                    Icons.arrow_drop_down_sharp,
+                    size: 20,
                     color: MyColor.black,
-                    child: const Center(
-                      child: Text(
-                        'Done',
-                        style: MyStyle.tx20W,
+                  ),
+                  shape: Border.all(color: Colors.transparent),
+                  children: <Widget>[
+                    Row(
+                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                      children: [
+                        Text(
+                          'Closed',
+                          style: MyStyle.tx14b.copyWith(
+                            fontFamily: 'Roboto-Regular',
+                            fontWeight: FontWeight.w400,
+                          ),
+                        ),
+                        Checkbox(
+                            materialTapTargetSize:
+                                MaterialTapTargetSize.shrinkWrap,
+                            activeColor: MyColor.black,
+                            value: isClick[0],
+                            onChanged: (bool? val) {
+                              setState(() {
+                                isClick[0] = val!;
+                              });
+                            })
+                      ],
+                    ),
+                    Row(
+                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                      children: [
+                        Text(
+                          'Not Available',
+                          style: MyStyle.tx14b.copyWith(
+                            fontFamily: 'Roboto-Regular',
+                            fontWeight: FontWeight.w400,
+                          ),
+                        ),
+                        Checkbox(
+                            materialTapTargetSize:
+                                MaterialTapTargetSize.shrinkWrap,
+                            activeColor: MyColor.black,
+                            value: isClick[1],
+                            onChanged: (bool? val) {
+                              setState(() {
+                                isClick[1] = val!;
+                              });
+                            })
+                      ],
+                    ),
+                    Row(
+                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                      children: [
+                        Text(
+                          'Other',
+                          style: MyStyle.tx14b.copyWith(
+                            fontFamily: 'Roboto-Regular',
+                            fontWeight: FontWeight.w400,
+                          ),
+                        ),
+                        Checkbox(
+                            materialTapTargetSize:
+                                MaterialTapTargetSize.shrinkWrap,
+                            activeColor: MyColor.black,
+                            value: isClick[2],
+                            onChanged: (bool? val) {
+                              setState(() {
+                                isClick[2] = val!;
+                              });
+                            })
+                      ],
+                    ),
+                  ],
+                  onExpansionChanged: (bool expanded) {
+                    setState(() {});
+                  },
+                ),
+              ),
+              const SizedBox(
+                height: 15,
+              ),
+              Text(
+                'Reason ',
+                style: MyStyle.tx14b.copyWith(
+                  fontWeight: FontWeight.w400,
+                  fontFamily: 'Roboto-Medium',
+                ),
+              ),
+              const SizedBox(
+                height: 5,
+              ),
+              const SizedBox(
+                height: 10,
+              ),
+              SizedBox(
+                height: 120,
+                width: MediaQuery.of(context).size.width,
+                child: TextFormField(
+                  controller: reasonController,
+                  decoration: const InputDecoration(
+                    contentPadding: EdgeInsets.symmetric(
+                      horizontal: 12,
+                      vertical: 10,
+                    ),
+                    enabledBorder: OutlineInputBorder(
+                      borderSide: BorderSide(
+                        color: MyColor.grey,
+                      ),
+                    ),
+                    focusedBorder: OutlineInputBorder(
+                      borderSide: BorderSide(
+                        color: MyColor.grey,
+                      ),
+                    ),
+                    border: OutlineInputBorder(
+                      borderSide: BorderSide(
+                        color: MyColor.grey,
                       ),
                     ),
                   ),
+                  maxLines: 5,
+                  keyboardType: TextInputType.text,
                 ),
-                const SizedBox(
-                  height: 20,
-                ),
-              ],
+              ),
+            ],
+          ),
+        ),
+      ),
+      bottomNavigationBar: InkWell(
+        onTap: () {
+          Navigator.pop(context);
+        },
+        child: Container(
+          height: 50,
+          margin: const EdgeInsets.fromLTRB(12, 0, 12, 20),
+          width: MediaQuery.of(context).size.width,
+          color: MyColor.black,
+          child: Center(
+            child: Text(
+              'Done',
+              style: MyStyle.tx20W.copyWith(
+                fontFamily: 'Poppins-SemiBold',
+                fontSize: 16,
+              ),
             ),
           ),
         ),
