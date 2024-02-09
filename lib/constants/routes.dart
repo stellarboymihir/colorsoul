@@ -48,7 +48,10 @@ const shoppersRoute = '/shoppers/';
 const checkOutRoute = '/checkOut/';
 const imageRoute = '/imageRoute/';
 const skipRoute = '/skipRoute/';
+
+//   **   Get Stock
 const getStockRoute = '/getStock/';
+const scanRoute = '/scanRoute/';
 
 //  ** Completed  **
 const completedRoute = '/completed/';

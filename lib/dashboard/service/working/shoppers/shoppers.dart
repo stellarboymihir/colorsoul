@@ -14,24 +14,24 @@ class Shoppers extends StatefulWidget {
 class _ShoppersState extends State<Shoppers> {
   final List<Map<String, dynamic>> shopperList = [
     {
-      "title": 'GK Shoppers',
-      "Add": 'Central mall, Surat',
+      "title": 'Completed',
+      "Color": MyColor.green,
     },
     {
-      "title": 'GK Shoppers',
-      "Add": 'Central mall, Surat',
+      "title": 'Cancel',
+      "Color": MyColor.red,
     },
     {
-      "title": 'GK Shoppers',
-      "Add": 'Central mall, Surat',
+      "title": 'Completed',
+      "Color": MyColor.green,
     },
     {
-      "title": 'GK Shoppers',
-      "Add": 'Central mall, Surat',
+      "title": 'Cancel',
+      "Color": MyColor.red,
     },
     {
-      "title": 'GK Shoppers',
-      "Add": 'Central mall, Surat',
+      "title": 'Completed',
+      "Color": MyColor.green,
     },
   ];
   @override
@@ -40,17 +40,22 @@ class _ShoppersState extends State<Shoppers> {
       appBar: AppBar(
         backgroundColor: MyColor.white,
         scrolledUnderElevation: 0,
-        leading: Container(
-          height: 40,
-          width: 40,
-          padding: const EdgeInsets.all(0),
-          margin: const EdgeInsets.all(12),
-          color: MyColor.grey,
-          child: const Center(
-              child: Icon(
-            Icons.arrow_back_ios_new,
-            size: 16,
-          )),
+        leading: InkWell(
+          onTap: () {
+            Navigator.pop(context);
+          },
+          child: Container(
+            height: 36,
+            width: 36,
+            padding: const EdgeInsets.all(0),
+            margin: EdgeInsets.fromLTRB(15, 12, 8, 12),
+            color: MyColor.grey,
+            child: const Center(
+                child: Icon(
+              Icons.arrow_back_ios_new,
+              size: 16,
+            )),
+          ),
         ),
         title: const Text(
           'Edit route',
@@ -62,22 +67,21 @@ class _ShoppersState extends State<Shoppers> {
               Navigator.pushNamed(context, checkOutRoute);
             },
             child: Container(
-                height: 40,
-                width: 108,
+                height: 36,
+                // width: 108,
                 color: MyColor.grey,
-                padding: const EdgeInsets.all(10),
+                margin: EdgeInsets.symmetric(horizontal: 15),
+                padding: const EdgeInsets.symmetric(horizontal: 12),
                 child: Center(
                   child: Text(
-                    'Check OUT',
+                    'Check Out',
                     style: MyStyle.tx14b.copyWith(
+                      fontSize: 13,
                       fontWeight: FontWeight.w700,
-                      fontFamily: 'Poppins-\Bold',
+                      fontFamily: 'Poppins-Bold',
                     ),
                   ),
                 )),
-          ),
-          const SizedBox(
-            width: 20,
           ),
         ],
       ),
@@ -85,172 +89,203 @@ class _ShoppersState extends State<Shoppers> {
         children: [
           Image.asset(
             'assets/images/shop.png',
-            height: 196,
+            height: 190,
             width: MediaQuery.of(context).size.width,
           ),
+          SizedBox(
+            height: 5,
+          ),
           Padding(
-            padding: const EdgeInsets.symmetric(horizontal: 20),
+            padding: const EdgeInsets.symmetric(horizontal: 15),
             child: Row(
               children: [
                 Image.asset(
                   'assets/icons/map.png',
-                  height: 17,
-                  width: 17,
+                  height: 14,
+                  width: 14,
+                  fit: BoxFit.fill,
                 ),
-                const Text(
+                Text(
                   ' Location: Central mall, Surat',
-                  style: MyStyle.tx12b,
+                  style: MyStyle.tx12b.copyWith(
+                    fontSize: 11,
+                  ),
                 ),
               ],
             ),
           ),
-          Row(
-            children: [
-              Expanded(
-                child: InkWell(
-                  onTap: () {
-                    Navigator.pushNamed(context, getStockRoute);
-                  },
-                  child: Container(
-                    height: 50,
-                    width: 152,
-                    padding: const EdgeInsets.all(4),
-                    margin: const EdgeInsets.symmetric(
-                        vertical: 10, horizontal: 20),
-                    color: MyColor.black,
-                    child: const Center(
-                      child: Text(
-                        'Get Stock',
-                        style: MyStyle.tx16w,
+          SizedBox(
+            height: 20,
+          ),
+          Padding(
+            padding: const EdgeInsets.symmetric(horizontal: 15.0),
+            child: Row(
+              children: [
+                Expanded(
+                  child: InkWell(
+                    onTap: () {
+                      Navigator.pushNamed(context, getStockRoute);
+                    },
+                    child: Container(
+                      height: 40,
+                      padding: const EdgeInsets.symmetric(
+                          horizontal: 4, vertical: 7),
+                      color: MyColor.black,
+                      child: Center(
+                        child: Text(
+                          'Get Stock',
+                          style: MyStyle.tx16w.copyWith(fontSize: 14),
+                        ),
                       ),
                     ),
                   ),
                 ),
-              ),
-              Expanded(
-                child: Container(
-                  height: 50,
-                  width: 152,
-                  margin:
-                      const EdgeInsets.symmetric(vertical: 10, horizontal: 0),
-                  color: MyColor.black,
-                  child: const Center(
-                    child: Text(
-                      'Get Order',
-                      style: MyStyle.tx16w,
+                SizedBox(
+                  width: 10,
+                ),
+                Expanded(
+                  child: Container(
+                    height: 40,
+                    padding:
+                        const EdgeInsets.symmetric(horizontal: 4, vertical: 7),
+                    color: MyColor.black,
+                    child: Center(
+                      child: Text(
+                        'Get Order',
+                        style: MyStyle.tx16w.copyWith(fontSize: 14),
+                      ),
                     ),
                   ),
                 ),
-              ),
-              Expanded(
-                child: InkWell(
+                SizedBox(
+                  width: 10,
+                ),
+                InkWell(
                   onTap: () {
                     Navigator.pushNamed(context, imageRoute);
                   },
                   child: Container(
-                    height: 50,
-                    width: 152,
-                    margin: const EdgeInsets.symmetric(
-                        vertical: 10, horizontal: 20),
+                    height: 40,
+                    width: 40,
                     color: MyColor.black,
                     child: Center(
                       child: Image.asset(
                         'assets/icons/img.png',
-                        height: 25,
-                        width: 25,
+                        height: 16,
+                        width: 16,
                       ),
                     ),
                   ),
                 ),
-              ),
-            ],
+              ],
+            ),
+          ),
+          SizedBox(
+            height: 15,
           ),
           Expanded(
             child: Container(
               width: MediaQuery.of(context).size.width,
               color: MyColor.grey,
-              child: ListView.builder(
-                scrollDirection: Axis.vertical,
-                itemCount: shopperList.length,
-                shrinkWrap: true,
-                itemBuilder: (context, index) {
-                  return InkWell(
-                    onTap: () {
-                      // Navigator.pushNamed(context, shoppersRoute);
-                    },
-                    child: Container(
-                      height: 80,
-                      width: MediaQuery.of(context).size.width,
-                      margin: const EdgeInsets.symmetric(
-                          vertical: 10, horizontal: 12),
-                      padding: const EdgeInsets.all(10),
-                      color: MyColor.white,
-                      // padding: const EdgeInsets.all(12.0),
-                      // margin: const EdgeInsets.symmetric(vertical: 8.0, horizontal: 20.0),
-                      child: Row(
-                        mainAxisAlignment: MainAxisAlignment.start,
-                        children: [
-                          const SizedBox(
-                            width: 10,
-                          ),
-                          Column(
-                            crossAxisAlignment: CrossAxisAlignment.start,
-                            mainAxisAlignment: MainAxisAlignment.center,
-                            children: [
-                              Text(
-                                'Order No : XZD1234',
-                                style: MyStyle.tx14b.copyWith(
-                                  fontWeight: FontWeight.w700,
-                                  fontFamily: 'Poppins-Medium',
+              child: Padding(
+                padding: const EdgeInsets.all(15.0),
+                child: Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    Text(
+                      'Order List',
+                      style: MyStyle.tx14b.copyWith(
+                          fontFamily: 'Poppins-SemiBold',
+                          fontWeight: FontWeight.w700),
+                    ),
+                    SizedBox(
+                      height: 2,
+                    ),
+                    ListView.builder(
+                      scrollDirection: Axis.vertical,
+                      itemCount: shopperList.length,
+                      shrinkWrap: true,
+                      itemBuilder: (context, index) {
+                        return InkWell(
+                          onTap: () {
+                            // Navigator.pushNamed(context, shoppersRoute);
+                          },
+                          child: Container(
+                            width: MediaQuery.of(context).size.width,
+                            margin: const EdgeInsets.fromLTRB(0, 6, 0, 6),
+                            padding: EdgeInsets.fromLTRB(6, 14, 6, 14),
+                            color: MyColor.white,
+                            // padding: const EdgeInsets.all(12.0),
+                            // margin: const EdgeInsets.symmetric(vertical: 8.0, horizontal: 20.0),
+                            child: Row(
+                              mainAxisAlignment: MainAxisAlignment.start,
+                              children: [
+                                const SizedBox(
+                                  width: 10,
                                 ),
-                              ),
-                              Row(
-                                children: [
-                                  Text(
-                                    '18, Dec 2021',
-                                    style: MyStyle.tx12b.copyWith(
-                                      fontWeight: FontWeight.w700,
-                                      fontFamily: 'Roboto-Medium',
+                                Column(
+                                  children: [
+                                    Text(
+                                      'Order No : XZD1234',
+                                      style: MyStyle.tx14b.copyWith(
+                                        fontWeight: FontWeight.w700,
+                                        fontFamily: 'Poppins-Medium',
+                                      ),
+                                    ),
+                                    Row(
+                                      children: [
+                                        Text(
+                                          '18, Dec 2021',
+                                          style: MyStyle.tx12b.copyWith(
+                                            fontWeight: FontWeight.w700,
+                                            fontFamily: 'Roboto-Medium',
+                                          ),
+                                        ),
+                                        const SizedBox(
+                                          width: 4,
+                                        ),
+                                        const Text(
+                                          '9:30 AM ',
+                                          style: MyStyle.tx12b,
+                                        ),
+                                      ],
+                                    ),
+                                  ],
+                                ),
+                                Spacer(),
+                                Expanded(
+                                  child: InkWell(
+                                    onTap: () {
+                                      // Navigator.pushNamed(context, skipRoute);
+                                    },
+                                    child: Container(
+                                      // width: 90,
+                                      padding: EdgeInsets.symmetric(
+                                          horizontal: 12, vertical: 8),
+                                      color: shopperList[index]["Color"],
+                                      child: Center(
+                                        child: Text(
+                                          '${shopperList[index]["title"]}',
+                                          style: MyStyle.tx12w.copyWith(
+                                            fontSize: 11,
+                                            fontWeight: FontWeight.w700,
+                                          ),
+                                        ),
+                                      ),
                                     ),
                                   ),
-                                  const SizedBox(
-                                    width: 4,
-                                  ),
-                                  const Text(
-                                    '9:30 AM ',
-                                    style: MyStyle.tx10b,
-                                  ),
-                                ],
-                              ),
-                            ],
-                          ),
-                          const Spacer(),
-                          InkWell(
-                            onTap: () {
-                              // Navigator.pushNamed(context, skipRoute);
-                            },
-                            child: Container(
-                              height: 31,
-                              width: 102,
-                              color: MyColor.green,
-                              child: Center(
-                                child: Text(
-                                  'Completed',
-                                  style: MyStyle.tx12b.copyWith(
-                                    fontWeight: FontWeight.w700,
-                                  ),
                                 ),
-                              ),
+                                const SizedBox(
+                                  width: 10,
+                                ),
+                              ],
                             ),
                           ),
-                          const SizedBox(
-                            width: 10,
-                          ),
-                        ],
-                      ),
+                        );
+                      },
                     ),
-                  );
-                },
+                  ],
+                ),
               ),
             ),
           )

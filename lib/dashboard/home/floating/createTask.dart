@@ -350,54 +350,6 @@ class _CreateTaskState extends State<CreateTask> {
                             })),
                       ),
                     )
-                    // const SizedBox(
-                    //   width: 10,
-                    // ),
-                    // Container(
-                    //   height: 55,
-                    //   width: 60,
-                    //   decoration: BoxDecoration(
-                    //     borderRadius: BorderRadius.circular(0),
-                    //     border: Border.all(
-                    //       color: MyColor.grey,
-                    //     ),
-                    //   ),
-                    //   child: Image.asset(
-                    //     'assets/images/img1.png',
-                    //   ),
-                    // ),
-                    // const SizedBox(
-                    //   width: 15,
-                    // ),
-                    // Container(
-                    //   height: 55,
-                    //   width: 60,
-                    //   decoration: BoxDecoration(
-                    //     borderRadius: BorderRadius.circular(0),
-                    //     border: Border.all(
-                    //       color: MyColor.grey,
-                    //     ),
-                    //   ),
-                    //   child: Image.asset(
-                    //     'assets/images/img2.png',
-                    //   ),
-                    // ),
-                    // const SizedBox(
-                    //   width: 15,
-                    // ),
-                    // Container(
-                    //   height: 55,
-                    //   width: 60,
-                    //   decoration: BoxDecoration(
-                    //     borderRadius: BorderRadius.circular(0),
-                    //     border: Border.all(
-                    //       color: MyColor.grey,
-                    //     ),
-                    //   ),
-                    //   child: Image.asset(
-                    //     'assets/images/img3.png',
-                    //   ),
-                    // ),
                   ],
                 ),
               ],

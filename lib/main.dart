@@ -1,5 +1,3 @@
-import 'dart:async';
-
 import 'package:colorsoul/authentication/register/forgotOTPPass.dart';
 import 'package:colorsoul/authentication/register/otpVerify.dart';
 import 'package:colorsoul/authentication/register/resetPass.dart';
@@ -19,7 +17,8 @@ import 'package:colorsoul/dashboard/home/notification.dart';
 import 'package:colorsoul/dashboard/home/task/taskDetail.dart';
 import 'package:colorsoul/dashboard/home/task/taskPage.dart';
 import 'package:colorsoul/dashboard/service/completed/completed.dart';
-import 'package:colorsoul/dashboard/service/working/shoppers/getStock.dart';
+import 'package:colorsoul/dashboard/service/working/shoppers/getStock/getStock.dart';
+import 'package:colorsoul/dashboard/service/working/shoppers/getStock/scan.dart';
 import 'package:colorsoul/dashboard/service/working/shoppers/shoppers.dart';
 import 'package:colorsoul/dashboard/service/working/working.dart';
 import 'package:colorsoul/values/myColor.dart';
@@ -118,7 +117,11 @@ class MyApp extends StatelessWidget {
         shoppersRoute: (context) => const Shoppers(),
         checkOutRoute: (context) => const CheckOut(),
         imageRoute: (context) => const ImageRoute(),
+
+        //   ** Get Stock
         getStockRoute: (context) => const GetStock(),
+        scanRoute: (context) => const Scan(),
+
         skipRoute: (context) => const Skip(),
 
         completedRoute: (context) => const Completed(),

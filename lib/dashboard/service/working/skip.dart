@@ -42,7 +42,7 @@ class _SkipState extends State<Skip> {
           ),
         ),
         title: const Text(
-          'Skip',
+          'SKIP',
           style: MyStyle.tx16b,
         ),
       ),
@@ -209,9 +209,9 @@ class _SkipState extends State<Skip> {
               const SizedBox(
                 height: 5,
               ),
-              const SizedBox(
-                height: 10,
-              ),
+              // const SizedBox(
+              //   height: 10,
+              // ),
               SizedBox(
                 height: 120,
                 width: MediaQuery.of(context).size.width,

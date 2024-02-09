@@ -41,17 +41,22 @@ class _EditRouteState extends State<EditRoute> {
     return Scaffold(
       appBar: AppBar(
         backgroundColor: MyColor.white,
-        leading: Container(
-          height: 40,
-          width: 40,
-          padding: const EdgeInsets.all(0),
-          margin: const EdgeInsets.all(12),
-          color: MyColor.grey,
-          child: const Center(
-              child: Icon(
-            Icons.arrow_back_ios_new,
-            size: 16,
-          )),
+        leading: InkWell(
+          onTap: () {
+            Navigator.pop(context);
+          },
+          child: Container(
+            height: 36,
+            width: 36,
+            padding: const EdgeInsets.all(0),
+            margin: const EdgeInsets.symmetric(horizontal: 12, vertical: 12),
+            color: MyColor.grey,
+            child: const Center(
+                child: Icon(
+              Icons.arrow_back_ios_new,
+              size: 16,
+            )),
+          ),
         ),
         title: const Text(
           'Edit route',
@@ -63,39 +68,38 @@ class _EditRouteState extends State<EditRoute> {
               // Navigator.pushNamed(context, editRoute);
             },
             child: Container(
-              height: 40,
-              width: 40,
+              height: 36,
+              width: 36,
               color: MyColor.grey,
-              padding: const EdgeInsets.all(10),
-              child: Image.asset(
-                'assets/icons/funnel.png',
-                height: 25,
-                width: 25,
+              child: Center(
+                child: Image.asset(
+                  'assets/icons/funnel.png',
+                  height: 16,
+                  width: 16,
+                ),
               ),
             ),
           ),
           const SizedBox(
-            width: 20,
+            width: 15,
           ),
         ],
       ),
       body: SingleChildScrollView(
         child: Padding(
-          padding: const EdgeInsets.all(12.0),
+          padding: const EdgeInsets.symmetric(horizontal: 12.0, vertical: 8),
           child: Column(
             children: [
               SizedBox(
-                height: 55,
+                height: 50,
                 width: MediaQuery.of(context).size.width,
                 child: TextFormField(
                   controller: searchController,
                   decoration: const InputDecoration(
                     hintText: 'Search',
                     hintStyle: MyStyle.tx14b,
-                    isDense: true,
                     contentPadding: EdgeInsets.symmetric(
                       horizontal: 20,
-                      vertical: 20,
                     ),
                     enabledBorder: OutlineInputBorder(
                       borderSide: BorderSide(
@@ -104,7 +108,7 @@ class _EditRouteState extends State<EditRoute> {
                     ),
                     suffixIcon: Icon(
                       Icons.search_outlined,
-                      size: 20,
+                      size: 18,
                     ),
                     focusedBorder: OutlineInputBorder(
                       borderSide: BorderSide(
@@ -130,7 +134,6 @@ class _EditRouteState extends State<EditRoute> {
                 itemBuilder: (context, index) {
                   return StatefulBuilder(builder: (context, setState) {
                     return Container(
-                      height: 70,
                       width: MediaQuery.of(context).size.width,
                       padding: const EdgeInsets.all(12.0),
                       margin: const EdgeInsets.symmetric(
@@ -144,24 +147,26 @@ class _EditRouteState extends State<EditRoute> {
                             crossAxisAlignment: CrossAxisAlignment.start,
                             mainAxisAlignment: MainAxisAlignment.spaceBetween,
                             children: [
-                              const Text(
+                              Text(
                                 'GK Shoppers Store',
-                                style: MyStyle.tx18b,
+                                style: MyStyle.tx18b.copyWith(fontSize: 17),
                               ),
                               Row(
                                 children: [
                                   Text(
                                     '18, Dec 2021',
                                     style: MyStyle.tx12b.copyWith(
+                                      fontSize: 11,
                                       fontWeight: FontWeight.w700,
                                     ),
                                   ),
                                   const SizedBox(
-                                    width: 4,
+                                    width: 6,
                                   ),
                                   Text(
                                     '9:30 AM',
                                     style: MyStyle.tx12b.copyWith(
+                                      fontSize: 11,
                                       fontWeight: FontWeight.w400,
                                     ),
                                   ),
@@ -171,14 +176,11 @@ class _EditRouteState extends State<EditRoute> {
                           ),
                           InkWell(
                             onTap: () {},
-                            child: Container(
-                              height: 25,
-                              width: 25,
-                              child: Image.asset(
-                                'assets/icons/delete.png',
-                                height: 25,
-                                width: 25,
-                              ),
+                            child: Image.asset(
+                              'assets/icons/delete.png',
+                              height: 20,
+                              width: 20,
+                              fit: BoxFit.fill,
                             ),
                           ),
                         ],
@@ -187,37 +189,45 @@ class _EditRouteState extends State<EditRoute> {
                   });
                 },
               ),
-              const SizedBox(
-                height: 50,
-              ),
-              Container(
-                height: 65,
-                width: MediaQuery.of(context).size.width,
-                color: MyColor.black,
-                child: const Center(
-                  child: Text(
-                    'Add New Route',
-                    style: MyStyle.tx20W,
-                  ),
-                ),
-              ),
-              const SizedBox(
-                height: 10,
-              ),
-              Container(
-                height: 65,
-                width: MediaQuery.of(context).size.width,
-                color: MyColor.black,
-                child: const Center(
-                  child: Text(
-                    'Submit',
-                    style: MyStyle.tx20W,
-                  ),
-                ),
-              ),
             ],
           ),
         ),
+      ),
+      bottomNavigationBar: Column(
+        mainAxisSize: MainAxisSize.min,
+        children: [
+          Container(
+            height: 50,
+            width: MediaQuery.of(context).size.width,
+            margin: const EdgeInsets.fromLTRB(12, 0, 12, 10),
+            color: MyColor.black,
+            child: Center(
+              child: Text(
+                'Add New Route',
+                style: MyStyle.tx20W.copyWith(
+                  fontSize: 16,
+                ),
+              ),
+            ),
+          ),
+          // const SizedBox(
+          //   height: 10,
+          // ),
+          Container(
+            height: 50,
+            width: MediaQuery.of(context).size.width,
+            margin: const EdgeInsets.fromLTRB(12, 0, 12, 20),
+            color: MyColor.black,
+            child: Center(
+              child: Text(
+                'Submit',
+                style: MyStyle.tx20W.copyWith(
+                  fontSize: 16,
+                ),
+              ),
+            ),
+          ),
+        ],
       ),
     );
   }
