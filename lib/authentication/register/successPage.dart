@@ -14,7 +14,6 @@ class _SuccessPageState extends State<SuccessPage> {
   @override
   Widget build(BuildContext context) {
     var height = MediaQuery.of(context).size.height;
-    var width = MediaQuery.of(context).size.width;
     return Scaffold(
       body: SingleChildScrollView(
         child: Column(

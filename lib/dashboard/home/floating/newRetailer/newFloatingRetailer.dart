@@ -70,7 +70,7 @@ class _FloatingRetailerState extends State<FloatingRetailer> {
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
-          SizedBox(
+          const SizedBox(
             height: 15,
           ),
           InkWell(
@@ -296,7 +296,7 @@ class _FloatingRetailerState extends State<FloatingRetailer> {
               ),
             ),
           ),
-          SizedBox(
+          const SizedBox(
             height: 15,
           ),
           Text(
@@ -392,7 +392,7 @@ class _FloatingRetailerState extends State<FloatingRetailer> {
               ),
             ),
           ),
-          SizedBox(
+          const SizedBox(
             height: 15,
           ),
           //   Address
@@ -403,7 +403,7 @@ class _FloatingRetailerState extends State<FloatingRetailer> {
               fontFamily: 'Roboto-Medium',
             ),
           ),
-          SizedBox(
+          const SizedBox(
             height: 8,
           ),
           SizedBox(
@@ -436,7 +436,7 @@ class _FloatingRetailerState extends State<FloatingRetailer> {
               keyboardType: TextInputType.streetAddress,
             ),
           ),
-          SizedBox(
+          const SizedBox(
             height: 15,
           ),
           //    Dropdown
@@ -747,7 +747,7 @@ class _FloatingRetailerState extends State<FloatingRetailer> {
               fontFamily: 'Roboto-Medium',
             ),
           ),
-          SizedBox(
+          const SizedBox(
             height: 8,
           ),
           Container(

@@ -17,6 +17,7 @@ import 'package:colorsoul/dashboard/home/notification.dart';
 import 'package:colorsoul/dashboard/home/task/taskDetail.dart';
 import 'package:colorsoul/dashboard/home/task/taskPage.dart';
 import 'package:colorsoul/dashboard/service/completed/completed.dart';
+import 'package:colorsoul/dashboard/service/working/shoppers/getOrder.dart';
 import 'package:colorsoul/dashboard/service/working/shoppers/getStock/getStock.dart';
 import 'package:colorsoul/dashboard/service/working/shoppers/getStock/scan.dart';
 import 'package:colorsoul/dashboard/service/working/shoppers/shoppers.dart';
@@ -121,7 +122,7 @@ class MyApp extends StatelessWidget {
         //   ** Get Stock
         getStockRoute: (context) => const GetStock(),
         scanRoute: (context) => const Scan(),
-
+        getOrderRoute: (context) => const GetOrder(),
         skipRoute: (context) => const Skip(),
 
         completedRoute: (context) => const Completed(),

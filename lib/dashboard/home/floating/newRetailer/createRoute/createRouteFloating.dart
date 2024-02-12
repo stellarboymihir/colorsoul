@@ -120,7 +120,7 @@ class _CreateRouteFloatingState extends State<CreateRouteFloating> {
                           setState(() {
                             list[index]['checked'] =
                                 !(list[index]['checked'] ?? false);
-                            onClick = !(onClick ?? false);
+                            onClick = !(onClick);
                           });
                         },
                         child: onClick

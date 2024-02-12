@@ -48,7 +48,7 @@ class _ShoppersState extends State<Shoppers> {
             height: 36,
             width: 36,
             padding: const EdgeInsets.all(0),
-            margin: EdgeInsets.fromLTRB(15, 12, 8, 12),
+            margin: const EdgeInsets.fromLTRB(15, 12, 8, 12),
             color: MyColor.grey,
             child: const Center(
                 child: Icon(
@@ -70,7 +70,7 @@ class _ShoppersState extends State<Shoppers> {
                 height: 36,
                 // width: 108,
                 color: MyColor.grey,
-                margin: EdgeInsets.symmetric(horizontal: 15),
+                margin: const EdgeInsets.symmetric(horizontal: 15),
                 padding: const EdgeInsets.symmetric(horizontal: 12),
                 child: Center(
                   child: Text(
@@ -92,7 +92,7 @@ class _ShoppersState extends State<Shoppers> {
             height: 190,
             width: MediaQuery.of(context).size.width,
           ),
-          SizedBox(
+          const SizedBox(
             height: 5,
           ),
           Padding(
@@ -114,7 +114,7 @@ class _ShoppersState extends State<Shoppers> {
               ],
             ),
           ),
-          SizedBox(
+          const SizedBox(
             height: 20,
           ),
           Padding(
@@ -140,24 +140,29 @@ class _ShoppersState extends State<Shoppers> {
                     ),
                   ),
                 ),
-                SizedBox(
+                const SizedBox(
                   width: 10,
                 ),
                 Expanded(
-                  child: Container(
-                    height: 40,
-                    padding:
-                        const EdgeInsets.symmetric(horizontal: 4, vertical: 7),
-                    color: MyColor.black,
-                    child: Center(
-                      child: Text(
-                        'Get Order',
-                        style: MyStyle.tx16w.copyWith(fontSize: 14),
+                  child: InkWell(
+                    onTap: () {
+                      Navigator.pushNamed(context, getOrderRoute);
+                    },
+                    child: Container(
+                      height: 40,
+                      padding: const EdgeInsets.symmetric(
+                          horizontal: 4, vertical: 7),
+                      color: MyColor.black,
+                      child: Center(
+                        child: Text(
+                          'Get Order',
+                          style: MyStyle.tx16w.copyWith(fontSize: 14),
+                        ),
                       ),
                     ),
                   ),
                 ),
-                SizedBox(
+                const SizedBox(
                   width: 10,
                 ),
                 InkWell(
@@ -180,7 +185,7 @@ class _ShoppersState extends State<Shoppers> {
               ],
             ),
           ),
-          SizedBox(
+          const SizedBox(
             height: 15,
           ),
           Expanded(
@@ -198,7 +203,7 @@ class _ShoppersState extends State<Shoppers> {
                           fontFamily: 'Poppins-SemiBold',
                           fontWeight: FontWeight.w700),
                     ),
-                    SizedBox(
+                    const SizedBox(
                       height: 2,
                     ),
                     ListView.builder(
@@ -213,7 +218,7 @@ class _ShoppersState extends State<Shoppers> {
                           child: Container(
                             width: MediaQuery.of(context).size.width,
                             margin: const EdgeInsets.fromLTRB(0, 6, 0, 6),
-                            padding: EdgeInsets.fromLTRB(6, 14, 6, 14),
+                            padding: const EdgeInsets.fromLTRB(6, 14, 6, 14),
                             color: MyColor.white,
                             // padding: const EdgeInsets.all(12.0),
                             // margin: const EdgeInsets.symmetric(vertical: 8.0, horizontal: 20.0),
@@ -252,7 +257,7 @@ class _ShoppersState extends State<Shoppers> {
                                     ),
                                   ],
                                 ),
-                                Spacer(),
+                                const Spacer(),
                                 Expanded(
                                   child: InkWell(
                                     onTap: () {
@@ -260,7 +265,7 @@ class _ShoppersState extends State<Shoppers> {
                                     },
                                     child: Container(
                                       // width: 90,
-                                      padding: EdgeInsets.symmetric(
+                                      padding: const EdgeInsets.symmetric(
                                           horizontal: 12, vertical: 8),
                                       color: shopperList[index]["Color"],
                                       child: Center(

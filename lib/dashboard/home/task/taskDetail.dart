@@ -43,7 +43,7 @@ class _TaskDetailState extends State<TaskDetail> {
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
-              SizedBox(
+              const SizedBox(
                 height: 5,
               ),
               Text(
@@ -160,7 +160,7 @@ class _TaskDetailState extends State<TaskDetail> {
                   fontSize: 11.5,
                 ),
               ),
-              SizedBox(
+              const SizedBox(
                 height: 5,
               ),
               Container(
@@ -178,7 +178,7 @@ class _TaskDetailState extends State<TaskDetail> {
                   ),
                 ),
               ),
-              SizedBox(
+              const SizedBox(
                 height: 15,
               ),
               Text(
@@ -188,7 +188,7 @@ class _TaskDetailState extends State<TaskDetail> {
                   fontWeight: FontWeight.w400,
                 ),
               ),
-              SizedBox(
+              const SizedBox(
                 height: 5,
               ),
               Container(

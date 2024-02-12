@@ -15,8 +15,6 @@ class _OTPVerifyState extends State<OTPVerify> {
   TextEditingController otpController = TextEditingController();
   @override
   Widget build(BuildContext context) {
-    var height = MediaQuery.of(context).size.height;
-    var width = MediaQuery.of(context).size.width;
     return Scaffold(
       body: SingleChildScrollView(
         physics: NeverScrollableScrollPhysics(),

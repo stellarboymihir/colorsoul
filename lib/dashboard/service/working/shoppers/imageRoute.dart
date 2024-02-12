@@ -79,7 +79,7 @@ class _ImageRouteState extends State<ImageRoute> {
                 ),
               ),
             ),
-            SizedBox(
+            const SizedBox(
               height: 20,
             ),
             Expanded(
@@ -120,7 +120,7 @@ class _ImageRouteState extends State<ImageRoute> {
         child: Container(
           height: 50,
           width: MediaQuery.of(context).size.width,
-          margin: EdgeInsets.fromLTRB(15, 0, 15, 20),
+          margin: const EdgeInsets.fromLTRB(15, 0, 15, 20),
           color: MyColor.black,
           child: Center(
             child: Text(

@@ -54,7 +54,7 @@ class _WorkingState extends State<Working> {
                     Navigator.pushNamed(context, shoppersRoute);
                   },
                   child: Container(
-                    padding: EdgeInsets.symmetric(vertical: 12),
+                    padding: const EdgeInsets.symmetric(vertical: 12),
                     margin: const EdgeInsets.only(
                         left: 15, top: 0, right: 12, bottom: 12),
                     decoration: BoxDecoration(
@@ -71,7 +71,7 @@ class _WorkingState extends State<Working> {
                     child: Row(
                       mainAxisAlignment: MainAxisAlignment.spaceBetween,
                       children: [
-                        SizedBox(
+                        const SizedBox(
                           width: 10,
                         ),
                         Column(
@@ -103,7 +103,7 @@ class _WorkingState extends State<Working> {
                             ),
                           ],
                         ),
-                        SizedBox(
+                        const SizedBox(
                           width: 20,
                         ),
                         Container(
@@ -159,7 +159,7 @@ class _WorkingState extends State<Working> {
                             ),
                           ),
                         ),
-                        SizedBox(
+                        const SizedBox(
                           width: 10,
                         ),
                       ],

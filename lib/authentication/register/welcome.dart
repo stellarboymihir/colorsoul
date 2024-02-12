@@ -18,7 +18,6 @@ class _WelcomeState extends State<Welcome> {
   @override
   Widget build(BuildContext context) {
     var height = MediaQuery.of(context).size.height;
-    var width = MediaQuery.of(context).size.width;
     return Scaffold(
       body: SizedBox(
         height: height,

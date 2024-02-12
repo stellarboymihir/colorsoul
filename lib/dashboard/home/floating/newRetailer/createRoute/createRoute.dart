@@ -65,7 +65,7 @@ class _CreateRouteState extends State<CreateRoute> {
           ),
         ),
         leadingWidth: 50,
-        title: Text(
+        title: const Text(
           'Create Route',
           style: MyStyle.tx16b,
         ),
@@ -77,7 +77,7 @@ class _CreateRouteState extends State<CreateRoute> {
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
-              SizedBox(
+              const SizedBox(
                 height: 10,
               ),
               //  State
@@ -88,7 +88,7 @@ class _CreateRouteState extends State<CreateRoute> {
                   fontFamily: 'Roboto-Medium',
                 ),
               ),
-              SizedBox(
+              const SizedBox(
                 height: 5,
               ),
               Container(
@@ -132,7 +132,7 @@ class _CreateRouteState extends State<CreateRoute> {
                   ),
                 ),
               ),
-              SizedBox(
+              const SizedBox(
                 height: 15,
               ),
               //  Regional
@@ -143,7 +143,7 @@ class _CreateRouteState extends State<CreateRoute> {
                   fontFamily: 'Roboto-Medium',
                 ),
               ),
-              SizedBox(
+              const SizedBox(
                 height: 8,
               ),
               Container(
@@ -188,7 +188,7 @@ class _CreateRouteState extends State<CreateRoute> {
                   ),
                 ),
               ),
-              SizedBox(
+              const SizedBox(
                 height: 15,
               ),
 
@@ -200,7 +200,7 @@ class _CreateRouteState extends State<CreateRoute> {
                   fontFamily: 'Roboto-Medium',
                 ),
               ),
-              SizedBox(
+              const SizedBox(
                 height: 8,
               ),
               Container(

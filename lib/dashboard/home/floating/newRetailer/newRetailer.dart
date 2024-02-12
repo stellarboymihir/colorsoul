@@ -1,10 +1,6 @@
-import 'dart:io';
-
 import 'package:colorsoul/dashboard/home/floating/newRetailer/newFloatingRetailer.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
-import 'package:image_picker/image_picker.dart';
-
 import '../../../../values/myColor.dart';
 import '../../../../values/myStyle.dart';
 import 'newFloatingDistributor.dart';
@@ -59,7 +55,7 @@ class _NewRetailerState extends State<NewRetailer> {
                 fontFamily: 'Poppins-Medium',
               ),
             ),
-            SizedBox(
+            const SizedBox(
               height: 5,
             ),
             Row(
@@ -98,7 +94,7 @@ class _NewRetailerState extends State<NewRetailer> {
                     ),
                   ),
                 ),
-                SizedBox(
+                const SizedBox(
                   width: 10,
                 ),
                 Expanded(
@@ -135,7 +131,7 @@ class _NewRetailerState extends State<NewRetailer> {
                     ),
                   ),
                 ),
-                SizedBox(
+                const SizedBox(
                   height: 5,
                 ),
               ],

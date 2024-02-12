@@ -51,7 +51,10 @@ const skipRoute = '/skipRoute/';
 
 //   **   Get Stock
 const getStockRoute = '/getStock/';
-const scanRoute = '/scanRoute/';
+const scanRoute = '/scan/';
+
+//   **   Get Order
+const getOrderRoute = '/getOrder/';
 
 //  ** Completed  **
 const completedRoute = '/completed/';

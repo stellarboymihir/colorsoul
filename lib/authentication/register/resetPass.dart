@@ -17,7 +17,7 @@ class _ResetPassState extends State<ResetPass> {
   @override
   Widget build(BuildContext context) {
     var height = MediaQuery.of(context).size.height;
-    var width = MediaQuery.of(context).size.width;
+
     return Scaffold(
       body: SingleChildScrollView(
         child: Padding(

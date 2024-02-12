@@ -14,9 +14,6 @@ class Pin extends StatefulWidget {
 class _PinState extends State<Pin> {
   @override
   Widget build(BuildContext context) {
-    var height = MediaQuery.of(context).size.height;
-    var width = MediaQuery.of(context).size.width;
-
     return Scaffold(
       body: SingleChildScrollView(
         child: Column(

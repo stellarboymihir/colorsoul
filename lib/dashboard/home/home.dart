@@ -37,7 +37,7 @@ class _HomeState extends State<Home> {
                   style: MyStyle.tx20b
                       .copyWith(fontFamily: 'Poppins-Bold', fontSize: 19),
                 ),
-                Text(
+                const Text(
                   'Dec 18, 2021',
                   textAlign: TextAlign.start,
                   style: MyStyle.tx12b,
@@ -54,7 +54,7 @@ class _HomeState extends State<Home> {
             child: badge.Badge(
               showBadge: true,
               position: badge.BadgePosition.topEnd(top: -5, end: -4),
-              badgeStyle: badge.BadgeStyle(
+              badgeStyle: const badge.BadgeStyle(
                 shape: badge.BadgeShape.circle,
                 badgeColor: MyColor.green,
                 padding: EdgeInsets.all(6.5),
