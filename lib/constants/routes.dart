@@ -63,4 +63,5 @@ const completedRoute = '/completed/';
 const distributorRoute = '/distributor/';
 const distributorListRoute = '/distributorList/';
 const retailerListRoute = '/retailerList/';
+const filterRoute = '/filter/';
 const reimbursementRoute = '/reimbursement/';

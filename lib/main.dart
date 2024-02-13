@@ -32,6 +32,7 @@ import 'authentication/register/pin.dart';
 import 'authentication/register/splash_screen.dart';
 import 'authentication/starter/starter.dart';
 import 'dashboard/distributor/distributor.dart';
+import 'dashboard/distributor/filter.dart';
 import 'dashboard/distributor/retailerList.dart';
 import 'dashboard/home/floating/createTask.dart';
 import 'dashboard/home/home.dart';
@@ -132,6 +133,7 @@ class MyApp extends StatelessWidget {
         distributorRoute: (context) => const Distributor(),
         distributorListRoute: (context) => const DistributorList(),
         retailerListRoute: (context) => const RetailerList(),
+        filterRoute: (context) => const Filter(),
         reimbursementRoute: (context) => const Reimbursement(),
       },
     );

@@ -1,3 +1,4 @@
+import 'package:colorsoul/constants/routes.dart';
 import 'package:colorsoul/dashboard/distributor/distributorList.dart';
 import 'package:colorsoul/dashboard/distributor/retailerList.dart';
 import 'package:flutter/material.dart';
@@ -33,11 +34,16 @@ class _DistributorState extends State<Distributor> {
             width: 36,
             padding: const EdgeInsets.all(9),
             color: MyColor.grey,
-            child: Image.asset(
-              'assets/icons/funnel.png',
-              height: 25,
-              width: 25,
-              fit: BoxFit.fill,
+            child: InkWell(
+              onTap: () {
+                Navigator.pushNamed(context, filterRoute);
+              },
+              child: Image.asset(
+                'assets/icons/funnel.png',
+                height: 25,
+                width: 25,
+                fit: BoxFit.fill,
+              ),
             ),
           ),
           const SizedBox(
@@ -50,7 +56,7 @@ class _DistributorState extends State<Distributor> {
         child: Column(
           children: [
             // SearchBar
-            Container(
+            SizedBox(
               width: MediaQuery.of(context).size.width,
               child: TextFormField(
                 controller: searchController,
