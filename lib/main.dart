@@ -6,6 +6,7 @@ import 'package:colorsoul/authentication/register/successPage.dart';
 import 'package:colorsoul/authentication/register/welcome.dart';
 import 'package:colorsoul/constants/routes.dart';
 import 'package:colorsoul/dashboard/dashboard.dart';
+import 'package:colorsoul/dashboard/distributor/distributorList.dart';
 import 'package:colorsoul/dashboard/home/attendance.dart';
 import 'package:colorsoul/dashboard/home/floating/newRetailer/createRoute/createRoute.dart';
 import 'package:colorsoul/dashboard/home/floating/newRetailer/createRoute/createRouteFloating.dart';
@@ -31,6 +32,7 @@ import 'authentication/register/pin.dart';
 import 'authentication/register/splash_screen.dart';
 import 'authentication/starter/starter.dart';
 import 'dashboard/distributor/distributor.dart';
+import 'dashboard/distributor/retailerList.dart';
 import 'dashboard/home/floating/createTask.dart';
 import 'dashboard/home/home.dart';
 import 'dashboard/reimbursement/reimbursement.dart';
@@ -112,6 +114,7 @@ class MyApp extends StatelessWidget {
         servicePageRoute: (context) => const ServicePage(),
 
         workingRoute: (context) => const Working(),
+        completedRoute: (context) => const Completed(),
         editRoute: (context) => const EditRoute(),
 
         //   ** Shoppers  **
@@ -119,14 +122,16 @@ class MyApp extends StatelessWidget {
         checkOutRoute: (context) => const CheckOut(),
         imageRoute: (context) => const ImageRoute(),
 
-        //   ** Get Stock
+        //   ** Get Stock   **
         getStockRoute: (context) => const GetStock(),
         scanRoute: (context) => const Scan(),
         getOrderRoute: (context) => const GetOrder(),
         skipRoute: (context) => const Skip(),
 
-        completedRoute: (context) => const Completed(),
+        //   ** Distributor/Retailer List
         distributorRoute: (context) => const Distributor(),
+        distributorListRoute: (context) => const DistributorList(),
+        retailerListRoute: (context) => const RetailerList(),
         reimbursementRoute: (context) => const Reimbursement(),
       },
     );

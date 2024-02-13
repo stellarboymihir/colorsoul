@@ -46,7 +46,7 @@ const editRoute = '/editRoute/';
 //  ** Shoppers **
 const shoppersRoute = '/shoppers/';
 const checkOutRoute = '/checkOut/';
-const imageRoute = '/imageRoute/';
+const imageRoute = "/imageRoute/";
 const skipRoute = '/skipRoute/';
 
 //   **   Get Stock
@@ -58,5 +58,9 @@ const getOrderRoute = '/getOrder/';
 
 //  ** Completed  **
 const completedRoute = '/completed/';
+
+//  ** Distributor/Retailer List  **
 const distributorRoute = '/distributor/';
+const distributorListRoute = '/distributorList/';
+const retailerListRoute = '/retailerList/';
 const reimbursementRoute = '/reimbursement/';

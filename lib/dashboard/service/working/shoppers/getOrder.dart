@@ -201,8 +201,8 @@ class _GetOrderState extends State<GetOrder> {
               children: [
                 Image.asset(
                   'assets/images/shop.png',
-                  height: 76,
-                  width: 76,
+                  height: 66,
+                  width: 66,
                   fit: BoxFit.fill,
                 ),
                 const SizedBox(
@@ -419,37 +419,53 @@ class _GetOrderState extends State<GetOrder> {
                           shrinkWrap: true,
                           itemBuilder: (context, indexOne) {
                             return Container(
-                              padding: const EdgeInsets.only(
-                                  left: 8, top: 0, bottom: 2, right: 0),
+                              margin: const EdgeInsets.only(
+                                  left: 8, top: 0, bottom: 1, right: 0),
                               width: MediaQuery.of(context).size.width,
-                              color: MyColor.grey,
+                              // color: MyColor.grey,
                               child: Row(
+                                // mainAxisAlignment: MainAxisAlignment.start,
+                                // crossAxisAlignment: CrossAxisAlignment.center,
                                 children: [
                                   Expanded(
-                                    child: Text(
-                                      '${orderList[index]["ProductData"][indexOne]["productTitle"]}',
-                                      style: MyStyle.tx14b.copyWith(
-                                        fontFamily: 'Roboto-Medium',
-                                        fontWeight: FontWeight.w400,
+                                    child: Container(
+                                      height: 54,
+                                      padding:
+                                          EdgeInsets.only(top: 19, left: 10),
+                                      color: MyColor.grey,
+                                      child: Text(
+                                        '${orderList[index]["ProductData"][indexOne]["productTitle"]}',
+                                        textAlign: TextAlign.start,
+                                        style: MyStyle.tx14b.copyWith(
+                                          fontFamily: 'Roboto-Medium',
+                                          fontWeight: FontWeight.w400,
+                                        ),
                                       ),
                                     ),
                                   ),
                                   Container(
                                     width: 55,
                                     height: 54,
-                                    child: const Center(
+                                    decoration: BoxDecoration(
+                                      borderRadius: BorderRadius.circular(1),
+                                      color: MyColor.grey,
+                                    ),
+                                    child: Center(
                                       child: Text(
                                         '05',
                                         style: MyStyle.tx14b,
                                       ),
                                     ),
                                   ),
+                                  SizedBox(
+                                    width: 10,
+                                  ),
                                   //   Add Stock Expand
                                   Container(
                                     height: 55,
-                                    width: 56,
+                                    width: 64,
                                     padding: const EdgeInsets.only(
-                                        left: 0.0, right: 0.0),
+                                        left: 0.0, right: 8.0),
                                     decoration: const BoxDecoration(
                                       color: MyColor.white,
                                       // border: Border.all(
@@ -464,6 +480,8 @@ class _GetOrderState extends State<GetOrder> {
                                       style: MyStyle.tx14b,
                                       keyboardType: TextInputType.number,
                                       decoration: InputDecoration(
+                                        // contentPadding:
+                                        //     EdgeInsets.symmetric(vertical: 10),
                                         hintText: '05',
                                         hintStyle: MyStyle.tx14b,
                                         enabledBorder: OutlineInputBorder(
@@ -492,7 +510,7 @@ class _GetOrderState extends State<GetOrder> {
                                   ),
                                   //  Amount Expand
                                   SizedBox(
-                                    width: 70,
+                                    width: 80,
                                     height: 54,
                                     child: Center(
                                       child: Text(
