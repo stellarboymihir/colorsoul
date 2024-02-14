@@ -22,10 +22,15 @@ class _HomeState extends State<Home> {
         automaticallyImplyLeading: false,
         title: Row(
           children: [
-            Image.asset(
-              'assets/images/samar.png',
-              width: 35,
-              height: 35,
+            InkWell(
+              onTap: () {
+                Navigator.pushNamed(context, profileRoute);
+              },
+              child: Image.asset(
+                'assets/images/samar.png',
+                width: 35,
+                height: 35,
+              ),
             ),
             const SizedBox(width: 10),
             Column(

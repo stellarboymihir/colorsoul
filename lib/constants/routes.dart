@@ -18,6 +18,7 @@ const dashboardRoute = '/dashboard/';
 const homeRoute = '/home/';
 const notificationRoute = '/notification/';
 const attendanceRoute = '/attendance/';
+const profileRoute = '/profile/';
 
 //  **  Floating  **
 const reimbursementPageRoute = '/reimbursementPage/';
@@ -64,4 +65,7 @@ const distributorRoute = '/distributor/';
 const distributorListRoute = '/distributorList/';
 const retailerListRoute = '/retailerList/';
 const filterRoute = '/filter/';
+
+//  **  History  **
 const reimbursementRoute = '/reimbursement/';
+const historyRoute = '/history/';

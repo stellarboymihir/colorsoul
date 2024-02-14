@@ -656,42 +656,40 @@ class _FilterState extends State<Filter> {
     return Expanded(
       child: SizedBox(
         width: MediaQuery.of(context).size.width * 0.6,
-        // height: MediaQuery.of(context).size.height * 0.6,
         child: Column(
           children: [
-            Expanded(
-              child: ListView.builder(
-                itemCount: radiusList.length,
-                itemBuilder: (context, index) {
-                  return Row(
-                    children: [
-                      Checkbox(
-                        activeColor: MyColor.black,
-                        value: radiusList[index]["onPressed"],
-                        onChanged: (bool? val) {
-                          setState(() {
-                            // Unselect all other checkboxes
-                            for (int i = 0; i < radiusList.length; i++) {
-                              if (i != index) {
-                                radiusList[i]["onPressed"] = false;
-                              }
+            ListView.builder(
+              shrinkWrap: true,
+              itemCount: radiusList.length,
+              itemBuilder: (context, index) {
+                return Row(
+                  children: [
+                    Checkbox(
+                      activeColor: MyColor.black,
+                      value: radiusList[index]["onPressed"],
+                      onChanged: (bool? val) {
+                        setState(() {
+                          // Unselect all other checkboxes
+                          for (int i = 0; i < radiusList.length; i++) {
+                            if (i != index) {
+                              radiusList[i]["onPressed"] = false;
                             }
-                            //Select the current checkbox
-                            radiusList[index]["onPressed"] = val!;
-                          });
-                        },
+                          }
+                          //Select the current checkbox
+                          radiusList[index]["onPressed"] = val!;
+                        });
+                      },
+                    ),
+                    Text(
+                      '${radiusList[index]["title"]}',
+                      style: MyStyle.tx14b.copyWith(
+                        fontWeight: FontWeight.w400,
+                        fontFamily: "Poppins-Medium",
                       ),
-                      Text(
-                        '${radiusList[index]["title"]}',
-                        style: MyStyle.tx14b.copyWith(
-                          fontWeight: FontWeight.w400,
-                          fontFamily: "Poppins-Medium",
-                        ),
-                      ),
-                    ],
-                  );
-                },
-              ),
+                    ),
+                  ],
+                );
+              },
             ),
             Padding(
               padding: const EdgeInsets.symmetric(horizontal: 12.0),

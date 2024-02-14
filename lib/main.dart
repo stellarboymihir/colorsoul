@@ -15,8 +15,10 @@ import 'package:colorsoul/dashboard/home/floating/newRetailer/newFloatingRetaile
 import 'package:colorsoul/dashboard/home/floating/newRetailer/newRetailer.dart';
 import 'package:colorsoul/dashboard/home/floating/reimbursementPage.dart';
 import 'package:colorsoul/dashboard/home/notification.dart';
+import 'package:colorsoul/dashboard/home/profile.dart';
 import 'package:colorsoul/dashboard/home/task/taskDetail.dart';
 import 'package:colorsoul/dashboard/home/task/taskPage.dart';
+import 'package:colorsoul/dashboard/reimbursement/history.dart';
 import 'package:colorsoul/dashboard/service/completed/completed.dart';
 import 'package:colorsoul/dashboard/service/working/shoppers/getOrder.dart';
 import 'package:colorsoul/dashboard/service/working/shoppers/getStock/getStock.dart';
@@ -93,6 +95,7 @@ class MyApp extends StatelessWidget {
         homeRoute: (context) => const Home(),
         notificationRoute: (context) => const NotificationPage(),
         attendanceRoute: (context) => const Attendance(),
+        profileRoute: (context) => const Profile(),
 
         //  **  Floating  **
         reimbursementPageRoute: (context) => const ReimbursementPage(),
@@ -134,7 +137,10 @@ class MyApp extends StatelessWidget {
         distributorListRoute: (context) => const DistributorList(),
         retailerListRoute: (context) => const RetailerList(),
         filterRoute: (context) => const Filter(),
+
+        //   **  History  **
         reimbursementRoute: (context) => const Reimbursement(),
+        historyRoute: (context) => const History(),
       },
     );
   }
