@@ -13,9 +13,6 @@ class TaskPage extends StatefulWidget {
 
 class _TaskPageState extends State<TaskPage> {
   TextEditingController searchController = TextEditingController();
-  bool onClick1 = false;
-  bool onClick2 = false;
-  bool onClick3 = false;
 
   var onClick = 'task';
 
@@ -168,7 +165,7 @@ class _TaskPageState extends State<TaskPage> {
                       });
                     },
                     child: Container(
-                      height: 33,
+                      height: 38,
                       width: MediaQuery.of(context).size.width,
                       margin: const EdgeInsets.only(right: 12),
                       color: onClick == 'task' ? MyColor.black : MyColor.grey,
@@ -197,7 +194,7 @@ class _TaskPageState extends State<TaskPage> {
                       });
                     },
                     child: Container(
-                      height: 33,
+                      height: 38,
                       width: MediaQuery.of(context).size.width,
                       // margin: EdgeInsets.only(right: 6, left: 6),
                       color:
@@ -225,7 +222,7 @@ class _TaskPageState extends State<TaskPage> {
                       });
                     },
                     child: Container(
-                      height: 33,
+                      height: 38,
                       width: MediaQuery.of(context).size.width,
                       margin: const EdgeInsets.only(left: 12),
                       color: onClick == 'cancel' ? MyColor.black : MyColor.grey,
@@ -254,7 +251,7 @@ class _TaskPageState extends State<TaskPage> {
               width: MediaQuery.of(context).size.width,
               child: TextFormField(
                 controller: searchController,
-                decoration: const InputDecoration(
+                decoration: InputDecoration(
                   hintText: 'Search',
                   hintStyle: MyStyle.tx14b,
                   isDense: true,
@@ -262,21 +259,25 @@ class _TaskPageState extends State<TaskPage> {
                   //   horizontal: 20,
                   //   vertical: 20,
                   // ),
-                  enabledBorder: OutlineInputBorder(
+                  enabledBorder: const OutlineInputBorder(
                     borderSide: BorderSide(
                       color: MyColor.grey,
                     ),
                   ),
-                  suffixIcon: Icon(
-                    Icons.search_outlined,
-                    size: 19,
+                  suffixIcon: Padding(
+                    padding: const EdgeInsets.all(17.0),
+                    child: Image.asset(
+                      'assets/icons/search.png',
+                      // height: 10,
+                      // width: 10,
+                    ),
                   ),
-                  focusedBorder: OutlineInputBorder(
+                  focusedBorder: const OutlineInputBorder(
                     borderSide: BorderSide(
                       color: MyColor.grey,
                     ),
                   ),
-                  border: OutlineInputBorder(
+                  border: const OutlineInputBorder(
                     borderSide: BorderSide(
                       color: MyColor.grey,
                     ),
@@ -348,7 +349,7 @@ class _TaskPageState extends State<TaskPage> {
                                 ),
                               ),
                             ),
-                            SizedBox(
+                            const SizedBox(
                               width: 5,
                             ),
                             Column(

@@ -184,27 +184,31 @@ class _GetStockState extends State<GetStock> {
             width: MediaQuery.of(context).size.width,
             child: TextFormField(
               controller: searchController,
-              decoration: const InputDecoration(
+              decoration: InputDecoration(
                 hintText: 'Search',
                 hintStyle: MyStyle.tx14b,
-                contentPadding: EdgeInsets.symmetric(
+                contentPadding: const EdgeInsets.symmetric(
                   horizontal: 20,
                 ),
-                enabledBorder: OutlineInputBorder(
+                enabledBorder: const OutlineInputBorder(
                   borderSide: BorderSide(
                     color: MyColor.grey,
                   ),
                 ),
-                suffixIcon: Icon(
-                  Icons.search_outlined,
-                  size: 16,
+                suffixIcon: Padding(
+                  padding: const EdgeInsets.all(17.0),
+                  child: Image.asset(
+                    'assets/icons/search.png',
+                    height: 12,
+                    width: 12,
+                  ),
                 ),
-                focusedBorder: OutlineInputBorder(
+                focusedBorder: const OutlineInputBorder(
                   borderSide: BorderSide(
                     color: MyColor.grey,
                   ),
                 ),
-                border: OutlineInputBorder(
+                border: const OutlineInputBorder(
                   borderSide: BorderSide(
                     color: MyColor.grey,
                   ),
@@ -271,8 +275,8 @@ class _GetStockState extends State<GetStock> {
                                   left: 8, top: 8, bottom: 4, right: 4),
                               color: MyColor.grey,
                               child: stockList[index]["onClick"]
-                                  ? const Icon(Icons.arrow_drop_up)
-                                  : const Icon(Icons.arrow_drop_down),
+                                  ? const Icon(Icons.arrow_drop_down)
+                                  : const Icon(Icons.arrow_drop_up),
                             ),
                           ),
                           Expanded(
@@ -343,7 +347,7 @@ class _GetStockState extends State<GetStock> {
                           ),
                         ],
                       ),
-                      if (stockList[index]["onClick"])
+                      if (!stockList[index]["onClick"])
                         const SizedBox()
                       else
                         ListView.builder(

@@ -54,7 +54,7 @@ class _WorkingState extends State<Working> {
                     Navigator.pushNamed(context, shoppersRoute);
                   },
                   child: Container(
-                    padding: const EdgeInsets.symmetric(vertical: 12),
+                    padding: const EdgeInsets.symmetric(vertical: 15),
                     margin: const EdgeInsets.only(
                         left: 15, top: 0, right: 12, bottom: 12),
                     decoration: BoxDecoration(
@@ -107,15 +107,15 @@ class _WorkingState extends State<Working> {
                           width: 20,
                         ),
                         Container(
-                          height: 34,
-                          width: 34,
+                          height: 38,
+                          width: 38,
                           color: MyColor.grey,
                           child: Padding(
-                            padding: const EdgeInsets.all(8.0),
+                            padding: const EdgeInsets.all(7.5),
                             child: Image.asset(
                               'assets/icons/call.png',
-                              height: 20,
-                              width: 20,
+                              // height: 15,
+                              // width: 15,
                               fit: BoxFit.fill,
                             ),
                           ),
@@ -124,7 +124,7 @@ class _WorkingState extends State<Working> {
                         //   width: 2,
                         // ),
                         Container(
-                          height: 34,
+                          height: 38,
                           width: 79,
                           color: MyColor.grey,
                           child: Center(
@@ -145,7 +145,7 @@ class _WorkingState extends State<Working> {
                             Navigator.pushNamed(context, skipRoute);
                           },
                           child: Container(
-                            height: 34,
+                            height: 38,
                             width: 52,
                             color: MyColor.grey,
                             child: Center(

@@ -65,18 +65,51 @@ class _ServicePageState extends State<ServicePage> {
                   spreadRadius: 0.01,
                   offset: const Offset(1, 8),
                 ),
-                // BoxShadow(
-                //   color: MyColor.black.withOpacity(0.1),
-                //   blurRadius: 1,
-                //   spreadRadius: 0.01,
-                //   offset: const Offset(-1, -1),
-                // ),
               ],
             ),
             child: Column(
               children: [
-                Image.asset(
-                  'assets/images/semi.png',
+                Stack(
+                  children: [
+                    Image.asset(
+                      'assets/images/semi.png',
+                    ),
+                    Positioned(
+                      height: 26,
+                      // width: 92,
+                      top: 40,
+                      left: 16,
+                      child: Container(
+                        padding: EdgeInsets.symmetric(horizontal: 8),
+                        decoration: BoxDecoration(
+                          color: MyColor.white,
+                          boxShadow: [
+                            BoxShadow(
+                              color: MyColor.black.withOpacity(0.1),
+                              blurRadius: 5,
+                              spreadRadius: 0.01,
+                              offset: const Offset(1, 4),
+                            ),
+                            BoxShadow(
+                              color: MyColor.black.withOpacity(0.03),
+                              blurRadius: 4,
+                              spreadRadius: 0.01,
+                              offset: const Offset(1, 0),
+                            ),
+                          ],
+                        ),
+                        child: Center(
+                          child: Text(
+                            'Working 34%',
+                            style: MyStyle.tx13b.copyWith(
+                              fontSize: 12,
+                              color: MyColor.darkBlack,
+                            ),
+                          ),
+                        ),
+                      ),
+                    )
+                  ],
                 ),
               ],
             ),

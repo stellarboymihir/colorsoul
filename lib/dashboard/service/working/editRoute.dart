@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 
+import '../../../constants/routes.dart';
 import '../../../values/myColor.dart';
 import '../../../values/myStyle.dart';
 
@@ -95,27 +96,31 @@ class _EditRouteState extends State<EditRoute> {
                 width: MediaQuery.of(context).size.width,
                 child: TextFormField(
                   controller: searchController,
-                  decoration: const InputDecoration(
+                  decoration: InputDecoration(
                     hintText: 'Search',
                     hintStyle: MyStyle.tx14b,
-                    contentPadding: EdgeInsets.symmetric(
+                    contentPadding: const EdgeInsets.symmetric(
                       horizontal: 20,
                     ),
-                    enabledBorder: OutlineInputBorder(
+                    enabledBorder: const OutlineInputBorder(
                       borderSide: BorderSide(
                         color: MyColor.grey,
                       ),
                     ),
-                    suffixIcon: Icon(
-                      Icons.search_outlined,
-                      size: 18,
+                    suffixIcon: Padding(
+                      padding: const EdgeInsets.all(17.0),
+                      child: Image.asset(
+                        'assets/icons/search.png',
+                        // height: 10,
+                        // width: 10,
+                      ),
                     ),
-                    focusedBorder: OutlineInputBorder(
+                    focusedBorder: const OutlineInputBorder(
                       borderSide: BorderSide(
                         color: MyColor.grey,
                       ),
                     ),
-                    border: OutlineInputBorder(
+                    border: const OutlineInputBorder(
                       borderSide: BorderSide(
                         color: MyColor.grey,
                       ),
@@ -178,8 +183,8 @@ class _EditRouteState extends State<EditRoute> {
                             onTap: () {},
                             child: Image.asset(
                               'assets/icons/delete.png',
-                              height: 20,
-                              width: 20,
+                              height: 24,
+                              width: 24,
                               fit: BoxFit.fill,
                             ),
                           ),
@@ -196,16 +201,21 @@ class _EditRouteState extends State<EditRoute> {
       bottomNavigationBar: Column(
         mainAxisSize: MainAxisSize.min,
         children: [
-          Container(
-            height: 50,
-            width: MediaQuery.of(context).size.width,
-            margin: const EdgeInsets.fromLTRB(12, 0, 12, 10),
-            color: MyColor.black,
-            child: Center(
-              child: Text(
-                'Add New Route',
-                style: MyStyle.tx20W.copyWith(
-                  fontSize: 16,
+          InkWell(
+            onTap: () {
+              Navigator.pushNamed(context, createRoute);
+            },
+            child: Container(
+              height: 50,
+              width: MediaQuery.of(context).size.width,
+              margin: const EdgeInsets.fromLTRB(12, 0, 12, 10),
+              color: MyColor.black,
+              child: Center(
+                child: Text(
+                  'Add New Route',
+                  style: MyStyle.tx20W.copyWith(
+                    fontSize: 16,
+                  ),
                 ),
               ),
             ),
@@ -213,16 +223,21 @@ class _EditRouteState extends State<EditRoute> {
           // const SizedBox(
           //   height: 10,
           // ),
-          Container(
-            height: 50,
-            width: MediaQuery.of(context).size.width,
-            margin: const EdgeInsets.fromLTRB(12, 0, 12, 20),
-            color: MyColor.black,
-            child: Center(
-              child: Text(
-                'Submit',
-                style: MyStyle.tx20W.copyWith(
-                  fontSize: 16,
+          InkWell(
+            onTap: () {
+              Navigator.pop(context);
+            },
+            child: Container(
+              height: 50,
+              width: MediaQuery.of(context).size.width,
+              margin: const EdgeInsets.fromLTRB(12, 0, 12, 20),
+              color: MyColor.black,
+              child: Center(
+                child: Text(
+                  'Submit',
+                  style: MyStyle.tx20W.copyWith(
+                    fontSize: 16,
+                  ),
                 ),
               ),
             ),

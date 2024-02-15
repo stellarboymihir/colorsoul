@@ -18,16 +18,21 @@ class _CheckOutState extends State<CheckOut> {
     return Scaffold(
       appBar: AppBar(
         backgroundColor: MyColor.white,
-        leading: Container(
-          height: 36,
-          width: 36,
-          padding: const EdgeInsets.all(0),
-          margin: const EdgeInsets.all(12),
-          color: MyColor.grey,
-          child: const Center(
-            child: Icon(
-              Icons.arrow_back_ios_new,
-              size: 16,
+        leading: InkWell(
+          onTap: () {
+            Navigator.pop(context);
+          },
+          child: Container(
+            height: 36,
+            width: 36,
+            padding: const EdgeInsets.all(0),
+            margin: const EdgeInsets.all(12),
+            color: MyColor.grey,
+            child: const Center(
+              child: Icon(
+                Icons.arrow_back_ios_new,
+                size: 16,
+              ),
             ),
           ),
         ),
@@ -96,6 +101,8 @@ class _CheckOutState extends State<CheckOut> {
                             onChanged: (bool? val) {
                               setState(() {
                                 isClick[0] = val!;
+                                isClick[1] = false;
+                                isClick[2] = false;
                               });
                             })
                       ],
@@ -118,6 +125,8 @@ class _CheckOutState extends State<CheckOut> {
                             onChanged: (bool? val) {
                               setState(() {
                                 isClick[1] = val!;
+                                isClick[0] = false;
+                                isClick[2] = false;
                               });
                             })
                       ],
@@ -140,6 +149,8 @@ class _CheckOutState extends State<CheckOut> {
                             onChanged: (bool? val) {
                               setState(() {
                                 isClick[2] = val!;
+                                isClick[0] = false;
+                                isClick[1] = false;
                               });
                             })
                       ],

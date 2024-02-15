@@ -139,6 +139,7 @@ class _AttendanceState extends State<Attendance> {
                             onChanged: (bool? val) {
                               setState(() {
                                 isChecked[0] = val!;
+                                isChecked[1] = false;
                               });
                             })
                       ],
@@ -161,6 +162,7 @@ class _AttendanceState extends State<Attendance> {
                             onChanged: (bool? val) {
                               setState(() {
                                 isChecked[1] = val!;
+                                isChecked[0] = false;
                               });
                             })
                       ],
@@ -222,6 +224,7 @@ class _AttendanceState extends State<Attendance> {
                             onChanged: (bool? val) {
                               setState(() {
                                 isSelected[0] = val!;
+                                isSelected[1] = false;
                               });
                             })
                       ],
@@ -244,6 +247,7 @@ class _AttendanceState extends State<Attendance> {
                             onChanged: (bool? val) {
                               setState(() {
                                 isSelected[1] = val!;
+                                isSelected[0] = false;
                               });
                             })
                       ],

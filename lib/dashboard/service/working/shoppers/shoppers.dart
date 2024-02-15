@@ -172,12 +172,14 @@ class _ShoppersState extends State<Shoppers> {
                   child: Container(
                     height: 40,
                     width: 40,
+                    padding: EdgeInsets.only(top: 8),
                     color: MyColor.black,
                     child: Center(
                       child: Image.asset(
                         'assets/icons/img.png',
-                        height: 16,
-                        width: 16,
+                        height: 22,
+                        width: 22,
+                        fit: BoxFit.fill,
                       ),
                     ),
                   ),
@@ -206,88 +208,92 @@ class _ShoppersState extends State<Shoppers> {
                     const SizedBox(
                       height: 2,
                     ),
-                    ListView.builder(
-                      scrollDirection: Axis.vertical,
-                      itemCount: shopperList.length,
-                      shrinkWrap: true,
-                      itemBuilder: (context, index) {
-                        return InkWell(
-                          onTap: () {
-                            // Navigator.pushNamed(context, shoppersRoute);
-                          },
-                          child: Container(
-                            width: MediaQuery.of(context).size.width,
-                            margin: const EdgeInsets.fromLTRB(0, 6, 0, 6),
-                            padding: const EdgeInsets.fromLTRB(6, 14, 6, 14),
-                            color: MyColor.white,
-                            // padding: const EdgeInsets.all(12.0),
-                            // margin: const EdgeInsets.symmetric(vertical: 8.0, horizontal: 20.0),
-                            child: Row(
-                              mainAxisAlignment: MainAxisAlignment.start,
-                              children: [
-                                const SizedBox(
-                                  width: 10,
-                                ),
-                                Column(
+                    Expanded(
+                      child: SizedBox(
+                        height: MediaQuery.of(context).size.height,
+                        child: ListView.builder(
+                          scrollDirection: Axis.vertical,
+                          itemCount: shopperList.length,
+                          shrinkWrap: true,
+                          itemBuilder: (context, index) {
+                            return InkWell(
+                              onTap: () {
+                                // Navigator.pushNamed(context, shoppersRoute);
+                              },
+                              child: Container(
+                                width: MediaQuery.of(context).size.width,
+                                margin: const EdgeInsets.fromLTRB(0, 6, 0, 6),
+                                padding:
+                                    const EdgeInsets.fromLTRB(6, 15, 6, 15),
+                                color: MyColor.white,
+                                // padding: const EdgeInsets.all(12.0),
+                                // margin: const EdgeInsets.symmetric(vertical: 8.0, horizontal: 20.0),
+                                child: Row(
+                                  mainAxisAlignment: MainAxisAlignment.start,
                                   children: [
-                                    Text(
-                                      'Order No : XZD1234',
-                                      style: MyStyle.tx14b.copyWith(
-                                        fontWeight: FontWeight.w700,
-                                        fontFamily: 'Poppins-Medium',
-                                      ),
+                                    const SizedBox(
+                                      width: 10,
                                     ),
-                                    Row(
+                                    Column(
                                       children: [
                                         Text(
-                                          '18, Dec 2021',
-                                          style: MyStyle.tx12b.copyWith(
+                                          'Order No : XZD1234',
+                                          style: MyStyle.tx14b.copyWith(
                                             fontWeight: FontWeight.w700,
-                                            fontFamily: 'Roboto-Medium',
+                                            fontFamily: 'Poppins-Medium',
                                           ),
                                         ),
-                                        const SizedBox(
-                                          width: 4,
-                                        ),
-                                        const Text(
-                                          '9:30 AM ',
-                                          style: MyStyle.tx12b,
+                                        Row(
+                                          children: [
+                                            Text(
+                                              '18, Dec 2021',
+                                              style: MyStyle.tx12b.copyWith(
+                                                fontWeight: FontWeight.w700,
+                                                fontFamily: 'Roboto-Medium',
+                                              ),
+                                            ),
+                                            const SizedBox(
+                                              width: 4,
+                                            ),
+                                            const Text(
+                                              '9:30 AM ',
+                                              style: MyStyle.tx12b,
+                                            ),
+                                          ],
                                         ),
                                       ],
                                     ),
-                                  ],
-                                ),
-                                const Spacer(),
-                                Expanded(
-                                  child: InkWell(
-                                    onTap: () {
-                                      // Navigator.pushNamed(context, skipRoute);
-                                    },
-                                    child: Container(
-                                      // width: 90,
-                                      padding: const EdgeInsets.symmetric(
-                                          horizontal: 12, vertical: 8),
-                                      color: shopperList[index]["Color"],
-                                      child: Center(
-                                        child: Text(
-                                          '${shopperList[index]["title"]}',
-                                          style: MyStyle.tx12w.copyWith(
-                                            fontSize: 11,
-                                            fontWeight: FontWeight.w700,
+                                    const Spacer(),
+                                    InkWell(
+                                      onTap: () {
+                                        // Navigator.pushNamed(context, skipRoute);
+                                      },
+                                      child: Container(
+                                        width: 90,
+                                        padding: const EdgeInsets.symmetric(
+                                            horizontal: 15, vertical: 9),
+                                        color: shopperList[index]["Color"],
+                                        child: Center(
+                                          child: Text(
+                                            '${shopperList[index]["title"]}',
+                                            style: MyStyle.tx12w.copyWith(
+                                              fontSize: 11,
+                                              fontWeight: FontWeight.w700,
+                                            ),
                                           ),
                                         ),
                                       ),
                                     ),
-                                  ),
+                                    const SizedBox(
+                                      width: 10,
+                                    ),
+                                  ],
                                 ),
-                                const SizedBox(
-                                  width: 10,
-                                ),
-                              ],
-                            ),
-                          ),
-                        );
-                      },
+                              ),
+                            );
+                          },
+                        ),
+                      ),
                     ),
                   ],
                 ),

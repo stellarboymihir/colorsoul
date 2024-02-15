@@ -202,7 +202,7 @@ class _HomeState extends State<Home> {
                 children: [
                   Expanded(
                     child: Container(
-                      height: 75,
+                      height: 80,
                       width: MediaQuery.of(context).size.width,
                       margin: const EdgeInsets.only(
                           left: 8, right: 4, top: 0, bottom: 8),
@@ -258,7 +258,7 @@ class _HomeState extends State<Home> {
                                   height: 0,
                                   color: MyColor.green,
                                 ),
-                                const SizedBox(height: 8),
+                                const SizedBox(height: 24),
                                 Text(
                                   '120',
                                   style: MyStyle.tx20b.copyWith(
@@ -276,7 +276,7 @@ class _HomeState extends State<Home> {
                   ),
                   Expanded(
                     child: Container(
-                      height: 75,
+                      height: 80,
                       width: MediaQuery.of(context).size.width,
                       margin: const EdgeInsets.only(
                           left: 4, right: 12, top: 0, bottom: 8),
@@ -357,7 +357,7 @@ class _HomeState extends State<Home> {
                 children: [
                   Expanded(
                     child: Container(
-                      height: 75,
+                      height: 80,
                       width: MediaQuery.of(context).size.width,
                       margin: const EdgeInsets.only(
                           left: 8, right: 4, top: 0, bottom: 8),
@@ -413,7 +413,7 @@ class _HomeState extends State<Home> {
                                   height: 0,
                                   color: MyColor.yellow,
                                 ),
-                                const SizedBox(height: 8),
+                                const SizedBox(height: 24),
                                 Text(
                                   '489',
                                   style: MyStyle.tx20b.copyWith(
@@ -431,7 +431,7 @@ class _HomeState extends State<Home> {
                   ),
                   Expanded(
                     child: Container(
-                      height: 75,
+                      height: 80,
                       width: MediaQuery.of(context).size.width,
                       margin: const EdgeInsets.only(
                           left: 4, right: 12, top: 0, bottom: 8),
@@ -487,7 +487,7 @@ class _HomeState extends State<Home> {
                                   height: 0,
                                   color: MyColor.blue,
                                 ),
-                                const SizedBox(height: 8),
+                                const SizedBox(height: 24),
                                 Text(
                                   '489',
                                   style: MyStyle.tx20b.copyWith(

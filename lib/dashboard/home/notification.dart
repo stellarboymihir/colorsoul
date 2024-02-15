@@ -118,8 +118,9 @@ class _NotificationPageState extends State<NotificationPage> {
                     ),
                     Image.asset(
                       'assets/icons/dots.png',
-                      height: 20,
-                      width: 20,
+                      height: 23,
+                      width: 23,
+                      fit: BoxFit.fill,
                     ),
                   ],
                 ),

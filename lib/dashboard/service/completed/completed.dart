@@ -50,8 +50,8 @@ class _CompletedState extends State<Completed> {
           itemBuilder: (context, index) {
             return Container(
               padding: const EdgeInsets.only(
-                  left: 14, top: 12, right: 5, bottom: 12),
-              margin: const EdgeInsets.fromLTRB(15, 5, 15, 12),
+                  left: 14, top: 15, right: 5, bottom: 15),
+              margin: const EdgeInsets.fromLTRB(15, 10, 15, 12),
               decoration: BoxDecoration(
                 color: MyColor.white,
                 boxShadow: [
@@ -103,14 +103,14 @@ class _CompletedState extends State<Completed> {
                       // Navigator.pushNamed(context, skipRoute);
                     },
                     child: Container(
-                      height: 34,
+                      height: 36,
                       width: 80,
                       color: workingList[index]["Color"],
                       child: Center(
                         child: Text(
                           '${workingList[index]["title"]}',
                           style: MyStyle.tx12w.copyWith(
-                            fontSize: 10,
+                            fontSize: 11,
                             fontWeight: FontWeight.w700,
                           ),
                         ),
@@ -142,7 +142,7 @@ class _CompletedState extends State<Completed> {
         ),
         Container(
           padding:
-              const EdgeInsets.only(left: 14, top: 12, right: 5, bottom: 12),
+              const EdgeInsets.only(left: 14, top: 15, right: 5, bottom: 15),
           margin: const EdgeInsets.fromLTRB(15, 5, 15, 12),
           decoration: BoxDecoration(
             color: MyColor.white,
@@ -195,14 +195,14 @@ class _CompletedState extends State<Completed> {
                   // Navigator.pushNamed(context, skipRoute);
                 },
                 child: Container(
-                  height: 34,
+                  height: 36,
                   width: 80,
                   color: MyColor.green,
                   child: Center(
                     child: Text(
                       'Take Order',
                       style: MyStyle.tx12w.copyWith(
-                        fontSize: 10,
+                        fontSize: 11,
                         fontWeight: FontWeight.w700,
                       ),
                     ),
