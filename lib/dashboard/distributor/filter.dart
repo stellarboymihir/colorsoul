@@ -717,17 +717,24 @@ class _FilterState extends State<Filter> {
               padding: const EdgeInsets.symmetric(horizontal: 12.0),
               child: Row(
                 children: [
-                  Container(
-                    height: 28,
-                    width: 28,
-                    decoration: BoxDecoration(
-                      shape: BoxShape.circle,
-                      color: MyColor.black,
-                    ),
-                    child: Center(
-                      child: Image.asset(
-                        'assets/icons/minus.png',
-                        width: 8,
+                  InkWell(
+                    onTap: () {
+                      setState(() {
+                        _currSliderValue = (_currSliderValue - 1).clamp(0, 30);
+                      });
+                    },
+                    child: Container(
+                      height: 28,
+                      width: 28,
+                      decoration: const BoxDecoration(
+                        shape: BoxShape.circle,
+                        color: MyColor.black,
+                      ),
+                      child: Center(
+                        child: Image.asset(
+                          'assets/icons/minus.png',
+                          width: 8,
+                        ),
                       ),
                     ),
                   ),
@@ -736,7 +743,7 @@ class _FilterState extends State<Filter> {
                       label: _currSliderValue.toStringAsFixed(2),
                       min: 0,
                       max: 30,
-                      divisions: 10,
+                      divisions: 30,
                       activeColor: MyColor.black,
                       value: _currSliderValue.toDouble(),
                       onChanged: (double value) {
@@ -746,17 +753,24 @@ class _FilterState extends State<Filter> {
                       },
                     ),
                   ),
-                  Container(
-                    height: 28,
-                    width: 28,
-                    decoration: BoxDecoration(
-                      shape: BoxShape.circle,
-                      color: MyColor.black,
-                    ),
-                    child: Center(
-                      child: Image.asset(
-                        'assets/icons/add.png',
-                        width: 8,
+                  InkWell(
+                    onTap: () {
+                      setState(() {
+                        _currSliderValue = (_currSliderValue + 1).clamp(0, 30);
+                      });
+                    },
+                    child: Container(
+                      height: 28,
+                      width: 28,
+                      decoration: const BoxDecoration(
+                        shape: BoxShape.circle,
+                        color: MyColor.black,
+                      ),
+                      child: Center(
+                        child: Image.asset(
+                          'assets/icons/add.png',
+                          width: 8,
+                        ),
                       ),
                     ),
                   ),

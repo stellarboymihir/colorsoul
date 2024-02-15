@@ -72,9 +72,14 @@ class _DistributorState extends State<Distributor> {
                     ),
                     borderRadius: BorderRadius.circular(1),
                   ),
-                  suffixIcon: const Icon(
-                    Icons.search_outlined,
-                    size: 16,
+                  suffixIcon: Padding(
+                    padding: const EdgeInsets.all(17.0),
+                    child: Image.asset(
+                      'assets/icons/search.png',
+                      height: 0,
+                      width: 0,
+                      fit: BoxFit.fill,
+                    ),
                   ),
                   focusedBorder: OutlineInputBorder(
                     borderSide: const BorderSide(

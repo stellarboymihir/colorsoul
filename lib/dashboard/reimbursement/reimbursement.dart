@@ -39,6 +39,21 @@ class _ReimbursementState extends State<Reimbursement> {
   String? yearSelected;
   String? monthSelected;
 
+  final List<Map<String, dynamic>> totalList = [
+    {
+      "Title": 'Total Spends in January',
+      "Amount": '₹ 7,773',
+    },
+    {
+      "Title": 'Total Approved in January',
+      "Amount": '₹ 5,773',
+    },
+    {
+      "Title": 'Total Disapprove in January',
+      "Amount": '₹ 2,000',
+    },
+  ];
+
   final List<Map<String, dynamic>> reimList = [
     {
       "title": 'Approve',
@@ -71,104 +86,117 @@ class _ReimbursementState extends State<Reimbursement> {
       ),
       body: Column(
         children: [
-          Padding(
-            padding: const EdgeInsets.symmetric(horizontal: 15.0),
-            child: Row(
-              children: [
-                Expanded(
-                  child: Container(
-                    height: 68,
-                    width: MediaQuery.of(context).size.width,
-                    padding: const EdgeInsets.only(left: 12, top: 12),
-                    decoration: BoxDecoration(
-                      color: MyColor.white,
-                      border: const Border(
-                        left: BorderSide(color: MyColor.grey),
-                        right: BorderSide(color: MyColor.grey),
-                        top: BorderSide(color: MyColor.grey),
-                      ),
-                      boxShadow: [
-                        BoxShadow(
-                          color: MyColor.black.withOpacity(0.1),
-                          blurRadius: 4,
-                          spreadRadius: 0.01,
-                          offset: const Offset(1, 4),
-                        ),
-                      ],
-                    ),
-                    child: Column(
-                      // mainAxisAlignment: MainAxisAlignment.center,
-                      crossAxisAlignment: CrossAxisAlignment.start,
-                      children: [
-                        Text(
-                          'Total Spends in January',
-                          style: MyStyle.tx10b.copyWith(
-                            fontWeight: FontWeight.w400,
-                          ),
-                        ),
-                        const SizedBox(
-                          height: 8,
-                        ),
-                        Text(
-                          '₹ 7,773',
-                          style: MyStyle.tx16b.copyWith(
-                            fontWeight: FontWeight.w700,
-                            fontFamily: 'Poppins-SemiBold',
-                          ),
-                        ),
-                      ],
-                    ),
+          // Padding(
+          //   padding: const EdgeInsets.symmetric(horizontal: 15.0),
+          //   child: Row(
+          //     children: [
+          //       Expanded(
+          //         child: Container(
+          //           height: 68,
+          //           width: MediaQuery.of(context).size.width,
+          //           padding: const EdgeInsets.only(left: 12, top: 12),
+          //           decoration: BoxDecoration(
+          //             color: MyColor.white,
+          //             border: const Border(
+          //               left: BorderSide(color: MyColor.grey),
+          //               right: BorderSide(color: MyColor.grey),
+          //               top: BorderSide(color: MyColor.grey),
+          //             ),
+          //             boxShadow: [
+          //               BoxShadow(
+          //                 color: MyColor.black.withOpacity(0.1),
+          //                 blurRadius: 4,
+          //                 spreadRadius: 0.01,
+          //                 offset: const Offset(1, 4),
+          //               ),
+          //             ],
+          //           ),
+          //           child: Column(
+          //             // mainAxisAlignment: MainAxisAlignment.center,
+          //             crossAxisAlignment: CrossAxisAlignment.start,
+          //             children: [
+          //               Text(
+          //                 'Total Spends in January',
+          //                 style: MyStyle.tx10b.copyWith(
+          //                   fontWeight: FontWeight.w400,
+          //                 ),
+          //               ),
+          //               const SizedBox(
+          //                 height: 8,
+          //               ),
+          //               Text(
+          //                 '₹ 7,773',
+          //                 style: MyStyle.tx16b.copyWith(
+          //                   fontWeight: FontWeight.w700,
+          //                   fontFamily: 'Poppins-SemiBold',
+          //                 ),
+          //               ),
+          //             ],
+          //           ),
+          //         ),
+          //       ),
+          //       const SizedBox(
+          //         width: 15,
+          //       ),
+          //     ],
+          //   ),
+          // ),
+          SizedBox(
+            height: 78,
+            child: ListView.builder(
+              scrollDirection: Axis.horizontal,
+              shrinkWrap: true,
+              itemCount: totalList.length,
+              padding: EdgeInsets.zero,
+              itemBuilder: (context, index) {
+                return Container(
+                  height: 68,
+                  width: 180,
+                  margin: EdgeInsets.only(left: 10, bottom: 12),
+                  padding: const EdgeInsets.only(
+                    left: 12,
+                    top: 12,
                   ),
-                ),
-                const SizedBox(
-                  width: 15,
-                ),
-                Expanded(
-                  child: Container(
-                    height: 68,
-                    width: MediaQuery.of(context).size.width,
-                    padding: const EdgeInsets.only(left: 12, top: 12),
-                    decoration: BoxDecoration(
-                      color: MyColor.white,
-                      border: const Border(
-                        left: BorderSide(color: MyColor.grey),
-                        right: BorderSide(color: MyColor.grey),
-                        top: BorderSide(color: MyColor.grey),
+                  decoration: BoxDecoration(
+                    color: MyColor.white,
+                    border: const Border(
+                      left: BorderSide(color: MyColor.grey),
+                      right: BorderSide(color: MyColor.grey),
+                      top: BorderSide(color: MyColor.grey),
+                    ),
+                    boxShadow: [
+                      BoxShadow(
+                        color: MyColor.black.withOpacity(0.1),
+                        blurRadius: 4,
+                        spreadRadius: 0.01,
+                        offset: const Offset(1, 4),
                       ),
-                      boxShadow: [
-                        BoxShadow(
-                          color: MyColor.black.withOpacity(0.1),
-                          blurRadius: 4,
-                          spreadRadius: 0.01,
-                          offset: const Offset(1, 4),
-                        ),
-                      ],
-                    ),
-                    child: Column(
-                      // mainAxisAlignment: MainAxisAlignment.center,
-                      crossAxisAlignment: CrossAxisAlignment.start,
-                      children: [
-                        Text(
-                          'Total Approved in January',
-                          style: MyStyle.tx10b.copyWith(
-                            fontWeight: FontWeight.w400,
-                          ),
-                        ),
-                        const SizedBox(
-                          height: 8,
-                        ),
-                        Text(
-                          '₹ 5,773',
-                          style: MyStyle.tx16b.copyWith(
-                            fontWeight: FontWeight.w700,
-                            fontFamily: 'Poppins-SemiBold',
-                          ),
-                        ),
-                      ],
-                    ),
+                    ],
                   ),
-                ),
-              ],
+                  child: Column(
+                    // mainAxisAlignment: MainAxisAlignment.center,
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: [
+                      Text(
+                        '${totalList[index]["Title"]}',
+                        style: MyStyle.tx10b.copyWith(
+                          fontWeight: FontWeight.w400,
+                        ),
+                      ),
+                      const SizedBox(
+                        height: 8,
+                      ),
+                      Text(
+                        '${totalList[index]["Amount"]}',
+                        style: MyStyle.tx16b.copyWith(
+                          fontWeight: FontWeight.w700,
+                          fontFamily: 'Poppins-SemiBold',
+                        ),
+                      ),
+                    ],
+                  ),
+                );
+              },
             ),
           ),
           const SizedBox(
@@ -222,6 +250,11 @@ class _ReimbursementState extends State<Reimbursement> {
                   width: MediaQuery.of(context).size.width * 0.26,
                   child: DropdownButtonHideUnderline(
                     child: DropdownButtonFormField2<String>(
+                      hint: Text(
+                        'Months',
+                        style: MyStyle.tx12b,
+                        overflow: TextOverflow.ellipsis,
+                      ),
                       style: MyStyle.tx12b,
                       decoration: const InputDecoration(
                         border: OutlineInputBorder(
@@ -265,6 +298,11 @@ class _ReimbursementState extends State<Reimbursement> {
                     width: MediaQuery.of(context).size.width,
                     child: DropdownButtonHideUnderline(
                       child: DropdownButtonFormField2<String>(
+                        hint: Text(
+                          'Year',
+                          style: MyStyle.tx12b,
+                          overflow: TextOverflow.ellipsis,
+                        ),
                         style: MyStyle.tx12b,
                         decoration: const InputDecoration(
                           border: OutlineInputBorder(

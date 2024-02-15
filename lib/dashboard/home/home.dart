@@ -16,94 +16,261 @@ class _HomeState extends State<Home> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-        backgroundColor: MyColor.white,
-        scrolledUnderElevation: 0,
-        automaticallyImplyLeading: false,
-        title: Row(
-          children: [
-            InkWell(
-              onTap: () {
-                Navigator.pushNamed(context, profileRoute);
-              },
-              child: Image.asset(
-                'assets/images/samar.png',
-                width: 35,
-                height: 35,
-              ),
-            ),
-            const SizedBox(width: 10),
-            Column(
-              crossAxisAlignment: CrossAxisAlignment.start,
-              children: [
-                Text(
-                  'Hi Samar',
-                  textAlign: TextAlign.start,
-                  style: MyStyle.tx20b
-                      .copyWith(fontFamily: 'Poppins-Bold', fontSize: 19),
-                ),
-                const Text(
-                  'Dec 18, 2021',
-                  textAlign: TextAlign.start,
-                  style: MyStyle.tx12b,
-                ),
-              ],
-            ),
-          ],
+      drawer: Drawer(
+        shape: RoundedRectangleBorder(
+          borderRadius: BorderRadius.circular(0),
         ),
-        actions: [
-          InkWell(
-            onTap: () {
-              Navigator.pushNamed(context, attendanceRoute);
-            },
-            child: badge.Badge(
-              showBadge: true,
-              position: badge.BadgePosition.topEnd(top: -5, end: -4),
-              badgeStyle: const badge.BadgeStyle(
-                shape: badge.BadgeShape.circle,
-                badgeColor: MyColor.green,
-                padding: EdgeInsets.all(6.5),
+        width: MediaQuery.of(context).size.width * 0.6,
+        elevation: 0,
+        backgroundColor: MyColor.white,
+        child: SafeArea(
+          child: Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: [
+              Padding(
+                padding: const EdgeInsets.only(left: 12.0, top: 10),
+                child: Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    Image.asset(
+                      'assets/images/img11.png',
+                      height: 83,
+                      width: 83,
+                      fit: BoxFit.fill,
+                    ),
+                    const SizedBox(
+                      height: 15,
+                    ),
+                    Text(
+                      'Hi Samar',
+                      style: MyStyle.tx20b.copyWith(
+                        fontWeight: FontWeight.w700,
+                        fontFamily: 'Poppins-Bold',
+                      ),
+                    ),
+                    Text(
+                      'Des 18, 2021',
+                      style: MyStyle.tx12b.copyWith(
+                        fontWeight: FontWeight.w400,
+                        fontFamily: 'Poppins-Regular',
+                      ),
+                    ),
+                  ],
+                ),
               ),
-              child: Container(
-                height: 40,
-                color: MyColor.grey,
-                padding:
-                    const EdgeInsets.symmetric(horizontal: 20, vertical: 10),
+              SizedBox(
+                height: 25,
+              ),
+              ListTile(
+                title: Row(
+                  children: [
+                    Image.asset(
+                      'assets/icons/photo.png',
+                      height: 24,
+                      width: 24,
+                      fit: BoxFit.fill,
+                    ),
+                    SizedBox(
+                      width: 15,
+                    ),
+                    Text(
+                      'Profile',
+                      style: MyStyle.tx18b.copyWith(
+                        fontSize: 15,
+                        fontWeight: FontWeight.w400,
+                        fontFamily: 'Poppins-Medium',
+                      ),
+                    ),
+                  ],
+                ),
+                onTap: () {
+                  Navigator.pushNamed(context, profileRoute);
+                },
+              ),
+              ListTile(
+                title: Row(
+                  children: [
+                    Image.asset(
+                      'assets/icons/order.png',
+                      height: 24,
+                      width: 24,
+                      fit: BoxFit.fill,
+                    ),
+                    SizedBox(
+                      width: 15,
+                    ),
+                    Text(
+                      'Orders',
+                      style: MyStyle.tx18b.copyWith(
+                        fontSize: 15,
+                        fontWeight: FontWeight.w400,
+                        fontFamily: 'Poppins-Medium',
+                      ),
+                    ),
+                  ],
+                ),
+                onTap: () {
+                  Navigator.pushNamed(context, ordersRoute);
+                },
+              ),
+              ListTile(
+                title: Row(
+                  children: [
+                    Image.asset(
+                      'assets/icons/media.png',
+                      height: 24,
+                      width: 24,
+                      fit: BoxFit.fill,
+                    ),
+                    SizedBox(
+                      width: 15,
+                    ),
+                    Text(
+                      'Media center',
+                      style: MyStyle.tx18b.copyWith(
+                        fontSize: 15,
+                        fontWeight: FontWeight.w400,
+                        fontFamily: 'Poppins-Medium',
+                      ),
+                    ),
+                  ],
+                ),
+                onTap: () {
+                  Navigator.pushNamed(context, mediaRoute);
+                },
+              ),
+              ListTile(
+                title: Row(
+                  children: [
+                    Image.asset(
+                      'assets/icons/setting.png',
+                      height: 24,
+                      width: 24,
+                      fit: BoxFit.fill,
+                    ),
+                    SizedBox(
+                      width: 15,
+                    ),
+                    Text(
+                      'Setting',
+                      style: MyStyle.tx18b.copyWith(
+                        fontSize: 15,
+                        fontWeight: FontWeight.w400,
+                        fontFamily: 'Poppins-Medium',
+                      ),
+                    ),
+                  ],
+                ),
+                onTap: () {
+                  Navigator.pushNamed(context, settingRoute);
+                },
+              ),
+              Spacer(),
+              Container(
+                height: 50,
+                width: MediaQuery.of(context).size.width,
+                color: MyColor.black,
+                margin: const EdgeInsets.fromLTRB(20, 0, 20, 20),
                 child: Center(
                   child: Text(
-                    'START',
-                    style: MyStyle.tx14b.copyWith(
-                      fontWeight: FontWeight.w700,
-                      fontFamily: 'Poppins-ExtraBold',
-                    ),
+                    'Log Out',
+                    style: MyStyle.tx20W
+                      ..copyWith(fontFamily: 'Poppins-SemiBold', fontSize: 13),
                   ),
                 ),
               ),
-            ),
+            ],
           ),
-          InkWell(
-            onTap: () {
-              Navigator.pushNamed(context, notificationRoute);
-            },
-            child: Container(
-              height: 40,
-              color: MyColor.grey,
-              margin: const EdgeInsets.only(right: 17, left: 10),
-              padding: const EdgeInsets.all(10),
-              child: Image.asset(
-                'assets/icons/bell.png',
-                height: 20,
-                width: 20,
-              ),
-            ),
-          ),
-        ],
+        ),
       ),
       body: SafeArea(
         child: SingleChildScrollView(
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
+              Padding(
+                padding: const EdgeInsets.only(left: 12.0, top: 10),
+                child: Row(
+                  children: [
+                    Builder(builder: (context) {
+                      return InkWell(
+                        onTap: () {
+                          Scaffold.of(context).openDrawer();
+                          // Navigator.pushNamed(context, profileRoute);
+                        },
+                        child: Image.asset(
+                          'assets/images/samar.png',
+                          width: 35,
+                          height: 35,
+                        ),
+                      );
+                    }),
+                    const SizedBox(width: 10),
+                    Column(
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      children: [
+                        Text(
+                          'Hi Samar',
+                          textAlign: TextAlign.start,
+                          style: MyStyle.tx20b.copyWith(
+                              fontFamily: 'Poppins-Bold', fontSize: 19),
+                        ),
+                        const Text(
+                          'Dec 18, 2021',
+                          textAlign: TextAlign.start,
+                          style: MyStyle.tx12b,
+                        ),
+                      ],
+                    ),
+                    Spacer(),
+                    InkWell(
+                      onTap: () {
+                        Navigator.pushNamed(context, attendanceRoute);
+                      },
+                      child: badge.Badge(
+                        showBadge: true,
+                        position: badge.BadgePosition.topEnd(top: -5, end: -4),
+                        badgeStyle: const badge.BadgeStyle(
+                          shape: badge.BadgeShape.circle,
+                          badgeColor: MyColor.green,
+                          padding: EdgeInsets.all(6.5),
+                        ),
+                        child: Container(
+                          height: 40,
+                          color: MyColor.grey,
+                          padding: const EdgeInsets.symmetric(
+                              horizontal: 20, vertical: 10),
+                          child: Center(
+                            child: Text(
+                              'START',
+                              style: MyStyle.tx14b.copyWith(
+                                fontWeight: FontWeight.w700,
+                                fontFamily: 'Poppins-ExtraBold',
+                              ),
+                            ),
+                          ),
+                        ),
+                      ),
+                    ),
+                    InkWell(
+                      onTap: () {
+                        Navigator.pushNamed(context, notificationRoute);
+                      },
+                      child: Container(
+                        height: 40,
+                        color: MyColor.grey,
+                        margin: const EdgeInsets.only(right: 17, left: 10),
+                        padding: const EdgeInsets.all(10),
+                        child: Image.asset(
+                          'assets/icons/bell.png',
+                          height: 20,
+                          width: 20,
+                        ),
+                      ),
+                    ),
+                  ],
+                ),
+              ),
               //  Middle layer
               Container(
                 margin: const EdgeInsets.all(12.0),

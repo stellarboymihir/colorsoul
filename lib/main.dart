@@ -7,6 +7,8 @@ import 'package:colorsoul/authentication/register/welcome.dart';
 import 'package:colorsoul/constants/routes.dart';
 import 'package:colorsoul/dashboard/dashboard.dart';
 import 'package:colorsoul/dashboard/distributor/distributorList.dart';
+import 'package:colorsoul/dashboard/drawer/media.dart';
+import 'package:colorsoul/dashboard/drawer/setting.dart';
 import 'package:colorsoul/dashboard/home/attendance.dart';
 import 'package:colorsoul/dashboard/home/floating/newRetailer/createRoute/createRoute.dart';
 import 'package:colorsoul/dashboard/home/floating/newRetailer/createRoute/createRouteFloating.dart';
@@ -15,7 +17,7 @@ import 'package:colorsoul/dashboard/home/floating/newRetailer/newFloatingRetaile
 import 'package:colorsoul/dashboard/home/floating/newRetailer/newRetailer.dart';
 import 'package:colorsoul/dashboard/home/floating/reimbursementPage.dart';
 import 'package:colorsoul/dashboard/home/notification.dart';
-import 'package:colorsoul/dashboard/home/profile.dart';
+import 'package:colorsoul/dashboard/drawer/profile.dart';
 import 'package:colorsoul/dashboard/home/task/taskDetail.dart';
 import 'package:colorsoul/dashboard/home/task/taskPage.dart';
 import 'package:colorsoul/dashboard/reimbursement/history.dart';
@@ -36,6 +38,7 @@ import 'authentication/starter/starter.dart';
 import 'dashboard/distributor/distributor.dart';
 import 'dashboard/distributor/filter.dart';
 import 'dashboard/distributor/retailerList.dart';
+import 'dashboard/drawer/order.dart';
 import 'dashboard/home/floating/createTask.dart';
 import 'dashboard/home/home.dart';
 import 'dashboard/reimbursement/reimbursement.dart';
@@ -93,9 +96,15 @@ class MyApp extends StatelessWidget {
 
         //  ** Home **
         homeRoute: (context) => const Home(),
+
         notificationRoute: (context) => const NotificationPage(),
         attendanceRoute: (context) => const Attendance(),
+
+        //  ** Drawer  **
         profileRoute: (context) => const Profile(),
+        ordersRoute: (context) => const Orders(),
+        mediaRoute: (context) => const MediaCenter(),
+        settingRoute: (context) => const Setting(),
 
         //  **  Floating  **
         reimbursementPageRoute: (context) => const ReimbursementPage(),

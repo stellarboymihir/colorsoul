@@ -482,7 +482,7 @@ class _GetOrderState extends State<GetOrder> {
                                       decoration: InputDecoration(
                                         // contentPadding:
                                         //     EdgeInsets.symmetric(vertical: 10),
-                                        hintText: '05',
+                                        hintText: '0',
                                         hintStyle: MyStyle.tx14b,
                                         enabledBorder: OutlineInputBorder(
                                           borderSide: const BorderSide(
@@ -509,9 +509,10 @@ class _GetOrderState extends State<GetOrder> {
                                     ),
                                   ),
                                   //  Amount Expand
-                                  SizedBox(
+                                  Container(
                                     width: 80,
                                     height: 54,
+                                    color: MyColor.grey,
                                     child: Center(
                                       child: Text(
                                         '${orderList[index]["ProductData"][indexOne]["productAmount"]}',

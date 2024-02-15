@@ -65,19 +65,21 @@ class _DistributorListState extends State<DistributorList> {
                         // Navigator.pushNamed(context, shoppersRoute);
                       },
                       child: Container(
-                        padding: const EdgeInsets.only(top: 12),
-                        margin: const EdgeInsets.only(bottom: 15),
+                        // padding: const EdgeInsets.only(top: 6, bottom: 1),
+                        margin: const EdgeInsets.only(
+                          bottom: 15,
+                        ),
                         decoration: BoxDecoration(
-                          border: Border.all(
-                            color: MyColor.black.withOpacity(0.1),
-                          ),
+                          //   border: Border.all(
+                          //     color: MyColor.black.withOpacity(0.1),
+                          //   ),
                           color: MyColor.white,
                           boxShadow: [
                             BoxShadow(
                               color: MyColor.black.withOpacity(0.1),
                               blurRadius: 5,
                               spreadRadius: 0.01,
-                              offset: const Offset(1.0, 1),
+                              offset: const Offset(1.0, 4),
                             ),
                             BoxShadow(
                               color: MyColor.black.withOpacity(0.1),
@@ -147,9 +149,12 @@ class _DistributorListState extends State<DistributorList> {
                               ),
                             ],
                           ),
+
+                          // initiallyExpanded: true,
+                          tilePadding: const EdgeInsets.all(0),
                           trailing: PopupMenuButton<String>(
                             elevation: 0,
-                            // constraints: const BoxConstraints(minWidth: 2 * 12),
+                            offset: Offset(0, 40),
                             initialValue: selectedValue,
                             color: MyColor.white,
                             shadowColor: MyColor.black,
@@ -160,8 +165,8 @@ class _DistributorListState extends State<DistributorList> {
                             },
                             icon: Image.asset(
                               'assets/icons/dots.png',
-                              height: 18,
-                              width: 18,
+                              height: 22,
+                              width: 22,
                             ),
                             itemBuilder: (BuildContext context) =>
                                 <PopupMenuEntry<String>>[
@@ -216,7 +221,7 @@ class _DistributorListState extends State<DistributorList> {
                           shape: Border.all(color: Colors.transparent),
                           collapsedBackgroundColor: MyColor.white,
                           backgroundColor: MyColor.white,
-                          childrenPadding: EdgeInsets.zero,
+                          childrenPadding: EdgeInsets.all(0),
                           onExpansionChanged: (bool expanded) {
                             setState(() {});
                           },

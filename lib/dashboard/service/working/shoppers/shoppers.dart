@@ -33,6 +33,14 @@ class _ShoppersState extends State<Shoppers> {
       "title": 'Completed',
       "Color": MyColor.green,
     },
+    {
+      "title": 'Completed',
+      "Color": MyColor.green,
+    },
+    {
+      "title": 'Completed',
+      "Color": MyColor.green,
+    },
   ];
   @override
   Widget build(BuildContext context) {

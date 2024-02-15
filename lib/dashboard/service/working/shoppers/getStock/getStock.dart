@@ -384,7 +384,7 @@ class _GetStockState extends State<GetStock> {
                                       style: MyStyle.tx14b,
                                       decoration: InputDecoration(
                                         border: InputBorder.none,
-                                        hintText: '05',
+                                        hintText: '0',
                                         hintStyle: MyStyle.tx14b.copyWith(
                                             // fontFamily: 'Roboto-Medium',
                                             // fontWeight: FontWeight.w400,

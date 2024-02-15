@@ -142,6 +142,8 @@ class _SkipState extends State<Skip> {
                             onChanged: (bool? val) {
                               setState(() {
                                 isClick[0] = val!;
+                                isClick[1] = false;
+                                isClick[2] = false;
                               });
                             })
                       ],
@@ -164,6 +166,8 @@ class _SkipState extends State<Skip> {
                             onChanged: (bool? val) {
                               setState(() {
                                 isClick[1] = val!;
+                                isClick[0] = false;
+                                isClick[2] = false;
                               });
                             })
                       ],
@@ -186,8 +190,10 @@ class _SkipState extends State<Skip> {
                             onChanged: (bool? val) {
                               setState(() {
                                 isClick[2] = val!;
+                                isClick[0] = false;
+                                isClick[1] = false;
                               });
-                            })
+                            }),
                       ],
                     ),
                   ],
@@ -209,9 +215,6 @@ class _SkipState extends State<Skip> {
               const SizedBox(
                 height: 5,
               ),
-              // const SizedBox(
-              //   height: 10,
-              // ),
               SizedBox(
                 height: 120,
                 width: MediaQuery.of(context).size.width,
