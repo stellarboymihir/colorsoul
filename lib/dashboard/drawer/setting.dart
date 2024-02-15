@@ -11,6 +11,8 @@ class Setting extends StatefulWidget {
 }
 
 class _SettingState extends State<Setting> {
+  bool status0 = false;
+  bool status1 = false;
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -43,11 +45,122 @@ class _SettingState extends State<Setting> {
       body: Padding(
         padding: const EdgeInsets.symmetric(horizontal: 15.0),
         child: Column(
+          crossAxisAlignment: CrossAxisAlignment.start,
           children: [
-            Text(
+            //  Notification
+            const Text(
               'Notification',
               style: MyStyle.tx18b,
-            )
+            ),
+            const Divider(
+              color: MyColor.grey,
+            ),
+            const Text(
+              'App Notification',
+              style: MyStyle.tx14b,
+            ),
+            const SizedBox(
+              height: 10,
+            ),
+            Row(
+              children: [
+                const Expanded(
+                  child: Text(
+                    'Email Notification',
+                    style: MyStyle.tx14b,
+                  ),
+                ),
+                Switch(
+                  value: status0,
+                  inactiveThumbColor: MyColor.black,
+                  activeTrackColor: MyColor.green,
+                  activeColor: MyColor.green,
+                  inactiveTrackColor: MyColor.black,
+                  thumbColor:
+                      const MaterialStatePropertyAll<Color>(MyColor.white),
+                  onChanged: (bool value) {
+                    // This is called when the user toggles the switch.
+                    setState(() {
+                      status0 = value;
+                    });
+                  },
+                ),
+              ],
+            ),
+            const SizedBox(
+              height: 10,
+            ),
+
+            //   Security
+            const Text(
+              'Security',
+              style: MyStyle.tx18b,
+            ),
+            const Divider(
+              color: MyColor.grey,
+            ),
+            Row(
+              children: [
+                const Expanded(
+                  child: Text(
+                    'Enables biometric access',
+                    style: MyStyle.tx14b,
+                  ),
+                ),
+                Switch(
+                  value: status1,
+                  inactiveThumbColor: MyColor.black,
+                  activeTrackColor: MyColor.green,
+                  activeColor: MyColor.green,
+                  inactiveTrackColor: MyColor.black,
+                  thumbColor:
+                      const MaterialStatePropertyAll<Color>(MyColor.white),
+                  onChanged: (bool value) {
+                    // This is called when the user toggles the switch.
+                    setState(() {
+                      status1 = value;
+                    });
+                  },
+                ),
+              ],
+            ),
+            const Text(
+              'Change Password',
+              style: MyStyle.tx14b,
+            ),
+            const SizedBox(
+              height: 20,
+            ),
+
+            //  About
+            const Text(
+              'About',
+              style: MyStyle.tx18b,
+            ),
+            const Divider(
+              color: MyColor.grey,
+            ),
+            const SizedBox(
+              height: 10,
+            ),
+            const Text(
+              'Privacy  policy',
+              style: MyStyle.tx14b,
+            ),
+            const SizedBox(
+              height: 15,
+            ),
+            const Text(
+              'Terms of Use',
+              style: MyStyle.tx14b,
+            ),
+            const SizedBox(
+              height: 15,
+            ),
+            const Text(
+              'Helps',
+              style: MyStyle.tx14b,
+            ),
           ],
         ),
       ),
