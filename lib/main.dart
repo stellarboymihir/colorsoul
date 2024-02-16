@@ -38,6 +38,7 @@ import 'authentication/starter/starter.dart';
 import 'dashboard/distributor/distributor.dart';
 import 'dashboard/distributor/filter.dart';
 import 'dashboard/distributor/retailerList.dart';
+import 'dashboard/drawer/Nail.dart';
 import 'dashboard/drawer/order.dart';
 import 'dashboard/home/floating/createTask.dart';
 import 'dashboard/home/home.dart';
@@ -105,6 +106,7 @@ class MyApp extends StatelessWidget {
         ordersRoute: (context) => const Orders(),
         mediaRoute: (context) => const MediaCenter(),
         settingRoute: (context) => const Setting(),
+        nailRoute: (context) => const Nail(),
 
         //  **  Floating  **
         reimbursementPageRoute: (context) => const ReimbursementPage(),

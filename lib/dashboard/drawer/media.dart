@@ -1,3 +1,4 @@
+import 'package:colorsoul/constants/routes.dart';
 import 'package:flutter/material.dart';
 
 import '../../values/myColor.dart';
@@ -47,6 +48,83 @@ class _MediaCenterState extends State<MediaCenter> {
       "Nail": 'assets/images/img20.png',
     },
   ];
+  final List<Map<String, dynamic>> imageList = [
+    {
+      "Text": 'ColorSoul Glam Nail Enamel',
+      "Nail": 'assets/images/img21.png',
+    },
+    {
+      "Text": 'ColorSoul Glam Nail',
+      "Nail": 'assets/images/img22.png',
+    },
+    {
+      "Text": 'ColorSoul Glam Nail',
+      "Nail": 'assets/images/img23.png',
+    },
+    {
+      "Text": 'ColorSoul Glam Nail Enamel',
+      "Nail": 'assets/images/img24.png',
+    },
+    {
+      "Text": 'ColorSoul Glam Nail',
+      "Nail": 'assets/images/img25.png',
+    },
+    {
+      "Text": 'ColorSoul Glam Nail',
+      "Nail": 'assets/images/img26.png',
+    },
+    {
+      "Text": 'ColorSoul Glam Nail Enamel',
+      "Nail": 'assets/images/img27.png',
+    },
+    {
+      "Text": 'ColorSoul Glam Nail Enamel',
+      "Nail": 'assets/images/img28.png',
+    },
+    {
+      "Text": 'ColorSoul Glam Nail',
+      "Nail": 'assets/images/img29.png',
+    },
+  ];
+  final List<Map<String, dynamic>> catalogList = [
+    {
+      "Text": 'ColorSoul Glam Nail Make-Up',
+      "Nail": 'assets/images/img30.png',
+    },
+    {
+      "Text": 'ColorSoul Glam Nail',
+      "Nail": 'assets/images/img31.png',
+    },
+    {
+      "Text": 'ColorSoul Glam Nail',
+      "Nail": 'assets/images/img32.png',
+    },
+    {
+      "Text": 'ColorSoul Glam Nail Enamel',
+      "Nail": 'assets/images/img33.png',
+    },
+    {
+      "Text": 'ColorSoul Glam Nail',
+      "Nail": 'assets/images/img34.png',
+    },
+    {
+      "Text": 'ColorSoul Glam Nail',
+      "Nail": 'assets/images/img35.png',
+    },
+    {
+      "Text": 'ColorSoul Glam Nail Enamel',
+      "Nail": 'assets/images/img36.png',
+    },
+    {
+      "Text": 'ColorSoul Glam Nail Enamel',
+      "Nail": 'assets/images/img37.png',
+    },
+    {
+      "Text": 'ColorSoul Glam Nail',
+      "Nail": 'assets/images/img38.png',
+    },
+  ];
+  String selectedImage = 'assets/images/img12.png';
 
   @override
   Widget build(BuildContext context) {
@@ -123,18 +201,36 @@ class _MediaCenterState extends State<MediaCenter> {
               ),
             ),
             const SizedBox(
-              height: 8,
+              height: 10,
             ),
 
             //  Images
             Padding(
               padding: const EdgeInsets.symmetric(horizontal: 12.0),
-              child: Image.asset(
-                'assets/images/img12.png',
-                // height: 168,
-                // width: MediaQuery.of(context).size.width,
-                fit: BoxFit.fill,
-              ),
+              child: _onClick == 'image'
+                  ? Image.asset(
+                      'assets/images/img12.png',
+                      fit: BoxFit.fill,
+                    )
+                  : SizedBox(),
+            ),
+            Padding(
+              padding: const EdgeInsets.symmetric(horizontal: 12.0),
+              child: _onClick == 'video'
+                  ? Image.asset(
+                      'assets/images/img39.png',
+                      fit: BoxFit.fill,
+                    )
+                  : SizedBox(),
+            ),
+            Padding(
+              padding: const EdgeInsets.symmetric(horizontal: 12.0),
+              child: _onClick == 'catalog'
+                  ? Image.asset(
+                      'assets/images/img40.png',
+                      fit: BoxFit.fill,
+                    )
+                  : SizedBox(),
             ),
             const SizedBox(
               height: 8,
@@ -166,7 +262,7 @@ class _MediaCenterState extends State<MediaCenter> {
                         videoMedia();
                       },
                       child: Container(
-                        height: 44,
+                        height: 40,
                         width: 116,
                         color:
                             _onClick == 'video' ? MyColor.black : MyColor.grey,
@@ -189,10 +285,12 @@ class _MediaCenterState extends State<MediaCenter> {
                                 'Video',
                                 style: _onClick == 'video'
                                     ? MyStyle.tx12w.copyWith(
+                                        fontSize: 11,
                                         fontWeight: FontWeight.w700,
                                         fontFamily: 'Poppins-Medium',
                                       )
                                     : MyStyle.tx12b.copyWith(
+                                        fontSize: 11,
                                         fontWeight: FontWeight.w700,
                                         fontFamily: 'Poppins-Medium',
                                       ),
@@ -215,7 +313,7 @@ class _MediaCenterState extends State<MediaCenter> {
                         });
                       },
                       child: Container(
-                        height: 44,
+                        height: 40,
                         width: 116,
                         color:
                             _onClick == 'image' ? MyColor.black : MyColor.grey,
@@ -238,10 +336,12 @@ class _MediaCenterState extends State<MediaCenter> {
                                 'Image',
                                 style: _onClick == 'image'
                                     ? MyStyle.tx12w.copyWith(
+                                        fontSize: 11,
                                         fontWeight: FontWeight.w700,
                                         fontFamily: 'Poppins-Medium',
                                       )
                                     : MyStyle.tx12b.copyWith(
+                                        fontSize: 11,
                                         fontWeight: FontWeight.w700,
                                         fontFamily: 'Poppins-Medium',
                                       ),
@@ -264,7 +364,7 @@ class _MediaCenterState extends State<MediaCenter> {
                         });
                       },
                       child: Container(
-                        height: 44,
+                        height: 40,
                         width: 116,
                         color: _onClick == 'catalog'
                             ? MyColor.black
@@ -288,10 +388,12 @@ class _MediaCenterState extends State<MediaCenter> {
                                 'Catalog',
                                 style: _onClick == 'catalog'
                                     ? MyStyle.tx12w.copyWith(
+                                        fontSize: 11,
                                         fontWeight: FontWeight.w700,
                                         fontFamily: 'Poppins-Medium',
                                       )
                                     : MyStyle.tx12b.copyWith(
+                                        fontSize: 11,
                                         fontWeight: FontWeight.w700,
                                         fontFamily: 'Poppins-Medium',
                                       ),
@@ -309,24 +411,21 @@ class _MediaCenterState extends State<MediaCenter> {
               height: 15,
             ),
             Container(
-              height: MediaQuery.of(context).size.height * 0.53,
+              height: MediaQuery.of(context).size.height * 0.51,
               color: MyColor.grey,
               child: SingleChildScrollView(
                 child: Column(
                   children: [
-                    SizedBox(
+                    const SizedBox(
                       height: 10,
                     ),
                     _onClick == 'video' ? videoMedia() : const SizedBox(),
-                    // _onClick == 'image' ? imageMedia() : const SizedBox(),
-                    // _onClick == 'catalog' ? catalogMedia() : const SizedBox(),
+                    _onClick == 'image' ? imageMedia() : const SizedBox(),
+                    _onClick == 'catalog' ? catalogMedia() : const SizedBox(),
                   ],
                 ),
               ),
             ),
-            //
-            // // _onClick == 'image' ? imageMedia() : const SizedBox(),
-            // //
           ],
         ),
       ),
@@ -393,7 +492,84 @@ class _MediaCenterState extends State<MediaCenter> {
     );
   }
 
-// Widget imageMedia() {}
-  //
-  // Widget catalogMedia() {}
+  Widget imageMedia() {
+    return GridView.builder(
+      physics: const NeverScrollableScrollPhysics(),
+      shrinkWrap: true,
+      gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
+        mainAxisSpacing: 0,
+        crossAxisSpacing: 0,
+        childAspectRatio: 3 / 3, // Adjust the aspect ratio here
+        crossAxisCount: 3,
+      ),
+      itemCount: imageList.length,
+      itemBuilder: (BuildContext ctx, index) {
+        return Padding(
+          padding: const EdgeInsets.symmetric(horizontal: 12.0),
+          child: Column(
+            children: [
+              InkWell(
+                onTap: () {
+                  Navigator.pushNamed(context, nailRoute);
+                },
+                child: Image.asset(
+                  imageList[index]["Nail"],
+                  height: 90,
+                  width: 115,
+                  // color: MyColor.grey.withOpacity(0.6),
+                  // colorBlendMode: BlendMode.luminosity,
+                ),
+              ),
+              Text(
+                '${imageList[index]["Text"]}',
+                textAlign: TextAlign.center,
+                style: MyStyle.tx10b.copyWith(
+                  fontFamily: 'Poppins-Medium',
+                  fontWeight: FontWeight.w400,
+                ),
+              ),
+            ],
+          ),
+        );
+      },
+    );
+  }
+
+  Widget catalogMedia() {
+    return GridView.builder(
+      physics: const NeverScrollableScrollPhysics(),
+      shrinkWrap: true,
+      gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
+        mainAxisSpacing: 0,
+        crossAxisSpacing: 0,
+        childAspectRatio: 3 / 3, // Adjust the aspect ratio here
+        crossAxisCount: 3,
+      ),
+      itemCount: catalogList.length,
+      itemBuilder: (BuildContext ctx, index) {
+        return Padding(
+          padding: const EdgeInsets.symmetric(horizontal: 12.0),
+          child: Column(
+            children: [
+              Image.asset(
+                catalogList[index]["Nail"],
+                height: 92,
+                width: 115,
+                // color: MyColor.grey.withOpacity(0.6),
+                // colorBlendMode: BlendMode.luminosity,
+              ),
+              Text(
+                '${catalogList[index]["Text"]}',
+                textAlign: TextAlign.center,
+                style: MyStyle.tx10b.copyWith(
+                  fontFamily: 'Poppins-Medium',
+                  fontWeight: FontWeight.w400,
+                ),
+              ),
+            ],
+          ),
+        );
+      },
+    );
+  }
 }

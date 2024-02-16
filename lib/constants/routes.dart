@@ -24,6 +24,7 @@ const profileRoute = '/profile/';
 const ordersRoute = '/orders/';
 const mediaRoute = '/media/';
 const settingRoute = '/setting/';
+const nailRoute = '/nail/';
 
 //  **  Floating  **
 const reimbursementPageRoute = '/reimbursementPage/';
