@@ -13,17 +13,21 @@ class Nail extends StatefulWidget {
 
 class _NailState extends State<Nail> {
   int _current = 0;
-  CarouselController buttonCarouselController = CarouselController();
+  CarouselController carouselController = CarouselController();
   bool onLikeClick = false;
   final List<String> imgList = [
-    'assets/images/img32.png',
-    'assets/images/img33.png',
-    'assets/images/img34.png',
-    'assets/images/img35.png',
+    // 'assets/images/img31.png',
+    'assets/images/img45.png',
+    'assets/images/img45.png',
+    'assets/images/img45.png',
+    'assets/images/img45.png',
   ];
   @override
   Widget build(BuildContext context) {
+    var height = MediaQuery.of(context).size.height;
+
     return Scaffold(
+      backgroundColor: MyColor.grey,
       appBar: AppBar(
         scrolledUnderElevation: 0,
         backgroundColor: MyColor.white,
@@ -77,11 +81,11 @@ class _NailState extends State<Nail> {
       body: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
-          SizedBox(
-            height: 10,
-          ),
-          Padding(
-            padding: const EdgeInsets.symmetric(horizontal: 15.0),
+          Container(
+            height: 40,
+            width: MediaQuery.of(context).size.width,
+            padding: const EdgeInsets.fromLTRB(15, 5, 15, 10),
+            color: MyColor.white,
             child: Text(
               'ColorSoul Glam Nail Enamel',
               style: MyStyle.tx14b.copyWith(
@@ -90,7 +94,7 @@ class _NailState extends State<Nail> {
               ),
             ),
           ),
-          SizedBox(
+          const SizedBox(
             height: 10,
           ),
           // Container(
@@ -107,80 +111,109 @@ class _NailState extends State<Nail> {
           //     ),
           //   ),
           // ),
-          CarouselSlider.builder(
-            carouselController: buttonCarouselController,
-            options: CarouselOptions(
-              padEnds: false,
-              viewportFraction: 1,
-              onPageChanged: (index, reason) {
-                setState(() {
-                  _current = index;
-                });
+          Container(
+            color: MyColor.grey,
+            margin: EdgeInsets.zero,
+            padding: const EdgeInsets.fromLTRB(15, 5, 15, 0),
+            child: CarouselSlider.builder(
+              carouselController: carouselController,
+              options: CarouselOptions(
+                // enlargeCenterPage: true,
+                padEnds: false,
+                viewportFraction: 1,
+                // aspectRatio: 10.0,
+                onPageChanged: (index, reason) {
+                  setState(() {
+                    _current = index;
+                  });
+                },
+                autoPlay: true,
+                autoPlayAnimationDuration: const Duration(milliseconds: 300),
+                enableInfiniteScroll: true,
+                height: MediaQuery.of(context).size.height * 0.46,
+              ),
+              itemCount: imgList.length,
+              itemBuilder: (BuildContext context, int index, int realIndex) {
+                return Image.asset(
+                  imgList[index],
+                  width: 390,
+                  fit: BoxFit.fill,
+                );
               },
-              enableInfiniteScroll: false,
-              height: 264,
             ),
-            itemCount: 5,
-            itemBuilder: (BuildContext context, int index, int realIndex) {
-              return Image.asset(
-                'assets/images/img41.png',
-                fit: BoxFit.cover,
-                // height: 264,
-                // width: MediaQuery.of(context).size.width,
-              );
-            },
           ),
           const SizedBox(
-            height: 10,
+            height: 15,
           ),
 
           //Slider Indicator
-          Row(
-            mainAxisAlignment: MainAxisAlignment.start,
-            children: [
-              InkWell(
-                onTap: () {
-                  // Navigator.pushNamed(context, commentRoute);
-                },
-                child: Image.asset(
-                  'assets/icons/comment.png',
-                  height: 24,
-                  width: 24,
-                ),
-              ),
-              Expanded(
-                child: Padding(
-                  padding: const EdgeInsets.only(left: 55.0, right: 55.0),
-                  child: Row(
-                    mainAxisAlignment: MainAxisAlignment.center,
-                    children: imgList.asMap().entries.map((entry) {
-                      print(entry);
-                      return Row(
-                        children: [
-                          InkWell(
-                            onTap: () => buttonCarouselController
-                                .animateToPage(entry.key),
-                            child: Container(
-                              padding: const EdgeInsets.all(8.0),
-                              width: 15,
-                              height: 4.0,
-                              decoration: BoxDecoration(
-                                shape: BoxShape.circle,
-                              ),
-                              margin: const EdgeInsets.only(right: 10),
-                              // color: _current == entry.key
-                              //     ? MyColor.black
-                              //     : MyColor.grey,
-                              // color: MyColor.orange,
-                            ),
-                          ),
-                        ],
-                      );
-                    }).toList(),
+          Container(
+            height: height * 0.07,
+            color: MyColor.white,
+            child: Row(
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: imgList.asMap().entries.map((entry) {
+                print(entry);
+                return Row(
+                  children: [
+                    InkWell(
+                      onTap: () => carouselController.animateToPage(entry.key),
+                      child: Container(
+                        width: 9,
+                        height: 9,
+                        decoration: BoxDecoration(
+                            shape: BoxShape.circle,
+                            color: _current == entry.key
+                                ? MyColor.black
+                                : MyColor.grey),
+                        margin: const EdgeInsets.only(right: 8),
+                      ),
+                    ),
+                  ],
+                );
+              }).toList(),
+            ),
+          ),
+
+          const SizedBox(
+            height: 15,
+          ),
+          Padding(
+            padding: const EdgeInsets.symmetric(horizontal: 15.0),
+            child: Row(
+              children: [
+                Expanded(
+                  child: Image.asset(
+                    'assets/images/img44.png',
+                    height: 110,
+                    width: 116,
+                    fit: BoxFit.fill,
                   ),
                 ),
-              ),
-            ],
+                SizedBox(
+                  width: 10,
+                ),
+                Expanded(
+                  child: Image.asset(
+                    'assets/images/img42.png',
+                    height: 110,
+                    width: 116,
+                    fit: BoxFit.fill,
+                  ),
+                ),
+                SizedBox(
+                  width: 10,
+                ),
+                Expanded(
+                  child: Image.asset(
+                    'assets/images/img43.png',
+                    height: 110,
+                    width: 116,
+                    fit: BoxFit.fill,
+                  ),
+                ),
+              ],
+            ),
           ),
         ],
       ),

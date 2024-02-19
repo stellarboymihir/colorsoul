@@ -199,7 +199,7 @@ class _HomeState extends State<Home> {
                           // Navigator.pushNamed(context, profileRoute);
                         },
                         child: Image.asset(
-                          'assets/images/samar.png',
+                          'assets/images/img11.png',
                           width: 35,
                           height: 35,
                         ),

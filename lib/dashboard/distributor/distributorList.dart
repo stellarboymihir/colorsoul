@@ -70,9 +70,6 @@ class _DistributorListState extends State<DistributorList> {
                           bottom: 15,
                         ),
                         decoration: BoxDecoration(
-                          //   border: Border.all(
-                          //     color: MyColor.black.withOpacity(0.1),
-                          //   ),
                           color: MyColor.white,
                           boxShadow: [
                             BoxShadow(
@@ -154,7 +151,7 @@ class _DistributorListState extends State<DistributorList> {
                           tilePadding: const EdgeInsets.all(0),
                           trailing: PopupMenuButton<String>(
                             elevation: 0,
-                            offset: Offset(0, 40),
+                            // offset: Offset(0, 40),
                             initialValue: selectedValue,
                             color: MyColor.white,
                             shadowColor: MyColor.black,
@@ -218,7 +215,7 @@ class _DistributorListState extends State<DistributorList> {
                               ),
                             ],
                           ),
-                          shape: Border.all(color: Colors.transparent),
+                          shape: Border.all(color: MyColor.grey),
                           collapsedBackgroundColor: MyColor.white,
                           backgroundColor: MyColor.white,
                           childrenPadding: EdgeInsets.all(0),

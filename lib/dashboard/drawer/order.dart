@@ -138,9 +138,11 @@ class _OrdersState extends State<Orders> {
                       width: MediaQuery.of(context).size.width * 0.45,
                       child: DropdownButtonHideUnderline(
                         child: DropdownButtonFormField2<String>(
-                          hint: const Text(
+                          hint: Text(
                             'All Order',
-                            style: MyStyle.tx16b,
+                            style: MyStyle.tx16b.copyWith(
+                              fontSize: 14,
+                            ),
                             overflow: TextOverflow.ellipsis,
                           ),
                           style: MyStyle.tx12b,
@@ -148,7 +150,7 @@ class _OrdersState extends State<Orders> {
                             border: OutlineInputBorder(
                               borderSide: BorderSide.none,
                             ),
-                            contentPadding: EdgeInsets.zero,
+                            contentPadding: EdgeInsets.only(right: 5),
                           ),
                           value: allOrder,
                           isExpanded: true,
@@ -159,6 +161,10 @@ class _OrdersState extends State<Orders> {
                               allOrder = value!;
                             });
                           },
+                          iconStyleData: IconStyleData(
+                            iconDisabledColor: MyColor.black,
+                            iconEnabledColor: MyColor.black,
+                          ),
                           // dropdownColor: MyColor.black.withOpacity(0.25),
                           items:
                               _allOrder.map<DropdownMenuItem<String>>((list) {
@@ -188,9 +194,11 @@ class _OrdersState extends State<Orders> {
                       width: MediaQuery.of(context).size.width * 0.45,
                       child: DropdownButtonHideUnderline(
                         child: DropdownButtonFormField2<String>(
-                          hint: const Text(
+                          hint: Text(
                             'Short by',
-                            style: MyStyle.tx16b,
+                            style: MyStyle.tx16b.copyWith(
+                              fontSize: 14,
+                            ),
                             overflow: TextOverflow.ellipsis,
                           ),
                           style: MyStyle.tx12b,
@@ -198,7 +206,7 @@ class _OrdersState extends State<Orders> {
                             border: OutlineInputBorder(
                               borderSide: BorderSide.none,
                             ),
-                            contentPadding: EdgeInsets.zero,
+                            contentPadding: EdgeInsets.only(right: 5),
                           ),
                           value: shortList,
                           isExpanded: true,
@@ -209,6 +217,10 @@ class _OrdersState extends State<Orders> {
                               shortList = value!;
                             });
                           },
+                          iconStyleData: const IconStyleData(
+                            iconDisabledColor: MyColor.black,
+                            iconEnabledColor: MyColor.black,
+                          ),
                           // dropdownColor: MyColor.black.withOpacity(0.25),
                           items:
                               _shortList.map<DropdownMenuItem<String>>((list) {

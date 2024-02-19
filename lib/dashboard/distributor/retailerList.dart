@@ -214,7 +214,7 @@ class _RetailerListState extends State<RetailerList> {
                               ),
                             ],
                           ),
-                          shape: Border.all(color: Colors.transparent),
+                          shape: Border.all(color: MyColor.grey),
                           collapsedBackgroundColor: MyColor.white,
                           backgroundColor: MyColor.white,
                           childrenPadding: EdgeInsets.zero,

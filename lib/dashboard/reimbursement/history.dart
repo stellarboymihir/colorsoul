@@ -16,16 +16,21 @@ class _HistoryState extends State<History> {
     return Scaffold(
       appBar: AppBar(
         backgroundColor: MyColor.white,
-        leading: Container(
-          height: 36,
-          width: 36,
-          padding: const EdgeInsets.all(0),
-          margin: const EdgeInsets.all(15),
-          color: MyColor.grey,
-          child: const Center(
-            child: Icon(
-              Icons.arrow_back_ios_new,
-              size: 14,
+        leading: InkWell(
+          onTap: () {
+            Navigator.pop(context);
+          },
+          child: Container(
+            height: 36,
+            width: 36,
+            padding: const EdgeInsets.all(0),
+            margin: const EdgeInsets.all(15),
+            color: MyColor.grey,
+            child: const Center(
+              child: Icon(
+                Icons.arrow_back_ios_new,
+                size: 14,
+              ),
             ),
           ),
         ),

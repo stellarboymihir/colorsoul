@@ -162,7 +162,7 @@ class _MediaCenterState extends State<MediaCenter> {
           children: [
             //  Search Bar
             Padding(
-              padding: const EdgeInsets.symmetric(horizontal: 16.0),
+              padding: const EdgeInsets.symmetric(horizontal: 15.0),
               child: SizedBox(
                 width: MediaQuery.of(context).size.width,
                 child: TextFormField(
@@ -436,9 +436,11 @@ class _MediaCenterState extends State<MediaCenter> {
     return GridView.builder(
       physics: const NeverScrollableScrollPhysics(),
       shrinkWrap: true,
-      gridDelegate: const SliverGridDelegateWithMaxCrossAxisExtent(
-        maxCrossAxisExtent: 200,
+      gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
+        mainAxisSpacing: 0,
+        crossAxisSpacing: 0,
         childAspectRatio: 3 / 2,
+        crossAxisCount: 2,
       ),
       itemCount: videoList.length,
       itemBuilder: (BuildContext ctx, index) {
@@ -463,7 +465,9 @@ class _MediaCenterState extends State<MediaCenter> {
                   ),
                   Positioned(
                     top: 37,
+                    bottom: 37,
                     left: 66,
+                    right: 66,
                     child: Image.asset(
                       'assets/icons/circle.png',
                       height: 24,
@@ -473,7 +477,9 @@ class _MediaCenterState extends State<MediaCenter> {
                   ),
                   Positioned(
                     top: 60,
-                    left: 35,
+                    bottom: 30,
+                    left: 15,
+                    right: 15,
                     child: Text(
                       '${videoList[index]["Text"]}',
                       textAlign: TextAlign.center,
