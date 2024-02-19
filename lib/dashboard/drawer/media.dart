@@ -1,5 +1,6 @@
 import 'package:colorsoul/constants/routes.dart';
 import 'package:flutter/material.dart';
+import 'package:video_player/video_player.dart';
 
 import '../../values/myColor.dart';
 import '../../values/myStyle.dart';
@@ -125,6 +126,26 @@ class _MediaCenterState extends State<MediaCenter> {
     },
   ];
   String selectedImage = 'assets/images/img12.png';
+
+  // late VideoPlayerController _videoPlayerController;
+  //
+  // @override
+  // void initState() {
+  //   super.initState();
+  //   _videoPlayerController = VideoPlayerController.asset(
+  //     'assets/videos/sample.mp4',
+  //   )..initialize().then((_) {
+  //       setState(() {
+  //         _videoPlayerController.play();
+  //       });
+  //     });
+  // }
+  //
+  // @override
+  // void dispose() {
+  //   _videoPlayerController.dispose();
+  //   super.dispose();
+  // }
 
   @override
   Widget build(BuildContext context) {
@@ -453,14 +474,20 @@ class _MediaCenterState extends State<MediaCenter> {
               padding: const EdgeInsets.symmetric(horizontal: 12.0),
               child: Stack(
                 children: [
-                  Container(
-                    decoration: const BoxDecoration(),
-                    child: Image.asset(
-                      videoList[index]["Nail"],
-                      height: 100,
-                      width: 184,
-                      color: MyColor.grey.withOpacity(0.6),
-                      colorBlendMode: BlendMode.luminosity,
+                  InkWell(
+                    onTap: () {
+                      // videoPlaying();
+                      Navigator.pushNamed(context, videoPlayingRoute);
+                    },
+                    child: Container(
+                      decoration: const BoxDecoration(),
+                      child: Image.asset(
+                        videoList[index]["Nail"],
+                        height: 100,
+                        width: 184,
+                        color: MyColor.grey.withOpacity(0.6),
+                        colorBlendMode: BlendMode.luminosity,
+                      ),
                     ),
                   ),
                   Positioned(
@@ -578,4 +605,37 @@ class _MediaCenterState extends State<MediaCenter> {
       },
     );
   }
+
+  // void videoPlaying() {
+  //   _videoPlayerController = VideoPlayerController.asset(
+  //     'assets/videos/sample.mp4',
+  //   )..initialize().then((_) {
+  //       setState(() {
+  //         _videoPlayerController.play();
+  //       });
+  //     });
+  //   // print("yes");
+  //   if (_videoPlayerController.value.isInitialized) {
+  //     setState(() {
+  //       if (_videoPlayerController.value.isPlaying) {
+  //         _videoPlayerController.pause();
+  //       } else {
+  //         _videoPlayerController.play();
+  //       }
+  //     });
+  //   }
+  //   ;
+  //   FloatingActionButton(
+  //     onPressed: () {
+  //       setState(() {
+  //         _videoPlayerController.value.isPlaying
+  //             ? _videoPlayerController.pause()
+  //             : _videoPlayerController.play();
+  //       });
+  //     },
+  //     child: Icon(_videoPlayerController.value.isPlaying
+  //         ? Icons.pause
+  //         : Icons.play_arrow),
+  //   );
+  // }
 }

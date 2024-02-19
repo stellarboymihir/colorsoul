@@ -75,3 +75,4 @@ const filterRoute = '/filter/';
 //  **  History  **
 const reimbursementRoute = '/reimbursement/';
 const historyRoute = '/history/';
+const videoPlayingRoute = '/videoPlaying/';

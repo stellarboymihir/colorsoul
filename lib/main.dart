@@ -28,6 +28,7 @@ import 'package:colorsoul/dashboard/service/working/shoppers/getStock/scan.dart'
 import 'package:colorsoul/dashboard/service/working/shoppers/shoppers.dart';
 import 'package:colorsoul/dashboard/service/working/working.dart';
 import 'package:colorsoul/values/myColor.dart';
+import 'package:colorsoul/videoPlaying.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 
@@ -152,6 +153,7 @@ class MyApp extends StatelessWidget {
         //   **  History  **
         reimbursementRoute: (context) => const Reimbursement(),
         historyRoute: (context) => const History(),
+        videoPlayingRoute: (context) => const VideoPlaying(),
       },
     );
   }
