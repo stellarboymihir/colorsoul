@@ -987,3 +987,446 @@
 //           ),
 //   ],
 // ),
+
+import 'dart:convert';
+
+import 'package:colorsoul/values/myColor.dart';
+import 'package:flutter/material.dart';
+import 'package:fluttertoast/fluttertoast.dart';
+import 'package:http/http.dart' as http;
+import 'package:shared_preferences/shared_preferences.dart';
+
+import '../utils.dart';
+
+To parse this JSON data, do
+
+    final colorSoulLogin = colorSoulLoginFromJson(jsonString);
+
+import 'dart:convert';
+
+ColorSoulLogin colorSoulLoginFromJson(String str) =>
+    ColorSoulLogin.fromJson(json.decode(str));
+
+String colorSoulLoginToJson(ColorSoulLogin data) => json.encode(data.toJson());
+
+class ColorSoulLogin {
+  String username;
+  String password;
+  String deviceId;
+
+  ColorSoulLogin({
+    required this.username,
+    required this.password,
+    required this.deviceId,
+  });
+
+  factory ColorSoulLogin.fromJson(Map<String, dynamic> json) => ColorSoulLogin(
+        username: json["username"],
+        password: json["password"],
+        deviceId: json["device_id"],
+      );
+
+  Map<String, dynamic> toJson() => {
+        "username": username,
+        "password": password,
+        "device_id": deviceId,
+      };
+}
+
+class Api_Handler extends StatefulWidget {
+  const Api_Handler({super.key});
+
+  @override
+  State<Api_Handler> createState() => _Api_HandlerState();
+}
+
+class _Api_HandlerState extends State<Api_Handler> {
+  // final Future<SharedPreferences> _prefs = SharedPreferences.getInstance();
+  late Future<ColorSoulLogin> colorSoulLogin;
+  @override
+  void initState() {
+    super.initState();
+    colorSoulLogin = fetchLoginDetail();
+  }
+
+  Future<ColorSoulLogin> fetchLoginDetail() async {
+    String baseUrl = "http://68.183.81.169/admin/Api";
+    String loginUrl = "$baseUrl/login";
+    final response = await http.get(Uri.parse(loginUrl));
+
+    if (response.statusCode == 200) {
+      print(response.body);
+      return ColorSoulLogin.fromJson(
+          jsonDecode(response.body) as Map<String, dynamic>);
+    } else {
+      throw Exception('Failed to load Login Details');
+    }
+  }
+
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+      body: Center(
+        child: FutureBuilder<ColorSoulLogin>(
+          future: colorSoulLogin,
+          builder: (context, snapshot) {
+            if (snapshot.hasData) {
+              return Text(snapshot.data!.username);
+            } else if (snapshot.hasError) {
+              return Text('${snapshot.error}');
+            }
+
+            // By default, show a loading spinner.
+            return const CircularProgressIndicator();
+          },
+        ),
+      ),
+    );
+  }
+}
+
+// class Api_Handler {
+//   static Future<dynamic> postNormal(body, url) async {
+//     _setHeadersPost() => {
+//       'Content-type': 'application/json',
+//       'Accept': 'application/json',
+//       'Authorization': '4ccda7514adc0f13595a585205fb9761',
+//       // 'App-Version': Utils.currentVersionId
+//     };
+//
+//     var baseUrl = Uri.http(Utils.FinalLiveUrl,'${Utils.LiveUrl}$url');
+//
+//     http.Response response =
+//     await http.post(Utils.FinalLiveUrl, '${Utils.LiveUrl}$url');
+//
+//     http.Response response = await http.post(baseUrl,
+//         headers: _setHeadersPost(), body: jsonDecode(body));
+//     print(jsonEncode(body));
+//     if (response.statusCode == 200) {
+//       return json.decode(response.body);
+//     } else {
+//       switch (response.statusCode) {
+//         case 400:
+//           return Fluttertoast.showToast(
+//             msg: "Bad Response Format",
+//             toastLength: Toast.LENGTH_SHORT,
+//             gravity: ToastGravity.BOTTOM,
+//             timeInSecForIosWeb: 1,
+//             backgroundColor: MyColor.red,
+//             textColor: MyColor.white,
+//             fontSize: 16,
+//           );
+//
+//         case 401:
+//           return Fluttertoast.showToast(
+//             msg: "Unauthorized User",
+//             toastLength: Toast.LENGTH_SHORT,
+//             gravity: ToastGravity.BOTTOM,
+//             timeInSecForIosWeb: 1,
+//             backgroundColor: MyColor.red,
+//             textColor: MyColor.white,
+//             fontSize: 16,
+//           );
+//
+//         case 404:
+//           return Fluttertoast.showToast(
+//             msg: "Resource Not Found",
+//             toastLength: Toast.LENGTH_SHORT,
+//             gravity: ToastGravity.BOTTOM,
+//             timeInSecForIosWeb: 1,
+//             backgroundColor: MyColor.red,
+//             textColor: MyColor.white,
+//             fontSize: 16,
+//           );
+//
+//         case 500:
+//           return Fluttertoast.showToast(
+//             msg: "Internal Server Error",
+//             toastLength: Toast.LENGTH_SHORT,
+//             gravity: ToastGravity.BOTTOM,
+//             timeInSecForIosWeb: 1,
+//             backgroundColor: MyColor.red,
+//             textColor: MyColor.white,
+//             fontSize: 16,
+//           );
+//         default:
+//           return Fluttertoast.showToast(
+//             msg: "Unknown Error",
+//             toastLength: Toast.LENGTH_SHORT,
+//             gravity: ToastGravity.BOTTOM,
+//             timeInSecForIosWeb: 1,
+//             backgroundColor: MyColor.red,
+//             textColor: MyColor.white,
+//             fontSize: 16,
+//           );
+//       }
+//     }
+//   },
+//   static Future<dynamic> post(body, url) async {
+//     SharedPreferences sharedPreferences =  await SharedPreferences.getInstance();
+//     var deviceId = sharedPreferences.getString("deviceId");
+//     var userId = sharedPreferences.getString("userId");
+//     _setHeadersPost() => {
+//       'Content-type': 'application/json',
+//       'Accept': 'application/json',
+//       'Authorization': '4ccda7514adc0f13595a585205fb9761',
+//       'User-Id': '$userId',
+//       'Device-Id':'$deviceId',
+//       'App-Version': Utils.currentVersionId
+//     };
+//
+//     var baseUrl = Uri.http(Utils.FinalLiveUrl,'${Utils.LiveUrl}$url');
+//     http.Response response =
+//     await http.post(Utils.FinalLiveUrl, '${Utils.LiveUrl}$url');
+//
+//     http.Response response = await http.post(baseUrl,
+//         headers: _setHeadersPost(), body: jsonDecode(body));
+//     print(jsonEncode(body));
+//     if (response.statusCode == 200) {
+//       return json.decode(response.body);
+//     } else {
+//       switch (response.statusCode) {
+//         case 400:
+//           return Fluttertoast.showToast(
+//             msg: "Bad Response Format",
+//             toastLength: Toast.LENGTH_SHORT,
+//             gravity: ToastGravity.BOTTOM,
+//             timeInSecForIosWeb: 1,
+//             backgroundColor: MyColor.red,
+//             textColor: MyColor.white,
+//             fontSize: 16,
+//           );
+//
+//         case 401:
+//           return Fluttertoast.showToast(
+//             msg: "Unauthorized User",
+//             toastLength: Toast.LENGTH_SHORT,
+//             gravity: ToastGravity.BOTTOM,
+//             timeInSecForIosWeb: 1,
+//             backgroundColor: MyColor.red,
+//             textColor: MyColor.white,
+//             fontSize: 16,
+//           );
+//
+//         case 404:
+//           return Fluttertoast.showToast(
+//             msg: "Resource Not Found",
+//             toastLength: Toast.LENGTH_SHORT,
+//             gravity: ToastGravity.BOTTOM,
+//             timeInSecForIosWeb: 1,
+//             backgroundColor: MyColor.red,
+//             textColor: MyColor.white,
+//             fontSize: 16,
+//           );
+//
+//         case 500:
+//           return Fluttertoast.showToast(
+//             msg: "Internal Server Error",
+//             toastLength: Toast.LENGTH_SHORT,
+//             gravity: ToastGravity.BOTTOM,
+//             timeInSecForIosWeb: 1,
+//             backgroundColor: MyColor.red,
+//             textColor: MyColor.white,
+//             fontSize: 16,
+//           );
+//         default:
+//           return Fluttertoast.showToast(
+//             msg: "Unknown Error",
+//             toastLength: Toast.LENGTH_SHORT,
+//             gravity: ToastGravity.BOTTOM,
+//             timeInSecForIosWeb: 1,
+//             backgroundColor: MyColor.red,
+//             textColor: MyColor.white,
+//             fontSize: 16,
+//           );
+//       }
+//     }
+//   }
+//   static Future<dynamic> post1(body, url) async {
+//     SharedPreferences sharedPreferences =  await SharedPreferences.getInstance();
+//     var deviceId = sharedPreferences.getString("deviceId");
+//     var userId = sharedPreferences.getString("userId");
+//     _setHeadersPost() => {
+//       'Content-type': 'application/json',
+//       'Accept': 'application/json',
+//       'Authorization': '4ccda7514adc0f13595a585205fb9761',
+//       'User-Id': '$userId',
+//       'Device-Id':'$deviceId',
+//       // 'App-Version': Utils.currentVersionId
+//     };
+//
+//     var baseUrl = Uri.http(Utils.FinalLiveUrl,'${Utils.LiveUrl}$url');
+//
+//     // http.Response response =
+//     //     await http.post(Utils.FinalLiveUrl, '${Utils.LiveUrl}$url');
+//
+//     http.Response response = await http.post(baseUrl,
+//       headers: _setHeadersPost(), body: jsonDecode(body),);
+//
+//     print(jsonEncode(body));
+//
+//     if (response.statusCode == 200) {
+//       return json.decode(response.body);
+//     } else {
+//       switch (response.statusCode) {
+//         case 400:
+//           return Fluttertoast.showToast(
+//             msg: "Bad Response Format",
+//             toastLength: Toast.LENGTH_SHORT,
+//             gravity: ToastGravity.BOTTOM,
+//             timeInSecForIosWeb: 1,
+//             backgroundColor: MyColor.red,
+//             textColor: MyColor.white,
+//             fontSize: 16,
+//           );
+//
+//         case 401:
+//           return Fluttertoast.showToast(
+//             msg: "Unauthorized User",
+//             toastLength: Toast.LENGTH_SHORT,
+//             gravity: ToastGravity.BOTTOM,
+//             timeInSecForIosWeb: 1,
+//             backgroundColor: MyColor.red,
+//             textColor: MyColor.white,
+//             fontSize: 16,
+//           );
+//
+//         case 404:
+//           return Fluttertoast.showToast(
+//             msg: "Resource Not Found",
+//             toastLength: Toast.LENGTH_SHORT,
+//             gravity: ToastGravity.BOTTOM,
+//             timeInSecForIosWeb: 1,
+//             backgroundColor: MyColor.red,
+//             textColor: MyColor.white,
+//             fontSize: 16,
+//           );
+//
+//         case 500:
+//           return Fluttertoast.showToast(
+//             msg: "Internal Server Error",
+//             toastLength: Toast.LENGTH_SHORT,
+//             gravity: ToastGravity.BOTTOM,
+//             timeInSecForIosWeb: 1,
+//             backgroundColor: MyColor.red,
+//             textColor: MyColor.white,
+//             fontSize: 16,
+//           );
+//         default:
+//           return Fluttertoast.showToast(
+//             msg: "Unknown Error",
+//             toastLength: Toast.LENGTH_SHORT,
+//             gravity: ToastGravity.BOTTOM,
+//             timeInSecForIosWeb: 1,
+//             backgroundColor: MyColor.red,
+//             textColor: MyColor.white,
+//             fontSize: 16,
+//           );
+//       }
+//     }
+//   }
+//
+//   static Future<dynamic> get(body, url) async {
+//
+//     var baseUrl = Uri.http(Utils.FinalLiveUrl,'${Utils.LiveUrl}$url');
+//     // SharedPreferences sharedPreferences =  await SharedPreferences.getInstance();
+//     // var deviceId = sharedPreferences.getString("deviceId");
+//     // var userId = sharedPreferences.getString("userId");
+//     _setHeadersPost() => {
+//       'Content-type': 'application/json',
+//       'Accept': 'application/json',
+//       'Authorization': '4ccda7514adc0f13595a585205fb9761',
+//       'User-Id': '$userId',
+//       'Device-Id':'$deviceId',
+//       'App-Version': Utils.currentVersionId
+//     };
+//
+//     var baseUrl = Uri.http(Utils.FinalLiveUrl,'${Utils.LiveUrl}$url');
+//
+//     http.Response response =
+//     await http.post(Utils.FinalLiveUrl, '${Utils.LiveUrl}$url');
+//
+//     http.Response response = await http.post(baseUrl,
+//       headers: _setHeadersGet(),);
+//
+//     print(jsonEncode(body));
+//
+//     if (response.statusCode == 200) {
+//       return json.decode(response.body);
+//     } else {
+//       switch (response.statusCode) {
+//         case 400:
+//           return Fluttertoast.showToast(
+//             msg: "Bad Response Format",
+//             toastLength: Toast.LENGTH_SHORT,
+//             gravity: ToastGravity.BOTTOM,
+//             timeInSecForIosWeb: 1,
+//             backgroundColor: MyColor.red,
+//             textColor: MyColor.white,
+//             fontSize: 16,
+//           );
+//
+//         case 401:
+//           return Fluttertoast.showToast(
+//             msg: "Unauthorized User",
+//             toastLength: Toast.LENGTH_SHORT,
+//             gravity: ToastGravity.BOTTOM,
+//             timeInSecForIosWeb: 1,
+//             backgroundColor: MyColor.red,
+//             textColor: MyColor.white,
+//             fontSize: 16,
+//           );
+//
+//         case 404:
+//           return Fluttertoast.showToast(
+//             msg: "Resource Not Found",
+//             toastLength: Toast.LENGTH_SHORT,
+//             gravity: ToastGravity.BOTTOM,
+//             timeInSecForIosWeb: 1,
+//             backgroundColor: MyColor.red,
+//             textColor: MyColor.white,
+//             fontSize: 16,
+//           );
+//
+//         case 500:
+//           return Fluttertoast.showToast(
+//             msg: "Internal Server Error",
+//             toastLength: Toast.LENGTH_SHORT,
+//             gravity: ToastGravity.BOTTOM,
+//             timeInSecForIosWeb: 1,
+//             backgroundColor: MyColor.red,
+//             textColor: MyColor.white,
+//             fontSize: 16,
+//           );
+//         default:
+//           return Fluttertoast.showToast(
+//             msg: "Unknown Error",
+//             toastLength: Toast.LENGTH_SHORT,
+//             gravity: ToastGravity.BOTTOM,
+//             timeInSecForIosWeb: 1,
+//             backgroundColor: MyColor.red,
+//             textColor: MyColor.white,
+//             fontSize: 16,
+//           );
+//       }
+//     }
+//   }
+//
+//   static Map<String, String> getHeaders(userId,deviceId) {
+//
+//     Map<String, String> headers = {
+//       'Content-type': 'application/json',
+//       'Accept': 'application/json',
+//       'Authorization':'4ccda7514adc0f13595a585205fb9761',
+//       'User-Id': '${userId}',
+//       'Device-Id': '${deviceId}',
+//       // 'App-Version': Utils.currentVersionId
+//     };
+//     print('headers124->$headers');
+//     return headers;
+//   }
+//
+//
+//
+//
+// }

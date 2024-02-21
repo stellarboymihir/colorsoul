@@ -53,7 +53,7 @@ class _VideoPlayingState extends State<VideoPlaying> {
                 }
               },
             ),
-            SizedBox(
+            const SizedBox(
               height: 10,
             ),
             InkWell(

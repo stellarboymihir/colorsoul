@@ -1,3 +1,4 @@
+import 'package:colorsoul/api_handler/api_handler.dart';
 import 'package:colorsoul/authentication/register/forgotOTPPass.dart';
 import 'package:colorsoul/authentication/register/otpVerify.dart';
 import 'package:colorsoul/authentication/register/resetPass.dart';
@@ -77,7 +78,9 @@ class MyApp extends StatelessWidget {
         colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple)
             .copyWith(background: MyColor.white),
       ),
-      home: const SplashScreen(),
+      home: SplashScreen(),
+      // Api_Handler(),
+
       routes: {
         // ** Authentication **
         starterRoute: (context) => const Starter(),
@@ -154,6 +157,8 @@ class MyApp extends StatelessWidget {
         reimbursementRoute: (context) => const Reimbursement(),
         historyRoute: (context) => const History(),
         videoPlayingRoute: (context) => const VideoPlaying(),
+
+        //    **  API Handler  **
       },
     );
   }

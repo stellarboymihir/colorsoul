@@ -1,3 +1,6 @@
+import 'dart:convert';
+
+import 'package:colorsoul/api_handler/api_handler.dart';
 import 'package:colorsoul/constants/routes.dart';
 import 'package:colorsoul/values/myColor.dart';
 import 'package:colorsoul/values/myStyle.dart';
@@ -18,6 +21,30 @@ class _SignInPageState extends State<SignInPage> {
   bool isCheck = false;
 
   bool _isObscure = false;
+
+  // logInApi() async {
+  //   var loginBody = {
+  //     "username": 9999999999,
+  //     "password": 123456,
+  //     "device_id": "#jdjofIIIHDHKSswd#%"
+  //   };
+  //   // var response = await
+  //   await ApiHandler.postNormal(loginBody, '/login').then((value) {
+  //     print(value);
+  //   });
+  //   // print(response);
+  // }
+
+  loginApi() async {
+    var loginBody = {
+      "username": 9999999999,
+      "password": 123456,
+      "device_id": "#jdjofIIIHDHKSswd#%"
+    };
+
+    var response = await ApiHandler.normalPost(loginBody, '/login');
+    print(response);
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -273,7 +300,9 @@ class _SignInPageState extends State<SignInPage> {
           ),
           InkWell(
             onTap: () {
-              Navigator.pushNamed(context, welcomeRoute);
+              // Navigator.pushNamed(context, welcomeRoute);
+              loginApi();
+              print('Login Successful');
             },
             child: Container(
               height: 50,
