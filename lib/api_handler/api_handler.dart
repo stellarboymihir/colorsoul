@@ -1,5 +1,6 @@
 import 'dart:convert';
 
+import 'package:colorsoul/utils.dart';
 import 'package:colorsoul/values/myColor.dart';
 import 'package:fluttertoast/fluttertoast.dart';
 import 'package:http/http.dart' as http;
@@ -7,7 +8,8 @@ import 'package:shared_preferences/shared_preferences.dart';
 
 class ApiHandler {
   static Future<dynamic> normalPost(body, url) async {
-    var baseUrl = Uri.http("http://68.183.81.169/admin/Api");
+    var baseUrl = Uri.http(Utils.testIpUrl, "/${Utils.liveUrl}$url");
+    // = http://68.183.81.169/admin/Api/login
     mainHeaderPost() => {
           'Content-Type': 'application/json',
           'Accept': '*/*',
@@ -15,7 +17,7 @@ class ApiHandler {
         };
 
     http.Response response = await http.post(baseUrl,
-        headers: mainHeaderPost(), body: jsonDecode(body));
+        headers: mainHeaderPost(), body: jsonEncode(body));
     if (response.statusCode == 200) {
       return jsonDecode(response.body);
     } else {
@@ -78,7 +80,7 @@ class ApiHandler {
     SharedPreferences sharedPreferences = await SharedPreferences.getInstance();
     var deviceId = sharedPreferences.getString("deviceId");
     var userId = sharedPreferences.getString("userId");
-    var baseUrl = Uri.http("http://68.183.81.169/admin/Api");
+    var baseUrl = Uri.http(Utils.testIpUrl, "/${Utils.liveUrl}$url");
     userPost() => {
           'Content-Type': 'application/json',
           'Accept': '*/*',
@@ -151,7 +153,7 @@ class ApiHandler {
     SharedPreferences sharedPreferences = await SharedPreferences.getInstance();
     var deviceId = sharedPreferences.getString("deviceId");
     var userId = sharedPreferences.getString("userId");
-    var baseUrl = Uri.http("http://68.183.81.169/admin/Api");
+    var baseUrl = Uri.http(Utils.testIpUrl, "/${Utils.liveUrl}$url");
     // print("device---->$deviceId");
     // print("device---->$userId");
     _appPost() => {
@@ -163,7 +165,7 @@ class ApiHandler {
         };
 
     http.Response response =
-        await http.post(baseUrl, headers: _appPost(), body: jsonDecode(body));
+        await http.post(baseUrl, headers: _appPost(), body: jsonEncode(body));
     // print(jsonDecode(response.body));
 
     if (response.statusCode == 200) {

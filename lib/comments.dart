@@ -998,9 +998,9 @@ import 'package:shared_preferences/shared_preferences.dart';
 
 import '../utils.dart';
 
-To parse this JSON data, do
-
-    final colorSoulLogin = colorSoulLoginFromJson(jsonString);
+// To parse this JSON data, do
+//
+//     final colorSoulLogin = colorSoulLoginFromJson(jsonString);
 
 import 'dart:convert';
 

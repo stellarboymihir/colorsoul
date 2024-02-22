@@ -2,6 +2,8 @@ import 'dart:async';
 
 import 'package:colorsoul/constants/routes.dart';
 import 'package:flutter/material.dart';
+import 'package:shared_preferences/shared_preferences.dart';
+import 'package:uuid/uuid.dart';
 
 class SplashScreen extends StatefulWidget {
   const SplashScreen({super.key});
@@ -14,6 +16,19 @@ class _SplashScreenState extends State<SplashScreen> {
   @override
   void initState() {
     super.initState();
+    deviceExist();
+  }
+
+  void deviceExist() async {
+    var uuid = const Uuid();
+    late var deviceId = uuid.v1();
+
+    SharedPreferences sharedPreferences = await SharedPreferences.getInstance();
+
+    if (sharedPreferences.getString("deviceId") == null) {
+      sharedPreferences.setString("deviceId", deviceId);
+    }
+
     Timer(const Duration(seconds: 3), () {
       Navigator.pushReplacementNamed(context, starterRoute);
     });

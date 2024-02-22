@@ -49,6 +49,7 @@ dependencies:
   shared_preferences: ^2.2.2
   http:
   fluttertoast: ^8.2.4
+  uuid:
 
 
 dev_dependencies:
