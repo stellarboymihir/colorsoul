@@ -1,4 +1,3 @@
-import 'package:colorsoul/api_handler/api_handler.dart';
 import 'package:colorsoul/authentication/register/forgotOTPPass.dart';
 import 'package:colorsoul/authentication/register/otpVerify.dart';
 import 'package:colorsoul/authentication/register/resetPass.dart';

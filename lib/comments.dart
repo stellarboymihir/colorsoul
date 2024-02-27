@@ -1430,3 +1430,12 @@ class _Api_HandlerState extends State<Api_Handler> {
 //
 //
 // }
+
+// else if (value.length < 8) {
+//   return "Password should be atleast 8 characters";
+// } else if (value.length > 15) {
+//   return "Password should not be greater than 15 characters";
+// } else if (!regex.hasMatch(value)) {
+//   return 'Password should contain atleast 1 uppercase, 1 lowercase, 1 digit, and 1 special character';
+// } else
+// return null;

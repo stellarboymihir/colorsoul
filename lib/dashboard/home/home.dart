@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 
 import '../../constants/routes.dart';
 import '../../values/myColor.dart';
@@ -166,16 +167,26 @@ class _HomeState extends State<Home> {
                 },
               ),
               Spacer(),
-              Container(
-                height: 50,
-                width: MediaQuery.of(context).size.width,
-                color: MyColor.black,
-                margin: const EdgeInsets.fromLTRB(20, 0, 20, 20),
-                child: Center(
-                  child: Text(
-                    'Log Out',
-                    style: MyStyle.tx20W
-                      ..copyWith(fontFamily: 'Poppins-SemiBold', fontSize: 13),
+              InkWell(
+                onTap: () async {
+                  SharedPreferences preferences =
+                      await SharedPreferences.getInstance();
+                  preferences.clear();
+                  Navigator.pushNamedAndRemoveUntil(
+                      context, signInPageRoute, (route) => false);
+                },
+                child: Container(
+                  height: 50,
+                  width: MediaQuery.of(context).size.width,
+                  color: MyColor.black,
+                  margin: const EdgeInsets.fromLTRB(20, 0, 20, 20),
+                  child: Center(
+                    child: Text(
+                      'Log Out',
+                      style: MyStyle.tx20W
+                        ..copyWith(
+                            fontFamily: 'Poppins-SemiBold', fontSize: 13),
+                    ),
                   ),
                 ),
               ),

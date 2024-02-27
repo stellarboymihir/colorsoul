@@ -229,7 +229,8 @@ class ApiHandler {
   static Future<dynamic> get(body, url) async {
     SharedPreferences sharedPreferences = await SharedPreferences.getInstance();
 
-    var baseUrl = Uri.http("http://68.183.81.169/admin/Api");
+    // var baseUrl = Uri.http("http://68.183.81.169/admin/Api");
+    var baseUrl = Uri.http(Utils.testIpUrl, "/${Utils.liveUrl}");
     _mainHeaderGeet() => {
           'Content-Type': 'application/json',
           'Accept': 'application/json',

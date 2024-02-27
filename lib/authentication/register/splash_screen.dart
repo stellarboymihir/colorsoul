@@ -17,6 +17,7 @@ class _SplashScreenState extends State<SplashScreen> {
   void initState() {
     super.initState();
     deviceExist();
+    checkUserId();
   }
 
   void deviceExist() async {
@@ -29,9 +30,25 @@ class _SplashScreenState extends State<SplashScreen> {
       sharedPreferences.setString("deviceId", deviceId);
     }
 
-    Timer(const Duration(seconds: 3), () {
-      Navigator.pushReplacementNamed(context, starterRoute);
-    });
+    // Timer(const Duration(seconds: 3), () {
+    //   Navigator.pushReplacementNamed(context, starterRoute);
+    // });
+  }
+
+  void checkUserId() async {
+    SharedPreferences preferences = await SharedPreferences.getInstance();
+    var userId = preferences.getString('userId') ?? '';
+
+    if (userId != null) {
+      print("is Not null");
+      Navigator.pushNamedAndRemoveUntil(
+          context, welcomeRoute, (route) => false);
+    } else {
+      print("It is  null");
+      Timer(const Duration(seconds: 3), () {
+        Navigator.pushReplacementNamed(context, starterRoute);
+      });
+    }
   }
 
   @override

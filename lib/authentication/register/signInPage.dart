@@ -3,7 +3,10 @@ import 'package:colorsoul/values/myColor.dart';
 import 'package:colorsoul/values/myStyle.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
+import 'package:fluttertoast/fluttertoast.dart';
 import 'package:shared_preferences/shared_preferences.dart';
+
+import '../../api_handler/api_handler.dart';
 
 class SignInPage extends StatefulWidget {
   const SignInPage({super.key});
@@ -17,24 +20,17 @@ class _SignInPageState extends State<SignInPage> {
   TextEditingController passController = TextEditingController();
   final formKey = GlobalKey<FormState>();
 
+  Color _phoneNumberBorderColor = MyColor.grey;
+  Color _passwordBorderColor = MyColor.grey;
+
+  bool showResetButton = true;
+
   bool isCheck = false;
 
   bool _isObscure = false;
 
-  // logInApi() async {
-  //   var loginBody = {
-  //     "username": 9999999999,
-  //     "password": 123456,
-  //     "device_id": "#jdjofIIIHDHKSswd#%"
-  //   };
-  //   // var response = await
-  //   await ApiHandler.postNormal(loginBody, '/login').then((value) {
-  //     print(value);
-  //   });
-  //   // print(response);
-  // }
   String? validatePhoneNumber(String? value) {
-    if (value != null && value.isNotEmpty) {
+    if (value!.isEmpty) {
       if (value.length < 10) {
         return 'Phone number must be at least 10 digits';
       }
@@ -43,17 +39,15 @@ class _SignInPageState extends State<SignInPage> {
   }
 
   String? validatePassword(String? value) {
+    // RegExp regex =
+    //     RegExp(r'^(?=.*?[A-Z])(?=.*?[a-z])(?=.*?[0-9])(?=.*?[!@#\$&*~]).{8,}$');
     if (value!.isEmpty) {
-      return "* Required";
-    } else if (value.length < 6) {
-      return "Password should be atleast 6 characters";
-    } else if (value.length > 15) {
-      return "Password should not be greater than 15 characters";
-    } else
-      return null;
+      return "Password is required";
+    }
   }
 
   loginApi() async {
+    myLoader();
     SharedPreferences sharedPreferences = await SharedPreferences.getInstance();
     var deviceId = sharedPreferences.getString("deviceId") ?? "";
     print("Device Id is: $deviceId");
@@ -64,8 +58,80 @@ class _SignInPageState extends State<SignInPage> {
       "device_id": deviceId,
     };
     print(loginBody);
-    // var response = await ApiHandler.normalPost(loginBody, '/login');
+    var response = await ApiHandler.normalPost(loginBody, '/login');
+    print(response);
+
+    if (response['st'] == "success") {
+      var userId = response['user_id'];
+      var name = response['name'];
+      var mobile = response['mobile'];
+      var email = response['email'];
+      var designation = response['designation'];
+
+      sharedPreferences.setString("userId", "$userId");
+      sharedPreferences.setString("name", "$name");
+      sharedPreferences.setString("mobile", "$mobile");
+      sharedPreferences.setString("email", "$email");
+      sharedPreferences.setString("designation", "$designation");
+
+      Navigator.pushNamed(context, pinRoute);
+    } else {
+      Navigator.pop(context);
+
+      Fluttertoast.showToast(msg: "${response['msg']}");
+      print("${response['msg']}");
+      if (response['msg'] == "Already Logged in diffrent Device!!!") {
+        setState(() {
+          showResetButton = false;
+        });
+      } else {
+        setState(() {
+          showResetButton = true;
+        });
+      }
+    }
+  }
+
+  resetApi() async {
+    SharedPreferences preferences = await SharedPreferences.getInstance();
+    var deviceId = preferences.getString("deviceId") ?? "";
+    print("Device Id is: $deviceId");
+
+    var resetDeviceBody = {
+      "mobile_no": mobController.text,
+      "device_Id": deviceId,
+    };
+    print(resetDeviceBody);
+
+    var response =
+        await ApiHandler.normalPost(resetDeviceBody, '/reset_device_id');
     // print(response);
+
+    if (response['st'] == "success") {
+      var mobile = response['mobile_no'];
+
+      preferences.setString('mobile', "$mobile");
+
+      print("$response['mobile']");
+    } else {}
+
+    // if (response is bool && response) {
+    //   // Handle successful response
+    //   print("Device reset successfully");
+    //   var mobile = mobController
+    //       .text; // Assuming the mobile number is the one being reset
+    //   preferences.setString('mobile', mobile);
+    // } else if (response is Map &&
+    //     response.containsKey('st') &&
+    //     response['st'] == "success") {
+    //   // Handle successful response
+    //   print("Device reset successfully");
+    //   var mobile = response['mobile_no'];
+    //   preferences.setString('mobile', mobile);
+    // } else {
+    //   // Handle unsuccessful response
+    //   print("Failed to reset device");
+    // }
   }
 
   @override
@@ -122,17 +188,23 @@ class _SignInPageState extends State<SignInPage> {
                   height: 5,
                 ),
                 SizedBox(
-                  // height: 50,
                   width: MediaQuery.of(context).size.width,
                   child: TextFormField(
                     controller: mobController,
                     validator: validatePhoneNumber,
                     autocorrect: false,
                     style: MyStyle.tx14b,
+                    onChanged: (value) {
+                      setState(() {
+                        _phoneNumberBorderColor =
+                            validatePhoneNumber(value) == null
+                                ? MyColor.red
+                                : MyColor.grey;
+                      });
+                    },
                     decoration: InputDecoration(
                       prefixIcon: Container(
                         width: 50,
-                        // height: 50,
                         alignment: Alignment.center,
                         decoration: const BoxDecoration(
                           border: Border(
@@ -150,10 +222,6 @@ class _SignInPageState extends State<SignInPage> {
                           ),
                         ),
                       ),
-                      // contentPadding: const EdgeInsets.symmetric(
-                      //     // horizontal: 30,
-                      //     // vertical: 20,
-                      //     ),
                       errorBorder: const OutlineInputBorder(
                         borderSide: BorderSide(
                           color: MyColor.red,
@@ -198,13 +266,20 @@ class _SignInPageState extends State<SignInPage> {
                 const SizedBox(
                   height: 5,
                 ),
-                Container(
+                SizedBox(
                   // height: 50,
                   width: MediaQuery.of(context).size.width,
                   child: TextFormField(
                     controller: passController,
                     style: MyStyle.tx14b,
                     validator: validatePassword,
+                    onChanged: (value) {
+                      setState(() {
+                        _passwordBorderColor = validatePassword(value) == null
+                            ? MyColor.red
+                            : MyColor.grey;
+                      });
+                    },
                     decoration: InputDecoration(
                       isDense: true,
                       suffixIcon: IconButton(
@@ -238,7 +313,6 @@ class _SignInPageState extends State<SignInPage> {
                       ),
                     ),
                     inputFormatters: [
-                      FilteringTextInputFormatter.allow(filterPattern)
                       LengthLimitingTextInputFormatter(15),
                     ],
                     obscureText: _isObscure,
@@ -316,6 +390,29 @@ class _SignInPageState extends State<SignInPage> {
       bottomNavigationBar: Column(
         mainAxisSize: MainAxisSize.min,
         children: [
+          showResetButton
+              ? const SizedBox()
+              : InkWell(
+                  onTap: () {
+                    resetApi();
+                  },
+                  child: Container(
+                    height: 50,
+                    width: MediaQuery.of(context).size.width,
+                    margin: const EdgeInsets.symmetric(horizontal: 20),
+                    color: MyColor.grey,
+                    child: Center(
+                      child: Text(
+                        'RESET DEVICE',
+                        style: MyStyle.tx20b.copyWith(
+                            fontFamily: 'Poppins-SemiBold', fontSize: 15),
+                      ),
+                    ),
+                  ),
+                ),
+          const SizedBox(
+            height: 15,
+          ),
           InkWell(
             onTap: () {
               Navigator.pushNamed(context, otpVerifyRoute);
@@ -334,19 +431,17 @@ class _SignInPageState extends State<SignInPage> {
               ),
             ),
           ),
-          SizedBox(
+          const SizedBox(
             height: 15,
           ),
           InkWell(
             onTap: () {
-              // Navigator.pushNamed(context, welcomeRoute);
               if (formKey.currentState!.validate()) {
+                loginApi();
                 print("Validated");
               } else {
                 print("Not Validated");
               }
-              loginApi();
-              print('Login Successful');
             },
             child: Container(
               height: 50,
@@ -365,5 +460,36 @@ class _SignInPageState extends State<SignInPage> {
         ],
       ),
     );
+  }
+
+  Future myLoader() {
+    return showDialog(
+        barrierDismissible: false,
+        context: context,
+        builder: (BuildContext context) {
+          return AlertDialog(
+            shape: RoundedRectangleBorder(
+              borderRadius: BorderRadius.circular(1),
+            ),
+            backgroundColor: MyColor.white,
+            content: Row(
+              children: [
+                const CircularProgressIndicator(
+                  valueColor: AlwaysStoppedAnimation(MyColor.black),
+                ),
+                const SizedBox(
+                  width: 20,
+                ),
+                Text(
+                  'Loading...',
+                  style: MyStyle.tx14b.copyWith(
+                    fontWeight: FontWeight.w600,
+                    fontFamily: 'Poppins-SemiBold',
+                  ),
+                ),
+              ],
+            ),
+          );
+        });
   }
 }
