@@ -12,9 +12,10 @@ class ApiHandler {
     // = http://68.183.81.169/admin/Api/login
     mainHeaderPost() => {
           'Content-Type': 'application/json',
-          'Accept': '*/*',
+          'Accept': 'application/json',
           'Authorization': '4ccda7514adc0f13595a585205fb9761',
         };
+    print("$baseUrl");
 
     http.Response response = await http.post(baseUrl,
         headers: mainHeaderPost(), body: jsonEncode(body));
@@ -83,7 +84,7 @@ class ApiHandler {
     var baseUrl = Uri.http(Utils.testIpUrl, "/${Utils.liveUrl}$url");
     userPost() => {
           'Content-Type': 'application/json',
-          'Accept': '*/*',
+          'Accept': 'application/json',
           'Authorization': '4ccda7514adc0f13595a585205fb9761',
           'User-Id': '$userId',
           'Device-Id': '$deviceId',

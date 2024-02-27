@@ -1,3 +1,5 @@
+import 'dart:convert';
+
 import 'package:colorsoul/constants/routes.dart';
 import 'package:colorsoul/values/myColor.dart';
 import 'package:colorsoul/values/myStyle.dart';
@@ -44,6 +46,7 @@ class _SignInPageState extends State<SignInPage> {
     if (value!.isEmpty) {
       return "Password is required";
     }
+    return null;
   }
 
   loginApi() async {
@@ -80,13 +83,15 @@ class _SignInPageState extends State<SignInPage> {
 
       Fluttertoast.showToast(msg: "${response['msg']}");
       print("${response['msg']}");
-      if (response['msg'] == "Already Logged in diffrent Device!!!") {
+      if (response['msg'] == "Already Logged in different Device!!!") {
         setState(() {
-          showResetButton = false;
+          showResetButton = true;
+          print('button 1');
         });
       } else {
         setState(() {
-          showResetButton = true;
+          print('button 2');
+          showResetButton = false;
         });
       }
     }
@@ -99,13 +104,13 @@ class _SignInPageState extends State<SignInPage> {
 
     var resetDeviceBody = {
       "mobile_no": mobController.text,
-      "device_Id": deviceId,
+      "device_id": deviceId,
     };
-    print(resetDeviceBody);
+    print(json.encode(resetDeviceBody));
 
     var response =
         await ApiHandler.normalPost(resetDeviceBody, '/reset_device_id');
-    // print(response);
+    print("90-====== $response");
 
     if (response['st'] == "success") {
       var mobile = response['mobile_no'];
