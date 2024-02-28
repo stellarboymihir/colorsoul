@@ -10,6 +10,7 @@ const forgotPassRoute = '/forgotPass/';
 const forgotOtpPassRoute = '/forgotOtpPass/';
 const resetPassRoute = '/resetPass/';
 const successPageRoute = '/successPage/';
+const resetDeviceRoute = '/resetDevice/';
 
 //   **  Dashboard  **
 const dashboardRoute = '/dashboard/';

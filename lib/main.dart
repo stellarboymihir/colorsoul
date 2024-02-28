@@ -1,5 +1,6 @@
 import 'package:colorsoul/authentication/register/forgotOTPPass.dart';
 import 'package:colorsoul/authentication/register/otpVerify.dart';
+import 'package:colorsoul/authentication/register/resetDevice.dart';
 import 'package:colorsoul/authentication/register/resetPass.dart';
 import 'package:colorsoul/authentication/register/signInPage.dart';
 import 'package:colorsoul/authentication/register/successPage.dart';
@@ -86,6 +87,7 @@ class MyApp extends StatelessWidget {
         signInPageRoute: (context) => const SignInPage(),
         otpVerifyRoute: (context) => const OTPVerify(),
         pinRoute: (context) => const Pin(),
+        resetDeviceRoute: (context) => const ResetDevice(),
 
         // ** Welcome Page **
         welcomeRoute: (context) => const Welcome(),

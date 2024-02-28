@@ -20,7 +20,7 @@ class _ForgotOtpPassState extends State<ForgotOtpPass> {
     var width = MediaQuery.of(context).size.width;
     return Scaffold(
       body: SingleChildScrollView(
-        physics: NeverScrollableScrollPhysics(),
+        physics: const NeverScrollableScrollPhysics(),
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.center,
           children: [
@@ -64,11 +64,6 @@ class _ForgotOtpPassState extends State<ForgotOtpPass> {
             Container(
               height: 50,
               width: width,
-              // decoration: BoxDecoration(
-              //   border: Border.all(
-              //     color: MyColor.grey,
-              //   ),
-              // ),
               margin: const EdgeInsets.symmetric(horizontal: 20),
               child: TextFormField(
                 controller: forgotOtpController,

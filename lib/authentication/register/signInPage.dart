@@ -25,7 +25,7 @@ class _SignInPageState extends State<SignInPage> {
   Color _phoneNumberBorderColor = MyColor.grey;
   Color _passwordBorderColor = MyColor.grey;
 
-  bool showResetButton = true;
+  bool _visible = true;
 
   bool isCheck = false;
 
@@ -50,7 +50,22 @@ class _SignInPageState extends State<SignInPage> {
   }
 
   loginApi() async {
-    myLoader();
+    // myLoader();
+    showDialog(
+      context: context,
+      builder: (BuildContext context) {
+        return AlertDialog(
+          content: Row(
+            children: [
+              CircularProgressIndicator(),
+              SizedBox(width: 20),
+              Text('Loading...'),
+            ],
+          ),
+        );
+      },
+    );
+
     SharedPreferences sharedPreferences = await SharedPreferences.getInstance();
     var deviceId = sharedPreferences.getString("deviceId") ?? "";
     print("Device Id is: $deviceId");
@@ -60,84 +75,61 @@ class _SignInPageState extends State<SignInPage> {
       "password": passController.text,
       "device_id": deviceId,
     };
-    print(loginBody);
+
     var response = await ApiHandler.normalPost(loginBody, '/login');
     print(response);
 
     if (response['st'] == "success") {
-      var userId = response['user_id'];
-      var name = response['name'];
-      var mobile = response['mobile'];
-      var email = response['email'];
-      var designation = response['designation'];
-
-      sharedPreferences.setString("userId", "$userId");
-      sharedPreferences.setString("name", "$name");
-      sharedPreferences.setString("mobile", "$mobile");
-      sharedPreferences.setString("email", "$email");
-      sharedPreferences.setString("designation", "$designation");
-
+      // Your success logic
+      Navigator.pop(context); // Dismiss the loading dialog
       Navigator.pushNamed(context, pinRoute);
     } else {
-      Navigator.pop(context);
-
+      Navigator.pop(context); // Dismiss the loading dialog
       Fluttertoast.showToast(msg: "${response['msg']}");
-      print("${response['msg']}");
-      if (response['msg'] == "Already Logged in different Device!!!") {
-        setState(() {
-          showResetButton = true;
-          print('button 1');
-        });
-      } else {
-        setState(() {
-          print('button 2');
-          showResetButton = false;
-        });
-      }
+
+      //   if (response['msg'] == "Already Logged in different Device!!!") {
+      //     setState(() {
+      //       _visible = true;
+      //       print(_visible);
+      //     });
+      //   } else {
+      //     setState(() {
+      //       _visible = false;
+      //       print(_visible);
+      //     });
+      //   }
+      // }
+      print("Response message: ${response['msg']}");
+      setState(() {
+        _visible = response['msg'] == "Already Logged in different Device!!!";
+        print("_visible: $_visible");
+      });
     }
   }
 
-  resetApi() async {
-    SharedPreferences preferences = await SharedPreferences.getInstance();
-    var deviceId = preferences.getString("deviceId") ?? "";
-    print("Device Id is: $deviceId");
-
-    var resetDeviceBody = {
-      "mobile_no": mobController.text,
-      "device_id": deviceId,
-    };
-    print(json.encode(resetDeviceBody));
-
-    var response =
-        await ApiHandler.normalPost(resetDeviceBody, '/reset_device_id');
-    print("90-====== $response");
-
-    if (response['st'] == "success") {
-      var mobile = response['mobile_no'];
-
-      preferences.setString('mobile', "$mobile");
-
-      print("$response['mobile']");
-    } else {}
-
-    // if (response is bool && response) {
-    //   // Handle successful response
-    //   print("Device reset successfully");
-    //   var mobile = mobController
-    //       .text; // Assuming the mobile number is the one being reset
-    //   preferences.setString('mobile', mobile);
-    // } else if (response is Map &&
-    //     response.containsKey('st') &&
-    //     response['st'] == "success") {
-    //   // Handle successful response
-    //   print("Device reset successfully");
-    //   var mobile = response['mobile_no'];
-    //   preferences.setString('mobile', mobile);
-    // } else {
-    //   // Handle unsuccessful response
-    //   print("Failed to reset device");
-    // }
-  }
+  // resetApi() async {
+  //   SharedPreferences preferences = await SharedPreferences.getInstance();
+  //   var deviceId = preferences.getString("deviceId") ?? "";
+  //   print("Device Id is: $deviceId");
+  //
+  //   var resetDeviceBody = {
+  //     "mobile_no": mobController.text,
+  //     "device_id": deviceId,
+  //   };
+  //   print(json.encode(resetDeviceBody));
+  //
+  //   var response =
+  //       await ApiHandler.normalPost(resetDeviceBody, '/reset_device_id');
+  //   print("90-====== $response");
+  //
+  //   if (response['st'] == "success") {
+  //     var mobile = response['mobile_no'];
+  //
+  //     preferences.setString('mobile', "$mobile");
+  //
+  //     print("$response['mobile']");
+  //   } else {}
+  // }
 
   @override
   Widget build(BuildContext context) {
@@ -297,10 +289,6 @@ class _SignInPageState extends State<SignInPage> {
                             ? Icons.visibility_off_sharp
                             : Icons.visibility_sharp),
                       ),
-                      // contentPadding: const EdgeInsets.symmetric(
-                      //   horizontal: 20,
-                      //   // vertical: 20,
-                      // ),
                       enabledBorder: const OutlineInputBorder(
                         borderSide: BorderSide(
                           color: MyColor.grey,
@@ -395,26 +383,28 @@ class _SignInPageState extends State<SignInPage> {
       bottomNavigationBar: Column(
         mainAxisSize: MainAxisSize.min,
         children: [
-          showResetButton
-              ? const SizedBox()
-              : InkWell(
-                  onTap: () {
-                    resetApi();
-                  },
-                  child: Container(
-                    height: 50,
-                    width: MediaQuery.of(context).size.width,
-                    margin: const EdgeInsets.symmetric(horizontal: 20),
-                    color: MyColor.grey,
-                    child: Center(
-                      child: Text(
-                        'RESET DEVICE',
-                        style: MyStyle.tx20b.copyWith(
-                            fontFamily: 'Poppins-SemiBold', fontSize: 15),
-                      ),
-                    ),
+          Visibility(
+            visible: _visible,
+            child: InkWell(
+              onTap: () {
+                // resetApi();
+                // Navigator.pushNamed(context, resetDeviceRoute);
+              },
+              child: Container(
+                height: 50,
+                width: MediaQuery.of(context).size.width,
+                margin: const EdgeInsets.symmetric(horizontal: 20),
+                color: MyColor.grey,
+                child: Center(
+                  child: Text(
+                    'RESET DEVICE',
+                    style: MyStyle.tx20b
+                        .copyWith(fontFamily: 'Poppins-SemiBold', fontSize: 15),
                   ),
                 ),
+              ),
+            ),
+          ),
           const SizedBox(
             height: 15,
           ),
