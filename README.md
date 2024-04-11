@@ -10,6 +10,14 @@ The **Colorsoul** app is a vibrant and user-friendly application that allows use
 - **Create Your Own**: Use the intuitive color picker to create custom palettes.
 - **Save and Share**: Save your favorite palettes and share them with friends.
 - **Inspiration Gallery**: Get inspired by beautiful color combinations from other users.
+- **Effortless Navigation**: Explore the app with ease thanks to its simple and user-friendly design.
+- **BarCode Scanner**: Scan the barcodes of  the product.
+- **Target Sales**: Monthly Target, Yearly Target,
+- **Attendance System**: Users can click their image and submit daily attendance.
+- **Tasks**: Tasks done by users for working, completed.
+- **Distributor, Retailer**: The list of distributor, retailer who buy or sell the product in stocks
+- their values in the amount they buy.
+- **Orders**: Shoppers who have ordered products, their status Order No. their history, etc.
 
 
 [![colorsoul](https://github.com/stellarboymihir/colorsoul/assets/83822717/7aa8629a-dfdf-4520-babc-66710d482722)](https://youtu.be/OV2X97srmJM)
