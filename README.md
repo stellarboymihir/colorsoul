@@ -15,12 +15,13 @@ The **Colorsoul** app is a vibrant and user-friendly application that allows use
 - **Target Sales**: Monthly Target, Yearly Target,
 - **Attendance System**: Users can click their image and submit daily attendance.
 - **Tasks**: Tasks done by users for working, completed.
-- **Distributor, Retailer**: The list of distributor, retailer who buy or sell the product in stocks
+- **Distributor, Retailer**: The list of distributors, retailers who buy or sell the product in stocks
 - their values in the amount they buy.
 - **Orders**: Shoppers who have ordered products, their status Order No. their history, etc.
 
 # Video Link
-[![colorsoul](https://github.com/stellarboymihir/colorsoul/assets/83822717/7aa8629a-dfdf-4520-babc-66710d482722)](https://youtu.be/OV2X97srmJM)
+
+[![Click on Image](https://github.com/stellarboymihir/colorsoul/assets/83822717/7aa8629a-dfdf-4520-babc-66710d482722)](https://youtu.be/OV2X97srmJM)
 
 
 ## Tech Stack
