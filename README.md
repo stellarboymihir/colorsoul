@@ -1,16 +1,9 @@
 # colorsoul
+----------------------------------------------------------------------------------------
+#Task: To make a cosmetics product app for buying and selling products to distributors and retailers.
 
-A new Flutter project.
 
-## Getting Started
 
-This project is a starting point for a Flutter application.
+[![colorsoul](https://github.com/stellarboymihir/colorsoul/assets/83822717/7aa8629a-dfdf-4520-babc-66710d482722)](https://youtu.be/OV2X97srmJM)
 
-A few resources to get you started if this is your first Flutter project:
 
-- [Lab: Write your first Flutter app](https://docs.flutter.dev/get-started/codelab)
-- [Cookbook: Useful Flutter samples](https://docs.flutter.dev/cookbook)
-
-For help getting started with Flutter development, view the
-[online documentation](https://docs.flutter.dev/), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.
