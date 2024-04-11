@@ -1,7 +1,7 @@
 class Utils {
-  static const String baseurl = "68.183.82.188";
-  static const String testIpUrl = "68.183.81.169";
-  static const String migraneIpUrl = "206.189.33.162";
+  static const String baseurl = "";
+  static const String testIpUrl = "";
+  static const String migraneIpUrl = "";
   static const String finalLiveUrl = testIpUrl;
 
   ///CHANGE URL HERE WANT FOR PRODUCT/BETA
