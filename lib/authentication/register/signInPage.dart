@@ -25,7 +25,7 @@ class _SignInPageState extends State<SignInPage> {
   Color _phoneNumberBorderColor = MyColor.grey;
   Color _passwordBorderColor = MyColor.grey;
 
-  bool _visible = true;
+  bool _visible = false;
 
   bool isCheck = false;
 
@@ -50,21 +50,7 @@ class _SignInPageState extends State<SignInPage> {
   }
 
   loginApi() async {
-    // myLoader();
-    showDialog(
-      context: context,
-      builder: (BuildContext context) {
-        return AlertDialog(
-          content: Row(
-            children: [
-              CircularProgressIndicator(),
-              SizedBox(width: 20),
-              Text('Loading...'),
-            ],
-          ),
-        );
-      },
-    );
+    myLoader();
 
     SharedPreferences sharedPreferences = await SharedPreferences.getInstance();
     var deviceId = sharedPreferences.getString("deviceId") ?? "";
@@ -84,26 +70,24 @@ class _SignInPageState extends State<SignInPage> {
       Navigator.pop(context); // Dismiss the loading dialog
       Navigator.pushNamed(context, pinRoute);
     } else {
+      print("Response message: ${response['msg']}");
+
+      if (response['msg'] == "Already Logged in diffrent Device!!!") {
+        setState(() {
+          _visible = true;
+          // _visible = response['msg'] == "Already Logged in different Device!!!";
+          print("_visible: $_visible");
+        });
+      } else {
+        setState(() {
+          _visible = false;
+          // _visible = response['msg'] == "Already Logged in different Device!!!";
+          print("_visible: $_visible");
+        });
+      }
+
       Navigator.pop(context); // Dismiss the loading dialog
       Fluttertoast.showToast(msg: "${response['msg']}");
-
-      //   if (response['msg'] == "Already Logged in different Device!!!") {
-      //     setState(() {
-      //       _visible = true;
-      //       print(_visible);
-      //     });
-      //   } else {
-      //     setState(() {
-      //       _visible = false;
-      //       print(_visible);
-      //     });
-      //   }
-      // }
-      print("Response message: ${response['msg']}");
-      setState(() {
-        _visible = response['msg'] == "Already Logged in different Device!!!";
-        print("_visible: $_visible");
-      });
     }
   }
 
@@ -129,6 +113,13 @@ class _SignInPageState extends State<SignInPage> {
   //
   //     print("$response['mobile']");
   //   } else {}
+  // }
+
+  // @override
+  // void initState() {
+  //   // TODO: implement initState
+  //   loginApi();
+  //   super.initState();
   // }
 
   @override
@@ -184,7 +175,8 @@ class _SignInPageState extends State<SignInPage> {
                 const SizedBox(
                   height: 5,
                 ),
-                SizedBox(
+                Container(
+                  // margin: const EdgeInsets.symmetric(horizontal: 20),
                   width: MediaQuery.of(context).size.width,
                   child: TextFormField(
                     controller: mobController,
@@ -203,20 +195,34 @@ class _SignInPageState extends State<SignInPage> {
                       prefixIcon: Container(
                         width: 50,
                         alignment: Alignment.center,
-                        decoration: const BoxDecoration(
-                          border: Border(
-                            right: BorderSide(
-                              color: MyColor.grey,
+                        // decoration: const BoxDecoration(
+                        //   border: Border(
+                        //     right: BorderSide(
+                        //       color: MyColor.grey,
+                        //     ),
+                        //   ),
+                        // ),
+                        child: Row(
+                          mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                          children: [
+                            const SizedBox(
+                              width: 10,
                             ),
-                          ),
-                        ),
-                        child: Text(
-                          '+91',
-                          textAlign: TextAlign.center,
-                          style: MyStyle.tx20b.copyWith(
-                            fontSize: 14,
-                            fontFamily: 'Poppins-SemiBold',
-                          ),
+                            Text(
+                              '+91',
+                              textAlign: TextAlign.center,
+                              style: MyStyle.tx20b.copyWith(
+                                fontSize: 14,
+                                fontFamily: 'Poppins-SemiBold',
+                              ),
+                            ),
+                            const SizedBox(
+                              height: 60,
+                              child: VerticalDivider(
+                                color: MyColor.grey,
+                              ),
+                            ),
+                          ],
                         ),
                       ),
                       errorBorder: const OutlineInputBorder(
@@ -388,7 +394,7 @@ class _SignInPageState extends State<SignInPage> {
             child: InkWell(
               onTap: () {
                 // resetApi();
-                // Navigator.pushNamed(context, resetDeviceRoute);
+                Navigator.pushNamed(context, resetDeviceRoute);
               },
               child: Container(
                 height: 50,
@@ -430,11 +436,15 @@ class _SignInPageState extends State<SignInPage> {
             height: 15,
           ),
           InkWell(
+            //  for login without api
             onTap: () {
               if (formKey.currentState!.validate()) {
-                loginApi();
+                // loginApi();
+                Navigator.pushNamed(context, pinRoute);
                 print("Validated");
               } else {
+                Navigator.pushNamed(context, pinRoute);
+
                 print("Not Validated");
               }
             },

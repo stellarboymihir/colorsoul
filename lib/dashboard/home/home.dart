@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:shared_preferences/shared_preferences.dart';
+// import 'package:syncfusion_flutter_charts/charts.dart';
 
 import '../../constants/routes.dart';
 import '../../values/myColor.dart';
@@ -684,7 +685,6 @@ class _HomeState extends State<Home> {
                 ],
               ),
 
-              //
               const SizedBox(
                 height: 10,
               ),
@@ -792,6 +792,12 @@ class _HomeState extends State<Home> {
                       height: 127,
                       width: 127,
                     ),
+                    // SfCircularChart(
+                    //   title: ChartTitle(text: ''),
+                    //     series: _getRadialBarDefaultSeries();
+                    //   tooltipBehavior: TooltipBehavior(
+                    //       enable: true, format: 'point.x : point.ym'),
+                    // )
                   ],
                 ),
               ),
@@ -854,6 +860,7 @@ class _HomeState extends State<Home> {
                         margin: const EdgeInsets.symmetric(
                           horizontal: 12,
                         ),
+
                         child: Row(
                           children: [
                             Container(

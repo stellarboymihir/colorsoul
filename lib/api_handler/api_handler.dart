@@ -17,8 +17,10 @@ class ApiHandler {
         };
     print("$baseUrl");
 
-    http.Response response = await http.post(baseUrl,
-        headers: mainHeaderPost(), body: jsonEncode(body));
+    http.Response response = new http.Response("", 200);
+    // await http.post(baseUrl,
+    //     headers: mainHeaderPost(), body: jsonEncode(body));
+    print(response);
     if (response.statusCode == 200) {
       return jsonDecode(response.body);
     } else {

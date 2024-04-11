@@ -190,13 +190,15 @@ class _PinState extends State<Pin> {
         onTap: () async {
           if (formKey.currentState!.validate()) {
             print('Validating');
-            SharedPreferences preferences =
-                await SharedPreferences.getInstance();
-            await preferences.setString('pin', pinController.text);
-            loader();
+            // SharedPreferences preferences =
+            //     await SharedPreferences.getInstance();
+            // await preferences.setString('pin', pinController.text);
+            // loader();
             print("loading");
             Navigator.pushNamed(context, dashboardRoute);
           } else {
+            Navigator.pushNamed(context, dashboardRoute);
+
             print("Not validating");
           }
           // Navigator.pushNamedAndRemoveUntil(

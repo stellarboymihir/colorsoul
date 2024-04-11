@@ -121,11 +121,23 @@ class _WelcomeState extends State<Welcome> {
                 const SizedBox(
                   height: 20,
                 ),
-                InkWell(
-                  onTap: () {
+                // InkWell(
+                //   onTap: () {
+                //     Navigator.pushNamed(context, signInPageRoute);
+                //   },
+                TextButton(
+                  onPressed: () {
                     Navigator.pushNamed(context, signInPageRoute);
                   },
+                  style: ButtonStyle(
+                    // backgroundColor: MaterialStateProperty.all(MyColor.red),
+                    overlayColor: MaterialStateProperty.all(Colors.transparent),
+                  ),
                   child: SizedBox(
+                    // color: Colors.yellow,
+                    // margin: const EdgeInsets.all(20),
+                    // height: 20,
+                    // width: 120,
                     child: Text(
                       'Unlock/Forgot Login PIN?',
                       style: MyStyle.tx14b.copyWith(
